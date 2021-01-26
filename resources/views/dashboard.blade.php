@@ -1,8 +1,17 @@
+@php
+$breadcrumbs=[
+    'Dashboard'=>route('dashboard'),
+];
+/*$actions=[
+    's1'=>[
+       'Test'=>'#'
+    ],
+];*/
+@endphp
+
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+        <x-layout.header :title="__('Dashboard')" :breadcrumbs="$breadcrumbs"/>
     </x-slot>
 
     <p>

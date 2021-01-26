@@ -3,3 +3,7 @@
 @import 'tailwindcss/utilities';
 
 @import "flatpickr";
+
+[x-cloak] {
+    display: none;
+}

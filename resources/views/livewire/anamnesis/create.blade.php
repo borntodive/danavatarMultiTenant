@@ -7,7 +7,7 @@
             {{ __('Salvato.') }}
         </x-jet-action-message>
 
-        <x-jet-button wire:target="photo">
+        <x-jet-button>
             {{ __('Salva') }}
         </x-jet-button>
     </div>

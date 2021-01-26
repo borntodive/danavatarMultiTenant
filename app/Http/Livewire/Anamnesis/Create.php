@@ -38,9 +38,33 @@ class Create extends Component
         'other' => 'Altro',
     ];
 
+    public $medications = [
+        'antiAllergenic'=>'Anti Allergenici',
+        'antiDepressants'=>'Anti Depressivi',
+        'antiAsthmatics'=>'Anti Asmatici',
+        'bloodPressure'=>'Pressione',
+        'antiDiarrheal'=>'Anti Diarroici',
+        'heart'=>'Cuore / Circolazione',
+        'oralDiabetics'=>'Diabetici Orali',
+        'antibiotics'=>'Antibiotici',
+        'antiEpileptics'=>'Anti Epilettici',
+        'contraceptives'=>'Contraccettivi',
+        'decongestants'=>'Decongestionanti',
+        'antiFlue'=>'Anti Influenzali',
+        'insulin'=>'Insulina',
+        'painKillers'=>'Anti Dolorifici',
+    ];
+
     protected $rules = [
         'state.height' => 'required|numeric',
         'state.weight' => 'required|numeric',
+        'state.anamnesisData'=>'required',
+        'state.prev_cardio' => 'required',
+    ];
+
+    protected $validationAttributes = [
+        'state.height' => 'Altezza',
+        'state.weight' => 'Peso',
     ];
 
 
@@ -48,14 +72,9 @@ class Create extends Component
     {
         $anamnesis = auth()->user()->anamnesis()->orderBy('created_at', 'desc')->first();
         //$anamnesis=null;
-        if (!$anamnesis) {
-            $anamnesis = new Anamnesis();
-            $anamnesis->data = new UserAnamnesis([
-                'anamnesisData' => new UserAnamnesisData(),
-                'medications' => new Medications(),
-            ]);
-        }
-        $this->state = $anamnesis->toArray()['data'];
+
+        if ($anamnesis)
+            $this->state = $anamnesis->toArray()['data'];
     }
 
     /**
@@ -79,10 +98,14 @@ class Create extends Component
 
         $anamensis = new Anamnesis();
         $anamensis->user_id = auth()->user()->id;
-        $anamensis->data = ($validatedData);
+        $anamensis->data = ($validatedData['state']);
+        $anamensis->save();
+        session()->flash('success', 'Anamnesi salvata con successo');
+        return redirect()->route('dashboard');
 
+        //dd($validatedData,$anamensis->data);
         //dd($values['anamnesisData']);
         //$anamensis->data->anamnesisData=new UserAnamnesisData($values['anamnesisData']);
-        $anamensis->saveOrFail();
+
     }
 }
