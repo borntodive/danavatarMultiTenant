@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/card.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -206,7 +203,7 @@
       <workItem from="1611606246367" duration="60000" />
       <workItem from="1611606558971" duration="5725000" />
       <workItem from="1611642459862" duration="11492000" />
-      <workItem from="1611668234966" duration="65000" />
+      <workItem from="1611668234966" duration="137000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -243,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611656784237</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Medications on anamnesis">
+      <created>1611668325654</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611668325654</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +269,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Fix prev_cardio state" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix prev_cardio state" />
+    <MESSAGE value="Medications on anamnesis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Medications on anamnesis" />
   </component>
 </project>

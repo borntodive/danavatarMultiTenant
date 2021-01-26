@@ -32,9 +32,7 @@
                     <div class="col-span-3 text-center">
                         {{ __('Passato') }}
                     </div>
-                    @php
-                    dd($chunk);
-                    @endphp
+
                     @foreach($chunk as $fieldName=>$displayName)
                         <div class="col-span-6 flex items-center">
                             <span class="text-sm font-medium text-gray-900">{{ $displayName }}</span>
