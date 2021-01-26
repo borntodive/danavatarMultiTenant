@@ -75,6 +75,9 @@ class Create extends Component
 
         if ($anamnesis)
             $this->state = $anamnesis->toArray()['data'];
+        else {
+            $this->state['prev_cardio']=false;
+        }
     }
 
     /**
