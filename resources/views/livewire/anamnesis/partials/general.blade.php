@@ -20,65 +20,41 @@
                 </span>
             </div>
         </div>
-        <div class="xl:flex lg:flex md:flex flex-wrap justify-between">
-            <div class="xl:w-2/6 lg:w-2/6 md:w-2/6 flex flex-col mb-6 px-2 -ml-2">
-                <div class="grid grid-cols-12 gap-6">
+        <div class="container mx-auto grid sm:grid-cols-1 md:grid-cols-3 pt-6 gap-8">
+            @foreach(array_chunk($medicalConditions, ceil(count($medicalConditions)/3),true) as $chunk)
+                <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-6">
-                    </div>
-                    <div class="col-span-3 text-center">
-                        {{ __('Presente') }}
-                    </div>
-                    <div class="col-span-3 text-center">
-                        {{ __('Passato') }}
-                    </div>
-                </div>
-            </div>
-            <div class="hidden md:block xl:w-2/6 lg:w-2/6 md:w-2/6 flex flex-col mb-6 px-2 -ml-2">
-                <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-6">
-                    </div>
-                    <div class="col-span-3 text-center">
-                        {{ __('Presente') }}
-                    </div>
-                    <div class="col-span-3 text-center">
-                        {{ __('Passato') }}
-                    </div>
-                </div>
-            </div>
-            <div class="hidden md:block xl:w-2/6 lg:w-2/6 md:w-2/6 flex flex-col mb-6 px-2 -ml-2">
-                <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-6">
-                    </div>
-                    <div class="col-span-3 text-center">
-                        {{ __('Presente') }}
-                    </div>
-                    <div class="col-span-3 text-center">
-                        {{ __('Passato') }}
-                    </div>
-                </div>
-            </div>
 
+                    </div>
+                    <div class="col-span-3 text-center">
+                        {{ __('Presente') }}
+                    </div>
+                    <div class="col-span-3 text-center">
+                        {{ __('Passato') }}
+                    </div>
+                    @php
+                    dd($chunk);
+                    @endphp
+                    @foreach($chunk as $fieldName=>$displayName)
+                        <div class="col-span-6 flex items-center">
+                            <span class="text-sm font-medium text-gray-900">{{ $displayName }}</span>
 
-            @foreach($medicalConditions as $name=>$displayName)
-                <div class="xl:w-2/6 lg:w-2/6 md:w-2/6 flex flex-col mb-6 px-2 -ml-2">
-                    <div class="grid grid-cols-12 gap-6">
-                        <div class="col-span-6 text-sm font-medium text-gray-900">
-                            {{$displayName}}
                         </div>
                         <div class="col-span-3 text-center">
-                            <x-form.checkbox value="1" id="anamnesisData_{{$name}}_present"
-                                             wire:model.lazy="state.anamnesisData.{{$name}}.present"/>
+                            <x-form.checkbox value="1" id="anamnesisData_{{$fieldName}}_present"
+                                             wire:model.lazy="state.anamnesisData.{{$fieldName}}.present"/>
                         </div>
                         <div class="col-span-3 text-center">
-                            <x-form.checkbox value="1" id="anamnesisData_{{$name}}_past"
-                                             wire:model.lazy="state.anamnesisData.{{$name}}.past"/>
+                            <x-form.checkbox value="1" id="anamnesisData_{{$fieldName}}_past"
+                                             wire:model.lazy="state.anamnesisData.{{$fieldName}}.past"/>
                         </div>
-                    </div>
+                    @endforeach
+
                 </div>
             @endforeach
         </div>
     </div>
-    <div class="w-full">
+    <div class="w-full mt-5">
         <div class="relative mb-5">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">
                 <div class="w-full border-t border-gray-300"></div>
@@ -91,7 +67,7 @@
         <div class="max-w-xl w-full -mx-auto">
             <div class="flex items-center justify-between">
                 <span class="flex-grow flex flex-col" id="toggleLabel">
-                    <span class="text-sm font-medium text-gray-900">{{ __('Pregresse cardio-vasculopatie?') }}</span>
+                    <x-form.label> {{ __('Pregresse cardio-vasculopatie?') }}</x-form.label>
                 </span>
                 <button type="button" @click="on = !on" :aria-pressed="on.toString()" aria-pressed="false"
                         aria-labelledby="toggleLabel" x-data="{ on: @entangle('state.prev_cardio') }"
@@ -114,6 +90,34 @@
                   {{__('Farmaci')}}
                 </span>
             </div>
+        </div>
+        <div class="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 pt-6 gap-8">
+            <!-- Remove class [ h-24 ] when adding a card block -->
+            <!-- Remove class [ border-gray-300 border-dashed border-2 ] to remove dotted border -->
+
+            @foreach(array_chunk($medications, ceil(count($medications)/2),true) as $chunk)
+            <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-6">
+
+                </div>
+                <div class="col-span-6 text-center">
+                    Nome Farmaco
+                </div>
+                @foreach($chunk as $fieldName=>$displayName)
+                    <div class="col-span-6 flex items-center">
+                        <span class="text-sm font-medium text-gray-900">{{ $displayName }}</span>
+
+                    </div>
+                    <div class="col-span-6">
+                        <x-form.text-input class="w-full" id="medications_{{$fieldName}}" name="state.medications.{{$fieldName}}" wire:model="state.medications.{{$fieldName}}"
+                                           autocomplete="{{$fieldName}}"/>
+                    </div>
+                @endforeach
+
+            </div>
+            @endforeach
+            <!-- Remove class [ h-24 ] when adding a card block -->
+            <!-- Remove class [ border-gray-300 border-dashed border-2 ] to remove dotted border -->
         </div>
     </div>
 </x-form.card>

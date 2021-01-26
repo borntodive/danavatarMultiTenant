@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-    <div class="w-11/12 mx-auto">
+    <div class="w-11/12 mx-auto py-5">
         <div class="container mx-auto">
             <div class="my-8 mx-auto xl:w-full xl:mx-0">
                 <div class="xl:flex lg:flex md:flex flex-wrap justify-between">

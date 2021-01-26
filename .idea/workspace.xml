@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +205,8 @@
       <workItem from="1611593623351" duration="36000" />
       <workItem from="1611606246367" duration="60000" />
       <workItem from="1611606558971" duration="5725000" />
-      <workItem from="1611642459862" duration="6858000" />
+      <workItem from="1611642459862" duration="11492000" />
+      <workItem from="1611668234966" duration="65000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -233,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611656510815</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fix prev_cardio state">
+      <created>1611656784237</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611656784237</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +264,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Fix prev_cardio state" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix prev_cardio state" />
   </component>
 </project>

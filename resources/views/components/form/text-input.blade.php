@@ -1,14 +1,13 @@
 @props([
     'disabled' => false,
     'hasError' => false,
-    'label',
+    'label'=>null,
     'name'
     ])
+@if($label)
+<x-form.label> {{ $label}} </x-form.label>
 
-<label {{ $attributes->merge(['class' => 'pb-2 text-sm font-medium text-gray-900']) }}>
-    {{ $label}}
-</label>
-
+@endif
 <input
     {{ $disabled ? 'disabled' : '' }}
     {!! $attributes->merge(['class' => 'border '. ($errors->has($name) ? 'border-red-400' : 'border-gray-300').'
