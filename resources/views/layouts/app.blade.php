@@ -21,7 +21,7 @@
 <body class="antialiased font-sans bg-gray-200">
 
 <body class="antialiased font-sans bg-gray-200"><div class="" style="">
-    <div class="bg-gray-100">
+    <div class="bg-gray-200">
         @foreach (['error', 'success'] as $msg)
             @if(session()->has($msg))
                 <x-layout.notification :type="$msg" :message="session($msg)" />

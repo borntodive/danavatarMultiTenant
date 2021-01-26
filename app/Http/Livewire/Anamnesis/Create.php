@@ -15,7 +15,7 @@ class Create extends Component
     public $state = [];
 
     public $medicalConditions = [
-        'nothingSignificant' => 'Niente di significante',
+       // 'nothingSignificant' => 'Niente di significante',
         'allergy' => 'Allergia',
         'asthma' => 'Asma',
         'backPain' => 'Dolore alla schiena',
@@ -30,9 +30,9 @@ class Create extends Component
         'nsd' => 'Disordine sistema nervoso',
         'peripheralVascular' => 'Malattia vascolare periferica',
         'pregnancy' => 'Gravidanza',
-        'dcs' => 'Episodi precedenti di PDD',
+        //'dcs' => 'Episodi precedenti di PDD',
         'pulmonaryProblems' => 'Problemi polmonari',
-        'seaSickness' => 'Mal di mare frequenti',
+        //'seaSickness' => 'Mal di mare frequenti',
         'hyperfolesterolemia' => 'Iperfolesterolemia',
         'familyDiseases' => 'Storia familiare di diabete o cardiopatie (congiunti I° grado)',
         'other' => 'Altro',
@@ -58,8 +58,9 @@ class Create extends Component
     protected $rules = [
         'state.height' => 'required|numeric',
         'state.weight' => 'required|numeric',
-        'state.anamnesisData'=>'required',
+        //'state.anamnesisData'=>'required',
         'state.prev_cardio' => 'required',
+        'state.medications.*'=>'string|min:3',
     ];
 
     protected $validationAttributes = [
@@ -77,6 +78,10 @@ class Create extends Component
             $this->state = $anamnesis->toArray()['data'];
         else {
             $this->state['prev_cardio']=false;
+        }
+
+        foreach ($this->medications as $field=>$name) {
+            $validationAttributes['state.medications.'.$field]=$name;
         }
     }
 
