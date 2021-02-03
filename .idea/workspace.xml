@@ -2,116 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Layout/FlashMessage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Datatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Show.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Staff/Datatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/hasPermission.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Listeners/LoginSuccessful.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Observers/TenantObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Observers/UserObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Scopes/OnlyForDoctorScope.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Scopes/TenantScope.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/StaticData/Anamnesis.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/BelongsToManyMedicalCenter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/BelongsToMedicalCenter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/Datatables/WithSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/Datatables/WithSort.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/WithSpecialtiesChoice.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_02_120945_create_medical_speciality_tenant_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/LaratrustSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/TenantSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/dotted-menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/form/select-button.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/form/select.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/medical-record/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/search-select.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/sort-icon.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/layout/flash-message.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/partials/specialities-modal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/staff/datatable.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/staff/partials/edit-specialities.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicalRecord/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicalRecord/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicalRecord/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/staff/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/bootstrap.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/simple-bootstrap.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/simple-tailwind.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/tailwind.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/cast.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/console.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.api.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.invokable.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.model.api.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.model.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.nested.api.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.nested.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.plain.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/controller.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/factory.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/job.queued.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/job.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/middleware.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/migration.create.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/migration.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/migration.update.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/model.pivot.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/model.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/observer.plain.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/observer.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/policy.plain.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/policy.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/request.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/resource-collection.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/resource.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/rule.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/test.stub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stubs/test.unit.stub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MedicalCentersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MedicalCentersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Anamnesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Anamnesis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MedicalCenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MedicalSpecialty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MedicalSpecialty.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Team.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/JetstreamServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/JetstreamServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/MedicalCenterFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/TenantFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_16_105557_create_medical_centers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_16_105557_create_tenants_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_16_111433_create_medical_center_user_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_16_111433_create_tenant_user_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_19_100332_create_medical_specialties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_100332_create_medical_specialties_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_095154_create_anamneses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_095154_create_anamneses_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/MedicalCenterSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/stubs/seeder.stub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/card.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/checkbox.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/checkbox.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/label.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/label.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/layout/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/layout/notification.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout/notification.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/LoginSuccessful.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/LoginSuccessful.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,7 +224,7 @@
       <workItem from="1612188329230" duration="9699000" />
       <workItem from="1612214254738" duration="24455000" />
       <workItem from="1612281894399" duration="12463000" />
-      <workItem from="1612344193903" duration="16526000" />
+      <workItem from="1612344193903" duration="20209000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -390,7 +282,63 @@
       <option name="project" value="LOCAL" />
       <updated>1611669518881</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Initial Commit">
+      <created>1612370343495</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1612370343496</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Test Login">
+      <created>1612387231246</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1612387231246</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Test Login">
+      <created>1612387555038</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1612387555038</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Test Login">
+      <created>1612387728400</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1612387728400</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Test Login">
+      <created>1612388841126</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1612388841126</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Test Login">
+      <created>1612388898749</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1612388898749</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Test Login">
+      <created>1612389314582</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1612389314582</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Test Login">
+      <created>1612389357731</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1612389357731</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,11 +358,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Initial Commit" />
     <MESSAGE value="Fix prev_cardio state" />
     <MESSAGE value="Medications on anamnesis" />
     <MESSAGE value="Change background grey" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change background grey" />
+    <MESSAGE value="Initial Commit" />
+    <MESSAGE value="Test Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test Login" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
