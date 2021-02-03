@@ -20,6 +20,7 @@ class LoginSuccessful
 
     public function handle(Login $event)
     {
+        dd($this->request);
         preg_match('/^([a-z0-9|-]+[a-z0-9]{1,}\.)*[a-z0-9|-]+[a-z0-9]{1,}\.[a-z]{2,}$/', $_SERVER['SERVER_NAME'], $matches);
         dd($_SERVER['SERVER_NAME']);
         $subdomain=null;
