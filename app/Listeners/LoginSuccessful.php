@@ -27,7 +27,6 @@ class LoginSuccessful
         if (isset($matches[1]))
             $subdomain=rtrim($matches[1], " \t.");
         if ($subdomain) {
-            dd($subdomain);
             $center=Tenant::where(['url'=>$subdomain])->firstOrFail();
             session(['tenant_id' => $center->id]);
             session(['tenant_slug' => $center->slug]);
