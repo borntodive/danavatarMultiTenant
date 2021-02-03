@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call([
-            MedicalCenterSeeder::class,
+            LaratrustSeeder::class,
+            TenantSeeder::class,
             UserSeeder::class,
             MedicalSpecialtySeeder::class,
         ]);

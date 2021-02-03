@@ -15,7 +15,7 @@ $breadcrumbs=[
     </x-slot>
 
     <p>
-        {{auth()->user()->specialties}}
+
     </p>
 
     <div class="py-12">

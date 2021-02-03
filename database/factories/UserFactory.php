@@ -29,6 +29,7 @@ class UserFactory extends Factory
             'gender'=>UserGender::getRandomValue(),
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
+            'dob'=>$this->faker->date(),
             'password' => bcrypt('password'), // password
             'remember_token' => Str::random(10),
         ];

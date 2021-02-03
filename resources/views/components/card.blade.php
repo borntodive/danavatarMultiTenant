@@ -1,4 +1,4 @@
-<div id="{{Str::slug($title)}}" class="container mx-auto bg-white shadow rounded">
+<div id="{{Str::slug($title)}}" {{ $attributes->only('class')->merge(['class' => 'container mx-auto bg-white shadow rounded']) }}>
     <div class="xl:w-full border-b border-gray-300 py-5">
         <div class="flex items-center w-11/12 mx-auto">
             <p class="text-lg text-gray-800 font-bold">{{$title}}</p>

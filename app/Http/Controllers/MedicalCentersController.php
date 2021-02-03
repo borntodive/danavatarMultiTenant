@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MedicalCenter;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 class MedicalCentersController extends Controller
@@ -41,10 +41,10 @@ class MedicalCentersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param MedicalCenter $medicalCenter
+     * @param Tenant $medicalCenter
      * @return \Illuminate\Http\Response
      */
-    public function show(MedicalCenter $medicalCenter)
+    public function show(Tenant $medicalCenter)
     {
         //
     }
@@ -52,10 +52,10 @@ class MedicalCentersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param MedicalCenter $medicalCenter
+     * @param Tenant $medicalCenter
      * @return \Illuminate\Http\Response
      */
-    public function edit(MedicalCenter $medicalCenter)
+    public function edit(Tenant $medicalCenter)
     {
         //
     }
@@ -64,10 +64,10 @@ class MedicalCentersController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param MedicalCenter $medicalCenter
+     * @param Tenant $medicalCenter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MedicalCenter $medicalCenter)
+    public function update(Request $request, Tenant $medicalCenter)
     {
         //
     }
@@ -75,10 +75,10 @@ class MedicalCentersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param MedicalCenter $medicalCenter
+     * @param Tenant $medicalCenter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MedicalCenter $medicalCenter)
+    public function destroy(Tenant $medicalCenter)
     {
         //
     }

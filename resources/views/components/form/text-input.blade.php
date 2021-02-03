@@ -1,25 +1,52 @@
 @props([
     'disabled' => false,
-    'hasError' => false,
     'label'=>null,
-    'name'
+    'placeholder'=>null,
+    'type'=>'text',
+    'icon'=>false,
     ])
-@if($label)
-<x-form.label> {{ $label}} </x-form.label>
+<div class="{{$attributes->get('class')}}">
+    @if ($label)
+        <x-form.label for="{{$attributes->whereStartsWith('wire:model')->first()}}"> {{ $label}} </x-form.label>
+    @endif
+    <div class="mt-1 relative rounded-md shadow-sm">
+        <input
+            @if ($disabled)
+            disabled
+            @endif
+            type="{{$type}}"
+            {{$attributes->whereStartsWith('wire:model')}}
+            id="{{$attributes->whereStartsWith('wire:model')->first()}}"
+            @error($attributes->whereStartsWith('wire:model')->first())
+            class="block w-full pr-10 border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md"
+            @else
+            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            @endif
+            placeholder="{{$placeholder}}"
+            @error($attributes->whereStartsWith('wire:model')->first())
+            aria-invalid="true"
+            aria-describedby="email-error"
+            @enderror
+            />
+        @error($attributes->whereStartsWith('wire:model')->first())
+        <div wire:key="error_svg_{{$attributes->whereStartsWith('wire:model')->first()}}" class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <!-- Heroicon name: exclamation-circle -->
+            <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        @elseif($icon)
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <!-- Heroicon name: question-mark-circle -->
+                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                </svg>
+            </div>
+        @enderror
 
-@endif
-<input
-    {{ $disabled ? 'disabled' : '' }}
-    {!! $attributes->merge(['class' => 'border '. ($errors->has($name) ? 'border-red-400' : 'border-gray-300').'
-    pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 text-gray-800']) !!}>
-
-@error($name)
-<div class="flex justify-between items-center pt-1 text-red-400">
-    <p class="text-xs">{{ $message }}</p>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="15" y1="9" x2="9" y2="15"></line>
-        <line x1="9" y1="9" x2="15" y2="15"></line>
-    </svg>
+    </div>
+    @error($attributes->whereStartsWith('wire:model')->first())
+    <p wire:key="error_{{$attributes->whereStartsWith('wire:model')->first()}}"
+       class="mt-2 text-sm text-red-600" id="email-error">{{$message}}</p>
+    @enderror
 </div>
-@enderror

@@ -2,75 +2,41 @@
 
 namespace App\Http\Livewire\Anamnesis;
 
-use App\Dto\Anamnesis\Medications;
-use App\Dto\Anamnesis\UserAnamnesis;
-use App\Dto\Anamnesis\UserAnamnesisData;
 use App\Models\Anamnesis;
+use App\Models\Tenant;
 use Illuminate\View\View;
 use Livewire\Component;
+
+use \App\StaticData\Anamnesis as AnamnesisData;
 
 class Create extends Component
 {
 
     public $state = [];
 
-    public $medicalConditions = [
-       // 'nothingSignificant' => 'Niente di significante',
-        'allergy' => 'Allergia',
-        'asthma' => 'Asma',
-        'backPain' => 'Dolore alla schiena',
-        'backSurgery' => 'Chirurgia alla schiena',
-        'smoker' => 'Fumatore',
-        'diabetes' => 'Diabete',
-        'ears' => 'Orecchi/problemi ai seni frontali',
-        'earsSurgery' => 'Chirurgia orecchi/seni frontali',
-        'flue' => 'Influenza/raffreddore',
-        'heartProblems' => 'Problema cuore/pressione',
-        'joinsPains' => 'Dolori giunture/muscoli',
-        'nsd' => 'Disordine sistema nervoso',
-        'peripheralVascular' => 'Malattia vascolare periferica',
-        'pregnancy' => 'Gravidanza',
-        //'dcs' => 'Episodi precedenti di PDD',
-        'pulmonaryProblems' => 'Problemi polmonari',
-        //'seaSickness' => 'Mal di mare frequenti',
-        'hyperfolesterolemia' => 'Iperfolesterolemia',
-        'familyDiseases' => 'Storia familiare di diabete o cardiopatie (congiunti I° grado)',
-        'other' => 'Altro',
-    ];
+    public $medicalConditions = [];
 
-    public $medications = [
-        'antiAllergenic'=>'Anti Allergenici',
-        'antiDepressants'=>'Anti Depressivi',
-        'antiAsthmatics'=>'Anti Asmatici',
-        'bloodPressure'=>'Pressione',
-        'antiDiarrheal'=>'Anti Diarroici',
-        'heart'=>'Cuore / Circolazione',
-        'oralDiabetics'=>'Diabetici Orali',
-        'antibiotics'=>'Antibiotici',
-        'antiEpileptics'=>'Anti Epilettici',
-        'contraceptives'=>'Contraccettivi',
-        'decongestants'=>'Decongestionanti',
-        'antiFlue'=>'Anti Influenzali',
-        'insulin'=>'Insulina',
-        'painKillers'=>'Anti Dolorifici',
-    ];
+    public $medications = [];
 
     protected $rules = [
         'state.height' => 'required|numeric',
         'state.weight' => 'required|numeric',
         //'state.anamnesisData'=>'required',
-        'state.prev_cardio' => 'required',
         'state.medications.*'=>'string|min:3',
+        'state.anamnesisData.other.moredata'=>'sometimes|required|string|min:3',
     ];
 
     protected $validationAttributes = [
         'state.height' => 'Altezza',
         'state.weight' => 'Peso',
+        'state.anamnesisData.other.moredata'=>'Altro',
     ];
 
 
     public function mount()
     {
+        $this->medicalConditions=AnamnesisData::medicalConditions();
+        $this->medications=AnamnesisData::medications();
         $anamnesis = auth()->user()->anamnesis()->orderBy('created_at', 'desc')->first();
         //$anamnesis=null;
 
@@ -81,8 +47,9 @@ class Create extends Component
         }
 
         foreach ($this->medications as $field=>$name) {
-            $validationAttributes['state.medications.'.$field]=$name;
+            $this->validationAttributes['state.medications.'.$field]=$name;
         }
+        //dd($this->validationAttributes);
     }
 
     /**
@@ -92,24 +59,38 @@ class Create extends Component
      */
     public function render()
     {
+        if(count($this->getErrorBag()->all()) > 0){
+            $this->dispatchBrowserEvent('danavatar:scroll-to', [
+                'query' => "#{$this->getErrorBag()->keys()[0]}",
+            ]);
+
+        }
         return view('livewire.anamnesis.create');
     }
 
     public function updated($propertyName)
     {
+        $this->resetErrorBag($propertyName);
         $this->validateOnly($propertyName);
     }
+
 
     public function createAnamnesis()
     {
         $validatedData = $this->validate();
-
         $anamensis = new Anamnesis();
         $anamensis->user_id = auth()->user()->id;
         $anamensis->data = ($validatedData['state']);
         $anamensis->save();
-        session()->flash('success', 'Anamnesi salvata con successo');
-        return redirect()->route('dashboard');
+        //session()->flash('success', 'Anamnesi salvata con successo');
+        $this->emit('showFlashMessage', [
+            'data'=>[
+                'success'=>'Anamnesi salvata con successo',
+            ]
+        ]);
+        $this->dispatchBrowserEvent('scrollToTop');
+        //$this->redirect('#');
+        //return redirect()->route('dashboard');
 
         //dd($validatedData,$anamensis->data);
         //dd($values['anamnesisData']);

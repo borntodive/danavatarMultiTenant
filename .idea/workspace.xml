@@ -2,9 +2,116 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Layout/FlashMessage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Datatable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Show.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Staff/Datatable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/hasPermission.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Listeners/LoginSuccessful.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Observers/TenantObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Observers/UserObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Scopes/OnlyForDoctorScope.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Scopes/TenantScope.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/StaticData/Anamnesis.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/BelongsToManyMedicalCenter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/BelongsToMedicalCenter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/Datatables/WithSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/Datatables/WithSort.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/WithSpecialtiesChoice.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_02_120945_create_medical_speciality_tenant_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/LaratrustSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/TenantSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/dotted-menu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/form/select-button.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/form/select.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/medical-record/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/search-select.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/sort-icon.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/layout/flash-message.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/partials/specialities-modal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/staff/datatable.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/staff/partials/edit-specialities.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/medicalRecord/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/medicalRecord/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/medicalRecord/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/staff/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/bootstrap.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/simple-bootstrap.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/simple-tailwind.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/tailwind.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/cast.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/console.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/controller.api.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/controller.invokable.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/controller.model.api.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/controller.model.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/controller.nested.api.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/controller.nested.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/controller.plain.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/controller.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/factory.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/job.queued.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/job.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/middleware.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/migration.create.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/migration.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/migration.update.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/model.pivot.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/model.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/observer.plain.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/observer.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/policy.plain.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/policy.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/request.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/resource-collection.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/resource.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/rule.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/test.stub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stubs/test.unit.stub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MedicalCentersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MedicalCentersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Anamnesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Anamnesis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/MedicalCenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/MedicalSpecialty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MedicalSpecialty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Team.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/JetstreamServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/JetstreamServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/MedicalCenterFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/TenantFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_16_105557_create_medical_centers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_16_105557_create_tenants_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_16_111433_create_medical_center_user_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_16_111433_create_tenant_user_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_19_100332_create_medical_specialties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_100332_create_medical_specialties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_20_095154_create_anamneses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_20_095154_create_anamneses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/MedicalCenterSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/stubs/seeder.stub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/checkbox.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/checkbox.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/label.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/label.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/layout/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/layout/notification.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout/notification.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +264,9 @@
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/laravel-lang/lang" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-aws-s3-v3" />
+      <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
+      <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n71kcTdmyAxn2ngrCHd5fMD9ht" />
@@ -172,20 +282,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/medicalRecord" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/layouts" />
-      <recent name="$PROJECT_DIR$/app/View/Components" />
-      <recent name="$PROJECT_DIR$/resources/views" />
-      <recent name="$PROJECT_DIR$/resources/lang" />
-      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/resources/views/medicalRecord" />
+      <recent name="$PROJECT_DIR$/resources/views/components/form" />
+      <recent name="$PROJECT_DIR$/resources/views/livewire/medical-record" />
+      <recent name="$PROJECT_DIR$/app/Http/Livewire" />
+      <recent name="$PROJECT_DIR$/resources/views/livewire" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/components" />
+      <recent name="$PROJECT_DIR$/resources/views/components/form" />
       <recent name="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials" />
     </key>
   </component>
@@ -213,7 +325,14 @@
       <workItem from="1611606246367" duration="60000" />
       <workItem from="1611606558971" duration="5725000" />
       <workItem from="1611642459862" duration="11492000" />
-      <workItem from="1611668234966" duration="1264000" />
+      <workItem from="1611668234966" duration="2065000" />
+      <workItem from="1612019268840" duration="2746000" />
+      <workItem from="1612044189923" duration="3214000" />
+      <workItem from="1612166877810" duration="13946000" />
+      <workItem from="1612188329230" duration="9699000" />
+      <workItem from="1612214254738" duration="24455000" />
+      <workItem from="1612281894399" duration="12463000" />
+      <workItem from="1612344193903" duration="16526000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -264,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611668376227</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Change background grey">
+      <created>1611669518881</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1611669518881</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +413,18 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Fix prev_cardio state" />
     <MESSAGE value="Medications on anamnesis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Medications on anamnesis" />
+    <MESSAGE value="Change background grey" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change background grey" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Providers/JetstreamServiceProvider.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

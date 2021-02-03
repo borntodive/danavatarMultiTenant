@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Scopes\OnlyForDoctorScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Jetstream\HasProfilePhoto;
 
-class MedicalCenter extends Model
+class Tenant extends Model
 {
     use HasFactory;
     use HasProfilePhoto;
@@ -29,11 +30,26 @@ class MedicalCenter extends Model
         'profile_photo_url',
     ];
 
+    public function hasMedicalSpecilities($spec)
+    {
+
+        return ($this->medicalSpecilities()->withoutGlobalScope(OnlyForDoctorScope::class)->get()->pluck('slug')->search($spec) !== false);
+        //return $this->belongsToMany(MedicalSpecialty::class)->withTimestamps();
+    }
+
     /**
      * The users that belong to the club.
      */
     public function users()
     {
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    /**
+     * The users that belong to the club.
+     */
+    public function medicalSpecilities()
+    {
+        return $this->belongsToMany(MedicalSpecialty::class)->withTimestamps();
     }
 }

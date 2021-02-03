@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\MedicalCenter;
 use Illuminate\Database\Seeder;
 
-class MedicalCenterSeeder extends Seeder
+class {{ class }} extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +13,6 @@ class MedicalCenterSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\MedicalCenter::factory(3)->create();
+        //
     }
 }

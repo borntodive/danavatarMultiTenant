@@ -22,12 +22,8 @@
 
 <body class="antialiased font-sans bg-gray-200"><div class="" style="">
     <div class="bg-gray-200">
-        @foreach (['error', 'success'] as $msg)
-            @if(session()->has($msg))
-                <x-layout.notification :type="$msg" :message="session($msg)" />
-            @endif
-        @endforeach
 
+        @livewire('layout.flash-message')
         <div>
             <nav x-data="{ open: false }" @keydown.window.escape="open = false" class="bg-indigo-600">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,5 +130,33 @@
 @stack('modals')
 
 @livewireScripts
+
+<script>
+    window.addEventListener('danavatar:scroll-to', (ev) => {
+        ev.stopPropagation();
+
+        const selector = ev?.detail?.query;
+        if (!selector) {
+            return;
+        }
+
+        const el = window.document.querySelector(selector);
+        if (!el) {
+            return;
+        }
+
+        try {
+
+            el.scrollIntoView({
+                behavior: 'smooth',
+            });
+        } catch {}
+
+    }, false);
+
+    window.addEventListener('scrollToTop', event => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
 </body>
 </html>

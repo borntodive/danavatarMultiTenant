@@ -7,4 +7,9 @@ use Laratrust\Models\LaratrustRole;
 class Role extends LaratrustRole
 {
     public $guarded = [];
+
+    public function scopeWithoutSuperAdmin($query)
+    {
+        return $query->where('name', '!=', 'super_admin');
+    }
 }

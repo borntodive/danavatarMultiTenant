@@ -10,11 +10,11 @@ class CreateAnamnesesTable extends Migration
     {
         Schema::create('anamneses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');;
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->json('data')->nullable();
 
             //
-
+            $table->foreignId('tenant_id')->index();
             $table->timestamps();
         });
     }

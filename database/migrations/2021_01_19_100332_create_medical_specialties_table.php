@@ -11,8 +11,8 @@ class CreateMedicalSpecialtiesTable extends Migration
         Schema::create('medical_specialties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-
-
+            $table->string('slug');
+            $table->boolean('only_center')->default(false);
             $table->timestamps();
         });
     }

@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\MedicalCenter;
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class MedicalCenterFactory extends Factory
+class TenantFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = MedicalCenter::class;
+    protected $model = Tenant::class;
 
     /**
      * Define the model's default state.

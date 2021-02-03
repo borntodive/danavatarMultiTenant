@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Listeners\LoginSuccessful;
+use App\Models\Tenant;
+use App\Models\User;
+use App\Observers\TenantObserver;
+use App\Observers\UserObserver;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        Login::class => [
+            LoginSuccessful::class,
+        ],
     ];
 
     /**
@@ -27,6 +36,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Tenant::observe(TenantObserver::class);
+        User::observe(UserObserver::class);
     }
 }

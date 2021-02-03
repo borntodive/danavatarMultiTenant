@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Scopes\TenantScope;
 use App\Enums\UserGender;
+use App\Traits\BelongsToManyMedicalCenter;
 use BenSampo\Enum\Traits\CastsEnums;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,6 +24,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use BelongsToManyMedicalCenter;
 
     /**
      * The attributes that are mass assignable.
@@ -50,6 +53,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'gender'=> UserGender::Class,
+        'dob'=>'date',
     ];
 
     /**
@@ -72,13 +76,6 @@ class User extends Authenticatable
         return "{$this->firstname} {$this->lastname}";
     }
 
-    /**
-     * The centers that belong to the user.
-     */
-    public function centers()
-    {
-        return $this->belongsToMany(MedicalCenter::class)->withTimestamps();
-    }
 
     /**
      * The specialties that belong to the user.
@@ -95,4 +92,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Anamnesis::class);
     }
+
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('firstname', 'like', '%'.$query.'%')
+                ->orWhere('lastname', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%');
+    }
+
+    protected function profilePhotoDisk()
+    {
+        return 's3-public';
+    }
+
 }

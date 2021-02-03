@@ -2,10 +2,10 @@
     <div>
     @include('livewire.anamnesis.partials.general')
     </div>
+    @if(session()->get('tenant')->hasMedicalSpecilities('diving'))
+        @include('livewire.anamnesis.partials.diving')
+    @endif
     <div class="mt-5">
-        <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Salvato.') }}
-        </x-jet-action-message>
 
         <x-jet-button>
             {{ __('Salva') }}
