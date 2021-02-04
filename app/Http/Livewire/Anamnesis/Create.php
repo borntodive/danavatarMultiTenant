@@ -14,6 +14,8 @@ class Create extends Component
 
     public $state = [];
 
+    public $divingState = [];
+
     public $medicalConditions = [];
 
     public $medications = [];
@@ -23,6 +25,7 @@ class Create extends Component
         'state.weight' => 'required|numeric',
         //'state.anamnesisData'=>'required',
         'state.medications.*'=>'string|min:3',
+        'divingState.*' => 'sometimes',
         'state.anamnesisData.other.moredata'=>'sometimes|required|string|min:3',
     ];
 
@@ -37,14 +40,23 @@ class Create extends Component
     {
         $this->medicalConditions=AnamnesisData::medicalConditions();
         $this->medications=AnamnesisData::medications();
-        $anamnesis = auth()->user()->anamnesis()->orderBy('created_at', 'desc')->first();
+        //$anamnesis = auth()->user()->anamnesis()->orderBy('created_at', 'desc')->first();
         //$anamnesis=null;
 
-        if ($anamnesis)
-            $this->state = $anamnesis->toArray()['data'];
-        else {
-            $this->state['prev_cardio']=false;
-        }
+        $this->state['prev_cardio']=false;
+        $this->divingState['scuba']['recreative']=false;
+        $this->divingState['scuba']['tecnical']=false;
+        $this->divingState['apnea']['freedive']=false;
+        $this->divingState['apnea']['phishing']=false;
+        $this->divingState['swimming']['amateur']=false;
+        $this->divingState['swimming']['agonistic']=false;
+        $this->divingState['anamnesis']['scuba']['barotrauma']=false;
+        $this->divingState['anamnesis']['scuba']['narcosi']=false;
+        $this->divingState['anamnesis']['scuba']['dcs']=false;
+        $this->divingState['anamnesis']['apnea']['taravana']=false;
+        $this->divingState['anamnesis']['apnea']['edema']=false;
+        $this->divingState['anamnesis']['apnea']['sincope']=false;
+        $this->divingState['anamnesis']['apnea']['samba']=false;
 
         foreach ($this->medications as $field=>$name) {
             $this->validationAttributes['state.medications.'.$field]=$name;
@@ -80,7 +92,9 @@ class Create extends Component
         $validatedData = $this->validate();
         $anamensis = new Anamnesis();
         $anamensis->user_id = auth()->user()->id;
-        $anamensis->data = ($validatedData['state']);
+        $data['general']=$validatedData['state'];
+        $data['diving']=$validatedData['divingState'];
+        $anamensis->data = $data;
         $anamensis->save();
         //session()->flash('success', 'Anamnesi salvata con successo');
         $this->emit('showFlashMessage', [
