@@ -4,7 +4,7 @@
 namespace App\Traits;
 
 
-use App\Scopes\TenantScope;
+use App\Models\Tenant;
 
 trait BelongsToMedicalCenter
 {
@@ -17,8 +17,8 @@ trait BelongsToMedicalCenter
         });
     }
 
-    public function centers()
+    public function center(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->belongsTo(Tenant::class,'tenant_id');
     }
 }

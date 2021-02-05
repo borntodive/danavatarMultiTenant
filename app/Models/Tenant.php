@@ -52,4 +52,12 @@ class Tenant extends Model
     {
         return $this->belongsToMany(MedicalSpecialty::class)->withTimestamps();
     }
+
+    /**
+     * The ananmnesis that belong to the club.
+     */
+    public function anamnesis(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Anamnesis::class);
+    }
 }

@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/resources/views/components/form/toggle.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Show/Card.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/MedicalRecord.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/MedicalRecordFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_05_102641_create_medical_records_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/MedicalRecordSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/show/card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Show.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Show.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/BelongsToMedicalCenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/BelongsToMedicalCenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +237,9 @@
       <workItem from="1612214254738" duration="24455000" />
       <workItem from="1612281894399" duration="12463000" />
       <workItem from="1612344193903" duration="23567000" />
-      <workItem from="1612446941217" duration="9057000" />
+      <workItem from="1612446941217" duration="9416000" />
+      <workItem from="1612513628251" duration="539000" />
+      <workItem from="1612514364493" duration="6077000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -363,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612438465400</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Diving Anamnesis Creation">
+      <created>1612458366140</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1612458366140</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +407,8 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Test Login" />
     <MESSAGE value="Fix medical records scroll" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix medical records scroll" />
+    <MESSAGE value="Diving Anamnesis Creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Diving Anamnesis Creation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

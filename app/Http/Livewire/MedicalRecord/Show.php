@@ -12,7 +12,6 @@ class Show extends Component
     use WithSpecialtiesChoice;
 
     public User $user;
-    public MedicalSpecialty $specialty;
     /**
      * Get the view / contents that represent the component.
      *

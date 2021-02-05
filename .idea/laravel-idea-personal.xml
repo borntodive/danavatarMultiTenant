@@ -3,7 +3,6 @@
   <component name="LaravelIdeaPersonalSettings">
     <option name="generationOptionValues">
       <map>
-        <entry key="createModel.createController" value="true" />
         <entry key="createModel.createMigration" value="true" />
         <entry key="createModel.createSeeder" value="true" />
       </map>

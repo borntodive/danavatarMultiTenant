@@ -76,7 +76,6 @@
         </div>
     </div>
     @if($isSpecialitiesModalVisible)
-        pippo
         @include('livewire.medical-record.partials.specialities-modal')
     @endif
 </div>
