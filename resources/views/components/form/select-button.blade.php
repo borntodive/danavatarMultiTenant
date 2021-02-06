@@ -7,13 +7,13 @@
     'buttonText' =>''
     ])
 
-<div>
+<div class="{{$attributes->get('class')}}">
     @if ($label)
         <x-form.label for="{{$attributes->whereStartsWith('wire:model')->first()}}"> {{ $label}} </x-form.label>
     @endif
     <div class="mt-1 flex rounded-md shadow-sm">
         <div class="relative flex items-stretch flex-grow focus-within:z-10">
-            <select {{ $attributes->except('wire:click')->merge(['class' => 'focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300'])}}>
+            <select {{ $attributes->except('wire:click')->except('class')->merge(['class' => 'focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300'])}}>
                 @if($placeholder)
                     <option value="0">{{$placeholder}}</option>
                 @endif

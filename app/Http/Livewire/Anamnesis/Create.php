@@ -29,12 +29,21 @@ class Create extends Component
         'state.anamnesisData.other.moredata'=>'sometimes|required|string|min:3',
     ];
 
-    protected $validationAttributes = [
-        'state.height' => 'Altezza',
-        'state.weight' => 'Peso',
-        'state.anamnesisData.other.moredata'=>'Altro',
-    ];
+    //protected $validationAttributes = [];
 
+
+    public function getValidationAttributes()
+    {
+        $rules=[
+            'state.height' => 'Altezza',
+            'state.weight' => 'Peso',
+            'state.anamnesisData.other.moredata'=>'Altro',
+        ];
+        foreach ($this->medications as $field=>$name) {
+            $rules['state.medications.'.$field]=$name;
+        }
+        return $rules;
+    }
 
     public function mount()
     {
@@ -58,9 +67,7 @@ class Create extends Component
         $this->divingState['anamnesis']['apnea']['sincope']=false;
         $this->divingState['anamnesis']['apnea']['samba']=false;
 
-        foreach ($this->medications as $field=>$name) {
-            $this->validationAttributes['state.medications.'.$field]=$name;
-        }
+
         //dd($this->validationAttributes);
     }
 
@@ -72,9 +79,7 @@ class Create extends Component
     public function render()
     {
         if(count($this->getErrorBag()->all()) > 0){
-            $this->dispatchBrowserEvent('danavatar:scroll-to', [
-                'query' => "#{$this->getErrorBag()->keys()[0]}",
-            ]);
+            $this->dispatchBrowserEvent('scrollToTop');
 
         }
         return view('livewire.anamnesis.create');
@@ -92,8 +97,8 @@ class Create extends Component
         $validatedData = $this->validate();
         $anamensis = new Anamnesis();
         $anamensis->user_id = auth()->user()->id;
-        $data['general']=$validatedData['state'];
-        $data['diving']=$validatedData['divingState'];
+        $data['general']=$this->state;
+        $data['diving']=$this->divingState;
         $anamensis->data = $data;
         $anamensis->save();
         //session()->flash('success', 'Anamnesi salvata con successo');

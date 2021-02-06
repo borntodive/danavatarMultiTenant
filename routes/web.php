@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Anamnesis;
 use App\Models\MedicalSpecialty;
 use App\Models\User;
+use App\StaticData\Anamnesis as AnamnesisData;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +34,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/anamnesis', function () {
         return view('anamnesis.create');
     })->name('anamnesis');
-    //dd(session()->get('tenant_slug'));
+
+
     Route::middleware(['hasPermission:medical_doctor'])->group(function () {
         Route::get('/medical-record/{user}',  function (User $user) {
             return view('medicalRecord.show',compact('user'));
@@ -44,6 +47,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             return view('medicalRecord.index');
         })->name('medical_record.index');
 
+        Route::get('/anamnesis/{user}/{anamnesis}', function (User $user,Anamnesis $anamnesis) {
+            $medicalConditions=AnamnesisData::medicalConditions();
+            $medications=AnamnesisData::medications();
+            return view('anamnesis.show',compact('medications','medicalConditions','anamnesis','user'));
+        })->name('anamnesis.show');
 
     });
     Route::middleware(['hasPermission:admin'])->group(function () {

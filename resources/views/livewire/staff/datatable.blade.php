@@ -1,6 +1,6 @@
 <div class="flex flex-col">
     <div class="flex flex-row justify-between">
-        <x-form.text-input wire:model.debounce.500ms="search" label="{{ __('Cerca') }}" class="w-1/4 mb-5"/>
+        <x-form.search-input wire:model.debounce.500ms="search" label="{{ __('Cerca') }}" class="w-1/4 mb-5"/>
         <x-form.select-button id="role_filter"
                               wire:model="roleFilter"
                                wire:change="filterRole($event.target.value)"
@@ -8,6 +8,7 @@
                                :options="$roles->pluck('display_name','id')"
                                label="Filtra Ruoli"
                                placeholder="Seleziona un ruolo"
+                               class="w-1/4 mb-5"
 
         />
     </div>

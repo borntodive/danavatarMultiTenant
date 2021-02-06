@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Scopes\OnlyForDoctorScope;
+use App\Scopes\TenantScope;
 use App\Traits\BelongsToManyMedicalCenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,6 +38,7 @@ class MedicalSpecialty extends Model
      */
     protected static function booted()
     {
+        static::addGlobalScope(new TenantScope);
         static::addGlobalScope(new OnlyForDoctorScope);
         static::addGlobalScope('orderByName', function (Builder $builder) {
             $builder->orderBy('name');

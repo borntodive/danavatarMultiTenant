@@ -89,5 +89,11 @@ class UserSeeder extends Seeder
             $u->attachRole($userRole, $y40Team);
         }
 
+        $testUsers=User::factory()->count(100)->create();
+        foreach ($testUsers as $u) {
+            $u->centers()->attach($test);
+            $u->attachRole($userRole, $testTeam);
+        }
+
     }
 }

@@ -44,8 +44,11 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <x-dotted-menu>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Visualizza</a>
-                                    <span @click="open = false" wire:click.prevent="showEdit({{$record->id}})" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Nuova</span>
+                                    @if($modelName=='\App\Models\Anamnesis')
+                                    <a href="{{route('anamnesis.show', ['user' => $user->id,'anamnesis'=>$record->id])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Visualizza</a>
+                                    @else
+                                    <span @click="open = false" wire:click.prevent="showEdit({{$record->id}})" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Nuova</span
+                                    @endif
                                 </x-dotted-menu>
                             </td>
                         </tr>

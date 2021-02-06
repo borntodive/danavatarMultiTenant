@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <ul class="divide-y divide-gray-200 overflow-y-auto">
-                        @foreach(session()->get('tenant')->medicalSpecilities()->orderBy('name')->get() as $specialty)
+                        @foreach(\App\Models\MedicalSpecialty::get() as $specialty)
                         <li class="px-6 py-5 relative">
                             <div class="group flex justify-between items-center">
                                 <a wire:click.prevent="toggleSpecialty({{$specialty->id}})" href="#" class="-m-1 p-1 block">
