@@ -1,7 +1,6 @@
 <div class="w-full flex flex-col">
-
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        @if($records->count())
+        @if($records->count()>0)
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="shadow overflow-x-scroll xl:overflow-x-hidden border-b border-gray-200 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
@@ -47,7 +46,7 @@
                                     @if($modelName=='\App\Models\Anamnesis')
                                     <a href="{{route('anamnesis.show', ['user' => $user->id,'anamnesis'=>$record->id])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Visualizza</a>
                                     @else
-                                    <span @click="open = false" wire:click.prevent="showEdit({{$record->id}})" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Nuova</span
+                                        <a href="{{route('anamnesis.show', ['user' => $user->id,'anamnesis'=>$record->id])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Visualizza</a>
                                     @endif
                                 </x-dotted-menu>
                             </td>

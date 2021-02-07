@@ -1,4 +1,4 @@
-<div x-cloak x-data="{ open: @entangle('isSpecialitiesModalVisible') }" x-init="
+<div wire:key="speciality-choice" x-cloak x-data="{ open: @entangle('isSpecialitiesModalVisible') }" x-init="
     () => document.body.classList.add('overflow-hidden');
     $watch('open', value => {
       if (value === true) { document.body.classList.add('overflow-hidden') }
@@ -45,6 +45,7 @@
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                             @foreach(auth()->user()->specialties()->get() as $specialty)
                             <button
+                                wire:key="speciality-choice-button-{{$specialty->id}}"
                                 wire:click="redirectToMedicalRecordCreation({{$specialty->id}})"
                                 class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                 <div class="flex-shrink-0">

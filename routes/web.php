@@ -41,7 +41,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             return view('medicalRecord.show',compact('user'));
         })->name('medical_record.show');
         Route::get('/medical-record/{user}/{specialty}/create',  function (User $user,MedicalSpecialty $specialty) {
-            return view('medicalRecord.create',compact('user','specialty'));
+            if(view()->exists('livewire.medical-record.create.'.$specialty->slug))
+                return view('medicalRecord.create',compact('user','specialty'));
+            abort(404);
         })->name('medical_record.create');
         Route::get('/medical-record', function () {
             return view('medicalRecord.index');

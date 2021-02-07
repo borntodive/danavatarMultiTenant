@@ -2,7 +2,7 @@
     'user',
     'buttonLabel'=>null,
 ])
-<div class="md:flex md:items-center md:justify-between md:space-x-5">
+<div wire:key="header" class="md:flex md:items-center md:justify-between md:space-x-5">
     <div class="flex items-start space-x-5">
         <div class="flex-shrink-0">
             <div class="relative">
@@ -26,7 +26,7 @@
     </div>
     @if($buttonLabel)
     <div class="mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3">
-        <button wire:click.prevent="showEdit({{$user->id}})" type="button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+        <button wire:click="showEdit({{$user->id}})" type="button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
             {{$buttonLabel}}
         </button>
     </div>

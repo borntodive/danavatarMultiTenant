@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/general.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/anamnesis/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/check-or-cross.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/form/search-input.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/create/cardio.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MedicalSpecialty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MedicalSpecialty.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/select-button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/select-button.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/medical-record/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/medical-record/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/partials/specialities-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/partials/specialities-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/show/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/show/card.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/staff/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/staff/datatable.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/staff/partials/edit-specialities.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/staff/partials/edit-specialities.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -245,6 +238,8 @@
       <workItem from="1612603285777" duration="277000" />
       <workItem from="1612632287546" duration="1565000" />
       <workItem from="1612648062338" duration="3104000" />
+      <workItem from="1612694078517" duration="1350000" />
+      <workItem from="1612717875432" duration="2676000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
