@@ -3,9 +3,9 @@
         <div class=" flex flex-col text-center">
             <span>Scuba</span>
             <div class="w-full flex justify-between px-5 mt-5">
-                <x-form.label>Ricreativa</x-form.label>
+                <x-show.label>Ricreativa</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.scuba.recreative',false)"/>
-                <x-form.label>Tecnica</x-form.label>
+                <x-show.label>Tecnica</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.scuba.tecnical',false)"/>
             </div>
         </div>
@@ -14,9 +14,9 @@
         <div class="flex flex-col text-center">
             <span>Apnea</span>
             <div class="w-full flex justify-between px-5 mt-5">
-                <x-form.label>Freedive</x-form.label>
+                <x-show.label>Freedive</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.apnea.freedive',false)"/>
-                <x-form.label>Pesca</x-form.label>
+                <x-show.label>Pesca</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.apnea.phishing',false)"/>
             </div>
         </div>
@@ -25,84 +25,54 @@
         <div class="flex flex-col text-center">
             <span>Nuoto</span>
             <div class="w-full flex justify-between px-5 mt-5">
-                <x-form.label>Amatoriale</x-form.label>
+                <x-show.label>Amatoriale</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.swimming.amateur',false)"/>
-                <x-form.label>Agonistico</x-form.label>
+                <x-show.label>Agonistico</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.swimming.agonistic',false)"/>
             </div>
         </div>
     </div>
     <div class="mt-6"></div>
-    <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-col  mb-6">
-        <x-form.label>{{ __('Modello computer subacqueo') }}</x-form.label>
-        {{data_get($anamnesis->data,'divingState.divingComputer','')}}
-    </div>
-    <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-col mb-6">
-        <x-form.label>{{ __('Totale immersioni') }}</x-form.label>
-        {{data_get($anamnesis->data,'divingState.totalDives','')}}
-    </div>
-    <div class="md:w-full flex flex-col mb-6">
-        <x-form.label>Immersioni effettuate annualmente</x-form.label>
-        <div class="md:w-full flex flex-row mt-3">
-            <div class="w-2/6"><input wire:model="divingState.totalYearlyDives" name="totalYearlyDives" type="radio" value="20" /> 0-20</div>
-            <div class="w-2/6"><input wire:model="divingState.totalYearlyDives" name="totalYearlyDives" type="radio" value="50" /> 21-50</div>
-            <div class="w-2/6"><input wire:model="divingState.totalYearlyDives" name="totalYearlyDives" type="radio" value="100" /> 51-100</div>
-            <div class="w-2/6"><input wire:model="divingState.totalYearlyDives" name="totalYearlyDives" type="radio" value="200" /> 101-200</div>
-            <div class="w-2/6"><input wire:model="divingState.totalYearlyDives" name="totalYearlyDives" type="radio" value="300" /> 201-300</div>
-            <div class="w-2/6"><input wire:model="divingState.totalYearlyDives" name="totalYearlyDives" type="radio" value="301" /> 301+</div>
+    <dl class="w-full grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+        <div class="sm:col-span-1">
+            <x-show.label>{{ __('Modello computer subacqueo') }}</x-show.label>
+            <x-show.value> {{data_get($anamnesis->data,'divingState.divingComputer','')}}</x-show.value>
         </div>
-    </div>
-    <div class="md:w-full flex flex-col mb-6">
-        <x-form.label>Come definiresti le tue capacità sub?</x-form.label>
-        <div class="md:w-full flex flex-row mt-3">
-            <div class="w-2/6"><input wire:model="divingState.divingAbility" name="divingAbility" type="radio" value="low" /> Basse</div>
-            <div class="w-2/6"><input wire:model="divingState.divingAbility" name="divingAbility" type="radio" value="medium" /> Medie</div>
-            <div class="w-2/6"><input wire:model="divingState.divingAbility" name="divingAbility" type="radio" value="high" /> Alte</div>
+        <div class="sm:col-span-1">
+            <x-show.label>{{ __('Totale immersioni') }}</x-show.label>
+            <x-show.value> {{data_get($anamnesis->data,'divingState.totalDives','')}}</x-show.value>
         </div>
-    </div>
-    <div class="md:w-full flex flex-col mb-6">
-        <x-form.label>In quale nazione effettui le immersioni?</x-form.label>
-        <div class="md:w-full flex flex-row mt-3">
-            <div class="w-2/6"><input wire:model="divingState.divingCountry" name="divingCountry" type="radio" value="home" /> Nazione di residenza</div>
-            <div class="w-2/6"><input wire:model="divingState.divingCountry" name="divingCountry" type="radio" value="aboard" /> Estero</div>
-            <div class="w-2/6"><input wire:model="divingState.divingCountry" name="divingCountry" type="radio" value="both" /> Entrambi</div>
+        <div class="sm:col-span-1">
+            <x-show.label>Immersioni effettuate annualmente</x-show.label>
+            <x-show.value> {{data_get($anamnesis->data,'divingState.totalYearlyDives','')}}</x-show.value>
         </div>
-    </div>
-    <div class="md:w-full flex flex-col mb-6">
-        <x-form.label>In quale nazione effettui maggiormente le tue immersioni?</x-form.label>
-        <div class="md:w-full flex flex-row mt-3">
-            <div class="w-2/6"><input wire:model="divingState.divingCountryMore" name="divingCountryMore" type="radio" value="home" /> Nazione di residenza</div>
-            <div class="w-2/6"><input wire:model="divingState.divingCountryMore" name="divingCountryMore" type="radio" value="aboard" /> Estero</div>
-            <div class="w-2/6"><input wire:model="divingState.divingCountryMore" name="divingCountryMore" type="radio" value="both" /> Entrambi</div>
+        <div class="sm:col-span-1">
+            <x-show.label>Come definiresti le tue capacità sub?</x-show.label>
+            <x-show.value> {{data_get($anamnesis->data,'divingState.divingAbility','')}}</x-show.value>
         </div>
-    </div>
-    <div class="md:w-full flex flex-col mb-6">
-        <x-form.label>Quale è il massimo livello di brevetto subacqueo che possiedi?</x-form.label>
-        <div class="md:w-full flex flex-row mt-3">
-            <div class="w-2/6"><input wire:model="divingState.divingLevel" name="divingLevel" type="radio" value="owd" /> OWD</div>
-            <div class="w-2/6"><input wire:model="divingState.divingLevel" name="divingLevel" type="radio" value="aowd" /> AOWD</div>
-            <div class="w-2/6"><input wire:model="divingState.divingLevel" name="divingLevel" type="radio" value="dm" /> Guida</div>
-            <div class="w-2/6"><input wire:model="divingState.divingLevel" name="divingLevel" type="radio" value="instructor" /> Istruttore o superiore</div>
+        <div class="sm:col-span-1">
+            <x-show.label>In quale nazione effettui le immersioni?</x-show.label>
+            <x-show.value> {{data_get($anamnesis->data,'divingState.divingCountry','')}}</x-show.value>
         </div>
-    </div>
-    @if(isset($divingState['divingLevel']) && ($divingState['divingLevel'] =='dm' || $divingState['divingLevel']=='instructor'))
-        <div class="md:w-full flex flex-col mb-6">
-            <x-form.label>Se sei una guida/istruttore dove eserciti?</x-form.label>
-            <div class="md:w-full flex flex-row mt-3">
-                <div class="w-2/6"><input wire:model="divingState.teachingCountry" name="teachingCountry" type="radio" value="home" /> Nazione di residenza</div>
-                <div class="w-2/6"><input wire:model="divingState.teachingCountry" name="teachingCountry" type="radio" value="aboard" /> Estero</div>
-                <div class="w-2/6"><input wire:model="divingState.teachingCountry" name="teachingCountry" type="radio" value="both" /> Entrambi</div>
+        <div class="sm:col-span-1">
+            <x-show.label>In quale nazione effettui maggiormente le immersioni?</x-show.label>
+            <x-show.value> {{data_get($anamnesis->data,'divingState.divingCountryMore','')}}</x-show.value>
+        </div>
+        <div class="sm:col-span-1">
+            <x-show.label>Quale è il massimo livello di brevetto subacqueo che possiedi?</x-show.label>
+            <x-show.value> {{data_get($anamnesis->data,'divingState.divingLevel','')}}</x-show.value>
+        </div>
+        @if(isset($divingState['divingLevel']) && ($divingState['divingLevel'] =='dm' || $divingState['divingLevel']=='instructor'))
+            <div class="sm:col-span-1">
+                <x-show.label>Se sei una guida/istruttore dove eserciti?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.teachingCountry','')}}</x-show.value>
             </div>
+        @endif
+        <div class="sm:col-span-1">
+            <x-show.label>La subacquea è la tua professione?</x-show.label>
+            <x-show.value> {{data_get($anamnesis->data,'divingState.divingProfession','')}}</x-show.value>
         </div>
-    @endif
-    <div class="md:w-full flex flex-col mb-6">
-        <x-form.label>La subacquea è la tua professione?</x-form.label>
-        <div class="md:w-full flex flex-row mt-3">
-            <div class="w-2/6"><input wire:model="divingState.divingProfession" name="divingProfession" type="radio" value="yes" /> Si</div>
-            <div class="w-2/6"><input wire:model="divingState.divingProfession" name="divingProfession" type="radio" value="no" /> No</div>
-            <div class="w-2/6"><input wire:model="divingState.divingProfession" name="divingProfession" type="radio" value="past" /> In passato</div>
-        </div>
-    </div>
+    </dl>
 </x-card>
 @if(data_get($anamnesis->data,'divingState.scuba.recreative',false) || data_get($anamnesis->data,'divingState.scuba.tecnical',false) || data_get($anamnesis->data,'divingState.apnea.freedive',false) || data_get($anamnesis->data,'divingState.apnea.phishing',false))
 <x-card class="mt-3" title="{{ __('Dati anamnestici subacquei') }}">
@@ -120,15 +90,15 @@
         </div>
     </div>
         <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-row  mb-6">
-            <x-form.label class="mr-4 w-2/3">Hai mai avuto un Barotrauma?</x-form.label>
+            <x-show.label class="mr-4 w-2/3">Hai mai avuto un Barotrauma?</x-show.label>
             <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.anamnesis.scuba.barotrauma',false)"/>
         </div>
         <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-row  mb-6">
-            <x-form.label class="mr-4 w-2/3">Hai mai avuto un episodio da Narcosi da azoto?</x-form.label>
+            <x-show.label class="mr-4 w-2/3">Hai mai avuto un episodio da Narcosi da azoto?</x-show.label>
             <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.anamnesis.scuba.narcosi',false)"/>
         </div>
         <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-row  mb-6">
-            <x-form.label class="mr-4 w-2/3">Hai mai avuto una MDD?</x-form.label>
+            <x-show.label class="mr-4 w-2/3">Hai mai avuto una MDD?</x-show.label>
             <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.anamnesis.scuba.dcs',false)"/>
         </div>
     @endif
@@ -146,19 +116,19 @@
         </div>
     </div>
             <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-row  mb-6">
-                <x-form.label class="mr-4 w-2/3">Hai mai avuto un Taravana?</x-form.label>
+                <x-show.label class="mr-4 w-2/3">Hai mai avuto un Taravana?</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.anamnesis.apnea.taravana',false)"/>
             </div>
             <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-row  mb-6">
-                <x-form.label class="mr-4 w-2/3">Hai mai avuto un Edema/Squize/Emottisi?</x-form.label>
+                <x-show.label class="mr-4 w-2/3">Hai mai avuto un Edema/Squize/Emottisi?</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.anamnesis.apnea.edema',false)"/>
             </div>
             <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-row  mb-6">
-                <x-form.label class="mr-4 w-2/3">Hai mai avuto una Sincope?</x-form.label>
+                <x-show.label class="mr-4 w-2/3">Hai mai avuto una Sincope?</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.anamnesis.apnea.sincope',false)"/>
             </div>
             <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-row  mb-6">
-                <x-form.label class="mr-4 w-2/3">Hai mai avuto una SAMBA?</x-form.label>
+                <x-show.label class="mr-4 w-2/3">Hai mai avuto una SAMBA?</x-show.label>
                 <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.anamnesis.apnea.samba',false)"/>
             </div>
     @endif

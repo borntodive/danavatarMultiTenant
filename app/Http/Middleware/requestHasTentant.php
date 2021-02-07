@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Http\Middleware;
 
 use App\Models\Tenant;
-use Illuminate\Auth\Events\Login;
-use Illuminate\Http\Request;
+use Closure;
 
-class LoginSuccessful
+class requestHasTentant
 {
     /**
-     * @var Request
+     * Handle an incoming request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
+     * @return mixed
      */
-    private $request;
-
-    public function __construct(Request $request)
+    public function handle($request, Closure $next)
     {
-        $this->request = $request;
-    }
-
-    public function handle(Login $event)
-    {
-
-        $url=$this->request->server->all()['HTTP_ORIGIN'];
+        if (session()->get('tenant')) {
+            return $next($request);
+        }
+        $url=$request->server->all()['HTTP_HOST'];
         $url=$str = preg_replace('#^https?://#', '', $url);
         preg_match('/^([a-z0-9|-]+[a-z0-9]{1,}\.)*[a-z0-9|-]+[a-z0-9]{1,}\.[a-z]{2,}$/',$url, $matches);
         $subdomain=null;
@@ -29,7 +27,9 @@ class LoginSuccessful
             $subdomain=rtrim($matches[1], " \t.");
         if ($subdomain && $subdomain!='www') {
             $center=Tenant::where(['url'=>$subdomain])->firstOrFail();
+            $request->session()->put('tenant', $center);
             session(['tenant' => $center]);
         }
+        return $next($request);
     }
 }

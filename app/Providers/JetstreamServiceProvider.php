@@ -33,24 +33,36 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
-        /*Fortify::authenticateUsing(function (LoginRequest $request) {
+        $this->app->singleton(
+            \Laravel\Fortify\Contracts\LoginResponse::class,
+            \App\Http\Responses\LoginResponse::class
+        );
+        $this->app->singleton(
+            \Laravel\Fortify\Contracts\TwoFactorLoginResponse::class,
+            \App\Http\Responses\LoginResponse::class
+        );
+        Fortify::authenticateUsing(function (LoginRequest $request) {
             $user = User::where('email', $request->email)->first();
 
-            if ($user &&
-                Hash::check($request->password, $user->password)) {
-                preg_match('/^([a-z0-9|-]+[a-z0-9]{1,}\.)*[a-z0-9|-]+[a-z0-9]{1,}\.[a-z]{2,}$/', $_SERVER['SERVER_NAME'], $matches);
+            if ($user && Hash::check($request->password, $user->password)) {
+                $url=$request->server->all()['HTTP_ORIGIN'];
+                $url=$str = preg_replace('#^https?://#', '', $url);
+                preg_match('/^([a-z0-9|-]+[a-z0-9]{1,}\.)*[a-z0-9|-]+[a-z0-9]{1,}\.[a-z]{2,}$/',$url, $matches);
                 $subdomain=null;
                 if (isset($matches[1]))
                     $subdomain=rtrim($matches[1], " \t.");
-                if ($subdomain) {
-                    $center = Tenant::where(['url' => $subdomain])->firstOrFail();
+                if ($subdomain && $subdomain!='www') {
+                    $center=Tenant::where(['url'=>$subdomain])->firstOrFail();
                     if ($user->centers->contains($center->id)) {
                         return $user;
                     }
                 }
+                elseif ($user->hasRole('super_admin')) {
+                    return $user;
+                }
 
             }
-        });*/
+        });
     }
 
     /**

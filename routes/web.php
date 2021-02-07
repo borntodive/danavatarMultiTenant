@@ -21,10 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::domain('{account}.'.config('app.base_url'))->group(function () {
-    Route::get('user/{id}', function ($account, $id) {
-        ddd($account);
-    })->middleware('tenant');
+
+Route::prefix('admin')->middleware(['auth:sanctum', 'verified','role:super_admin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -56,11 +57,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         })->name('anamnesis.show');
 
     });
+
     Route::middleware(['hasPermission:admin'])->group(function () {
         Route::get('/staff', function () {
             return view('staff.index');
         })->name('staff.index');
     });
+
+
 });
 
 
