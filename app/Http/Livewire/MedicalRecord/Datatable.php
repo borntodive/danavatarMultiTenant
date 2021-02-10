@@ -13,7 +13,7 @@ class Datatable extends Component
 {
     use WithPagination, WithSearch, WithSort, WithSpecialtiesChoice;
 
-    public $perPage = 10;
+    public $perPage = 12;
 
 
     public function mount() {

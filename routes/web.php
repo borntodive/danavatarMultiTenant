@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvitesController;
 use App\Models\Anamnesis;
 use App\Models\MedicalSpecialty;
 use App\Models\User;
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/invite/accept',App\Http\Livewire\Invite\Accept::class)->name('invite.accept');
 
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified','role:super_admin'])->group(function () {

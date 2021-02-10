@@ -106,6 +106,12 @@
             <x-jet-input-error for="dob" class="mt-2" />
         </div>
 
+        <!-- CF -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="codice_fiscale" value="{{ __('Codice Fiscale') }}" />
+            <x-jet-input id="codice_fiscale" type="text" class="mt-1 block w-full" wire:model.defer="state.codice_fiscale" autocomplete="codice_fiscale" />
+            <x-jet-input-error for="codice_fiscale" class="mt-2" />
+        </div>
         <!-- Address -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="address" value="{{ __('Indirizzo') }}" />

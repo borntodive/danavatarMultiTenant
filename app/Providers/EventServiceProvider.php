@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Listeners\LoginSuccessful;
+use App\Models\Invite;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Observers\InviteObserver;
 use App\Observers\TenantObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Login;
@@ -38,5 +40,6 @@ class EventServiceProvider extends ServiceProvider
     {
         Tenant::observe(TenantObserver::class);
         User::observe(UserObserver::class);
+        Invite::observe(InviteObserver::class);
     }
 }

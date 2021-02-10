@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
+            $table->string('codice_fiscale')->unique()->nullable();
             $table->tinyInteger('gender')->nullable();
             $table->date('dob')->nullable();
             $table->string('place_of_birth')->nullable();

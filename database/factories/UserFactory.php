@@ -32,6 +32,7 @@ class UserFactory extends Factory
             'dob'=>$this->faker->date(),
             'password' => bcrypt('password'), // password
             'remember_token' => Str::random(10),
+            'codice_fiscale'=>$this->faker->taxId(),
         ];
     }
 }

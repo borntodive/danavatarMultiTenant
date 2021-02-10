@@ -98,7 +98,8 @@ class User extends Authenticatable
         return empty($query) ? static::query()
             : static::where('firstname', 'like', '%'.$query.'%')
                 ->orWhere('lastname', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%');
+                ->orWhere('email', 'like', '%'.$query.'%')
+                ->orWhere('codice_fiscale', 'like', '%'.$query.'%');
     }
 
     protected function profilePhotoDisk()

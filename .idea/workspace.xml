@@ -2,19 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/requestHasTentant.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Responses/LoginResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/View/Components/AdminLayout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/layout/admin/menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/show/label.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/show/value.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Invite/Accept.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Invite/Register.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Invite.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Notifications/InviteCreated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Observers/InviteObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/invites.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/InviteFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_09_144607_create_invites_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/base.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/invite/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.back.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/LoginSuccessful.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/LoginSuccessful.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/JetstreamServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/JetstreamServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/general.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserProfileInformation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserProfileInformation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Datatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Datatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/it/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/it/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/toggle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/toggle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/update-profile-information-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/update-profile-information-form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,6 +189,7 @@
       <path value="$PROJECT_DIR$/vendor/league/flysystem-aws-s3-v3" />
       <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
       <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/vendor/robertogallea/laravel-codicefiscale" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n71kcTdmyAxn2ngrCHd5fMD9ht" />
@@ -187,18 +205,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/components/layout/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/livewire/medical-record" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/livewire/medical-record" />
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/resources/views/components/layout/admin" />
       <recent name="$PROJECT_DIR$/resources/views/admin" />
       <recent name="$PROJECT_DIR$/app/View/Components" />
-      <recent name="$PROJECT_DIR$/resources/views/layouts" />
-      <recent name="$PROJECT_DIR$/resources/views/anamnesis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/components" />
@@ -247,6 +265,8 @@
       <workItem from="1612648062338" duration="3104000" />
       <workItem from="1612694078517" duration="1350000" />
       <workItem from="1612717875432" duration="2676000" />
+      <workItem from="1612887502083" duration="8243000" />
+      <workItem from="1612934686566" duration="5620000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -432,5 +452,16 @@
     <MESSAGE value="Medical Record Overview" />
     <MESSAGE value="Medical Record Overview No Content" />
     <option name="LAST_COMMIT_MESSAGE" value="Medical Record Overview No Content" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

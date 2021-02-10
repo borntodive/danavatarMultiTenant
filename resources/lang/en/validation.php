@@ -149,4 +149,12 @@ return [
 
     'attributes' => [],
 
+    'codice_fiscale' => [
+        'wrong_size' => 'The :attribute has a wrong size',
+        'no_code' => 'The :attribute is empty',
+        'bad_characters' => 'The :attribute contains bad characters',
+        'bad_omocodia_char' => 'The :attribute contains bad omocodia characters',
+        'wrong_code' => 'The :attribute is not valid',
+    ],
+
 ];

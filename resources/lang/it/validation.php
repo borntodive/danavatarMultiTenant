@@ -175,4 +175,12 @@ return [
         'available'             => 'disponibile',
         'size'                  => 'dimensione',
     ],
+
+    'codice_fiscale' => [
+        'wrong_size' => 'Il :attribute ha lunghezza errata',
+        'no_code' => 'Il :attribute è vuoto',
+        'bad_characters' => 'Il :attribute contiene caratteri invalidi',
+        'bad_omocodia_char' => 'Il :attribute contiene caratteri omocodia invalidi',
+        'wrong_code' => 'Il :attribute non è valido',
+    ],
 ];

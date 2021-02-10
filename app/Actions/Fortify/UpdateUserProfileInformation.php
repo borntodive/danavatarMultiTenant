@@ -33,7 +33,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'zipcode' => ['nullable','string', 'max:255'],
             'state' => ['nullable','string', 'max:255'],
             'country' => ['nullable','string', 'max:255'],
-
+            'codice_fiscale'=>['required','codice_fiscale'],
             'photo' => ['nullable', 'image', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
 
@@ -57,6 +57,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'zipcode' => $input['zipcode'],
                 'state' => $input['state'],
                 'country' => $input['country'],
+                'codice_fiscale' => $input['codice_fiscale'],
             ])->save();
         }
     }
@@ -82,6 +83,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'zipcode' => $input['zipcode'],
             'state' => $input['state'],
             'country' => $input['country'],
+            'codice_fiscale' => $input['codice_fiscale'],
             'email_verified_at' => null,
         ])->save();
 
