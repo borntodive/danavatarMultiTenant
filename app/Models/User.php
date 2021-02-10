@@ -102,6 +102,16 @@ class User extends Authenticatable
                 ->orWhere('codice_fiscale', 'like', '%'.$query.'%');
     }
 
+
+    public function scopeNotInCenter($query)
+    {
+        if (session()->has('tenant')) {
+            $query->whereDoesntHave('centers', function ($center) {
+                $center->where('tenant_id', session()->get('tenant')->id);
+            });
+        }
+    }
+
     protected function profilePhotoDisk()
     {
         return 's3-public';

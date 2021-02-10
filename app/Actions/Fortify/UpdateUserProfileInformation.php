@@ -33,7 +33,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'zipcode' => ['nullable','string', 'max:255'],
             'state' => ['nullable','string', 'max:255'],
             'country' => ['nullable','string', 'max:255'],
-            'codice_fiscale'=>['required','codice_fiscale'],
+            'codice_fiscale'=>['required','codice_fiscale', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'image', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
 

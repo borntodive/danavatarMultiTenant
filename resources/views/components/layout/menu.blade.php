@@ -15,6 +15,9 @@
     </x-layout.menu-link>
 @endif
 @if(auth()->user()->isAbleTo('admin_permission',session()->get('tenant')->slug))
+<x-layout.menu-link :mobile="$mobile" href="{{ route('patient.index') }}" :active="request()->routeIs('patient.index')">
+    {{ __('Pazienti') }}
+</x-layout.menu-link>
 <x-layout.menu-link :mobile="$mobile" href="{{ route('staff.index') }}" :active="request()->routeIs('staff.index')">
     {{ __('Staff') }}
 </x-layout.menu-link>

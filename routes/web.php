@@ -69,6 +69,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     Route::middleware(['hasPermission:admin'])->group(function () {
+        Route::get('/patients', function () {
+            return view('patient.index');
+        })->name('patient.index');
         Route::get('/staff', function () {
             return view('staff.index');
         })->name('staff.index');

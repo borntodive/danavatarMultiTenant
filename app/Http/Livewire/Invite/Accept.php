@@ -41,7 +41,7 @@ class Accept extends Component
                 'email' => 'required|email|max:255|unique:users,email',
                 'dob'=>'required|date',
                 'password'=> $this->passwordRules(),
-                'codice_fiscale'=>'required|codice_fiscale',
+                'codice_fiscale'=>'required|codice_fiscale|unique:users,codice_fiscale',
                 'acceptPrivacy'=>'required|accepted',
             ];
         }
