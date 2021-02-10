@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InvitesController;
 use App\Models\Anamnesis;
+use App\Models\MedicalRecord;
 use App\Models\MedicalSpecialty;
 use App\Models\User;
 use App\StaticData\Anamnesis as AnamnesisData;
@@ -52,6 +53,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/medical-record', function () {
             return view('medicalRecord.index');
         })->name('medical_record.index');
+
+        Route::get('/medical-record/{user}/{medicalRecord}', function (User $user,MedicalRecord $medicalRecord) {
+            if(view()->exists('medicalRecord.view.'.$medicalRecord->specialty->slug))
+                return view('medicalRecord.view',compact('user','medicalRecord'));
+            abort(404);
+       })->name('medical-record.view');
 
         Route::get('/anamnesis/{user}/{anamnesis}', function (User $user,Anamnesis $anamnesis) {
             $medicalConditions=AnamnesisData::medicalConditions();
