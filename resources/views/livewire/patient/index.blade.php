@@ -1,5 +1,5 @@
 <div class="px-5">
-    <div wire:loading.delay>
+    <div wire:loading.delay wire:target="sendInvite, createUser, inviteUser">
         <x-loader/>
         .
     </div>
@@ -14,8 +14,13 @@
                 </p>
             </div>
             <form wire:submit.prevent="searchCF()" class="mt-5 sm:flex sm:items-center sm:flex-col">
-                <div class="max-w-xs w-full">
+                <div class="max-w-xs w-full flex">
                     <x-form.text-input wire:model="searchedCF"/>
+                    <span
+                        class="mt-3 inline-flex items-center justify-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                        wire:click="openCFCalculation()"
+                    >
+                        Calcola</span>
                 </div>
                 <div class="mt-5">
                     <button type="submit"
@@ -130,6 +135,9 @@
             </x-card>
         </div>
     </div>
+    @endif
+    @if($showCFCalculation)
+    @include('patient.partials.cf-search-modal')
     @endif
 </div>
 
