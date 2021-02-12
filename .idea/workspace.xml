@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/InviteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/ApiToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ApiTokenFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_12_170707_create_api_tokens_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/LaratrustSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/LaratrustSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/masked-date-input.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/patient/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/patient/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/patient/partials/cf-search-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/patient/partials/cf-search-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/update-profile-information-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/update-profile-information-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/test.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/TenantObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/TenantObserver.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,6 +246,7 @@
       <workItem from="1613137546379" duration="3912000" />
       <workItem from="1613147320634" duration="3094000" />
       <workItem from="1613151728463" duration="1667000" />
+      <workItem from="1613158774781" duration="31000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
