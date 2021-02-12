@@ -14,7 +14,7 @@ use robertogallea\LaravelCodiceFiscale\CodiceFiscale;
 class Index extends Component
 {
 
-    public $searchedCF='MUVRZU74I67I601Z';
+    public $searchedCF='';
     public $foundUser = null;
     public $newUserData;
     public $calcCF;
