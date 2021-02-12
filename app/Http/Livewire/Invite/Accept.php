@@ -8,6 +8,7 @@ use App\Models\Invite;
 use App\Models\User;
 use App\Scopes\TenantScope;
 use BenSampo\Enum\Rules\EnumValue;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -84,13 +85,11 @@ class Accept extends Component
             ->whereNull('accepted_at')
             ->firstOrFail();
         $this->user=User::withoutGlobalScope(TenantScope::class)->where('codice_fiscale',$this->invite->codice_fiscale)->first();
-        if ($this->user) {
-            $this->firstname=$this->user->firstname;
-            $this->lastname=$this->user->lastname;
-            $this->email=$this->user->email;
-            $this->dob=$this->user->dob;
-        }
-
+        $this->firstname=$this->invite->firstname;
+        $this->lastname=$this->invite->lastname;
+        $this->email=$this->invite->email;
+        $this->codice_fiscale=$this->invite->codice_fiscale;
+        $this->dob=Carbon::create($this->invite->dob);
         $this->ipAddress=$request->ip();
     }
 

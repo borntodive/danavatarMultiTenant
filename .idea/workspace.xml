@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/View/Components/BaseLayout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/test.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/patient/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/patient/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/patient/partials/cf-search-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/patient/partials/cf-search-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Invite/Accept.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Invite/Accept.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +244,7 @@
       <workItem from="1613035359730" duration="9375000" />
       <workItem from="1613087115479" duration="1750000" />
       <workItem from="1613089569578" duration="2233000" />
-      <workItem from="1613121491068" duration="1451000" />
+      <workItem from="1613121491068" duration="2321000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -438,7 +428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613040574284</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Fix Data di nascita">
+      <created>1613123069787</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1613123069787</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,7 +468,8 @@
     <MESSAGE value="View Medical Record" />
     <MESSAGE value="Admin Can Invite users" />
     <MESSAGE value="Add calculate CF" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add calculate CF" />
+    <MESSAGE value="Fix Data di nascita" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Data di nascita" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

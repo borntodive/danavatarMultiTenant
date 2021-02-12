@@ -5,6 +5,7 @@
     'format'=>'DD/MM/YYYY',
     'min'=>null,
     'max'=>null,
+    'value'=>null,
     ])
 @php
 $id=$attributes->whereStartsWith('wire:model')->first();
@@ -19,6 +20,7 @@ $var=\Illuminate\Support\Str::random(6);
             @if ($disabled)
             disabled
             @endif
+            value="{{$value}}"
             type="{{$type}}"
             id="{{$id}}_masked"
             @error($id)

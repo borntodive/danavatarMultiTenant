@@ -1,4 +1,4 @@
-<div class="h-screen bg-white py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24">
+<div class="bg-white py-16 px-4  sm:px-6 lg:px-8 lg:py-24">
     <div class="relative max-w-xl mx-auto">
         <svg class="absolute left-full transform translate-x-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
             <defs>
@@ -41,7 +41,12 @@
                 </div>
                 <div>
                     <x-form.label>Data di Nascita</x-form.label>
-                    <x-date-picker wire:model="dob"/>
+                    <x-form.masked-input
+                        wire:model="dob"
+                        :min="1900-01-01"
+                        :max="now()->format('Y-m-d')"
+                        :value="($dob) ? $dob->isoFormat('L') : null"
+                    />
                 </div>
                 <div class="sm:col-span-2">
                     <x-form.text-input label="Codice Fiscale" wire:model="codice_fiscale"/>
@@ -83,6 +88,7 @@
             </form>
         </div>
     </div>
+    @if($showSuccessModal)
     <div x-cloak x-data="{ open: @entangle('showSuccessModal') }" x-init="
     () => document.body.classList.add('overflow-hidden');
     $watch('open', value => {
@@ -122,4 +128,5 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
