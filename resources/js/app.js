@@ -4,4 +4,5 @@ require('alpinejs');
 
 require('flatpickr');
 
+require('imask');
 

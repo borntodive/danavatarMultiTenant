@@ -50,14 +50,14 @@
                             </div>
                             <div>
                                 <x-form.label>Data di Nascita</x-form.label>
-                                <x-date-picker wire:model="calcCF.dob"/>
-                                @error('calcCF.dob')
-                                <p wire:key="error_calcCF.dob"
-                                   class="mt-2 text-sm text-red-600" id="email-error">{{$message}}</p>
-                                @enderror
+                                <x-form.masked-input
+                                    wire:model="calcCF.dob"
+                                    :min="1900-01-01"
+                                    :max="now()->format('Y-m-d')"
+                                />
                             </div>
                             <div class="sm:col-span-2">
-                                <x-form.label>Comuni di Nascita</x-form.label>
+                                <x-form.label>Comune di Nascita</x-form.label>
                                 <input type="text"  wire:model.debounce.300ms="searchedCity" id="searched_city" class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
                                 @if(count($foundCities)>0)
                                 <ul class="overflow-y-auto h-52 divide-y divide-gray-200 border border-gray-200 mt-1 p-3 rounded-md">

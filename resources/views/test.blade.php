@@ -1,0 +1,13 @@
+<x-base-layout>
+    <x-form.masked-input
+    wire:model="test"
+    :min="1900-01-01"
+    :max="now()->format('Y-m-d')"
+    />
+    <br>
+    <br>
+    <x-form.masked-input
+        wire:model="test2"
+        format="DD-MM-YYYY"
+    />
+</x-base-layout>

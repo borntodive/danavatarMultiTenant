@@ -114,11 +114,11 @@
                     </div>
                     <div>
                         <x-form.label>Data di Nascita</x-form.label>
-                        <x-date-picker wire:model="newUserData.dob"/>
-                        @error('newUserData.dob')
-                        <p wire:key="error_newUserData.dob"
-                           class="mt-2 text-sm text-red-600" id="email-error">{{$message}}</p>
-                        @enderror
+                        <x-form.masked-input
+                            wire:model="calcCF.dob"
+                            :min="1900-01-01"
+                            :max="now()->format('Y-m-d')"
+                        />
                     </div>
                     <div>
                         <x-form.text-input label="Codice Fiscale" wire:model="newUserData.codice_fiscale"/>

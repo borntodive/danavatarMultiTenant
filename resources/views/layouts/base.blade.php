@@ -17,6 +17,9 @@
 
 <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/imask"></script>
+
 </head>
 <body class="antialiased font-sans bg-gray-200">
 <div class="" style="">

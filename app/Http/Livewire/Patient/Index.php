@@ -37,6 +37,11 @@ class Index extends Component
         'newUserData.email' => 'Email',
         'newUserData.dob'=>'Data di Nascita',
         'newUserData.codice_fiscale'=>'Codice Fiscale',
+        'calcCF.firstname' => 'Nome',
+        'calcCF.lastname' => 'Cognome',
+        'calcCF.gender' => 'Sesso',
+        'calcCF.birth_place' => 'Comune di Nascita',
+        'calcCF.dob'=>'Data di Nascita',
     ];
 
     public function mount() {

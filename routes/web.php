@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/invite/accept',App\Http\Livewire\Invite\Accept::class)->name('invite.accept');
 
 
