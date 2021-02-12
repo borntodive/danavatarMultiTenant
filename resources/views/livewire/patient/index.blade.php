@@ -114,7 +114,7 @@
                     </div>
                     <div>
                         <x-form.label>Data di Nascita</x-form.label>
-                        <x-form.masked-input
+                        <x-form.masked-date-input
                             wire:model="calcCF.dob"
                             :min="1900-01-01"
                             :max="now()->format('Y-m-d')"

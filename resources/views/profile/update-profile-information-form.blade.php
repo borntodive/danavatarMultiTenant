@@ -98,10 +98,11 @@
         <!-- Birthdate -->
         <div class="col-span-6 sm:col-span-2">
             <x-jet-label for="dob" value="{{ __('Data di Nascita') }}" />
-            <x-date-picker
-                wire:model.defer="state.dob"
-                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm'"
-                id="dob"
+            <x-form.masked-date-input
+                wire:model="state.dob"
+                :value="($state['dob']) ? \Carbon\Carbon::create($state['dob'])->isoFormat('L') : null"
+                :min="1900-01-01"
+                :max="now()->format('Y-m-d')"
             />
             <x-jet-input-error for="dob" class="mt-2" />
         </div>

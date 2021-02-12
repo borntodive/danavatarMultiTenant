@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="LaravelIdeaPersonalSettings">
-    <option name="generationOptionValues">
+    <option name="generationStringOptionValues">
       <map>
-        <entry key="createModel.createController" value="true" />
-        <entry key="createModel.createMigration" value="true" />
-        <entry key="createNotification.shouldQueue" value="true" />
+        <entry key="createModel.createMigration" value="1" />
       </map>
     </option>
   </component>

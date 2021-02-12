@@ -18,7 +18,7 @@ class LaratrustSeeder extends Seeder
      */
     public function run()
     {
-        $this->truncateLaratrustTables();
+        //$this->truncateLaratrustTables();
         $roles=[
             'user',
             'medical_doctor',

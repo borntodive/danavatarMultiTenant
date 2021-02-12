@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/InviteController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ApiToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/ApiTokenFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_12_170707_create_api_tokens_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/LaratrustSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/LaratrustSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/masked-date-input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/patient/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/patient/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/patient/partials/cf-search-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/patient/partials/cf-search-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/update-profile-information-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/update-profile-information-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/test.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +257,10 @@
       <workItem from="1613087115479" duration="1750000" />
       <workItem from="1613089569578" duration="2233000" />
       <workItem from="1613121491068" duration="2457000" />
-      <workItem from="1613123981615" duration="1950000" />
+      <workItem from="1613123981615" duration="3274000" />
+      <workItem from="1613137546379" duration="3912000" />
+      <workItem from="1613147320634" duration="3094000" />
+      <workItem from="1613151728463" duration="1667000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -448,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613124073615</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="placehoder on masked date input">
+      <created>1613126764179</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1613126764179</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +508,8 @@
     <MESSAGE value="Fix Data di nascita" />
     <MESSAGE value="Fix Data di nascita su accept invite" />
     <MESSAGE value="removed default cf in pazienti" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed default cf in pazienti" />
+    <MESSAGE value="placehoder on masked date input" />
+    <option name="LAST_COMMIT_MESSAGE" value="placehoder on masked date input" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

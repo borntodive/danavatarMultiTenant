@@ -70,7 +70,7 @@ class Index extends Component
     {
         $this->calcCF['birth_place']=null;
         $searchedCity=$this->searchedCity;
-        if (strlen($searchedCity) < 3) {
+        if (strlen($searchedCity) < 2) {
             $this->foundCities = [];
 
             return;

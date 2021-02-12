@@ -5,14 +5,17 @@ namespace App\Models;
 use App\Scopes\OnlyForDoctorScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 
-class Tenant extends Model
+class Tenant extends Authenticatable
 {
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +25,7 @@ class Tenant extends Model
     protected $guarded = [];
 
     /**
+     *
      * The accessors to append to the model's array form.
      *
      * @var array
@@ -60,4 +64,5 @@ class Tenant extends Model
     {
         return $this->hasMany(Anamnesis::class);
     }
+
 }
