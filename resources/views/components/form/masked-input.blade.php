@@ -58,7 +58,7 @@ $var=\Illuminate\Support\Str::random(6);
     var {{$var}}=IMask(document.getElementById('{{$id}}_masked'), {
         mask: Date,
         pattern: '{{$format}}',
-        lazy: true,
+        lazy: false,
         @if($min)
         min: new Date("{{$min}}"),
         @else
@@ -90,26 +90,32 @@ $var=\Illuminate\Support\Str::random(6);
                 @else
                 to: new Date("3000-12-31").getFullYear(),
                 @endif
+                placeholderChar:"A"
             },
             MM: {
                 mask: IMask.MaskedRange,
                 from: 1,
-                to: 12
+                to: 12,
+                placeholderChar:"M"
             },
             DD: {
                 mask: IMask.MaskedRange,
                 from: 1,
-                to: 31
+                to: 31,
+                placeholderChar:"D"
             },
             HH: {
                 mask: IMask.MaskedRange,
                 from: 0,
-                to: 23
+                to: 23,
+                placeholderChar:"h"
+
             },
             mm: {
                 mask: IMask.MaskedRange,
                 from: 0,
-                to: 59
+                to: 59,
+                placeholderChar:"m"
             }
         }
     }).on("complete", function (el) {

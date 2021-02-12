@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/masked-input.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +243,7 @@
       <workItem from="1613087115479" duration="1750000" />
       <workItem from="1613089569578" duration="2233000" />
       <workItem from="1613121491068" duration="2457000" />
-      <workItem from="1613123981615" duration="68000" />
+      <workItem from="1613123981615" duration="1950000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -441,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613123935336</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="removed default cf in pazienti">
+      <created>1613124073615</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1613124073615</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +483,8 @@
     <MESSAGE value="Add calculate CF" />
     <MESSAGE value="Fix Data di nascita" />
     <MESSAGE value="Fix Data di nascita su accept invite" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Data di nascita su accept invite" />
+    <MESSAGE value="removed default cf in pazienti" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed default cf in pazienti" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
