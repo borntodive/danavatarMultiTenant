@@ -34,7 +34,7 @@ class TenantObserver
         $slug = \Str::slug($tenant->name);
 
         // check to see if any other slugs exist that are the same & count them
-        $count = Team::where('slug',$slug)->count();
+        $count = Team::where('name',$slug)->count();
 
         // if other slugs exist that are the same, append the count to the slug
         $tenant->slug = $count ? "{$slug}-{$count}" : $slug;

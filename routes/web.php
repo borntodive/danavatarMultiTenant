@@ -23,10 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
-
+Route::get('/test/ploi', [\App\Http\Controllers\TestController::class,'ploi']);
+Route::get('/test/cloud', [\App\Http\Controllers\TestController::class,'cloud']);
 Route::get('/invite/accept',App\Http\Livewire\Invite\Accept::class)->name('invite.accept');
 
 
@@ -35,8 +33,8 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified','role:super_admin
         return view('admin.dashboard');
     })->name('admin.dashboard');
 });
-
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+//->domain('{account}.'.config('app.base_url'))
+Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -46,28 +44,28 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 
     Route::middleware(['hasPermission:medical_doctor'])->group(function () {
-        Route::get('/medical-record/{user}',  function (User $user) {
-            return view('medicalRecord.show',compact('user'));
+        Route::get('/medical-record/{user}', function (User $user) {
+            return view('medicalRecord.show', compact('user'));
         })->name('medical_record.show');
-        Route::get('/medical-record/{user}/{specialty}/create',  function (User $user,MedicalSpecialty $specialty) {
-            if(view()->exists('livewire.medical-record.create.'.$specialty->slug))
-                return view('medicalRecord.create',compact('user','specialty'));
+        Route::get('/medical-record/{user}/{specialty}/create', function (User $user, MedicalSpecialty $specialty) {
+            if (view()->exists('livewire.medical-record.create.' . $specialty->slug))
+                return view('medicalRecord.create', compact('user', 'specialty'));
             abort(404);
         })->name('medical_record.create');
         Route::get('/medical-record', function () {
             return view('medicalRecord.index');
         })->name('medical_record.index');
 
-        Route::get('/medical-record/{user}/{medicalRecord}', function (User $user,MedicalRecord $medicalRecord) {
-            if(view()->exists('medicalRecord.view.'.$medicalRecord->specialty->slug))
-                return view('medicalRecord.view',compact('user','medicalRecord'));
+        Route::get('/medical-record/{user}/{medicalRecord}', function (User $user, MedicalRecord $medicalRecord) {
+            if (view()->exists('medicalRecord.view.' . $medicalRecord->specialty->slug))
+                return view('medicalRecord.view', compact('user', 'medicalRecord'));
             abort(404);
-       })->name('medical-record.view');
+        })->name('medical-record.view');
 
-        Route::get('/anamnesis/{user}/{anamnesis}', function (User $user,Anamnesis $anamnesis) {
-            $medicalConditions=AnamnesisData::medicalConditions();
-            $medications=AnamnesisData::medications();
-            return view('anamnesis.show',compact('medications','medicalConditions','anamnesis','user'));
+        Route::get('/anamnesis/{user}/{anamnesis}', function (User $user, Anamnesis $anamnesis) {
+            $medicalConditions = AnamnesisData::medicalConditions();
+            $medications = AnamnesisData::medications();
+            return view('anamnesis.show', compact('medications', 'medicalConditions', 'anamnesis', 'user'));
         })->name('anamnesis.show');
 
     });
@@ -80,8 +78,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             return view('staff.index');
         })->name('staff.index');
     });
-
-
 });
 
 

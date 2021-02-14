@@ -112,6 +112,14 @@ class User extends Authenticatable
         }
     }
 
+    public function isInCurrentCenter(){
+        if (session()->has('tenant')) {
+
+            return $this->centers->contains(session()->get('tenant')->id);
+        }
+        return false;
+    }
+
     protected function profilePhotoDisk()
     {
         return 's3-public';

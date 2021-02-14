@@ -9,8 +9,11 @@
 <x-layout.menu-link :mobile="$mobile" href="{{ route('anamnesis') }}" :active="request()->routeIs('anamnesis')">
     {{ __('Anamnesi') }}
 </x-layout.menu-link>
+<x-layout.menu-link :mobile="$mobile" href="{{ route('medical_record.show',[auth()->user()]) }}" :active="request()->is('medical-record/'.auth()->user()->id)">
+    {{ __('La tua Cartella Clinicha') }}
+</x-layout.menu-link>
 @if(auth()->user()->isAbleTo('medical_doctor_permission',session()->get('tenant')->slug))
-    <x-layout.menu-link :mobile="$mobile" href="{{ route('medical_record.index') }}" :active="request()->routeIs('medical_record.index')">
+    <x-layout.menu-link :mobile="$mobile" href="{{ route('medical_record.index') }}" :active="request()->routeIs('medical_record.*') && !request()->is('medical-record/'.auth()->user()->id)">
         {{ __('Cartelle Cliniche') }}
     </x-layout.menu-link>
 @endif

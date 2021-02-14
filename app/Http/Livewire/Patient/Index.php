@@ -60,7 +60,7 @@ class Index extends Component
 
     public function searchCF() {
         $validatedData = $this->validate();
-        $this->foundUser=User::withoutGlobalScope(TenantScope::class)->notInCenter()->where('codice_fiscale',$this->searchedCF)->first();
+        $this->foundUser=User::withoutGlobalScope(TenantScope::class)->where('codice_fiscale',$this->searchedCF)->first();
         if (!$this->foundUser)
             $this->newUserData['codice_fiscale']=$this->searchedCF;
         $this->searched=true;

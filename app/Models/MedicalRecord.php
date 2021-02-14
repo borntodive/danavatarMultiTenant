@@ -12,6 +12,9 @@ class MedicalRecord extends Model
 
     protected $guarded =[];
 
+    protected $casts = [
+        'data' => 'array',
+    ];
     /**
      * The user that belong to the anamnesis.
      */
