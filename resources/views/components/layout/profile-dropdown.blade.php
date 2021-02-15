@@ -4,8 +4,12 @@
     ]
     )
 
+<x-layout.profile-dropdown-link :mobile="$mobile" href="{{ route('profile.edit') }}">
+    {{ __('Profilo') }}
+</x-layout.profile-dropdown-link>
+
 <x-layout.profile-dropdown-link :mobile="$mobile" href="{{ route('profile.show') }}">
-{{ __('Profilo') }}
+{{ __('Account') }}
 </x-layout.profile-dropdown-link>
 
 

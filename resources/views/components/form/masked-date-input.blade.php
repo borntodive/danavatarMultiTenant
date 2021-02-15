@@ -9,7 +9,8 @@
     ])
 @php
 $id=$attributes->whereStartsWith('wire:model')->first();
-$var=\Illuminate\Support\Str::random(6);
+//$var=\Illuminate\Support\Str::random(6);
+$var=generateRandomString(6);
 @endphp
 <div class="{{$attributes->get('class')}}" x-data="{}" x-init="">
     @if ($label)
@@ -49,7 +50,7 @@ $var=\Illuminate\Support\Str::random(6);
     </div>
     @error($id)
     <p wire:key="error_{{$id}}"
-       class="mt-2 text-sm text-red-600" id="email-error">{{$message}}</p>
+       class="mt-2 text-sm text-red-600" id="{{$id}}-error">{{$message}}</p>
     @enderror
 </div>
 
@@ -124,7 +125,7 @@ $var=\Illuminate\Support\Str::random(6);
         document.getElementById('{{$id}}').value = momentDate.format('YYYY-MM-DD');
         document.getElementById('{{$id}}').dispatchEvent(new Event('input', { bubbles: true }))
     }).on("accept", function (el) {
-        if (!{{$var}}.isComplete)
+        if (!{{$var}}.masked.isComplete)
         {
             document.getElementById('{{$id}}').value = '';
             document.getElementById('{{$id}}').dispatchEvent(new Event('input', { bubbles: true }))

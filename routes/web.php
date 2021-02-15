@@ -41,6 +41,9 @@ Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {
     Route::get('/anamnesis', function () {
         return view('anamnesis.create');
     })->name('anamnesis');
+    Route::get('/profile', function () {
+        return view('profile.edit');
+    })->name('profile.edit');
 
 
     Route::middleware(['hasPermission:medical_doctor'])->group(function () {

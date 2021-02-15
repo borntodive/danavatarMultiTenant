@@ -101,7 +101,7 @@ class Create extends Component
         $data['diving']=$this->divingState;
         $anamensis->data = $data;
         $anamensis->save();
-        //session()->flash('success', 'Anamnesi salvata con successo');
+
         $this->emit('showFlashMessage', [
             'data'=>[
                 'success'=>'Anamnesi salvata con successo',
