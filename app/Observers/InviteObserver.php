@@ -3,7 +3,10 @@
 namespace App\Observers;
 
 use App\Models\Invite;
+use App\Models\User;
 use App\Notifications\InviteCreated;
+use App\Notifications\UserInviteCreated;
+use App\Scopes\TenantScope;
 use Illuminate\Support\Str;
 
 class InviteObserver
@@ -15,7 +18,12 @@ class InviteObserver
      */
     public function created(Invite $invite)
     {
+        $user=User::withoutGlobalScope(TenantScope::class)->whereCodiceFiscale($invite->codice_fiscale)->first();
         $invite->notify(new InviteCreated());
+        if ($user) {
+           $user->notify(new UserInviteCreated($invite));
+       }
+
     }
 
     public function creating(Invite $invite)

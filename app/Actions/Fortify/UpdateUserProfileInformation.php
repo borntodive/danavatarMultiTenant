@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Enums\UserGender;
+use App\Traits\ValidationRules;
 use BenSampo\Enum\Rules\EnumKey;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -12,6 +13,7 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
+    use ValidationRules;
     /**
      * Validate and update the given user's profile information.
      *
@@ -21,21 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input)
     {
-        Validator::make($input, [
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'gender' => ['required',new EnumValue(UserGender::class,false)],
-            'place_of_birth' => ['required','string', 'max:255'],
-            'dob'=>['required','date'],
-            'address' => ['nullable','string', 'max:255'],
-            'city' => ['nullable','string', 'max:255'],
-            'zipcode' => ['nullable','string', 'max:255'],
-            'state' => ['nullable','string', 'max:255'],
-            'country' => ['nullable','string', 'max:255'],
-            'codice_fiscale'=>['nullable','codice_fiscale', Rule::unique('users')->ignore($user->id)],
-            'photo' => ['nullable', 'image', 'max:1024'],
-        ])->validateWithBag('updateProfileInformation');
+        Validator::make($input, $this->getProfileRules($user))->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);

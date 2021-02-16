@@ -3,17 +3,17 @@
 namespace App\Notifications;
 
 use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class InviteCreated extends Notification implements ShouldQueue
+class UserInviteCreated extends Notification implements ShouldQueue
 {
     use Queueable;
+    protected $invite;
 
-    public function __construct($user=null)
+    public function __construct($invite)
     {
-        //
+        $this->invite=$invite;
     }
 
     /**
@@ -24,21 +24,21 @@ class InviteCreated extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
-     * Get the mail representation of the notification.
+     * Get the database representation of the notification.
      *
      * @param mixed $notifiable
-     * @return MailMessage
+     * @return array
      */
-    public function toMail($notifiable)
+    public function toDatabase($notifiable)
     {
-        return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', $notifiable->accept_url)
-            ->line('Thank you for using our application!');
+        return [
+            'inviteId'=>$this->invite->id,
+            'expires_at'=>$this->invite->expires_at,
+        ];
     }
 
     /**
@@ -50,7 +50,7 @@ class InviteCreated extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-
+            //
         ];
     }
 }

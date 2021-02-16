@@ -2,24 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Helpers/functions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Profile/Edit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/profile/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/profile/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Notifications/UserInviteCreated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/ValidationRules.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_15_143620_create_notifications_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserPassword.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserProfileInformation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserProfileInformation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create/General.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/InviteCreated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/InviteCreated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/InviteObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/InviteObserver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/masked-date-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/masked-date-input.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/text-input.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/layout/profile-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout/profile-dropdown.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,6 +176,16 @@
       <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
       <path value="$PROJECT_DIR$/vendor/robertogallea/laravel-codicefiscale" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/vendor/react/promise" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n71kcTdmyAxn2ngrCHd5fMD9ht" />
@@ -275,7 +284,8 @@
       <workItem from="1613304205609" duration="349000" />
       <workItem from="1613320048505" duration="908000" />
       <workItem from="1613323043563" duration="1152000" />
-      <workItem from="1613334454102" duration="6719000" />
+      <workItem from="1613334454102" duration="8171000" />
+      <workItem from="1613400633330" duration="3114000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -501,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613166491162</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Profile on different page">
+      <created>1613395689318</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1613395689319</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +556,8 @@
     <MESSAGE value="removed default cf in pazienti" />
     <MESSAGE value="placehoder on masked date input" />
     <MESSAGE value="rlike fix 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="rlike fix 1" />
+    <MESSAGE value="Profile on different page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile on different page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -548,11 +566,6 @@
           <url>file://$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php</url>
           <line>6</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php</url>
-          <line>41</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

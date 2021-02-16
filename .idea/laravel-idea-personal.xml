@@ -4,6 +4,8 @@
     <option name="generationStringOptionValues">
       <map>
         <entry key="createModel.createMigration" value="1" />
+        <entry key="createNotification.shouldQueue" value="1" />
+        <entry key="createNotification.type" value="database" />
       </map>
     </option>
   </component>

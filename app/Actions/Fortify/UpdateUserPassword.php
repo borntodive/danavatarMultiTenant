@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Traits\ValidationRules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
@@ -9,6 +10,7 @@ use Laravel\Fortify\Contracts\UpdatesUserPasswords;
 class UpdateUserPassword implements UpdatesUserPasswords
 {
     use PasswordValidationRules;
+    use ValidationRules;
 
     /**
      * Validate and update the user's password.
