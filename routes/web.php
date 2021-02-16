@@ -46,6 +46,7 @@ Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {
     })->name('profile.edit');
 
 
+
     Route::middleware(['hasPermission:medical_doctor'])->group(function () {
         Route::get('/medical-record/{user}', function (User $user) {
             return view('medicalRecord.show', compact('user'));

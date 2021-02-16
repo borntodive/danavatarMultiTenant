@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Notifications/UserInviteCreated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/ValidationRules.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_15_143620_create_notifications_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserPassword.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserProfileInformation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserProfileInformation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create/General.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/InviteCreated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/InviteCreated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Observers/InviteObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/InviteObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,6 +270,7 @@
       <workItem from="1613323043563" duration="1152000" />
       <workItem from="1613334454102" duration="8171000" />
       <workItem from="1613400633330" duration="3114000" />
+      <workItem from="1613475630721" duration="188000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -518,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613395689319</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="progile on different">
+      <created>1613475740936</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1613475740936</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,7 +549,8 @@
     <MESSAGE value="placehoder on masked date input" />
     <MESSAGE value="rlike fix 1" />
     <MESSAGE value="Profile on different page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile on different page" />
+    <MESSAGE value="progile on different" />
+    <option name="LAST_COMMIT_MESSAGE" value="progile on different" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
