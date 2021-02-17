@@ -24,6 +24,11 @@ class MedicalSpecialtySeeder extends Seeder
                 'only_center'=>true,
             ],
             [
+                'name'=>'Wearable',
+                'slug'=>'wearable',
+                'only_center'=>true,
+            ],
+            [
                 'name'=>'Cardiologia',
                 'slug'=>'cardio',
             ],

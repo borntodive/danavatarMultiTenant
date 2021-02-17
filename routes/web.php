@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InvitesController;
+use App\Http\Controllers\SampleController;
 use App\Models\Anamnesis;
 use App\Models\MedicalRecord;
 use App\Models\MedicalSpecialty;
@@ -71,6 +72,15 @@ Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {
             $medications = AnamnesisData::medications();
             return view('anamnesis.show', compact('medications', 'medicalConditions', 'anamnesis', 'user'));
         })->name('anamnesis.show');
+        Route::middleware(['tenantHasSpecialty:wearable'])->group(function () {
+            Route::get('/wearable/{user}/samples', [SampleController::class,'index'])->name('wearable.samples');
+
+
+            Route::get('/wearable/{user}', function (User $user) {
+                return view('wearable.calendar', compact('user'));
+            })->name('wearable.calendar');
+        });
+
 
     });
 
@@ -82,6 +92,18 @@ Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {
             return view('staff.index');
         })->name('staff.index');
     });
+});
+
+Route::prefix('ajax')->middleware(['auth:sanctum', 'verified','tenantHasSpecialty:wearable'])->group(function () {
+    Route::get('/samples/per-month', [SampleController::class, 'getSampleByMonth'])->name('ajax.sample.month');
+    Route::get('/samples/per-day', [SampleController::class, 'getSampleByDate'])->name('ajax.sample.day');
+    Route::get('/samples/ecg/per-day', [SampleController::class, 'getEcgByDate'])->name('ajax.sample.ecg.day');
+    Route::get('/samples/ecg/comments', [CommentController::class, 'getCommentByDate'])->name('ajax.sample.ecg.comments');
+    Route::get('/samples/ecg/measures', [SampleController::class, 'getMeasureses'])->name('ajax.sample.ecg.measures');
+    Route::post('/samples/ecg/comments', [CommentController::class, 'update'])->name('ajax.sample.ecg.comment.update');
+    Route::delete('/samples/ecg/comments', [CommentController::class, 'delete'])->name('ajax.sample.ecg.comment.delete');
+
+
 });
 
 

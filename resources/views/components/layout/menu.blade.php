@@ -12,8 +12,13 @@
 <x-layout.menu-link :mobile="$mobile" href="{{ route('medical_record.show',[auth()->user()]) }}" :active="request()->is('medical-record/'.auth()->user()->id)">
     {{ __('La tua Cartella Clinicha') }}
 </x-layout.menu-link>
+@if(session()->get('tenant')->hasMedicalSpecilities('wearable'))
+    <x-layout.menu-link :mobile="$mobile" href="{{ route('wearable.calendar',[auth()->user()]) }}" :active="request()->is('wearable/'.auth()->user()->id)">
+        {{ __('Il tuo Wearable') }}
+    </x-layout.menu-link>
+@endif
 @if(auth()->user()->isAbleTo('medical_doctor_permission',session()->get('tenant')->slug))
-    <x-layout.menu-link :mobile="$mobile" href="{{ route('medical_record.index') }}" :active="request()->routeIs('medical_record.*') && !request()->is('medical-record/'.auth()->user()->id)">
+    <x-layout.menu-link :mobile="$mobile" href="{{ route('medical_record.index') }}" :active="request()->routeIs('medical_record.*') && !request()->is('medical-record/'.auth()->user()->id)  && !request()->is('wearable/'.auth()->user()->id)">
         {{ __('Cartelle Cliniche') }}
     </x-layout.menu-link>
 @endif

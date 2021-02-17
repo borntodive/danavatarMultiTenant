@@ -93,6 +93,15 @@ class User extends Authenticatable
         return $this->hasMany(Anamnesis::class);
     }
 
+    public function samples()
+    {
+        return $this->hasMany(Sample::class);
+    }
+
+    public function sensorsPerDay()
+    {
+        return $this->hasMany(SensorsPerDay::class);
+    }
     public static function search($query)
     {
         return empty($query) ? static::query()
