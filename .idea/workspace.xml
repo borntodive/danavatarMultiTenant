@@ -2,61 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Enums/PositionEnum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Exports/SamplesExport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CommentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Weareble/Calendar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Weareble/Samples.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/TenantHasSpecialty.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Alert.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Sample.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Sensor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/SensorsPerDay.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Observers/SampleObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/livewire.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_17_064847_create_sensors_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_17_065023_create_samples_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_17_065105_create_alerts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_17_065201_create_sensors_per_day_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_17_174939_create_samples_hypertable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/AlertSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/EcgSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/SensorSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/SensorsPerDaySeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/en/samples.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/it/samples.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/weareble/calendar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/weareble/samples.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/wearable/calendar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/wearable/samples.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Tenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/hasPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/hasPermission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/layout/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_17_065201_create_sensors_per_day_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_17_065201_create_sensors_per_day_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,7 +289,7 @@
       <workItem from="1613546353625" duration="771000" />
       <workItem from="1613547196084" duration="11422000" />
       <workItem from="1613580149456" duration="1884000" />
-      <workItem from="1613582121451" duration="8912000" />
+      <workItem from="1613582121451" duration="9368000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -589,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613475829806</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Initial Weareable integration">
+      <created>1613606242466</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1613606242466</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +583,8 @@
     <MESSAGE value="rlike fix 1" />
     <MESSAGE value="Profile on different page" />
     <MESSAGE value="progile on different" />
-    <option name="LAST_COMMIT_MESSAGE" value="progile on different" />
+    <MESSAGE value="Initial Weareable integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Weareable integration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

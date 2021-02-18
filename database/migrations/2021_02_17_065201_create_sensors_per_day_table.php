@@ -11,7 +11,7 @@ class CreateSensorsPerDayTable extends Migration
         Schema::create('sensors_per_day', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->foreignId('user_id');c
+            $table->foreignId('user_id');
             $table->timestamp('date');
             $table->text('sensors');
 
