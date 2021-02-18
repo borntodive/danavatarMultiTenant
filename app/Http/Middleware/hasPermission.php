@@ -21,7 +21,7 @@ class hasPermission
             if (isset($request->route('user')->id) && $request->route('user')->id==auth()->user()->id) {
                 return $next($request);
             }
-            else {
+            elseif (!isset($request->route('user')->id)) {
                 $user=User::findOrFail($request->route('user'));
                 if ($user->id==auth()->user()->id)
                     return $next($request);

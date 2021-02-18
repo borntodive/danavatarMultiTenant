@@ -74,6 +74,7 @@ Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {
         })->name('anamnesis.show');
         Route::middleware(['tenantHasSpecialty:wearable'])->group(function () {
             Route::get('/wearable/{user}/samples', [SampleController::class,'index'])->name('wearable.samples');
+            Route::get('/wearable/{user}/samples/ecg', [SampleController::class, 'viewEcg'])->name('wearable.ecg.day');
 
 
             Route::get('/wearable/{user}', function (User $user) {

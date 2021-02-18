@@ -1,6 +1,7 @@
 @props([
     'user',
-    'buttonLabel'=>null,
+    'button'=>null,
+    'button2'=>null,
 ])
 <div wire:key="header" class="md:flex md:items-center md:justify-between md:space-x-5">
     <div class="flex items-start space-x-5">
@@ -24,11 +25,18 @@
             </span>
         </div>
     </div>
-    @if($buttonLabel)
+    @if($button || $button2)
     <div class="mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3">
-        <button wire:click="showEdit({{$user->id}})" type="button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-            {{$buttonLabel}}
+        @if($button2)
+        <a href="{{$button2['href']}}" type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+            {{$button2['label']}}
+        </a>
+        @endif
+        @if($button)
+        <button wire:click="{{$button['wireClick']}}" type="button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+            {{$button['label']}}
         </button>
+        @endif
     </div>
     @endif
 </div>

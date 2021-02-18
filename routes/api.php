@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AlertController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\InviteController;
+use App\Http\Controllers\Api\SampleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+
 Route::middleware('auth:sanctum')->group( function() {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
+    Route::post('/samples', [SampleController::class, 'store'])->name('api.samples.store');
+    Route::post('/alert', [AlertController::class, 'store'])->name('api.alert.store');
 
     Route::post('/invite', [InviteController::class,'store']);
 });

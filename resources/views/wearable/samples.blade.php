@@ -3,12 +3,21 @@
         'Dashboard'=>route('dashboard'),
         'Wearable'=>route('wearable.calendar',[$user])
     ];
+    $button2=null;
+    if ($ecg) {
+        $button2['label']='ECG';
+        $button2['href']=route('wearable.ecg.day',[$user,"date"=>$date]);
+    }
 @endphp
 
 <x-app-layout>
     <x-slot name="header">
         <x-layout.header :title="__('Dati del Wearable di').' '.$user->name" :breadcrumbs="$breadcrumbs" />
     </x-slot>
+    <x-medical-record.header
+        :user="$user"
+        :button2="$button2"
+    />
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         @foreach ($sensors as $sensor)
             <x-card title="{{ $sensor->displayName }}" class="mb-5 h-px-600">

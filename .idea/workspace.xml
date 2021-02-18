@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AlertController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SampleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/hasPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/hasPermission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/medical-record/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/medical-record/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/wearable/samples.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/samples.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,18 +212,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\app\Http\Controllers\Api" />
+      <recent name="C:\apps\danavatar\resources\views\wearable" />
       <recent name="C:\apps\danavatar\resources\lang\en" />
       <recent name="C:\apps\danavatar\resources\lang\it" />
       <recent name="C:\apps\danavatar\app" />
-      <recent name="C:\apps\danavatar\app\Enums" />
-      <recent name="C:\apps\danavatar\resources\views\wearable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/medicalRecord" />
@@ -290,7 +300,7 @@
       <workItem from="1613546353625" duration="771000" />
       <workItem from="1613547196084" duration="11422000" />
       <workItem from="1613580149456" duration="1884000" />
-      <workItem from="1613582121451" duration="10998000" />
+      <workItem from="1613582121451" duration="16730000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -551,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613606413847</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Fix Sample Seeder">
+      <created>1613608054808</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1613608054809</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +609,8 @@
     <MESSAGE value="Profile on different page" />
     <MESSAGE value="progile on different" />
     <MESSAGE value="Initial Weareable integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Weareable integration" />
+    <MESSAGE value="Fix Sample Seeder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Sample Seeder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
