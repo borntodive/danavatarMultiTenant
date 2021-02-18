@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/resources/lang/it/sensors.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Sensor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sensor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/it/samples.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/it/samples.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/wearable/samples.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/samples.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +289,8 @@
       <workItem from="1613546353625" duration="771000" />
       <workItem from="1613547196084" duration="11422000" />
       <workItem from="1613580149456" duration="1884000" />
-      <workItem from="1613582121451" duration="20798000" />
+      <workItem from="1613582121451" duration="20978000" />
+      <workItem from="1613666221455" duration="2021000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -568,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613647481040</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Sensors name in italian">
+      <created>1613664462309</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1613664462310</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +615,8 @@
     <MESSAGE value="Initial Weareable integration" />
     <MESSAGE value="Fix Sample Seeder" />
     <MESSAGE value="Wearable API Implememtation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wearable API Implememtation" />
+    <MESSAGE value="Sensors name in italian" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sensors name in italian" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
