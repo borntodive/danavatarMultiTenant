@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             MedicalRecordSeeder::class,
             SensorSeeder::class,
             SampleSeeder::class,
+
         ]);
     }
 }

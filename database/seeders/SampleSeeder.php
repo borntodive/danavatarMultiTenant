@@ -67,7 +67,10 @@ class SampleSeeder extends Seeder
                     if ($ecgIndex + 120 > $ecgDataCount)
                         $ecgIndex=0;
                 }
-                $time=$time->addMinute();
+                if ($sensor->name=="Position")
+                    $time=$time->addHour();
+                else
+                    $time=$time->addMinute();
             }
             foreach (collect($datas)->chunk(1000) as $data){
                 DB::table('samples')->insert($data->toArray());
