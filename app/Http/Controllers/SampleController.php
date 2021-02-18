@@ -61,7 +61,8 @@ class SampleController extends Controller
                 if ($sensor->name != 'Position')
                     $l['latest']=round($data->value,1);
                 else
-                    $l['latest']=PositionEnum::asSelectArray()[(int)$data->value];
+                    $l['latest']=__('samples.'.PositionEnum::fromValue((int)$data->value)->key);
+
                 if ($sensor->name != 'Position')
                     $l['average']=round($query->avg('value'),2);
                 else {
@@ -70,7 +71,7 @@ class SampleController extends Controller
                     /* $data=Sample::select('value')
                         ->whereRaw('time >= '.$startTimeString.' AND time < '.$endTimeString.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id)
                         ->orderBy('value')->get(); */
-                    $l['average']=PositionEnum::asSelectArray()[(int)$data->median];
+                    $l['average']=__('samples.'.PositionEnum::fromValue((int)$data->median)->key);
                 }
 
                 $latests[]=$l;
@@ -207,8 +208,8 @@ class SampleController extends Controller
                     $dataOut[$c]["category"]= "";
                     $dataOut[$c]["start"]= $startD->toDateTimeString();
                     $dataOut[$c]["end"]= $currDate->toDateTimeString();
-                    $dataOut[$c]["color"]= $this->getPositionColor($d->y);;
-                    $dataOut[$c]["text"]= __('samples.'.PositionEnum::asSelectArray()[(int)$lastPosition->y]);
+                    $dataOut[$c]["color"]= $this->getPositionColor($d->y);
+                    $dataOut[$c]["text"]= __('samples.'.PositionEnum::fromValue((int)$lastPosition->y)->key);
                     $dataOut[$c]["textDisabled"]= false;
                     $dataOut[$c]["icon"]= asset('storage/positions/'.$lastPosition->y.'.png');
                     $c++;
@@ -314,8 +315,8 @@ class SampleController extends Controller
                     $lastPosition=$d->y;
                     $currDate = new Carbon($d->x);
                     $dataOut[$c]['x'] = $currDate->getPreciseTimestamp(3);
-                    $dataOut[$c]['name'] = PositionEnum::asSelectArray()[(int)$d->y];
-                    $dataOut[$c]['label'] = PositionEnum::asSelectArray()[(int)$d->y];
+                    $dataOut[$c]['name'] =__('samples.'.PositionEnum::fromValue((int)$d->y)->key);
+                    $dataOut[$c]['label'] = __('samples.'.PositionEnum::fromValue((int)$d->y)->key);;
                     $dataOut[$c]['color'] = $this->getPositionColor($d->y);
                     $c++;
                 }
