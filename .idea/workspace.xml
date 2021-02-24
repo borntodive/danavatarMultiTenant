@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Python/ecgClean.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Python/ecgPoints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,7 +294,7 @@
       <workItem from="1613666221455" duration="2608000" />
       <workItem from="1613815151329" duration="4148000" />
       <workItem from="1613989776934" duration="36631000" />
-      <workItem from="1614188539271" duration="383000" />
+      <workItem from="1614188539271" duration="1097000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -622,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614174049573</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Ecg Calculation + seeder without ecg">
+      <created>1614188952229</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1614188952229</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix medical records scroll" />
     <MESSAGE value="Diving Anamnesis Creation" />
     <MESSAGE value="Medical Record Overview" />
     <MESSAGE value="Medical Record Overview No Content" />
@@ -667,7 +669,8 @@
     <MESSAGE value="Fix Menu + Pazienti" />
     <MESSAGE value="Seeder Samples and Merical Records to y40Utente" />
     <MESSAGE value="ECG Comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="ECG Comments" />
+    <MESSAGE value="Ecg Calculation + seeder without ecg" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ecg Calculation + seeder without ecg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

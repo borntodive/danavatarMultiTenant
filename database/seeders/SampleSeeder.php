@@ -26,6 +26,8 @@ class SampleSeeder extends Seeder
         $insertedDate=null;
         $insertedSensor=[];
         foreach ($sensors as $sensor) {
+            if ($sensor->id==6)
+                continue;
             $insertedSensor[]=$sensor->id;
             $time=Carbon::today();
             $insertedDate=$time->copy();
@@ -52,7 +54,7 @@ class SampleSeeder extends Seeder
                     ];
                 }
                 else {
-                    continue;
+
                     $ecgTime=$time->copy();
                     for ($i = 0; $i < 120; $i++) {
                         $idx=$i+$ecgIndex;
