@@ -108,8 +108,10 @@
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <x-card title="ECG" class="mb-5 h-px-600">
             <div class="highCharts h-96 w-full" id="chart_ecg" ></div>
-
         </x-card>
+    </div>
+    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        <livewire:weareble.comments :date="$date" :user="$user" sensor="6"/>
     </div>
 </x-app-layout>
 <link rel="stylesheet" href="https://unpkg.com/@dmuy/timepicker@2.0.0/dist/mdtimepicker.css">
@@ -272,7 +274,6 @@
                 ecgChart.hideLoading();
             });
     }
-
     function showLoadedTime(startDate) {
         const loadedDate = moment(startDate);
         if (loadedDate.format('YYYY-MM-DD HH:mm') != searchTime)
@@ -293,6 +294,9 @@
         laddaCalcBtn.start();
         appMeasures.getMeasures(ecgChart,laddaCalcBtn );
         //laddaCalcBtn.stop();
+    });
+    $(".gotosvg").click(function(){
+        loadNewData($(this).attr('data-time'));
     });
 
 </script>

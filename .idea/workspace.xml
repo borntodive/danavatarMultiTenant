@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/authentication-card-logo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/authentication-card-logo.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Weareble/Comments.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_24_110251_create_comments_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/weareble/comments.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,18 +205,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\app\Models" />
       <recent name="C:\apps\danavatar\app\Http\Controllers\Api" />
       <recent name="C:\apps\danavatar\resources\views\wearable" />
       <recent name="C:\apps\danavatar\resources\lang\en" />
       <recent name="C:\apps\danavatar\resources\lang\it" />
-      <recent name="C:\apps\danavatar\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/medicalRecord" />
@@ -291,7 +296,7 @@
       <workItem from="1613582121451" duration="20978000" />
       <workItem from="1613666221455" duration="2608000" />
       <workItem from="1613815151329" duration="4148000" />
-      <workItem from="1613989776934" duration="17176000" />
+      <workItem from="1613989776934" duration="29085000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -587,7 +592,28 @@
       <option name="project" value="LOCAL" />
       <updated>1614159535887</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Personalized Logo in Login">
+      <created>1614159737693</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1614159737693</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Fix Menu + Pazienti">
+      <created>1614166275507</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1614166275507</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Seeder Samples and Merical Records to y40Utente">
+      <created>1614166573724</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1614166573724</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,9 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Medications on anamnesis" />
-    <MESSAGE value="Change background grey" />
-    <MESSAGE value="Initial Commit" />
     <MESSAGE value="Test Login" />
     <MESSAGE value="Fix medical records scroll" />
     <MESSAGE value="Diving Anamnesis Creation" />
@@ -632,7 +655,10 @@
     <MESSAGE value="Sensors name in italian" />
     <MESSAGE value="Ecg timepicker" />
     <MESSAGE value="Landing Page + Personalized Logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Landing Page + Personalized Logo" />
+    <MESSAGE value="Personalized Logo in Login" />
+    <MESSAGE value="Fix Menu + Pazienti" />
+    <MESSAGE value="Seeder Samples and Merical Records to y40Utente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Seeder Samples and Merical Records to y40Utente" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
