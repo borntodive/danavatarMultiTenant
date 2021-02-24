@@ -7,7 +7,7 @@
     {{ __('Dashboard') }}
 </x-layout.menu-link>
 <x-layout.menu-link :mobile="$mobile" href="{{ route('anamnesis') }}" :active="request()->routeIs('anamnesis')">
-    {{ __('Anamnesi') }}
+    {{ __('La tua Anamnesi') }}
 </x-layout.menu-link>
 <x-layout.menu-link :mobile="$mobile" href="{{ route('medical_record.show',[auth()->user()]) }}" :active="request()->is('medical-record/'.auth()->user()->id)">
     {{ __('La tua Cartella Clinicha') }}

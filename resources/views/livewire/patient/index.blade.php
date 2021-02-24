@@ -10,7 +10,7 @@
             </h3>
             <div class="mt-2 max-w-xl text-sm text-gray-500">
                 <p>
-                    Change the email address you want associated with your account.
+                    Inserisci il Codice Fiscale da ricercare
                 </p>
             </div>
             <form wire:submit.prevent="searchCF()" class="mt-5 sm:flex sm:items-center sm:flex-col">
