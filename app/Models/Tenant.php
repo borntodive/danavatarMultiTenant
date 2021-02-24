@@ -65,4 +65,9 @@ class Tenant extends Authenticatable
         return $this->hasMany(Anamnesis::class);
     }
 
+    protected function profilePhotoDisk()
+    {
+        return 's3-public';
+    }
+
 }
