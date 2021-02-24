@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Weareble/Comments.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_24_110251_create_comments_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/weareble/comments.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Python/ecgClean.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Python/ecgPoints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -205,18 +205,19 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
+    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
+    <property name="last_opened_file_path" value="$USER_HOME$/samples.csv" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\app" />
       <recent name="C:\apps\danavatar\app\Models" />
       <recent name="C:\apps\danavatar\app\Http\Controllers\Api" />
       <recent name="C:\apps\danavatar\resources\views\wearable" />
       <recent name="C:\apps\danavatar\resources\lang\en" />
-      <recent name="C:\apps\danavatar\resources\lang\it" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/medicalRecord" />
@@ -296,7 +297,8 @@
       <workItem from="1613582121451" duration="20978000" />
       <workItem from="1613666221455" duration="2608000" />
       <workItem from="1613815151329" duration="4148000" />
-      <workItem from="1613989776934" duration="29085000" />
+      <workItem from="1613989776934" duration="36631000" />
+      <workItem from="1614188539271" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -613,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614166573724</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="ECG Comments">
+      <created>1614174049573</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1614174049573</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +642,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Test Login" />
     <MESSAGE value="Fix medical records scroll" />
     <MESSAGE value="Diving Anamnesis Creation" />
     <MESSAGE value="Medical Record Overview" />
@@ -658,7 +666,8 @@
     <MESSAGE value="Personalized Logo in Login" />
     <MESSAGE value="Fix Menu + Pazienti" />
     <MESSAGE value="Seeder Samples and Merical Records to y40Utente" />
-    <option name="LAST_COMMIT_MESSAGE" value="Seeder Samples and Merical Records to y40Utente" />
+    <MESSAGE value="ECG Comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="ECG Comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

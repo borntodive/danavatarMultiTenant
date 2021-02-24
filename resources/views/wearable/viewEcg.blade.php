@@ -111,15 +111,123 @@
         </x-card>
     </div>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        <x-card title="Misurazioni" class="mb-5 h-px-600">
+            <div class="w-full flex flex-row-reverse -mt-6 mb-6">
+                <button wire:click="editModal" id="calculate" type="button" data-style="expand-right" class="ladda-button basic-ladda-button float-right	 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <span class="ladda-label">  Calcola</span></button>
+            </div>
+            <div id="measures" class="w-full">
+                <!-- This example requires Tailwind CSS v2.0+ -->
+                <div class="md:grid md:grid-cols-12 md:gap-3">
+                    <div class="md:col-span-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
+
+                        <div class="bg-gray-200 px-4 py-5 border-b border-gray-200 sm:px-6">
+                            <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
+                                <div class="ml-4 mt-2">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                        Misure
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-gray-50">
+                                            <tr>
+                                                <th scope="col" class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    #
+                                                </th>
+                                                <th scope="col" class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    RR
+                                                </th>
+                                                <th scope="col" class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    QT
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!-- Odd row -->
+                                            <tr class="bg-white" v-for="(measure, index) in measures" :key="`measure-${index}`">
+                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                    @{{index + 1}}
+                                                </td>
+                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    @{{measure.rr}}
+                                                </td>
+                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    @{{measure.qt}}
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 bg-white overflow-hidden sm:rounded-lg sm:shadow">
+
+                        <div class="bg-gray-200 px-4 py-5 border-b border-gray-200 sm:px-6">
+                            <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
+                                <div class="ml-4 mt-2">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                        Media
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-gray-50">
+                                            <tr>
+                                                <th scope="col" class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    RR
+                                                </th>
+                                                <th scope="col" class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    QT
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!-- Odd row -->
+                                            <tr class="bg-white"  v-if="average">
+                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    @{{average.rr}}
+                                                </td>
+                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    @{{average.qt}}
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </x-card>
+    </div>
+    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <livewire:weareble.comments :date="$date" :user="$user" sensor="6"/>
     </div>
 </x-app-layout>
+
+
 <link rel="stylesheet" href="https://unpkg.com/@dmuy/timepicker@2.0.0/dist/mdtimepicker.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="{{asset('assets/js/vendor/sweetalert2.min.js')}}"></script>
-<script src="{{asset('assets/js/vendor/spin.min.js')}}"></script>
-<script src="{{asset('assets/js/vendor/ladda.js')}}"></script>
-<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.6/ladda-themeless.min.css" integrity="sha512-EOY99TUZ7AClCNvbnvrhtMXDuWzxUBXV7SFovruHvYf2dbvRB5ya+jgDPk5bOyTtZDbqFH3PTuTWl/D7+7MGsA==" crossorigin="anonymous" /><script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.6/spin.min.js" integrity="sha512-FzwLmClLNd77zi/Ke+dYlawHiPBAWhk8FzA4pwFV2a6PIR7/VHDLZ0yKm/ekC38HzTc5lo8L8NM98zWNtCDdyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.6/ladda.min.js" integrity="sha512-fK8kfclYYyRUN1KzdZLVJrAc+LmdsZYH+0Fp3TP4MPJzcLUk3FbQpfWSbL/uxh7cmqbuogJ75pMmL62SiNwWeg==" crossorigin="anonymous"></script><script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/data.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
@@ -132,11 +240,142 @@
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@dmuy/timepicker@2.0.0/dist/mdtimepicker.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
         integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
         crossorigin="anonymous"></script>
 <script>
     var ecgChart;
+
+    var appMeasures = new Vue({
+        el: '#measures',
+        data: {
+            measures: [],
+            average:[],
+        },
+        methods: {
+            calculateMeasures (chart) {
+                alert (chart.xAxis[0].min)
+            },
+            getMeasures(chart, calcBtn) {
+
+                const startTime = chart.xAxis[0].min;
+                const endTime = chart.xAxis[0].max;
+                axios
+                    .get("/ajax/samples/ecg/measures", {
+                        params: {
+                            userId: "{{ $user->id }}",
+                            sensorId: 6,
+                            startTime: startTime,
+                            endTime: endTime,
+                        }
+                    })
+                    .then(response => {
+                        this.measures=response.data.measures;
+                        this.average=response.data.averages;
+
+                        chart.annotations.forEach(annotation => annotation.destroy());
+                        var pl = [];
+                        $.each( chart.yAxis[0].plotLinesAndBands , function( i, v ) { pl.push(v.id); } );
+                        $.each( pl , function( i, v ) { chart.yAxis[0].removePlotLine( v ); });
+                        chart.annotations.length = 0;
+                        var cleanSerie = chart.get('clean');
+                        if (cleanSerie)
+                            cleanSerie.remove();
+                        var newAnnotations = {
+                            labels: []
+                        };
+                        var length = response.data.rs.length;
+                        for (let i = 0; i < length; i++) {
+                            const ii=i+1;
+                            newAnnotations.labels.push({
+                                point: {
+                                    x: moment(response.data.rs[i].time),
+                                    y: response.data.rs[i].value ,
+                                    yAxis: 0,
+                                    xAxis: 0
+                                },
+                                text: 'R'+ ii,
+                                id: 'R'+ ii,
+                            });
+                            if (i in response.data.qs) {
+                                newAnnotations.labels.push({
+                                    point: {
+                                        x: moment(response.data.qs[i].time),
+                                        y: response.data.qs[i].value ,
+                                        yAxis: 0,
+                                        xAxis: 0
+                                    },
+                                    text: 'Q'+ ii,
+                                    id: 'Q'+ ii,
+                                });
+                            }
+                            if (i in response.data.ss) {
+                                newAnnotations.labels.push({
+                                    point: {
+                                        x: moment(response.data.ss[i].time),
+                                        y: response.data.ss[i].value ,
+                                        yAxis: 0,
+                                        xAxis: 0
+                                    },
+                                    text: 'S'+ ii,
+                                    id: 'S'+ ii,
+                                });
+                            }
+                            if (i in response.data.ts) {
+                                newAnnotations.labels.push({
+                                    point: {
+                                        x: moment(response.data.ts[i].time),
+                                        y: response.data.ts[i].value ,
+                                        yAxis: 0,
+                                        xAxis: 0
+                                    },
+                                    text: 'T'+ ii,
+                                    id: 'T'+ ii,
+                                });
+                            }
+                            if (i in response.data.ps) {
+                                newAnnotations.labels.push({
+                                    point: {
+                                        x: moment(response.data.ps[i].time),
+                                        y: response.data.ps[i].value ,
+                                        yAxis: 0,
+                                        xAxis: 0
+                                    },
+                                    text: 'P'+ ii,
+                                    id: 'P'+ ii,
+                                });
+                            }
+                        }
+                        chart.addAnnotation(newAnnotations);
+                        for (var name in response.data.debug) {
+                            chart.yAxis[0].addPlotLine({
+                                value: response.data.debug[name],
+                                color: 'black',
+                                width: 2,
+                                id: name
+                            });
+                        }
+
+
+                        /* chart.addSeries({
+                            name: 'Clean',
+                            data: response.data.clean,
+                            turboThreshold: 0,
+                            id: 'clean'
+                        }, false); */
+                        calcBtn.stop();
+                    })
+            },
+
+        },
+        mounted: function() {
+            //
+        }
+    });
+
+</script>
+<script>
 
     const timezone = 'Europe/Rome';
     moment.tz.setDefault(timezone);
@@ -152,7 +391,6 @@
                 timezone: timezone
             }
         });
-        console.log(data);
         showLoadedTime(data.startDate);
         const xAxis = {
             // gridLineWidth: 1,
@@ -269,7 +507,6 @@
                 if (cleanSerie)
                     cleanSerie.remove();
                 ecgChart.series[0].setData(data.data.ECG_Raw);
-                console.log(data.data);
                 ecgChart.redraw()
                 ecgChart.hideLoading();
             });

@@ -472,6 +472,7 @@ class SampleController extends Controller
         $firstTime=$ecgDatas[0]->time;
 
         $lastTime=$ecgDatas[$ecgCount -1]->time;
+
         $ecgDuration=$lastTime->diffInSeconds($firstTime);
         $sampleRate=(int)round($ecgCount/$ecgDuration);
         $plucked = $ecgDatas->pluck('value');
@@ -487,7 +488,6 @@ class SampleController extends Controller
         Excel::store(new SamplesExport($out), 'samples.csv');
 
         $pyOut = exec("python3 ../app/Python/ecgPoints.py -s $sampleRate 2>&1");
-        //dump($pyOut);
 
         //$pyOut=trim($pyOut, '"');
         //dump($pyOut);

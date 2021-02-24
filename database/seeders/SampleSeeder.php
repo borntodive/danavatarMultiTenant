@@ -52,6 +52,7 @@ class SampleSeeder extends Seeder
                     ];
                 }
                 else {
+                    continue;
                     $ecgTime=$time->copy();
                     for ($i = 0; $i < 120; $i++) {
                         $idx=$i+$ecgIndex;
