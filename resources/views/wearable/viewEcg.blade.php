@@ -4,7 +4,7 @@
         'Wearable'=>route('wearable.calendar',[$user])
     ];
     $button2['label']='Live ECG';
-    $button2['href']='#';
+    $button2['href']=route('wearable.ecg.live',['user'=>$user->id]);
 @endphp
 
 <x-app-layout>

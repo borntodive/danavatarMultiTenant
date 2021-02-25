@@ -109,6 +109,12 @@ class SampleController extends Controller
 
     }
 
+    public function viewEcgLive (Request $request, User $user) {
+
+        return view('wearable.viewEcgLive', compact('user'));
+
+    }
+
     /*
         ********
         * AJAX *

@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcgLive.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/SampleSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/InviteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/InviteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/broadcasting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +193,9 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n71kcTdmyAxn2ngrCHd5fMD9ht" />
@@ -202,17 +219,17 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$USER_HOME$/samples.csv" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/wearable" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\resources\views\wearable" />
       <recent name="C:\apps\danavatar\app" />
       <recent name="C:\apps\danavatar\app\Models" />
       <recent name="C:\apps\danavatar\app\Http\Controllers\Api" />
-      <recent name="C:\apps\danavatar\resources\views\wearable" />
       <recent name="C:\apps\danavatar\resources\lang\en" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -294,7 +311,8 @@
       <workItem from="1613666221455" duration="2608000" />
       <workItem from="1613815151329" duration="4148000" />
       <workItem from="1613989776934" duration="36631000" />
-      <workItem from="1614188539271" duration="1097000" />
+      <workItem from="1614188539271" duration="8814000" />
+      <workItem from="1614260822689" duration="3319000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1611303286437</created>
@@ -625,7 +643,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614188952229</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary=" seeder without ecg">
+      <created>1614189656843</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1614189656843</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +670,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Diving Anamnesis Creation" />
     <MESSAGE value="Medical Record Overview" />
     <MESSAGE value="Medical Record Overview No Content" />
     <MESSAGE value="Codice Fiscale + Invite system + new grid in Medical Record" />
@@ -670,7 +694,8 @@
     <MESSAGE value="Seeder Samples and Merical Records to y40Utente" />
     <MESSAGE value="ECG Comments" />
     <MESSAGE value="Ecg Calculation + seeder without ecg" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ecg Calculation + seeder without ecg" />
+    <MESSAGE value=" seeder without ecg" />
+    <option name="LAST_COMMIT_MESSAGE" value=" seeder without ecg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
