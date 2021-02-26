@@ -103,7 +103,9 @@ class SampleController extends Controller
                 $currentSensorsPerDay->sensors=$sensorsIds;
             $currentSensorsPerDay->save();
         }
-
+        if ($ecgEvent) {
+            event(new NewEcgData($userId, json_encode($ecgEvent)));
+        }
         foreach (collect($datas)->chunk(1000) as $data){
 
             DB::table('samples')->insert($data->toArray());
