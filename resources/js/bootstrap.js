@@ -24,7 +24,7 @@ window.Echo = new Echo({
     broadcaster:       'pusher',
     key:               '0dea1e5b3bd661b90498',
     //wsHost:            window.location.hostname,ù
-    wsHost:            'staging.daneuroperesearchandinnovation.eu',
+    wsHost:            'websocket.danavatar.eu',
     wsPort:            6002,
     wssPort:           6002,
     disableStats:      true,
