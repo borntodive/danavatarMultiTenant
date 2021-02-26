@@ -37,7 +37,7 @@ class SampleController extends Controller
         $latests=[];
         $ecg=false;
         foreach ($sensorsPerDay->sensors as $sensorId) {
-            $sensor=Sensor::findOrFail($sensorId);
+            $sensor=Sensor::find($sensorId);
             if ($sensor->name !=='Ecg')
                 $sensors[]=$sensor;
             else
