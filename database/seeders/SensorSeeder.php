@@ -21,7 +21,12 @@ class SensorSeeder extends Seeder
             "HeartRate",
             "BreathFrequency",
             "Position",
-            "Ecg"
+            "Ecg",
+            "Respiration",
+            "Respiration2",
+            "AccelerationX",
+            "AccelerationY",
+            "AccelerationZ"
         ];
         foreach ($sensors as $sensor) {
             Sensor::create(

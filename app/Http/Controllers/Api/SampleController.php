@@ -38,7 +38,6 @@ class SampleController extends Controller
                 "value"=>'required|array',
                 "value.*"=>'numeric',
                 "userId"=>'required|integer|exists:users,id',
-                "projectId"=>'sometimes|integer|exists:projects,id',
                 "measureType"=>'required|string|exists:sensors,name',
             ]);
             if ($validator->fails())
