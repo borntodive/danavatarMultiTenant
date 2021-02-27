@@ -106,7 +106,7 @@ class SampleController extends Controller
             event(new NewEcgData($userId, json_encode($ecgEvent)));
         }
         foreach (collect($datas)->chunk(1000) as $data){
-            $dataToBeSaved=array_unique($data->toArray());
+            $dataToBeSaved=array_unique($data->toArray(), SORT_REGULAR);
             try {
                 DB::table('samples')->insert($dataToBeSaved);
             } catch (Exception $e) {
