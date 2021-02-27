@@ -61,12 +61,14 @@ class SampleController extends Controller
                     $delta=1000/count($sample['value']);
                     $time=Carbon::createFromTimestamp($sample['date']);
                     foreach ($sample['value'] as $val) {
-                        $datas[]=[
+                        $datas=[
                             "time" => $time->format('Y-m-d H:i:s.u'),
                             "user_id" => $sample['userId'],
                             "sensor_id" => $sample['sensor_id'],
                             "value" => $val
                         ];
+                        DB::table('samples')->insertOrIgnore($datas);
+
                         if ($sensor->name=='Ecg') {
                             $d['x']=$time->getPreciseTimestamp();
                             $d['y']=round((float)$val * 1000, 0);
@@ -78,12 +80,14 @@ class SampleController extends Controller
                     }
 
                 } else {
-                    $datas[]=[
+                    $datas=[
                         "time" => $sample['date'],
                         "user_id" => $sample['userId'],
                         "sensor_id" => $sample['sensor_id'],
                         "value" => $sample['value']
                     ];
+                    DB::table('samples')->insertOrIgnore($datas);
+
 
                 }
 
@@ -103,10 +107,6 @@ class SampleController extends Controller
             $currentSensorsPerDay->save();
         }
 
-        foreach (collect($datas)->chunk(1000) as $data){
-            DB::table('samples')->insertOrIgnore($data->toArray());
-
-        }
         if ($status==200)
             $respose['message']='All samples created successfully';
         else
