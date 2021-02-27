@@ -105,7 +105,7 @@ class SampleController extends Controller
         if ($ecgEvent) {
             event(new NewEcgData($userId, json_encode($ecgEvent)));
         }
-        foreach (collect($datas)->chunk(1000) as $data){
+        foreach (collect($datas)->chunk(10) as $data){
 
             \Log::debug($data->toArray());
             DB::table('samples')->insert($data->toArray());
