@@ -106,9 +106,13 @@ class SampleController extends Controller
             event(new NewEcgData($userId, json_encode($ecgEvent)));
         }
         foreach (collect($datas)->chunk(10) as $data){
+            try {
+                DB::table('samples')->insert($data->toArray());
+            } catch (Exception $e) {
+                \Log::debug($data->toArray());
+            }
 
-            \Log::debug($data->toArray());
-            DB::table('samples')->insert($data->toArray());
+
         }
         if ($status==200)
             $respose['message']='All samples created successfully';
