@@ -30,7 +30,6 @@ class SampleController extends Controller
         $status=200;
         $insertedSensors=[];
         $datas=[];
-        $ecgEvent=null;
         $userId=null;
         foreach ($samples as $idx=>$sample){
             $validator = Validator::make($sample, [
@@ -71,8 +70,9 @@ class SampleController extends Controller
                         if ($sensor->name=='Ecg') {
                             $d['x']=$time->getPreciseTimestamp();
                             $d['y']=round((float)$val * 1000, 0);
-                            $ecgEvent[]=$d;
+
                             $userId=$sample['userId'];
+                            event(new NewEcgData($userId, json_encode($d)));
                         }
                         $time=$time->addMicroseconds(floor($delta*1000));
                     }
@@ -102,18 +102,9 @@ class SampleController extends Controller
                 $currentSensorsPerDay->sensors=$sensorsIds;
             $currentSensorsPerDay->save();
         }
-        if ($ecgEvent) {
-            event(new NewEcgData($userId, json_encode($ecgEvent)));
-        }
-        foreach (collect($datas)->chunk(1000) as $data){
-            $dataToBeSaved=array_unique($data->toArray(), SORT_REGULAR);
-            \Log::debug($dataToBeSaved);
-            try {
-                DB::table('samples')->insert($dataToBeSaved);
-            } catch (Exception $e) {
-                //
-            }
 
+        foreach (collect($datas)->chunk(1000) as $data){
+            DB::table('samples')->insertOrIgnore($data->toArray());
 
         }
         if ($status==200)

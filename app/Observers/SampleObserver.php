@@ -24,7 +24,6 @@ class SampleObserver
             $currentSensorsPerDay->sensors=[$sample->sensor_id];
         if ($prevSensors!=$currentSensorsPerDay->sensors)
             $currentSensorsPerDay->save();
-        error_log($currentSensorsPerDay->sensors);
     }
 
     /**
