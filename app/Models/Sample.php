@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sample extends Model
 {
     use HasFactory;
-    protected $protected = [];
+    protected $guarded = [];
 
     protected $casts = [
         'time' => 'datetime',
