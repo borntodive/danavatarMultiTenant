@@ -107,10 +107,11 @@ class SampleController extends Controller
         }
         foreach (collect($datas)->chunk(1000) as $data){
             $dataToBeSaved=array_unique($data->toArray(), SORT_REGULAR);
+            \Log::debug($dataToBeSaved);
             try {
                 DB::table('samples')->insert($dataToBeSaved);
             } catch (Exception $e) {
-                \Log::debug($dataToBeSaved);
+                //
             }
 
 
