@@ -23,6 +23,7 @@
         "maatwebsite/excel": "^3.1",
         "pusher/pusher-php-server": "~4.0",
         "robertogallea/laravel-codicefiscale": "^1.4",
+        "rollbar/rollbar-laravel": "^7.0",
         "santigarcor/laratrust": "^6.3",
         "spatie/data-transfer-object": "^2.6"
     },
