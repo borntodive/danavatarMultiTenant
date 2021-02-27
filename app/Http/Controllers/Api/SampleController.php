@@ -107,6 +107,7 @@ class SampleController extends Controller
         }
         foreach (collect($datas)->chunk(1000) as $data){
 
+            \Log::debug($data->toArray());
             DB::table('samples')->insert($data->toArray());
         }
         if ($status==200)
