@@ -55,8 +55,8 @@
             minorGridLineDashStyle: 'dot',
             gridLineColor: 'red',
             type: 'datetime',
-            min: start,
-            max: end,
+            //min: start,
+            //max: end,
             //minRange: 2000,
             //maxRange: 2000,
         }
@@ -120,6 +120,8 @@
                 data: data.data,
             }], */
             series: [{
+                type: 'line',
+                turboThreshold: 0,
                 data: []
             }]
         });
@@ -130,6 +132,7 @@
         .listen('NewEcgData', (e) => {
 
             const points= JSON.parse(e.data)
+            console.log(points);
             ecgData= ecgData.concat(points);
             ecgChart.series[0].setData(ecgData);
             const series = ecgChart.series[0];

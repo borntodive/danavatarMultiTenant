@@ -33,6 +33,9 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified','role:super_admin
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+    Route::get('/centers', function () {
+        return view('admin.centers.index');
+    })->name('admin.centers');
 });
 //->domain('{account}.'.config('app.base_url'))
 Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {

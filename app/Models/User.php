@@ -105,10 +105,10 @@ class User extends Authenticatable
     public static function search($query)
     {
         return empty($query) ? static::query()
-            : static::where('firstname', 'like', '%'.$query.'%')
-                ->orWhere('lastname', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%')
-                ->orWhere('codice_fiscale', 'like', '%'.$query.'%');
+            : static::whereRaw("LOWER(firstname) LIKE ? ", ['%'.trim(strtolower($query)).'%'])
+                ->orWhereRaw ("LOWER(lastname) LIKE ? ", ['%'.trim(strtolower($query)).'%'])
+                ->orWhereRaw ("LOWER(email) LIKE ? ", ['%'.trim(strtolower($query)).'%'])
+                ->orWhereRaw ("LOWER(codice_fiscale) LIKE ? ", ['%'.trim(strtolower($query)).'%']);
     }
 
 

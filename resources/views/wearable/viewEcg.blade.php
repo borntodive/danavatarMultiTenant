@@ -507,6 +507,7 @@
                 if (cleanSerie)
                     cleanSerie.remove();
                 ecgChart.series[0].setData(data.data.ECG_Raw);
+                console.log(data.data.ECG_Raw);
                 ecgChart.redraw()
                 ecgChart.hideLoading();
             });

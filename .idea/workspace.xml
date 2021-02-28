@@ -2,21 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcgLive.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Centers/Index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/laravel.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/logos/dan-europe-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/centers/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/admin/centers/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/InviteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/InviteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/broadcasting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/layout/admin/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout/admin/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcgLive.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcgLive.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -196,6 +195,8 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
+      <path value="$PROJECT_DIR$/vendor/rollbar/rollbar" />
+      <path value="$PROJECT_DIR$/vendor/rollbar/rollbar-laravel" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n71kcTdmyAxn2ngrCHd5fMD9ht" />
@@ -212,25 +213,25 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/wearable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/centers" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\apps\danavatar\resources\views\wearable" />
+      <recent name="C:\apps\danavatar\resources\views\admin\centers" />
+      <recent name="C:\apps\danavatar\resources\views\admin" />
+      <recent name="C:\apps\danavatar\public\images\logos" />
       <recent name="C:\apps\danavatar\app" />
-      <recent name="C:\apps\danavatar\app\Models" />
-      <recent name="C:\apps\danavatar\app\Http\Controllers\Api" />
-      <recent name="C:\apps\danavatar\resources\lang\en" />
+      <recent name="C:\apps\danavatar\resources\views\wearable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/medicalRecord" />
@@ -312,140 +313,9 @@
       <workItem from="1613815151329" duration="4148000" />
       <workItem from="1613989776934" duration="36631000" />
       <workItem from="1614188539271" duration="8814000" />
-      <workItem from="1614260822689" duration="3319000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial Commit">
-      <created>1611303286437</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1611303286437</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Initial Commit">
-      <created>1611303596963</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1611303596963</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Initial Commit">
-      <created>1611303737524</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1611303737524</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Initial Commit">
-      <created>1611656510814</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1611656510815</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Fix prev_cardio state">
-      <created>1611656784237</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1611656784237</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Medications on anamnesis">
-      <created>1611668325654</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1611668325654</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Medications on anamnesis">
-      <created>1611668376227</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1611668376227</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Change background grey">
-      <created>1611669518881</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1611669518881</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Initial Commit">
-      <created>1612370343495</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1612370343496</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Test Login">
-      <created>1612387231246</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1612387231246</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Test Login">
-      <created>1612387555038</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1612387555038</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Test Login">
-      <created>1612387728400</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1612387728400</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Test Login">
-      <created>1612388841126</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1612388841126</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Test Login">
-      <created>1612388898749</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1612388898749</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Test Login">
-      <created>1612389314582</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1612389314582</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Test Login">
-      <created>1612389357731</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1612389357731</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Test Login">
-      <created>1612389531790</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1612389531790</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Test Login">
-      <created>1612389573580</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1612389573580</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Fix medical records scroll">
-      <created>1612438465400</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1612438465400</updated>
+      <workItem from="1614260822689" duration="6664000" />
+      <workItem from="1614274588735" duration="16590000" />
+      <workItem from="1614470679005" duration="3630000" />
     </task>
     <task id="LOCAL-00020" summary="Diving Anamnesis Creation">
       <created>1612458366140</created>
@@ -650,7 +520,147 @@
       <option name="project" value="LOCAL" />
       <updated>1614189656843</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Live ECG">
+      <created>1614264725796</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1614264725796</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Change brocasting server">
+      <created>1614333568940</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1614333568941</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Broadcats New SAmple Event">
+      <created>1614333897149</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1614333897149</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Fix Broadcast">
+      <created>1614334905202</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1614334905202</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Fix Broadcast">
+      <created>1614335252050</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1614335252050</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Debug samples">
+      <created>1614372883891</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1614372883891</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Added new sensors">
+      <created>1614374087808</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1614374087808</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Added new sensors seeder">
+      <created>1614374234466</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1614374234466</updated>
+    </task>
+    <task id="LOCAL-00057" summary="remote logging">
+      <created>1614413680485</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1614413680499</updated>
+    </task>
+    <task id="LOCAL-00058" summary="remote logging">
+      <created>1614413970773</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1614413970773</updated>
+    </task>
+    <task id="LOCAL-00059" summary="remote logging">
+      <created>1614414058080</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1614414058080</updated>
+    </task>
+    <task id="LOCAL-00060" summary="SAmple API Debug">
+      <created>1614414458658</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1614414458658</updated>
+    </task>
+    <task id="LOCAL-00061" summary="SAmple API Debug">
+      <created>1614414559238</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1614414559238</updated>
+    </task>
+    <task id="LOCAL-00062" summary="SAmple API Debug">
+      <created>1614414756328</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1614414756328</updated>
+    </task>
+    <task id="LOCAL-00063" summary="SAmple API Debug">
+      <created>1614414951885</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1614414951885</updated>
+    </task>
+    <task id="LOCAL-00064" summary="SAmple API Debug">
+      <created>1614415162978</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1614415162978</updated>
+    </task>
+    <task id="LOCAL-00065" summary="SAmple API Debug">
+      <created>1614415517271</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1614415517271</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Sample Model $guarded= []">
+      <created>1614427448704</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1614427448706</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Fix SAmple InsertOrFail">
+      <created>1614460521191</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1614460521191</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Fix SAmple InsertOrFail">
+      <created>1614464045903</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1614464045905</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,17 +680,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Medical Record Overview" />
-    <MESSAGE value="Medical Record Overview No Content" />
-    <MESSAGE value="Codice Fiscale + Invite system + new grid in Medical Record" />
-    <MESSAGE value="View Medical Record" />
-    <MESSAGE value="Admin Can Invite users" />
-    <MESSAGE value="Add calculate CF" />
-    <MESSAGE value="Fix Data di nascita" />
-    <MESSAGE value="Fix Data di nascita su accept invite" />
-    <MESSAGE value="removed default cf in pazienti" />
-    <MESSAGE value="placehoder on masked date input" />
-    <MESSAGE value="rlike fix 1" />
     <MESSAGE value="Profile on different page" />
     <MESSAGE value="progile on different" />
     <MESSAGE value="Initial Weareable integration" />
@@ -695,7 +694,18 @@
     <MESSAGE value="ECG Comments" />
     <MESSAGE value="Ecg Calculation + seeder without ecg" />
     <MESSAGE value=" seeder without ecg" />
-    <option name="LAST_COMMIT_MESSAGE" value=" seeder without ecg" />
+    <MESSAGE value="Live ECG" />
+    <MESSAGE value="Change brocasting server" />
+    <MESSAGE value="Broadcats New SAmple Event" />
+    <MESSAGE value="Fix Broadcast" />
+    <MESSAGE value="Debug samples" />
+    <MESSAGE value="Added new sensors" />
+    <MESSAGE value="Added new sensors seeder" />
+    <MESSAGE value="remote logging" />
+    <MESSAGE value="SAmple API Debug" />
+    <MESSAGE value="Sample Model $guarded= []" />
+    <MESSAGE value="Fix SAmple InsertOrFail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix SAmple InsertOrFail" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
