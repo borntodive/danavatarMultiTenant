@@ -11,6 +11,7 @@
 $id=$attributes->whereStartsWith('wire:model')->first();
 //$var=\Illuminate\Support\Str::random(6);
 $var=generateRandomString(6);
+
 @endphp
 <div class="{{$attributes->get('class')}}" x-data="{}" x-init="">
     @if ($label)
