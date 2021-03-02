@@ -5,6 +5,7 @@ use App\Http\Controllers\SampleController;
 use App\Models\Anamnesis;
 use App\Models\MedicalRecord;
 use App\Models\MedicalSpecialty;
+use App\Models\Tenant;
 use App\Models\User;
 use App\StaticData\Anamnesis as AnamnesisData;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,12 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified','role:super_admin
     Route::get('/centers', function () {
         return view('admin.centers.index');
     })->name('admin.centers');
+    Route::get('/centers/{tenant}/update', function (Tenant $tenant) {
+        return view('admin.centers.update',compact('tenant'));
+    })->name('admin.centers.update');
+    Route::get('/centers/{tenant}', function (Tenant $tenant) {
+        return view('admin.centers.show',compact('tenant'));
+    })->name('admin.centers.show');
 });
 //->domain('{account}.'.config('app.base_url'))
 Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {

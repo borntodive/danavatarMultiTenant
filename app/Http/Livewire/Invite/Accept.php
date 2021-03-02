@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Invite;
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Enums\UserGender;
 use App\Models\Invite;
+use App\Models\Team;
 use App\Models\User;
 use App\Scopes\TenantScope;
 use BenSampo\Enum\Rules\EnumValue;
@@ -110,6 +111,9 @@ class Accept extends Component
             );
         }
         $this->user->centers()->attach($this->invite->tenant_id);
+        if ($this->invite->is_admin) {
+            $this->user->syncRoles(['admin'],Team::where('name',$this->invite->center->slug)->first());
+        }
         $this->invite->accepted_ip=$this->ipAddress;
         $this->invite->accepted_at=now();
         $this->invite->save();

@@ -20,9 +20,7 @@
 
 @livewireScripts
 <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/imask"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
 
 </head>
@@ -112,6 +110,8 @@
                     </div>
                 </div>
             </nav>
+            <!-- This example requires Tailwind CSS v2.0+ -->
+
 
             <header class="bg-white shadow">
 
@@ -124,7 +124,23 @@
                 </div>
             </header>
             <main>
+                @impersonating
+                <div class="relative bg-indigo-600">
+                    <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+                        <div class="pr-16 sm:text-center sm:px-16">
+                            <p class="font-medium text-white">
+        <span>
+          Stai impersonando {{auth()->user()->name}}
+        </span>
+                                <span class="block sm:ml-2 sm:inline-block">
+          <a href="{{ route('impersonate.leave') }}" class="text-white font-bold underline"> Lascia <span aria-hidden="true">&rarr;</span></a>
+        </span>
+                            </p>
+                        </div>
 
+                    </div>
+                </div>
+                @endImpersonating
                 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                     {{$slot}}
                 </div>

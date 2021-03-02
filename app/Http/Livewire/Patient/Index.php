@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Patient;
 
 use App\Models\Invite;
+use App\Models\Tenant;
 use App\Models\User;
 use App\Scopes\TenantScope;
 use Illuminate\Support\Arr;
@@ -26,6 +27,8 @@ class Index extends Component
     public $selectedCity=[];
     public $searchedCity;
 
+    public ?Tenant $tenant = null;
+
     protected $rules = [
         'searchedCF'=>'required',
         ];
@@ -46,6 +49,7 @@ class Index extends Component
 
     public function mount() {
         $this->cities=InternationalCitiesStaticList::getList();
+
     }
     public function updated($propertyName)
     {
@@ -138,8 +142,11 @@ class Index extends Component
                 "dob"=>$user['dob'],
                 "email"=>$user['email'],
                 "codice_fiscale"=>$user['codice_fiscale'],
+                "tenant_id" => $this->tenant ? $this->tenant->id : null,
+                "is_admin"=>$this->tenant ? true : false,
             ]
         );
+
         $this->foundUser=null;
         $this->searched=false;
         $this->searchedCF=null;

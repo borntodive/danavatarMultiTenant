@@ -35,15 +35,12 @@ return [
     */
 
     'channels' => [
-        'rollbar' => [
-            'driver' => 'monolog',
-            'handler' => \Rollbar\Laravel\MonologHandler::class,
-            'access_token' => env('ROLLBAR_TOKEN'),
-            'level' => 'debug',
+        'larabug' => [
+            'driver' => 'larabug',
         ],
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['rollbar','single'],
+            'channels' => ['larabug','single'],
             'ignore_exceptions' => false,
         ],
 

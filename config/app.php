@@ -167,8 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Rollbar\Laravel\RollbarServiceProvider::class,
-
+        Lab404\Impersonate\ImpersonateServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -231,6 +230,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Zxcvbn' => Olssonm\Zxcvbn\Facades\Zxcvbn::class,
 
     ],
 

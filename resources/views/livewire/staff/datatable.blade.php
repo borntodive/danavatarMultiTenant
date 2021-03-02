@@ -55,7 +55,10 @@
                                 </div>
                             </div>
                         </td>
-
+                        @php
+                        if (!$user)
+                            dd($user);
+                        @endphp
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             <x-form.select id="role_{{$user->id}}"
                                            wire:change="updateRole({{$user->id}}, $event.target.value)"

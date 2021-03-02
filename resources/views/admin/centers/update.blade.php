@@ -1,6 +1,7 @@
 @php
 $breadcrumbs=[
     'Dashboard'=>route('admin.dashboard'),
+    'Centri'=>route('admin.centers'),
 ];
 /*$actions=[
     's1'=>[
@@ -11,7 +12,7 @@ $breadcrumbs=[
 
 <x-admin-layout>
     <x-slot name="header">
-        <x-layout.header :title="__('Centri')" :breadcrumbs="$breadcrumbs"/>
+        <x-layout.header :title="__('Centro').' - '.$tenant->name" :breadcrumbs="$breadcrumbs"/>
     </x-slot>
 
     <p>
@@ -20,7 +21,7 @@ $breadcrumbs=[
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:admin.centers.index/>
+            <livewire:admin.centers.update :center="$tenant"/>
         </div>
     </div>
 </x-admin-layout>

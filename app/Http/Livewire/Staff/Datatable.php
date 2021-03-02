@@ -6,6 +6,7 @@ use App\Models\MedicalSpecialty;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\Team;
+use App\Models\Tenant;
 use App\Models\User;
 use App\Traits\Datatables\WithSearch;
 use App\Traits\Datatables\WithSort;
@@ -24,6 +25,9 @@ class Datatable extends Component
     public $isSideVisible = false;
     public $userToBeUpdated=null;
     public $selectedSpeciality = [];
+    public $availableSpeciaties;
+
+    public ?Tenant $tenant = null;
 
     /**
      * Get the view / contents that represent the component.
@@ -34,6 +38,11 @@ class Datatable extends Component
     public function mount() {
         $this->sortField = 'firstname';
         $this->roles=Role::withoutSuperAdmin()->get();
+        if (!$this->tenant)
+            $this->availableSpeciaties=\App\Models\MedicalSpecialty::get();
+        else {
+            $this->availableSpeciaties=$this->tenant->medicalSpecilities;
+        }
 
     }
 
@@ -46,7 +55,10 @@ class Datatable extends Component
     }
 
     public function updateRole($userId, $roleId) {
-        $team=Team::currentTeam()->firstOrFail();
+        if (!$this->tenant)
+            $team=Team::currentTeam()->firstOrFail();
+        else
+            $team=Team::where('name', $this->tenant->slug)->firstOrFail();
         $user=User::findOrFail($userId);
         $role=Role::findOrFail(intval($roleId));
         $user->syncRoles([intval($roleId)], $team);
@@ -87,17 +99,28 @@ class Datatable extends Component
         $this->userToBeUpdated->specialties()->sync($this->selectedSpeciality);
 
     }
+
+    public function impersonate(User $userToImpersonate) {
+        auth()->user()->impersonate($userToImpersonate);
+        return $this->redirect($this->tenant->full_url.'/dashboard');
+    }
     public function render()
     {
+        $users=User::search($this->search)
+            ->when($this->tenant, function ($query) {
+                $query->whereHas('centers', function ($query) {
+                    $query->where('tenant_id', $this->tenant->id);
+                });
+            })
+            ->when($this->roleFilter, function ($query) {
+                $query->whereHas('roles', function ($query) {
+                    $query->where('id', $this->roleFilter);
+                });
+            })
+            ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+            ->paginate($this->perPage);
         return view('livewire.staff.datatable',[
-        'users' => User::search($this->search)
-        ->when($this->roleFilter, function ($query) {
-            $query->whereHas('roles', function ($query) {
-                $query->where('id', $this->roleFilter);
-            });
-        })
-        ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-        ->paginate($this->perPage),
+        'users' => $users,
         ]);
     }
 }

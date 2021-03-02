@@ -156,8 +156,10 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
-      <path value="$PROJECT_DIR$/vendor/rollbar/rollbar" />
-      <path value="$PROJECT_DIR$/vendor/rollbar/rollbar-laravel" />
+      <path value="$PROJECT_DIR$/vendor/larabug/larabug" />
+      <path value="$PROJECT_DIR$/vendor/olssonm/l5-zxcvbn" />
+      <path value="$PROJECT_DIR$/vendor/bjeavons/zxcvbn-php" />
+      <path value="$PROJECT_DIR$/vendor/lab404/laravel-impersonate" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

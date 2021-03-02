@@ -6,6 +6,7 @@ use App\Scopes\OnlyForDoctorScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -34,6 +35,7 @@ class Tenant extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'full_url'
     ];
 
     public function hasMedicalSpecilities($spec)
@@ -60,11 +62,27 @@ class Tenant extends Authenticatable
     }
 
     /**
+     * The users that belong to the club.
+     */
+    public function allMedicalSpecilities()
+    {
+        return $this->belongsToMany(MedicalSpecialty::class)->withoutGlobalScope(OnlyForDoctorScope::class);
+    }
+
+    /**
      * The ananmnesis that belong to the club.
      */
     public function anamnesis(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Anamnesis::class);
+    }
+
+    /**
+     * The ananmnesis that belong to the club.
+     */
+    public function medicalRecord(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(MedicalRecord::class);
     }
 
     protected function profilePhotoDisk()
@@ -86,7 +104,6 @@ class Tenant extends Authenticatable
                     'tenant-photos', ['disk' => $this->profilePhotoDisk()]
                 ),
             ])->save();
-
             if ($previous) {
                 Storage::disk($this->profilePhotoDisk())->delete($previous);
             }
@@ -97,6 +114,24 @@ class Tenant extends Authenticatable
     {
         return empty($query) ? static::query()
             : static::whereRaw("LOWER(name) LIKE ? ", ['%'.trim(strtolower($query)).'%']);
+    }
+
+    /**
+     * Get the URL to the user's profile photo.
+     *
+     * @return string
+     */
+    public function getFullUrlAttribute()
+    {
+        $protocol='';
+        if (request()->secure())
+        {
+            $protocol='https://';
+        }
+        else
+            $protocol='http://';
+        return $protocol.$this->url.'.'.config('app.base_url');
+
     }
 
 }

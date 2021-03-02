@@ -14,6 +14,7 @@ class CreateInvitesTable extends Migration
             $table->string('lastname');
             $table->string('email');
             $table->string('codice_fiscale');
+            $table->boolean('is_admin')->default(false);
             $table->date('dob');
             $table->string('token');
             $table->dateTime('expires_at');

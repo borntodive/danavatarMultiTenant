@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <ul class="divide-y divide-gray-200 overflow-y-auto">
-                        @foreach(\App\Models\MedicalSpecialty::get() as $specialty)
+                        @forelse($availableSpeciaties as $specialty)
                         <li class="px-6 py-5 relative">
                             <div class="group flex justify-between items-center">
                                 <a wire:click.prevent="toggleSpecialty({{$specialty->id}})" href="#" class="-m-1 p-1 block">
@@ -37,7 +37,9 @@
                                 </a>
                             </div>
                         </li>
-                        @endforeach
+                        @empty
+                            <p> No Specialità</p>
+                        @endforelse
                     </ul>
                 </div>
             </div>

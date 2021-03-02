@@ -30,4 +30,13 @@ trait ValidationRules
     }
 
 
+    public function getTenantRules($tenant) {
+        $tenantId=$tenant ? $tenant->id : null;
+        return [
+            'center.name' => ['required', 'string', 'max:255'],
+            'center.url' => ['required', 'string', 'max:255', Rule::unique('tenants','url')->ignore($tenantId)],
+            'photo' => ['nullable', 'image', 'max:1024']
+        ];
+    }
+
 }
