@@ -21,7 +21,6 @@ class MedicalSpecialtySeeder extends Seeder
             [
                 'name'=>'Medicina Subacquea',
                 'slug'=>'diving',
-                'only_center'=>true,
             ],
             [
                 'name'=>'Wearable',

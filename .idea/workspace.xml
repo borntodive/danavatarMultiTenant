@@ -2,42 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Centers/Show.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Centers/Update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/larabug.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/laravel-impersonate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/centers/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/centers/update.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/admin/create-user.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/admin/centers/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/admin/centers/update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/Fortify/PasswordValidationRules.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Fortify/PasswordValidationRules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Invite/Accept.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Invite/Accept.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Staff/Datatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Staff/Datatable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/ValidationRules.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/ValidationRules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/fortify.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/fortify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/logging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_09_144607_create_invites_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_09_144607_create_invites_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/centers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/centers/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/centers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/centers/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/patient/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/patient/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/staff/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/staff/datatable.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/staff/partials/edit-specialities.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/staff/partials/edit-specialities.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -341,14 +310,8 @@
       <workItem from="1614470679005" duration="3630000" />
       <workItem from="1614520239995" duration="2828000" />
       <workItem from="1614525874026" duration="3787000" />
-      <workItem from="1614590805116" duration="15950000" />
-    </task>
-    <task id="LOCAL-00022" summary="Medical Record Overview No Content">
-      <created>1612521228374</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1612521228374</updated>
+      <workItem from="1614590805116" duration="17351000" />
+      <workItem from="1614683095772" duration="1121000" />
     </task>
     <task id="LOCAL-00023" summary="Codice Fiscale + Invite system + new grid in Medical Record">
       <created>1612940484432</created>
@@ -686,7 +649,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614595914162</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Center in superAdmin integration">
+      <created>1614679630328</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1614679630328</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -706,7 +676,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Initial Weareable integration" />
     <MESSAGE value="Fix Sample Seeder" />
     <MESSAGE value="Wearable API Implememtation" />
     <MESSAGE value="Sensors name in italian" />
@@ -731,7 +700,8 @@
     <MESSAGE value="Fix SAmple InsertOrFail" />
     <MESSAGE value="Fix masked-date-input.blade" />
     <MESSAGE value="Fix livewire script loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix livewire script loading" />
+    <MESSAGE value="Center in superAdmin integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Center in superAdmin integration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
