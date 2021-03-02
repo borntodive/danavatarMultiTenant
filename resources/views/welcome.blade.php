@@ -250,7 +250,7 @@
 
                                     </a>
                                     <a href="#" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8">
-                                        <img class="text-center h-56" src="https://danavatar-public.s3.eu-central-1.amazonaws.com/images/dan-europe-logo.png"/>
+                                        <img class="text-center h-56" src="https://storage.danavatar.dev:9000/production/images/dan-europe-logo.png"/>
 
                                     </a>
 
