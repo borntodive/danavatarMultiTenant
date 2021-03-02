@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Patient/Index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Profile/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Profile/Edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/form/masked-date-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/masked-date-input.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/profile/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/profile/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,14 +312,7 @@
       <workItem from="1614525874026" duration="3787000" />
       <workItem from="1614590805116" duration="17351000" />
       <workItem from="1614683095772" duration="4966000" />
-      <workItem from="1614693201469" duration="1232000" />
-    </task>
-    <task id="LOCAL-00027" summary="Fix Data di nascita">
-      <created>1613123069787</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1613123069787</updated>
+      <workItem from="1614693201469" duration="2827000" />
     </task>
     <task id="LOCAL-00028" summary="Fix Data di nascita su accept invite">
       <created>1613123935336</created>
@@ -655,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614693158148</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="fix imask">
+      <created>1614694517448</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1614694517448</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,7 +677,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Landing Page + Personalized Logo" />
     <MESSAGE value="Personalized Logo in Login" />
     <MESSAGE value="Fix Menu + Pazienti" />
     <MESSAGE value="Seeder Samples and Merical Records to y40Utente" />
@@ -700,7 +701,8 @@
     <MESSAGE value="TruestProxies" />
     <MESSAGE value="URL::forceScheme('https')" />
     <MESSAGE value="Fix admin dashboard link" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix admin dashboard link" />
+    <MESSAGE value="fix imask" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix imask" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

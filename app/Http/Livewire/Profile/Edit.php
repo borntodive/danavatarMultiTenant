@@ -24,6 +24,7 @@ class Edit extends Component
     public function mount() {
         $this->state=Auth::user()->withoutRelations()->toArray();
         $this->user=Auth::user();
+        $this->state['dob']=$this->user['dob']->format('d-m-Y');
     }
 
 

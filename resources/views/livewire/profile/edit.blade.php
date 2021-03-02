@@ -75,8 +75,7 @@
                     </div>
                     <div class="col-span-12 sm:col-span-4">
                         <x-form.masked-date-input
-                            wire:model="state.dob"
-                            :value="($state['dob']) ? \Carbon\Carbon::create($state['dob'])->isoFormat('L') : null"
+                            wire:model.defer="state.dob"
                             :min="1900-01-01"
                             :max="now()->format('Y-m-d')"
                             label="Data di Nascita"

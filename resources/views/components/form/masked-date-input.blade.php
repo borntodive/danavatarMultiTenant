@@ -2,7 +2,7 @@
     'disabled' => false,
     'label'=>null,
     'type'=>'text',
-    'format'=>'DD/MM/YYYY',
+    'format'=>'DD-MM-YYYY',
     'min'=>null,
     'max'=>null,
     'value'=>null,
@@ -18,10 +18,12 @@ $var=generateRandomString(6);
         <x-form.label for="{{$attributes->whereStartsWith('wire:model')->first()}}"> {{ $label}} </x-form.label>
     @endif
     <div class="mt-1 relative rounded-md shadow-sm">
+
         <input
             @if ($disabled)
             disabled
             @endif
+            {{$attributes->whereStartsWith('wire:model')}}
             value="{{$value}}"
             type="{{$type}}"
             id="{{$id}}_masked"
@@ -34,11 +36,7 @@ $var=generateRandomString(6);
             @endif
 
         />
-        <input type="hidden"
-               id="{{$id}}"
-               x-on:input="$wire.set('{{$id}}', $event.target.value)"
-            {{$attributes->whereStartsWith('wire:model')}}
-        >
+
         @error($id)
         <div wire:key="error_svg_{{$id}}" class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
             <!-- Heroicon name: exclamation-circle -->
@@ -119,17 +117,6 @@ $var=generateRandomString(6);
                 to: 59,
                 placeholderChar:"m"
             }
-        }
-    }).on("complete", function (el) {
-        var momentDate=moment({{$var}}.value,'{{$format}}');
-
-        document.getElementById('{{$id}}').value = momentDate.format('YYYY-MM-DD');
-        document.getElementById('{{$id}}').dispatchEvent(new Event('input', { bubbles: true }))
-    }).on("accept", function (el) {
-        if (!{{$var}}.masked.isComplete)
-        {
-            document.getElementById('{{$id}}').value = '';
-            document.getElementById('{{$id}}').dispatchEvent(new Event('input', { bubbles: true }))
         }
     });
 

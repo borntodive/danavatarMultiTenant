@@ -6,6 +6,7 @@ use App\Models\Invite;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Scopes\TenantScope;
+use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -99,9 +100,10 @@ class Index extends Component
             'calcCF.birth_place' => 'required',
             'calcCF.dob'=>'required|date',
         ]);
+        $date=Carbon::createFromFormat('d-m-Y',$this->calcCF['dob']);
         $cf_string = CodiceFiscale::generate($this->calcCF['firstname'],
             $this->calcCF['lastname'],
-            $this->calcCF['dob'],
+            $date->format('Y-m-d'),
             $this->calcCF['birth_place'],
             $this->calcCF['gender'],
             new InternationalCitiesStaticList);
