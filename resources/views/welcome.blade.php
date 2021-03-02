@@ -113,7 +113,7 @@
                     </nav>
                     <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                         @auth
-                            <a href="{{route('dashboard')}}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
+                            <a href="{{session()->get('tenant') ? route('dashboard') : route('admin.dashboard')}}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
                                 Dashboard
                             </a>
                         @else
@@ -209,7 +209,7 @@
                             </div>
                             <div class="mt-6">
                                 @auth
-                                    <a href="{{route('dashboard')}}" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
+                                    <a href="{{session()->get('tenant') ? route('dashboard') : route('admin.dashboard')}}" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
                                         Dashboard
                                     </a>
                                 @else
