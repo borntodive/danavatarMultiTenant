@@ -57,7 +57,7 @@ $var=generateRandomString(6);
 
 
 <script>
-    var {{$var}}=IMask(document.getElementById('{{$id}}_masked'), {
+    var {{$var}}=window.IMask(document.getElementById('{{$id}}_masked'), {
         mask: Date,
         pattern: '{{$format}}',
         lazy: false,
