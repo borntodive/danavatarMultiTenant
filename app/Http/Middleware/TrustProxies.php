@@ -12,7 +12,11 @@ class TrustProxies extends Middleware
      *
      * @var array|string|null
      */
-    protected $proxies;
+    protected $proxies = [
+        'danavatar.eu',
+        'danavatar.dev',
+        '172.105.87.58',
+    ];
 
     /**
      * The headers that should be used to detect proxies.

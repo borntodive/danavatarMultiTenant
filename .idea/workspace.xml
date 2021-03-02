@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/MedicalSpecialtySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,14 +308,7 @@
       <workItem from="1614520239995" duration="2828000" />
       <workItem from="1614525874026" duration="3787000" />
       <workItem from="1614590805116" duration="17351000" />
-      <workItem from="1614683095772" duration="1121000" />
-    </task>
-    <task id="LOCAL-00023" summary="Codice Fiscale + Invite system + new grid in Medical Record">
-      <created>1612940484432</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1612940484432</updated>
+      <workItem from="1614683095772" duration="2408000" />
     </task>
     <task id="LOCAL-00024" summary="View Medical Record">
       <created>1612941949429</created>
@@ -656,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614679630328</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="New seeder + Minio storage">
+      <created>1614684319122</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1614684319122</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,7 +673,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix Sample Seeder" />
     <MESSAGE value="Wearable API Implememtation" />
     <MESSAGE value="Sensors name in italian" />
     <MESSAGE value="Ecg timepicker" />
@@ -701,7 +697,8 @@
     <MESSAGE value="Fix masked-date-input.blade" />
     <MESSAGE value="Fix livewire script loading" />
     <MESSAGE value="Center in superAdmin integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Center in superAdmin integration" />
+    <MESSAGE value="New seeder + Minio storage" />
+    <option name="LAST_COMMIT_MESSAGE" value="New seeder + Minio storage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
