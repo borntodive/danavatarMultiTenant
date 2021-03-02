@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,14 +307,7 @@
       <workItem from="1614520239995" duration="2828000" />
       <workItem from="1614525874026" duration="3787000" />
       <workItem from="1614590805116" duration="17351000" />
-      <workItem from="1614683095772" duration="2408000" />
-    </task>
-    <task id="LOCAL-00024" summary="View Medical Record">
-      <created>1612941949429</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1612941949429</updated>
+      <workItem from="1614683095772" duration="2635000" />
     </task>
     <task id="LOCAL-00025" summary="Admin Can Invite users">
       <created>1612955171201</created>
@@ -653,7 +645,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614684319122</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="TruestProxies">
+      <created>1614685541068</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1614685541068</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +672,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Wearable API Implememtation" />
     <MESSAGE value="Sensors name in italian" />
     <MESSAGE value="Ecg timepicker" />
     <MESSAGE value="Landing Page + Personalized Logo" />
@@ -698,7 +696,8 @@
     <MESSAGE value="Fix livewire script loading" />
     <MESSAGE value="Center in superAdmin integration" />
     <MESSAGE value="New seeder + Minio storage" />
-    <option name="LAST_COMMIT_MESSAGE" value="New seeder + Minio storage" />
+    <MESSAGE value="TruestProxies" />
+    <option name="LAST_COMMIT_MESSAGE" value="TruestProxies" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

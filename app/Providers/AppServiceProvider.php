@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App;
 use Blade;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +27,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::component('components.layout.breadcrumb');
+        if (App::environment('production', 'staging'))
+        {
+            URL::forceScheme('https');
+        }
     }
 }
