@@ -23,6 +23,7 @@ class Invite extends Model
      * @var array
      */
     protected $casts = [
+        'dob' => 'datetime',
         'expires_at' => 'datetime',
     ];
 

@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
+      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Invite.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Invite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,6 +192,7 @@
       <path value="$PROJECT_DIR$/vendor/olssonm/l5-zxcvbn" />
       <path value="$PROJECT_DIR$/vendor/bjeavons/zxcvbn-php" />
       <path value="$PROJECT_DIR$/vendor/lab404/laravel-impersonate" />
+      <path value="$PROJECT_DIR$/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n71kcTdmyAxn2ngrCHd5fMD9ht" />
@@ -309,14 +316,7 @@
       <workItem from="1614525874026" duration="3787000" />
       <workItem from="1614590805116" duration="17351000" />
       <workItem from="1614683095772" duration="4966000" />
-      <workItem from="1614693201469" duration="14856000" />
-    </task>
-    <task id="LOCAL-00031" summary="rlike fix 1">
-      <created>1613159092743</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1613159092743</updated>
+      <workItem from="1614693201469" duration="17331000" />
     </task>
     <task id="LOCAL-00032" summary="rlike fix 1">
       <created>1613166491162</created>
@@ -654,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614779414235</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="New landing page y40">
+      <created>1614782430236</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1614782430236</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +681,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Seeder Samples and Merical Records to y40Utente" />
     <MESSAGE value="ECG Comments" />
     <MESSAGE value="Ecg Calculation + seeder without ecg" />
     <MESSAGE value=" seeder without ecg" />
@@ -699,7 +705,8 @@
     <MESSAGE value="fix imask" />
     <MESSAGE value="DEV + Staging Banner" />
     <MESSAGE value="Invite mail template + steky top bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Invite mail template + steky top bar" />
+    <MESSAGE value="New landing page y40" />
+    <option name="LAST_COMMIT_MESSAGE" value="New landing page y40" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

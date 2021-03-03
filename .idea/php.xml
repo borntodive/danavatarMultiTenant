@@ -160,6 +160,7 @@
       <path value="$PROJECT_DIR$/vendor/olssonm/l5-zxcvbn" />
       <path value="$PROJECT_DIR$/vendor/bjeavons/zxcvbn-php" />
       <path value="$PROJECT_DIR$/vendor/lab404/laravel-impersonate" />
+      <path value="$PROJECT_DIR$/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

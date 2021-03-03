@@ -165,6 +165,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/olssonm/l5-zxcvbn" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bjeavons/zxcvbn-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/lab404/laravel-impersonate" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/predis/predis" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
