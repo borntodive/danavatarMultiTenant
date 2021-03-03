@@ -3,6 +3,7 @@
   <component name="LaravelIdeaPersonalSettings">
     <option name="generationStringOptionValues">
       <map>
+        <entry key="createMailable.shouldQueue" value="1" />
         <entry key="createModel.createMigration" value="1" />
         <entry key="createModel.createSeeder" value="1" />
         <entry key="createNotification.shouldQueue" value="1" />

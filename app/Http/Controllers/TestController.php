@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserInvited;
+use App\Models\Invite;
+use App\Notifications\InviteCreated;
 use Illuminate\Support\Facades\Http;
 
 class TestController extends Controller
@@ -38,5 +41,11 @@ class TestController extends Controller
             "X-Auth-Email"=>$email,
             "Content-Type"=>"application/json"
         ])->get($url2)->body());
+    }
+
+    public function sendInvite() {
+        $invite=Invite::find(2);
+        $invite->notify(new InviteCreated());
+        return new UserInvited($invite);
     }
 }

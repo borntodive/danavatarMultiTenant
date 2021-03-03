@@ -35,10 +35,9 @@ class InviteCreated extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', $notifiable->accept_url)
-            ->line('Thank you for using our application!');
+        return (new MailMessage)->view(
+            'emails.user-invited', ['invite' => $notifiable]
+        );
     }
 
     /**

@@ -95,6 +95,14 @@ class User extends Authenticatable
         return $this->hasMany(Anamnesis::class);
     }
 
+    /**
+     * The anamnesis that belong to the user.
+     */
+    public function medicalRecords()
+    {
+        return $this->hasMany(MedicalRecord::class);
+    }
+
     public function samples()
     {
         return $this->hasMany(Sample::class);
