@@ -46,9 +46,9 @@ class TestController extends Controller
     }
 
     public function sendInvite() {
-        $invite=Invite::find(2);
-        //$invite->notify(new InviteCreated());
-        //$invite = new UserInvited($invite);
+        $invite=Invite::find(1);
+        if ($invite)
+            $invite->notify(new InviteCreated());
         $user=User::find(2);
         $token='123';
         $user->sendPasswordResetNotification($token);

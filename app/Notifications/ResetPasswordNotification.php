@@ -42,7 +42,7 @@ class ResetPasswordNotification extends Notification implements ShouldQueue
             'email' => $notifiable->getEmailForPasswordReset(),
         ], false));
 
-        return (new MailMessage)->view(
+        return (new MailMessage)->subject('Password Reset')->view(
             'emails.password-reset', ['url' => $url]
         );
     }
