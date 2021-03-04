@@ -26,6 +26,18 @@
                                 />
                             </div>
                         </th>
+                        @if($modelName!='\App\Models\Anamnesis')
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    <button wire:click="sortBy('doctor')" class="bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Dottore</button>
+                                    <x-sort-icon
+                                        field="doctor"
+                                        :sortField="$sortField"
+                                        :sortAsc="$sortAsc"
+                                    />
+                                </div>
+                            </th>
+                        @endif
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 
                         </th>
@@ -41,6 +53,11 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $record->center->name}}
                             </td>
+                            @if($modelName!='\App\Models\Anamnesis')
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $record->doctor->name}}
+                                </td>
+                            @endif
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 @if($modelName=='\App\Models\Anamnesis')
                                     <a href="{{route('anamnesis.show', ['user' => $user->id,'anamnesis'=>$record->id])}}"  class="text-indigo-600 hover:text-indigo-900">Visualizza</a>

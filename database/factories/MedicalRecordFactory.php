@@ -21,6 +21,7 @@ class MedicalRecordFactory extends Factory
         return [
             'user_id' => UserFactory::class,
             'tenant_id' => TenantFactory::class,
+            'doctor_id' => UserFactory::class,
             'medical_specialty_id' => $specialties->random()->id,
             'data'=>json_encode([
                 $this->faker->randomElement(

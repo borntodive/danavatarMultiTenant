@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Mail\UserInvited;
 use App\Models\Invite;
+use App\Models\User;
 use App\Notifications\InviteCreated;
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Support\Facades\Http;
 
 class TestController extends Controller
@@ -45,7 +47,11 @@ class TestController extends Controller
 
     public function sendInvite() {
         $invite=Invite::find(2);
-        $invite->notify(new InviteCreated());
-        return new UserInvited($invite);
+        //$invite->notify(new InviteCreated());
+        //$invite = new UserInvited($invite);
+        $user=User::find(2);
+        $token='123';
+        $user->sendPasswordResetNotification($token);
     }
+
 }

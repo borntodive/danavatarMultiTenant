@@ -2,20 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Providers/HorizonServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/horizon.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/app-dark.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/img/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/img/horizon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/img/sprite.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Notifications/ResetPasswordNotification.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/password-reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Fortify/PasswordValidationRules.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Fortify/PasswordValidationRules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Show/Card.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Show/Card.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/MedicalRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MedicalRecord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/MedicalRecordFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/MedicalRecordFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_05_102641_create_medical_records_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_05_102641_create_medical_records_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/MedicalRecordSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/MedicalRecordSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/forgot-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/forgot-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/reset-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/reset-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/layout-blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/user-invited.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/user-invited.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/show/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/show/card.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,18 +227,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/centers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/emails" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\resources\views\emails" />
       <recent name="C:\apps\danavatar\resources\views\admin\centers" />
       <recent name="C:\apps\danavatar\resources\views\admin" />
       <recent name="C:\apps\danavatar\public\images\logos" />
       <recent name="C:\apps\danavatar\app" />
-      <recent name="C:\apps\danavatar\resources\views\wearable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/medicalRecord" />
@@ -323,14 +327,7 @@
       <workItem from="1614525874026" duration="3787000" />
       <workItem from="1614590805116" duration="17351000" />
       <workItem from="1614683095772" duration="4966000" />
-      <workItem from="1614693201469" duration="19684000" />
-    </task>
-    <task id="LOCAL-00033" summary="Profile on different page">
-      <created>1613395689318</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1613395689319</updated>
+      <workItem from="1614693201469" duration="25763000" />
     </task>
     <task id="LOCAL-00034" summary="progile on different">
       <created>1613475740936</created>
@@ -668,7 +665,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614788635752</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Horizon integration">
+      <created>1614791019863</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1614791019863</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +692,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Ecg Calculation + seeder without ecg" />
     <MESSAGE value=" seeder without ecg" />
     <MESSAGE value="Live ECG" />
     <MESSAGE value="Change brocasting server" />
@@ -713,7 +716,8 @@
     <MESSAGE value="Invite mail template + steky top bar" />
     <MESSAGE value="New landing page y40" />
     <MESSAGE value="Invete cast to datetime" />
-    <option name="LAST_COMMIT_MESSAGE" value="Invete cast to datetime" />
+    <MESSAGE value="Horizon integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Horizon integration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -12,6 +12,7 @@ class CreateMedicalRecordsTable extends Migration
             $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
+            $table->bigInteger('doctor_id')->nullable();
             $table->foreignId('medical_specialty_id')->constrained()->onDelete('cascade');
             $table->json('data')->nullable();
             $table->timestamps();

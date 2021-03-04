@@ -19,6 +19,7 @@ class MedicalRecordSeeder extends Seeder
         MedicalRecord::factory()->count(100)->create([
             'user_id'=>4,
             'tenant_id'=>1,
+            'doctor_id'=>2,
             //'medical_specialty_id'=>$specialties->random()->id
         ]);
     }

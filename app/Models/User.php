@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\ResetPasswordNotification;
 use App\Scopes\TenantScope;
 use App\Enums\UserGender;
 use App\Traits\BelongsToManyMedicalCenter;
@@ -103,6 +104,11 @@ class User extends Authenticatable
         return $this->hasMany(MedicalRecord::class);
     }
 
+    public function medicalRecordsAsDoctor()
+    {
+        return $this->hasMany(MedicalRecord::class,'doctor_id');
+    }
+
     public function samples()
     {
         return $this->hasMany(Sample::class);
@@ -152,4 +158,14 @@ class User extends Authenticatable
         return 'minio';
     }
 
+    public function getPasswordResetUrl() {
+        return route('invite.accept',['token'=>$this->token]);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        //$url = 'https://example.com/reset-password?token='.$token;
+
+        $this->notify(new ResetPasswordNotification($token));
+    }
 }
