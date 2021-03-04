@@ -35,12 +35,15 @@ return [
     */
 
     'channels' => [
+        'sentry' => [
+            'driver' => 'sentry',
+        ],
         'larabug' => [
             'driver' => 'larabug',
         ],
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['larabug','single'],
+            'channels' => ['sentry','single'],
             'ignore_exceptions' => false,
         ],
 

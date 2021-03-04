@@ -14,7 +14,6 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "lab404/laravel-impersonate": "^1.7",
-        "larabug/larabug": "^2.3",
         "laravel-lang/lang": "~8.0",
         "laravel/framework": "^8.12",
         "laravel/horizon": "^5.7",
@@ -29,6 +28,7 @@
         "pusher/pusher-php-server": "~4.0",
         "robertogallea/laravel-codicefiscale": "^1.4",
         "santigarcor/laratrust": "^6.3",
+        "sentry/sentry-laravel": "^2.3",
         "spatie/data-transfer-object": "^2.6"
     },
     "require-dev": {
