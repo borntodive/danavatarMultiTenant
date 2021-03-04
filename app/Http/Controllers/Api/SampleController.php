@@ -40,6 +40,7 @@ class SampleController extends Controller
                 "userId"=>'required|integer|exists:users,id',
                 "measureType"=>'required|string|exists:sensors,name',
             ]);
+            $ecgEvent=[];
             if ($validator->fails())
             {
                 $status=422;
@@ -75,7 +76,8 @@ class SampleController extends Controller
                             $d['y']=round((float)$val * 1000, 0);
 
                             $userId=$sample['userId'];
-                            event(new NewEcgData($userId, json_encode($d)));
+                            $ecgEvent[]=$d;
+
                         }
                         $time=$time->addMicroseconds(floor($delta*1000));
                     }
@@ -90,7 +92,9 @@ class SampleController extends Controller
 
 
                 }
-
+                if ($ecgEvent) {
+                    event(new NewEcgData($userId, json_encode($ecgEvent)));
+                }
                 $currentDate=Carbon::createFromTimestamp($sample['date'])->previous('00:00');
                 if (!isset($insertedSensors[$currentDate->format('Y-m-d H:i:s.u')]) || !in_array($sample['sensor_id'], $insertedSensors[$currentDate->format('Y-m-d H:i:s.u')])){
                     $insertedSensors[$currentDate->format('Y-m-d H:i:s.u')][]=$sample['sensor_id'];
