@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SampleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/InviteCreated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/InviteCreated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/ResetPasswordNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/ResetPasswordNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/NewEcgData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/NewEcgData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_12_170707_create_api_tokens_table.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,6 +251,13 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SQLScriptSettings">
+    <option name="matrix">
+      <map>
+        <entry key="POSTGRES.CreateComplete" value="Owner=1" />
+      </map>
+    </option>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -327,28 +332,8 @@
       <workItem from="1614525874026" duration="3787000" />
       <workItem from="1614590805116" duration="17351000" />
       <workItem from="1614683095772" duration="4966000" />
-      <workItem from="1614693201469" duration="28829000" />
-    </task>
-    <task id="LOCAL-00036" summary="Initial Weareable integration">
-      <created>1613606242466</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1613606242466</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Initial Weareable integration">
-      <created>1613606413847</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1613606413847</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Fix Sample Seeder">
-      <created>1613608054808</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1613608054809</updated>
+      <workItem from="1614693201469" duration="30744000" />
+      <workItem from="1614880115430" duration="498000" />
     </task>
     <task id="LOCAL-00039" summary="Wearable API Implememtation">
       <created>1613647481039</created>
@@ -672,7 +657,28 @@
       <option name="project" value="LOCAL" />
       <updated>1614855234855</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="fix max_execution time sample api">
+      <created>1614863626375</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1614863626375</updated>
+    </task>
+    <task id="LOCAL-00086" summary="samplke seeder on user_id 2">
+      <created>1614865366940</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1614865366940</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Fix sample api 1">
+      <created>1614880577111</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1614880577111</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,9 +698,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Change brocasting server" />
-    <MESSAGE value="Broadcats New SAmple Event" />
-    <MESSAGE value="Fix Broadcast" />
     <MESSAGE value="Debug samples" />
     <MESSAGE value="Added new sensors" />
     <MESSAGE value="Added new sensors seeder" />
@@ -717,7 +720,10 @@
     <MESSAGE value="Horizon integration" />
     <MESSAGE value="Reset password + doctor in medical record" />
     <MESSAGE value="sentry integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="sentry integration" />
+    <MESSAGE value="fix max_execution time sample api" />
+    <MESSAGE value="samplke seeder on user_id 2" />
+    <MESSAGE value="Fix sample api 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix sample api 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
