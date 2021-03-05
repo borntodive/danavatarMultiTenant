@@ -72,7 +72,7 @@ class SampleController extends Controller
 
 
                         if ($sensor->name=='Ecg') {
-                            $d['x']=$time->getPreciseTimestamp();
+                            $d['x']=$time->getPreciseTimestamp()/1000;
                             $d['y']=round((float)$val * 1000, 0);
 
                             $userId=$sample['userId'];
