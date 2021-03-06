@@ -49,7 +49,7 @@
                             Aggiungi Sport
                         </button>
                     </div>
-                    @foreach($this->state['general']['sports'] as $idx=>$sport)
+                    @foreach($this->state['anamnesis']['general']['sports'] as $idx=>$sport)
                         <div class="border border-gray-500 rounded-md mb-3 p-5">
                             <div class="grid grid-cols-12 gap-8">
                                 <div class="col-span-12 sm:col-span-6 ">
@@ -211,7 +211,7 @@
                     <x-form.text-area  wire:model="state.anamnesis.general.allergy" label="{{ __('Indicare eventuali intolleranze alimentari o allergie diagnosticate.') }}"/>
                 </div>
                 <div class="col-span-12">
-                    <x-form.text-area  wire:model="state.anamnesis.general.allergy" label="{{ __('Assumi integratori alimentari? quali?') }}"/>
+                    <x-form.text-area  wire:model="state.anamnesis.general.supplement" label="{{ __('Assumi integratori alimentari? quali?') }}"/>
                 </div>
 
             </div>
