@@ -15,6 +15,6 @@
         <x-medical-record.header :user="$user"/>
     </div>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-        @include('medicalRecord.view.'.$medicalRecord->specialty->slug)
+        @livewire('medical-record.'.$specialty->slug.'.view',compact('user','specialty','medicalRecord'))
     </div>
 </x-app-layout>

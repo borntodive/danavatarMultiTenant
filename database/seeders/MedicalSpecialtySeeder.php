@@ -51,10 +51,14 @@ class MedicalSpecialtySeeder extends Seeder
                 'name'=>'Medicina Iperbarica',
                 'slug'=>'hyperbaric',
             ],
+            [
+                'name'=>'Nutrizionista',
+                'slug'=>'nutritionist',
+            ],
 
         ];
         foreach ($specialties as $specialty) {
-            $ms=MedicalSpecialty::create($specialty);
+            $ms=MedicalSpecialty::firstOrCreate($specialty);
             $ms->centers()->attach($y40);
         }
 

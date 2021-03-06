@@ -73,8 +73,6 @@
             </div>
         </div>
         <div class="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 pt-6 gap-8">
-            <!-- Remove class [ h-24 ] when adding a card block -->
-            <!-- Remove class [ border-gray-300 border-dashed border-2 ] to remove dotted border -->
 
             @foreach(array_chunk($medications, ceil(count($medications)/2),true) as $chunk)
             <div class="grid grid-cols-12 gap-4">

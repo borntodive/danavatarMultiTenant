@@ -63,7 +63,11 @@
                                     <a href="{{route('anamnesis.show', ['user' => $user->id,'anamnesis'=>$record->id])}}"  class="text-indigo-600 hover:text-indigo-900">Visualizza</a>
                                 @else
                                     <a href="{{route('medical-record.view', ['user' => $user->id,'medicalRecord'=>$record->id])}}"   class="text-indigo-600 hover:text-indigo-900">Visualizza</a>
+                                    @if(auth()->user()->id==$record->doctor_id)
+                                        <a href="{{route('medical_record.edit', ['user' => $user->id,'medicalRecord'=>$record->id])}}"   class="text-indigo-600 hover:text-indigo-900">Modifica</a>
+                                    @endif
                                 @endif
+
 
                             </td>
                         </tr>

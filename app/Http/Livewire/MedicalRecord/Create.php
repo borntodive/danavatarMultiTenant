@@ -13,12 +13,29 @@ class Create extends Component
     public $state = [];
     public User $user;
     public MedicalSpecialty $specialty;
-
-    protected $rules = [
-        'state.height' => 'required|numeric',
-        'state.weight' => 'required|numeric',
+    private $baseSport=[
+        'name'=>null,
+        'level'=>null,
+        'time'=>null,
+        'hrs'=>[],
     ];
 
+    protected $rules = [
+        'state.general.height' => 'required|numeric',
+        'state.general.weight' => 'required|numeric',
+    ];
+
+    public function mount() {
+        $this->state['general']['sports'][0]=$this->baseSport;
+    }
+
+    public function addSport() {
+        $this->state['general']['sports'][]=$this->baseSport;
+    }
+    public function deleteSport($idx) {
+        unset($this->state['general']['sports'][$idx]);
+        $this->state['general']['sports']=array_values($this->state['general']['sports']);
+    }
     public function createMedicalRecord()
     {
         $validatedData = $this->validate();
