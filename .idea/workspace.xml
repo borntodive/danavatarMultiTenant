@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/nutritionist/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/nutritionist/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/Edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/View.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/it/nutrizionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/it/nutrizionist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/nutritionist/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/nutritionist/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,14 +336,7 @@
       <workItem from="1614590805116" duration="17351000" />
       <workItem from="1614683095772" duration="4966000" />
       <workItem from="1614693201469" duration="30744000" />
-      <workItem from="1614880115430" duration="19246000" />
-    </task>
-    <task id="LOCAL-00042" summary="Landing Page + Personalized Logo">
-      <created>1614159535886</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1614159535887</updated>
+      <workItem from="1614880115430" duration="23262000" />
     </task>
     <task id="LOCAL-00043" summary="Personalized Logo in Login">
       <created>1614159737693</created>
@@ -678,7 +674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615043024541</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Fix Nutritionist Medical Record Edit">
+      <created>1615046044110</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1615046044110</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +701,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="remote logging" />
     <MESSAGE value="SAmple API Debug" />
     <MESSAGE value="Sample Model $guarded= []" />
     <MESSAGE value="Fix SAmple InsertOrFail" />
@@ -723,7 +725,8 @@
     <MESSAGE value="Should broadcastnow ecg event" />
     <MESSAGE value="millisecond in ecg event" />
     <MESSAGE value="Nutritionist Medical Record Edit + initial view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nutritionist Medical Record Edit + initial view" />
+    <MESSAGE value="Fix Nutritionist Medical Record Edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Nutritionist Medical Record Edit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -732,6 +735,11 @@
           <url>file://$PROJECT_DIR$/resources/views/livewire/medical-record/datatable.blade.php</url>
           <line>6</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/livewire/medical-record/nutritionist/view.blade.php</url>
+          <line>150</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

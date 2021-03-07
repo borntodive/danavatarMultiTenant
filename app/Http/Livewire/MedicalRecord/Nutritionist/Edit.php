@@ -32,7 +32,11 @@ class Edit extends Component
         $this->parentMount();
         $this->medicalConditions=Nutritionist::$medicalConditions;
         $this->medications=Nutritionist::$medications;
-        $this->doSports=false;
+        if (data_get($this->medicalRecord->data,'anamnesis.general.sports',false))
+            $this->doSports=true;
+        else
+            $this->doSports=false;
+
     }
 
     public function updatedDoSports($value){
