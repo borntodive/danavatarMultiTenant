@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2227ada0-3495-49e8-badd-81239dc6ac3c" name="rni">
+        <fileTransfer rootFolder="/home/ploi" accessType="SFTP" host="172.104.226.114" port="22" sshConfigId="0486d916-71cb-46a0-956d-8f0012f3e422" sshConfig="ploi@172.104.226.114:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
