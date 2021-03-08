@@ -47,7 +47,7 @@
                         </div>
                         <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                             <h1 class="text-center text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">
-                                <span class="block text-white">Y-40 MEDICAL CLINIC</span>
+                                <span class="block text-white">Y-40 MEDICAL CLINIC NEW</span>
                                 <span class="block text-indigo-200">Laboratorio innovativo tra alta tecnologia e ricerca</span>
                             </h1>
                             <p class="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
