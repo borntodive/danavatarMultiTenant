@@ -9,7 +9,7 @@ class CreateSamplesHypertable extends Migration
     public function up()
     {
         DB::statement('CREATE EXTENSION IF NOT EXISTS timescaledb;');
-        if (app()->environment('local', 'staging'))
+        if (app()->environment('local'))
             DB::statement("SELECT create_hypertable('samples', 'time');");
         else {
             DB::statement("SELECT create_distributed_hypertable('samples', 'time', 'sensor_id');");
