@@ -1,5 +1,5 @@
 <x-card class="mt-3" title="{{ __('Dati attività subacquea') }}">
-    <div class="xl:w-1/3 lg:w-1/3 w-full flex flex-col mb-6 lg:border-r-2 lg:border-b-0 border-b-2 border-gray-100 pb-5">
+    <div class="xl:w-1/2 lg:w-1/2 w-full flex flex-col mb-6 lg:border-r-2 lg:border-b-0 border-b-2 border-gray-100 pb-5">
         <div class=" flex flex-col text-center">
             <span>Scuba</span>
             <div class="w-full flex justify-between px-5 mt-5">
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div class="xl:w-1/3 lg:w-1/3 w-full flex flex-col mb-6 lg:border-r-2 lg:border-b-0 border-b-2 border-gray-100 pb-5">
+    <div class="xl:w-1/2 lg:w-1/2 w-full flex flex-col mb-6 lg:border-r-2 lg:border-b-0 border-b-2 border-gray-100 pb-5">
         <div class="flex flex-col text-center">
             <span>Apnea</span>
             <div class="w-full flex justify-between px-5 mt-5">
@@ -21,58 +21,93 @@
             </div>
         </div>
     </div>
-    <div class="xl:w-1/3 lg:w-1/3 w-full flex flex-col mb-6 lg:border-b-0 border-b-2 border-gray-100 pb-5">
-        <div class="flex flex-col text-center">
-            <span>Nuoto</span>
-            <div class="w-full flex justify-between px-5 mt-5">
-                <x-show.label>Amatoriale</x-show.label>
-                <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.swimming.amateur',false)"/>
-                <x-show.label>Agonistico</x-show.label>
-                <x-check-or-cross :condition="data_get($anamnesis->data,'divingState.swimming.agonistic',false)"/>
-            </div>
-        </div>
-    </div>
-    <div class="mt-6"></div>
-    <dl class="w-full grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-        <div class="sm:col-span-1">
-            <x-show.label>{{ __('Modello computer subacqueo') }}</x-show.label>
-            <x-show.value> {{data_get($anamnesis->data,'divingState.divingComputer','')}}</x-show.value>
-        </div>
-        <div class="sm:col-span-1">
-            <x-show.label>{{ __('Totale immersioni') }}</x-show.label>
-            <x-show.value> {{data_get($anamnesis->data,'divingState.totalDives','')}}</x-show.value>
-        </div>
-        <div class="sm:col-span-1">
-            <x-show.label>Immersioni effettuate annualmente</x-show.label>
-            <x-show.value> {{data_get($anamnesis->data,'divingState.totalYearlyDives','')}}</x-show.value>
-        </div>
-        <div class="sm:col-span-1">
-            <x-show.label>Come definiresti le tue capacità sub?</x-show.label>
-            <x-show.value> {{data_get($anamnesis->data,'divingState.divingAbility','')}}</x-show.value>
-        </div>
-        <div class="sm:col-span-1">
-            <x-show.label>In quale nazione effettui le immersioni?</x-show.label>
-            <x-show.value> {{data_get($anamnesis->data,'divingState.divingCountry','')}}</x-show.value>
-        </div>
-        <div class="sm:col-span-1">
-            <x-show.label>In quale nazione effettui maggiormente le immersioni?</x-show.label>
-            <x-show.value> {{data_get($anamnesis->data,'divingState.divingCountryMore','')}}</x-show.value>
-        </div>
-        <div class="sm:col-span-1">
-            <x-show.label>Quale è il massimo livello di brevetto subacqueo che possiedi?</x-show.label>
-            <x-show.value> {{data_get($anamnesis->data,'divingState.divingLevel','')}}</x-show.value>
-        </div>
-        @if(isset($divingState['divingLevel']) && ($divingState['divingLevel'] =='dm' || $divingState['divingLevel']=='instructor'))
+    @if(data_get($anamnesis->data,'divingState.scuba.recreative',false) || data_get($anamnesis->data,'divingState.scuba.tecnical',false))
+        <div class="mt-6"></div>
+        <dl class="w-full grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
             <div class="sm:col-span-1">
-                <x-show.label>Se sei una guida/istruttore dove eserciti?</x-show.label>
-                <x-show.value> {{data_get($anamnesis->data,'divingState.teachingCountry','')}}</x-show.value>
+                <x-show.label>{{ __('Modello computer subacqueo') }}</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.divingComputer','')}}</x-show.value>
             </div>
-        @endif
-        <div class="sm:col-span-1">
-            <x-show.label>La subacquea è la tua professione?</x-show.label>
-            <x-show.value> {{data_get($anamnesis->data,'divingState.divingProfession','')}}</x-show.value>
-        </div>
-    </dl>
+            <div class="sm:col-span-1">
+                <x-show.label>{{ __('Totale immersioni') }}</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.totalDives','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>Immersioni effettuate annualmente</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.totalYearlyDives','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>Come definiresti le tue capacità sub?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.divingAbility','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>In quale nazione effettui le immersioni?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.divingCountry','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>In quale nazione effettui maggiormente le immersioni?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.divingCountryMore','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>Quale è il massimo livello di brevetto subacqueo che possiedi?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.divingLevel','')}}</x-show.value>
+            </div>
+            @if(isset($divingState['scuba']['divingLevel']) && ($divingState['scuba']['divingLevel'] =='dm' || $divingState['scuba']['divingLevel']=='instructor'))
+                <div class="sm:col-span-1">
+                    <x-show.label>Se sei una guida/istruttore dove eserciti?</x-show.label>
+                    <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.teachingCountry','')}}</x-show.value>
+                </div>
+            @endif
+            <div class="sm:col-span-1">
+                <x-show.label>La subacquea è la tua professione?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.scuba.divingProfession','')}}</x-show.value>
+            </div>
+        </dl>
+    @endif
+    @if(data_get($anamnesis->data,'divingState.apnea.freedive',false) || data_get($anamnesis->data,'divingState.apnea.phishing',false))
+        <div class="mt-6"></div>
+        <dl class="w-full grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+            <div class="sm:col-span-1">
+                <x-show.label>{{ __('Modello computer subacqueo') }}</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.divingComputer','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>{{ __('Totale immersioni') }}</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.totalDives','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>Immersioni effettuate annualmente</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.totalYearlyDives','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>Come definiresti le tue capacità sub?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.divingAbility','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>In quale nazione effettui le immersioni?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.divingCountry','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>In quale nazione effettui maggiormente le immersioni?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.divingCountryMore','')}}</x-show.value>
+            </div>
+            <div class="sm:col-span-1">
+                <x-show.label>Quale è il massimo livello di brevetto subacqueo che possiedi?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.divingLevel','')}}</x-show.value>
+            </div>
+            @if(isset($divingState['apnea']['divingLevel']) && ($divingState['apnea']['divingLevel'] =='dm' || $divingState['apnea']['divingLevel']=='instructor'))
+                <div class="sm:col-span-1">
+                    <x-show.label>Se sei una guida/istruttore dove eserciti?</x-show.label>
+                    <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.teachingCountry','')}}</x-show.value>
+                </div>
+            @endif
+            <div class="sm:col-span-1">
+                <x-show.label>La subacquea è la tua professione?</x-show.label>
+                <x-show.value> {{data_get($anamnesis->data,'divingState.apnea.divingProfession','')}}</x-show.value>
+            </div>
+        </dl>
+    @endif
+
 </x-card>
 @if(data_get($anamnesis->data,'divingState.scuba.recreative',false) || data_get($anamnesis->data,'divingState.scuba.tecnical',false) || data_get($anamnesis->data,'divingState.apnea.freedive',false) || data_get($anamnesis->data,'divingState.apnea.phishing',false))
 <x-card class="mt-3" title="{{ __('Dati anamnestici subacquei') }}">

@@ -8,6 +8,7 @@
                            autocomplete="weight"/>
     </div>
 </x-card>
+
 <x-card class="mt-3" title="{{ __('Dati anamnestici') }}">
     <div class="w-full">
         <div class="relative mb-5">
@@ -98,7 +99,45 @@
         </div>
     </div>
 </x-card>
+<x-card class="mt-3" title="{{ __('Dati Sportivi') }}">
+    <div class="grid grid-cols-12 gap-8">
+        <div class="col-span-12 sm:col-span-6 ">
+            <x-form.toggle entangle="doSports" label="Pratichi attività sportiva?"/>
+        </div>
+    </div>
+    @if($doSports)
+        <div>
+            <div class="px-4 py-3 text-right sm:px-6">
+                <button type="button" wire:click.prevent="addSport" class="bg-gray-800 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                    Aggiungi Sport
+                </button>
+            </div>
+        </div>
+        <div class="mt-3 grid grid-cols-2 gap-8">
+            @foreach($this->state['sports'] as $idx=>$sport)
+                <div class="col-span-2 sm:col-span-1 border border-gray-500 rounded-md mb-3 p-5 mr-2">
+                    <div class="grid grid-cols-4 gap-8 ">
+                        <div class="col-span-4 sm:col-span-2 ">
+                            <x-form.text-input type="text" wire:model="state.sports.{{$loop->index}}.name" label="{{ __('Sport praticato') }}"/>
+                        </div>
+                        <div class="col-span-4 sm:col-span-2 flex items-center">
+                            <div class="md:w-full flex flex-row mt-3">
+                                <div class="w-1/2"><input wire:model="state.sports.{{$loop->index}}.level" type="radio" value="amateur" /> Amatoriale</div>
+                                <div class="w-1/2"><input wire:model="state.sports.{{$loop->index}}.level" type="radio" value="agonistic" /> Agonistico</div>
+                            </div>
+                        </div>
+                        <div class="col-span-4 text-right">
+                            <button type="button" wire:click.prevent="deleteSport({{$idx}})" class="bg-red-800 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900">
+                                Cancella
+                            </button>
+                        </div>
+                    </div>
 
+                </div>
+            @endforeach
+        </div>
+    @endif
+</x-card>
 
 
 

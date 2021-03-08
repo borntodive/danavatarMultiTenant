@@ -240,6 +240,7 @@
       <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/f4" />
       <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/fa" />
       <excludeFolder url="file://$MODULE_DIR$/vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources/da32db38-e0d9-438b-ae52-ffdf5c0b46b4" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

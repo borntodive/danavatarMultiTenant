@@ -20,6 +20,13 @@ class Create extends Component
 
     public $medications = [];
 
+    public $doSports;
+
+    private $baseSport=[
+        'name'=>null,
+        'level'=>null,
+    ];
+
     protected $rules = [
         'state.height' => 'required|numeric',
         'state.weight' => 'required|numeric',
@@ -45,10 +52,26 @@ class Create extends Component
         return $rules;
     }
 
+    public function updatedDoSports($value){
+        if ($this->doSports) {
+            $this->state['sports'][]=$this->baseSport;
+        }
+        else
+            $this->state['sports']=[];
+    }
+    public function addSport() {
+        $this->state['sports'][]=$this->baseSport;
+    }
+    public function deleteSport($idx) {
+        unset($this->state['sports'][$idx]);
+        $this->state['sports']=array_values($this->state['sports']);
+    }
+
     public function mount()
     {
         $this->medicalConditions=AnamnesisData::medicalConditions();
         $this->medications=AnamnesisData::medications();
+        $this->doSports=false;
         //$anamnesis = auth()->user()->anamnesis()->orderBy('created_at', 'desc')->first();
         //$anamnesis=null;
 
@@ -57,8 +80,6 @@ class Create extends Component
         $this->divingState['scuba']['tecnical']=false;
         $this->divingState['apnea']['freedive']=false;
         $this->divingState['apnea']['phishing']=false;
-        $this->divingState['swimming']['amateur']=false;
-        $this->divingState['swimming']['agonistic']=false;
         $this->divingState['anamnesis']['scuba']['barotrauma']=false;
         $this->divingState['anamnesis']['scuba']['narcosi']=false;
         $this->divingState['anamnesis']['scuba']['dcs']=false;

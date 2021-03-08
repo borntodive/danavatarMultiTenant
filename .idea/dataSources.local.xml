@@ -24,5 +24,25 @@
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
       <schema-mapping />
     </data-source>
+    <data-source name="DANR&amp;I" uuid="da32db38-e0d9-438b-ae52-ffdf5c0b46b4">
+      <database-info product="PostgreSQL" version="12.6 (Ubuntu 12.6-0ubuntu0.20.04.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="12.6" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>ploi</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database">
+            <name qname="danavatar" />
+            <name qname="danavatar_staging" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <ssh-config-id>f80d4a7f-f2db-446e-bcde-bfda99dd83ae</ssh-config-id>
+      </ssh-properties>
+    </data-source>
   </component>
 </project>

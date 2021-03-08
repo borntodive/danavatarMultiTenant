@@ -14,6 +14,7 @@ class Edit extends Component
     }
 
     public $doSports;
+
     private $baseSport=[
         'name'=>null,
         'level'=>null,
