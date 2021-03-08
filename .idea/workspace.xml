@@ -2,11 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5/storage_v2/_src_/schema/dsg.uIUBAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5/storage_v2/_src_/schema/dsg.uIUBAA.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/avatar_laravel.02lXBw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/avatar_laravel.02lXBw/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/avatar_laravel.02lXBw/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/avatar_laravel.02lXBw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/avatar_laravel.02lXBw/schema/public.abK9xQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/danavatar.KpQtrg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/danavatar.KpQtrg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/danavatar.KpQtrg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/postgres.edMnLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/_timescaledb_cache.n7Pj9Q.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/_timescaledb_catalog.9tCxDA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/_timescaledb_config.xQJdxw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/_timescaledb_internal.gHG7qA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/_timescaledb_internal.gHG7qA.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/information_schema.FNRwLQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/public.abK9xQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/timescaledb_information.yCrH-Q.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/staging_danavatar.JtlLvg/schema/timescaledb_information.yCrH-Q.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/postgres.edMnLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2021_08_41_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2021_08_41__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/Edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/View.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/it/nutrizionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/it/nutrizionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/nutritionist/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/nutritionist/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +67,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="production" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -692,7 +746,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

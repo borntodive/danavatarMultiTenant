@@ -81,6 +81,7 @@ Route::middleware(['auth:sanctum', 'verified','subdomain'])->group(function () {
             return view('medicalRecord.index');
         })->name('medical_record.index');
 
+
         Route::get('/medical-record/{user}/{medicalRecord}', function (User $user, MedicalRecord $medicalRecord) {
             $specialty=$medicalRecord->specialty;
             if (view()->exists('livewire.medical-record.' . $medicalRecord->specialty->slug . '.view'))
