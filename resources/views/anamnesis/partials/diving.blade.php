@@ -1,4 +1,4 @@
-<x-card class="mt-3" title="{{ __('Dati attività subacquea') }}">
+<x-card class="mt-3" title="{{ __('Dati attività subacquee') }}">
     <div
         class="xl:w-1/2 lg:w-1/2 w-full flex flex-col mb-6 lg:border-r-2 lg:border-b-0 border-b-2 border-gray-100 pb-5">
         <div class=" flex flex-col text-center">

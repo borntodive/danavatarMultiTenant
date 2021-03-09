@@ -4,6 +4,15 @@
     'divingLevel'=>null,
     'anamnesis'=>null
 ])
+@php
+    $profession='La subacquea Ricreativa';
+    if ($section=='scuba.tecnical')
+        $profession='La subacquea Tecnica';
+    elseif ($section=='apnea.freedive')
+        $profession='L\'apnea';
+    elseif ($section=='apnea.phishing')
+        $profession='La pesca';
+@endphp
 <div class="relative mt-6 mb-5 w-full">
     <div class="absolute inset-0 flex items-center" aria-hidden="true">
         <div class="w-full border-t border-gray-300"></div>
@@ -51,7 +60,7 @@
         </div>
     @endif
     <div class="sm:col-span-1">
-        <x-show.label>La subacquea è la tua professione?</x-show.label>
+        <x-show.label>{{$profession}}è la tua professione?</x-show.label>
         <x-show.value> {{data_get($anamnesis->data,'diving.'.$section.'.divingProfession','')}}</x-show.value>
     </div>
 </dl>
