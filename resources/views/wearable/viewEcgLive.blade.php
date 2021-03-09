@@ -93,7 +93,7 @@
                 type: 'all',
                 text: "@lang('samples.all')",
             }],
-            //selected: 1
+            selected: 2
         }
         ecgChart = Highcharts.stockChart('chart_ecg', {
             chart: {
@@ -136,6 +136,8 @@
             ecgData= ecgData.concat(points);
             ecgChart.series[0].setData(ecgData);
             const series = ecgChart.series[0];
+
+            ecgChart.rangeSelector.buttons[2].element.onclick();
             // if (first) {
             //    newStart = series.xData[ (series.xData.length-400) ],
             //    newEnd = series.xData[ (series.xData.length-1) ];
