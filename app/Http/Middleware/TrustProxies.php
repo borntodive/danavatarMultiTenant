@@ -16,6 +16,7 @@ class TrustProxies extends Middleware
         'danavatar.eu',
         'danavatar.dev',
         '172.105.87.58',
+        '*'
     ];
 
     /**
