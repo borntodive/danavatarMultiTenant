@@ -15,7 +15,7 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="database" qname="danavatar">
-            <node kind="schema" qname="public" />
+            <node kind="schema" qname="@" />
           </node>
         </introspection-scope>
       </schema-mapping>

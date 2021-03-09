@@ -790,7 +790,7 @@ false posixrules
     <database id="2" parent="1" name="danavatar">
       <ObjectId>16393</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>11606</IntrospectionStateNumber>
+      <IntrospectionStateNumber>11753</IntrospectionStateNumber>
       <Relations>sequence|table|26482|26484|1
 sequence|table|26490|26492|1
 sequence|table|26512|26514|1
@@ -936,7 +936,7 @@ UC/10
 </Acl>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>11607</IntrospectionStateNumber>
+      <IntrospectionStateNumber>11754</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <schema id="23" parent="2" name="timescaledb_information">
