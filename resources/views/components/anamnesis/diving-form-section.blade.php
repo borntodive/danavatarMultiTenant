@@ -3,7 +3,15 @@
     'label'=>'',
     'divingLevel'=>null
 ])
-
+@php
+$profession='La subacquea Ricreativa';
+if ($section=='scuba.tecnical')
+    $profession='La subacquea Tecnica';
+elseif ($section=='apnea.freedive')
+    $profession='L\'apnea';
+elseif ($section=='apnea.phishing')
+    $profession='La pesca';
+@endphp
 <div class="mt-6"></div>
 <div class="relative mb-5 w-full">
     <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -79,7 +87,7 @@
     </div>
 @endif
 <div class="md:w-full flex flex-col mb-6">
-    <x-form.label>La subacquea è la tua professione?</x-form.label>
+    <x-form.label>{{$profession}} è la tua professione?</x-form.label>
     <div class="md:w-full flex flex-row mt-3">
         <div class="w-2/6"><input wire:model="divingState.{{$section}}.divingProfession" name="divingProfession" type="radio" value="yes" /> Si</div>
         <div class="w-2/6"><input wire:model="divingState.{{$section}}.divingProfession" name="divingProfession" type="radio" value="no" /> No</div>
