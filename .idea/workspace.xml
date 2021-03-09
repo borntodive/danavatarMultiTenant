@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-form-section.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-view-section.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/divingSection.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Profile/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Profile/Edit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -346,13 +338,6 @@
       <workItem from="1614683095772" duration="4966000" />
       <workItem from="1614693201469" duration="30744000" />
       <workItem from="1614880115430" duration="23262000" />
-    </task>
-    <task id="LOCAL-00052" summary="Fix Broadcast">
-      <created>1614334905202</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1614334905202</updated>
     </task>
     <task id="LOCAL-00053" summary="Fix Broadcast">
       <created>1614335252050</created>
@@ -690,7 +675,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615284043581</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="New Anamnesis">
+      <created>1615289826236</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1615289826237</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -727,7 +719,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="New seeder + Minio storage" />
     <MESSAGE value="TruestProxies" />
     <MESSAGE value="URL::forceScheme('https')" />
     <MESSAGE value="Fix admin dashboard link" />
@@ -752,7 +743,8 @@
     <MESSAGE value="Fix Anamnesis with sports and eliminate swimming" />
     <MESSAGE value="Fix ECG view 1" />
     <MESSAGE value="ECG Live zoom 3 sec" />
-    <option name="LAST_COMMIT_MESSAGE" value="ECG Live zoom 3 sec" />
+    <MESSAGE value="New Anamnesis" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Anamnesis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
