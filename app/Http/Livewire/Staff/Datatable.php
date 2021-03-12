@@ -108,6 +108,7 @@ class Datatable extends Component
     {
         $users=User::search($this->search)
             ->when($this->tenant, function ($query) {
+
                 $query->whereHas('centers', function ($query) {
                     $query->where('tenant_id', $this->tenant->id);
                 });
@@ -117,6 +118,7 @@ class Datatable extends Component
                     $query->where('id', $this->roleFilter);
                 });
             })
+            ->with('roles')
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
         return view('livewire.staff.datatable',[

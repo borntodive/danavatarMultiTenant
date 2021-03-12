@@ -63,13 +63,13 @@
                             <x-form.select id="role_{{$user->id}}"
                                            wire:change="updateRole({{$user->id}}, $event.target.value)"
                                            :options="$roles->pluck('display_name','id')"
-                                           :selected="$user->roles()->first()->id"
+                                           :selected="$user->roles[0]->id"
                                            />
 
 
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            @if($user->roles()->first()->name=='medical_doctor')
+                            @if($user->roles[0]->name=='medical_doctor')
                             <button wire:click="showSideEdit({{$user->id}})" class="text-indigo-600 hover:text-indigo-900">Modifica</button>
                             @endif
                         </td>
