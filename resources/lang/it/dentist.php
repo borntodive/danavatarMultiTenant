@@ -12,5 +12,10 @@ return array (
             "2"=>'2° divisione',
         ]
     ],
+    "gravity"=> [
+        "1"=>'1° Grado',
+        "2"=>'2° Grado',
+        "3"=>'3° Grado',
+        ],
 
 );

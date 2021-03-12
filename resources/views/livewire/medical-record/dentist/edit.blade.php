@@ -78,10 +78,10 @@
                 <div class="col-span-12 sm:col-span-6 ">
                     <x-form.label>Divisione</x-form.label>
                     <div class="md:w-full flex flex-row mt-3">
-                        <div class="w-1/2"><input wire:model="state.exams.objectives.angle.division" name="division"
+                        <div class="w-1/2"><input wire:model="state.exams.objectives.angleDivision" name="division"
                                                   type="radio" value="1"/> 1° Divisione
                         </div>
-                        <div class="w-1/2"><input wire:model="state.exams.objectives.angle.division" name="division"
+                        <div class="w-1/2"><input wire:model="state.exams.objectives.angleDivision" name="division"
                                                   type="radio" value="2"/> 2° Divisione
                         </div>
                     </div>

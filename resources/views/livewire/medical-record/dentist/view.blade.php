@@ -1,17 +1,17 @@
 <x-medical-record.common-view :medicalRecord="$medicalRecord">
     <x-card title="{{ __('Anamnesi') }}" class="mt-5">
         <div class="w-1/2">
-            <x-form.label>Terapia con apparecchio</x-form.label>
+            <x-show.label>Terapia con apparecchio</x-show.label>
             <div class="grid grid-cols-3 gap-4 mt-4">
                 <div></div>
                 <div>
-                    <x-form.label>Presente</x-form.label>
+                    <x-show.label>Presente</x-show.label>
                 </div>
                 <div>
-                    <x-form.label>Passato</x-form.label>
+                    <x-show.label>Passato</x-show.label>
                 </div>
                 <div>
-                    <x-form.label>Sopra</x-form.label>
+                    <x-show.label>Sopra</x-show.label>
                 </div>
                 <div>
                     <x-check-or-cross
@@ -22,7 +22,7 @@
                         :condition="data_get($medicalRecord->data,'anamnesis.general.brace.upper.past',false)"/>
                 </div>
                 <div>
-                    <x-form.label>Sotto</x-form.label>
+                    <x-show.label>Sotto</x-show.label>
                 </div>
                 <div>
                     <x-check-or-cross
@@ -38,11 +38,11 @@
         @if(session()->get('tenant')->hasMedicalSpecilities('diving'))
             <div class="grid grid-cols-12 gap-8 mt-5 w-full">
                 <div class="col-span-12 sm:col-span-6 ">
-                    <x-view.label>Livello di compensazione percepito</x-view.label>
+                    <x-show.label>Livello di compensazione percepito</x-show.label>
                     <x-show.value>{{data_get($equalizationLevel,data_get($medicalRecord->data,'anamnesis.diving.equalization.level',0),'N/A')}}</x-show.value>
                 </div>
                 <div class="col-span-12 sm:col-span-6 ">
-                    <x-view.label>Tipo di compensanzione maggiormente usata</x-view.label>
+                    <x-show.label>Tipo di compensanzione maggiormente usata</x-show.label>
                     <x-show.value>{{data_get($equalizationTecnique,data_get($medicalRecord->data,'anamnesis.diving.equalization.tecnique',0),'N/A')}}</x-show.value>
                     @if(data_get($medicalRecord->data,'anamnesis.diving.equalization.tecnique',false) == "4")
                         <x-show.value>{{data_get($medicalRecord->data,'anamnesis.diving.equalization.tecnique.other','N/A')}}</x-show.value>
@@ -55,17 +55,17 @@
     <x-card title="{{ __('Esami Obiettivi') }}" class="mt-5">
         <div class="grid grid-cols-12 gap-8 w-full">
             <div class="col-span-12 sm:col-span-6 ">
-                <x-view.label>Classe di Angle</x-view.label>
+                <x-show.label>Classe di Angle</x-show.label>
                 <x-show.value>{{__('dentist.angle.'.data_get($medicalRecord->data,'exams.objectives.angle','na'))}}</x-show.value>
             </div>
             @if(data_get($medicalRecord->data,'exams.objectives.angle',false) == "2")
                 <div class="col-span-12 sm:col-span-6 ">
-                    <x-view.label>Divisione</x-view.label>
-                    <x-show.value>{{__('dentist.angle.division.'.data_get($medicalRecord->data,'exams.objectives.division','na'))}}</x-show.value>
+                    <x-show.label>Divisione</x-show.label>
+                    <x-show.value>{{__('dentist.angle.division.'.data_get($medicalRecord->data,'exams.objectives.angleDivision','na'))}}</x-show.value>
                 </div>
             @endif
             <div class="col-span-12 sm:col-span-6 ">
-                <x-view.label>Classe di Gravità</x-view.label>
+                <x-show.label>Classe di Gravità</x-show.label>
                 <x-show.value>{{__('dentist.gravity.'.data_get($medicalRecord->data,'exams.objectives.gravity','na'))}}</x-show.value>
             </div>
         </div>

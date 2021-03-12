@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Dentist/View.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/it/dentist.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/dentist/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/View.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Dentist/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Dentist/Edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/it/dentist.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/it/dentist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/dentist/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/dentist/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/dentist/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/dentist/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -343,14 +343,7 @@
       <workItem from="1614693201469" duration="30744000" />
       <workItem from="1614880115430" duration="23262000" />
       <workItem from="1615464643272" duration="3342000" />
-      <workItem from="1615537791855" duration="3636000" />
-    </task>
-    <task id="LOCAL-00061" summary="SAmple API Debug">
-      <created>1614414559238</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1614414559238</updated>
+      <workItem from="1615537791855" duration="4132000" />
     </task>
     <task id="LOCAL-00062" summary="SAmple API Debug">
       <created>1614414756328</created>
@@ -688,7 +681,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615539982626</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="Dentist view">
+      <created>1615541491020</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1615541491021</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -725,7 +725,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Invete cast to datetime" />
     <MESSAGE value="Horizon integration" />
     <MESSAGE value="Reset password + doctor in medical record" />
     <MESSAGE value="sentry integration" />
@@ -750,7 +749,8 @@
     <MESSAGE value="fix photo upload" />
     <MESSAGE value="Fix admin staff datatable" />
     <MESSAGE value="Dentist edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dentist edit" />
+    <MESSAGE value="Dentist view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dentist view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

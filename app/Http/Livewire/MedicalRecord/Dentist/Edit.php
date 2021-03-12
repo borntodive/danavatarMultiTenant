@@ -17,6 +17,9 @@ class Edit extends Component
     public $equalizationLevel;
     public $equalizationTecnique;
 
+    protected $rules = [
+        'state.anamnesis' => 'nullable',
+    ];
 
     public function mount() {
 
