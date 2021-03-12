@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Dentist/Edit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/StaticData/Dentist.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/dentist/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2021_08_41_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2021_08_41__Default_Changelist_.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Dentist/View.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/it/dentist.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/dentist/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Nutritionist/View.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,15 +232,15 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/StaticData" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/it" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\apps\danavatar\app\StaticData" />
       <recent name="C:\apps\danavatar\resources\lang\it" />
+      <recent name="C:\apps\danavatar\app\StaticData" />
       <recent name="C:\apps\danavatar\resources\views\components\medical-record" />
       <recent name="C:\apps\danavatar\app\Traits" />
       <recent name="C:\apps\danavatar\resources\views\medicalRecord" />
@@ -344,14 +343,7 @@
       <workItem from="1614693201469" duration="30744000" />
       <workItem from="1614880115430" duration="23262000" />
       <workItem from="1615464643272" duration="3342000" />
-      <workItem from="1615537791855" duration="2139000" />
-    </task>
-    <task id="LOCAL-00060" summary="SAmple API Debug">
-      <created>1614414458658</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1614414458658</updated>
+      <workItem from="1615537791855" duration="3636000" />
     </task>
     <task id="LOCAL-00061" summary="SAmple API Debug">
       <created>1614414559238</created>
@@ -689,7 +681,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615537856858</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Dentist edit">
+      <created>1615539982626</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1615539982626</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -726,7 +725,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="New landing page y40" />
     <MESSAGE value="Invete cast to datetime" />
     <MESSAGE value="Horizon integration" />
     <MESSAGE value="Reset password + doctor in medical record" />
@@ -751,7 +749,8 @@
     <MESSAGE value="Fix anamnesis profession label in view" />
     <MESSAGE value="fix photo upload" />
     <MESSAGE value="Fix admin staff datatable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix admin staff datatable" />
+    <MESSAGE value="Dentist edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dentist edit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

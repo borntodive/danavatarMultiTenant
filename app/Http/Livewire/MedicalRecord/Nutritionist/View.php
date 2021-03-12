@@ -13,19 +13,10 @@ class View extends Component
 
     public $medications;
     public $medicalConditions;
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
-
-     */
 
     public function mount() {
         $this->medicalConditions=Nutritionist::$medicalConditions;
         $this->medications=Nutritionist::$medications;
     }
-    public function render()
-    {
-        return view('livewire.medical-record.nutritionist.view');
-    }
+
 }
