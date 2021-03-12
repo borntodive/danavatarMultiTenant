@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Dentist/Edit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/StaticData/Dentist.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/dentist/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2021_08_41_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2021_08_41__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-view-section.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-view-section.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,18 +233,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/it" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/StaticData" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\app\StaticData" />
       <recent name="C:\apps\danavatar\resources\lang\it" />
       <recent name="C:\apps\danavatar\resources\views\components\medical-record" />
       <recent name="C:\apps\danavatar\app\Traits" />
       <recent name="C:\apps\danavatar\resources\views\medicalRecord" />
-      <recent name="C:\apps\danavatar\resources\views\components\form" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\apps\danavatar\app\Traits\MedicalRecord" />
@@ -340,34 +343,8 @@
       <workItem from="1614683095772" duration="4966000" />
       <workItem from="1614693201469" duration="30744000" />
       <workItem from="1614880115430" duration="23262000" />
-    </task>
-    <task id="LOCAL-00056" summary="Added new sensors seeder">
-      <created>1614374234466</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1614374234466</updated>
-    </task>
-    <task id="LOCAL-00057" summary="remote logging">
-      <created>1614413680485</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1614413680499</updated>
-    </task>
-    <task id="LOCAL-00058" summary="remote logging">
-      <created>1614413970773</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1614413970773</updated>
-    </task>
-    <task id="LOCAL-00059" summary="remote logging">
-      <created>1614414058080</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1614414058080</updated>
+      <workItem from="1615464643272" duration="3342000" />
+      <workItem from="1615537791855" duration="2139000" />
     </task>
     <task id="LOCAL-00060" summary="SAmple API Debug">
       <created>1614414458658</created>
@@ -684,7 +661,35 @@
       <option name="project" value="LOCAL" />
       <updated>1615299726437</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Fix anamnesis profession label in view">
+      <created>1615299926650</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1615299926650</updated>
+    </task>
+    <task id="LOCAL-00106" summary="fix photo upload">
+      <created>1615301233683</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1615301233684</updated>
+    </task>
+    <task id="LOCAL-00107" summary="fix photo upload">
+      <created>1615301413406</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1615301413406</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Fix admin staff datatable">
+      <created>1615537856843</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1615537856858</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -721,9 +726,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix imask" />
-    <MESSAGE value="DEV + Staging Banner" />
-    <MESSAGE value="Invite mail template + steky top bar" />
     <MESSAGE value="New landing page y40" />
     <MESSAGE value="Invete cast to datetime" />
     <MESSAGE value="Horizon integration" />
@@ -746,7 +748,10 @@
     <MESSAGE value="Fix profile no date" />
     <MESSAGE value="Pagination in ECG Chart" />
     <MESSAGE value="Fix anamnesis profession label" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix anamnesis profession label" />
+    <MESSAGE value="Fix anamnesis profession label in view" />
+    <MESSAGE value="fix photo upload" />
+    <MESSAGE value="Fix admin staff datatable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix admin staff datatable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
