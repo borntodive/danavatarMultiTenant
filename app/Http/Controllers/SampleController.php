@@ -101,11 +101,11 @@ class SampleController extends Controller
             ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)->orderBy('time')->first();
         $availablesDate['last']=Sample::whereRaw('time between '.$startTimeString.' and '.$endTimeString)
             ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)->orderBy('time','desc')->first();
-        $pagination=Sample::selectRaw('time_bucket(\'5 minutes\', "time") AS "x",count(value) AS y')
+        /*$pagination=Sample::selectRaw('time_bucket(\'5 minutes\', "time") AS "x",count(value) AS y')
             ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)
             ->whereRaw("EXTRACT(MONTH FROM time) = {$dateArray[1]} AND EXTRACT(YEAR FROM time) = {$dateArray[0]}  AND EXTRACT(DAY FROM time) = {$dateArray[2]}")
-            ->groupBy('x')->get();
-        return view('wearable.viewEcg', compact('user','date','availablesDate','pagination'));
+            ->groupBy('x')->get();*/
+        return view('wearable.viewEcg', compact('user','date','availablesDate'));
 
     }
 
