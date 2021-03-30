@@ -38,10 +38,29 @@ class Edit extends Component
         if (!data_get($this->medicalRecord->data,'objectives.general.nose.anomalies',false)){
             data_set($this->state,'objectives.general.nose.anomalies',[]);
         }
+
         if (session()->get('tenant')->hasMedicalSpecilities('diving')){
             if (!data_get($this->medicalRecord->data,'diving.sinusEqaulization.location',false)) {
                 data_set($this->state, 'diving.sinusEqaulization.location', []);
             }
+        }
+        if (!data_get($this->medicalRecord->data,'instrumental.general.tac.rocche',false)){
+            data_set($this->state,'instrumental.general.tac.rocche',false);
+        }
+        if (!data_get($this->medicalRecord->data,'instrumental.general.tac.seni',false)){
+            data_set($this->state,'instrumental.general.tac.seni',false);
+        }
+        if (!data_get($this->medicalRecord->data,'instrumental.general.allergie.exam',false)){
+            data_set($this->state,'instrumental.general.allergie.exam',false);
+        }
+        if (!data_get($this->medicalRecord->data,'instrumental.general.allergie.positive_at',false)){
+            data_set($this->state,'instrumental.general.allergie.positive_at',[]);
+        }
+        if (!data_get($this->medicalRecord->data,'instrumental.general.audiometrico.sx.neurosensoriale',false)){
+            data_set($this->state,'instrumental.general.audiometrico.sx.neurosensoriale',[]);
+        }
+        if (!data_get($this->medicalRecord->data,'instrumental.general.audiometrico.dx.neurosensoriale',false)){
+            data_set($this->state,'instrumental.general.audiometrico.dx.neurosensoriale',[]);
         }
     }
 }

@@ -689,6 +689,123 @@
         </div>
     </x-card>
     <x-card title="{{ __('Esami Strumentali') }}" class="mt-5">
+        <div class="w-full mt-5">
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-12">
+                    <x-form.label>Esame audiometrico</x-form.label>
+                    <div class="grid grid-cols-2 gap-8 mt-5">
+                        <div class="col-span-2 md:col-span-1 text-center">
+                            <x-form.label>Sx</x-form.label>
+                            <div class="flex flex-row mt-5">
+                                <div class="ml-3"><input wire:model="state.instrumental.general.audiometrico.sx.tipo" name="audiometrico_sx"  type="radio" value="normacusia" /> Normacusia</div>
+                                <div class="ml-3"><input wire:model="state.instrumental.general.audiometrico.sx.tipo" name="audiometrico_sx" type="radio" value="ipoacusia" /> Ipoacusia</div>
+                            </div>
+                            @if (data_get($state,'instrumental.general.audiometrico.sx.tipo',null) =="ipoacusia")
+                                <x-form.select id="ipoacusia_sx"
+                                               class="mt-3"
+                                               wire:model="state.instrumental.general.audiometrico.sx.ipoacusia"
+                                               :options="[
+                                                            1=>'Neurosensoriale',
+                                                            2=>'Trasmissiva',
+                                                            3=>'Mista',
+                                                       ]"
+                                />
+                                @if (data_get($state,'instrumental.general.audiometrico.sx.ipoacusia',null) == "1")
+                                    <div class="flex flex-row mt-5 mt-3">
+                                        <div class="ml-3"><input wire:model="state.instrumental.general.audiometrico.sx.neurosensoriale" name="neurosensoriale_sx"  type="checkbox" value="acuti" /> Toni acuti</div>
+                                        <div class="ml-3"><input wire:model="state.instrumental.general.audiometrico.sx.neurosensoriale" name="neurosensoriale_sx" type="checkbox" value="pantonale" /> Pantonale</div>
+                                    </div>
+                                @endif
+                            @endif
+                        </div>
+                        <div class="col-span-2 md:col-span-1 text-center">
+                            <x-form.label>Dx</x-form.label>
+                            <div class="flex flex-row mt-5">
+                                <div class="ml-3"><input wire:model="state.instrumental.general.audiometrico.dx.tipo" name="audiometrico_dx"  type="radio" value="normacusia" /> Normacusia</div>
+                                <div class="ml-3"><input wire:model="state.instrumental.general.audiometrico.dx.tipo" name="audiometrico_dx" type="radio" value="ipoacusia" /> Ipoacusia</div>
+                            </div>
+                            @if (data_get($state,'instrumental.general.audiometrico.dx.tipo',null) =="ipoacusia")
+                                <x-form.select id="ipoacusia_dx"
+                                               class="mt-3"
+                                               wire:model="state.instrumental.general.audiometrico.dx.ipoacusia"
+                                               :options="[
+                                                            1=>'Neurosensoriale',
+                                                            2=>'Trasmissiva',
+                                                            3=>'Mista',
+                                                       ]"
+                                />
+                                @if (data_get($state,'instrumental.general.audiometrico.dx.ipoacusia',null) == "1")
+                                    <div class="flex flex-row mt-5 mt-3">
+                                        <div class="ml-3"><input wire:model="state.instrumental.general.audiometrico.dx.neurosensoriale" name="neurosensoriale_dx"  type="checkbox" value="acuti" /> Toni acuti</div>
+                                        <div class="ml-3"><input wire:model="state.instrumental.general.audiometrico.dx.neurosensoriale" name="neurosensoriale_dx" type="checkbox" value="pantonale" /> Pantonale</div>
+                                    </div>
+                                @endif
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <x-form.label>Timpanogramma</x-form.label>
+                    <x-form.select id="instrumental_timpanogramma"
+                                   class="md:w-1/2"
+                                   wire:model="state.instrumental.general.timpanogramma"
+                                   :options="[
+                                        1=>'Tipo A (normale)',
+                                        2=>'Tipo B (piatto)',
+                                        3=>'Tipo C (alterato)',
+                                   ]"
+                    />
+                </div>
+                <div class="col-span-12 sm:col-span-6">
+                    <x-form.label>Prove di funzionalità tubarica - ETF</x-form.label>
+                    <x-form.text-area wire:model="state.instrumental.general.etf"></x-form.text-area>
+                </div>
+                <div class="col-span-12 sm:col-span-6">
+                    <x-form.label>Prove vestibolari</x-form.label>
+                    <x-form.text-area wire:model="state.instrumental.general.vestibolari"></x-form.text-area>
+                </div>
+                <div class="col-span-12 sm:col-span-6">
+                    <x-form.toggle label="TAC rocche e mastoidi" entangle="state.instrumental.general.tac.rocche"/>
+                    @if(data_get($state,'instrumental.general.tac.rocche',false))
+                        <x-form.text-area class="mt-3" wire:model="state.instrumental.general.tac.rocche.specificare"></x-form.text-area>
+                    @endif
+                </div>
+                <div class="col-span-12 sm:col-span-6">
+                    <x-form.toggle label="TAC seni paranasali" entangle="state.instrumental.general.tac.seni"/>
+                    @if(data_get($state,'instrumental.general.tac.seni',false))
+                        <x-form.text-area class="mt-3" wire:model="state.instrumental.general.tac.seni.specificare"></x-form.text-area>
+                    @endif
+                </div>
+                <div class="col-span-12 sm:col-span-6">
+                    <x-form.toggle label="Prove allergiche" entangle="state.instrumental.general.allergie.exam"/>
+                    @if(data_get($state,'instrumental.general.allergie.exam',false))
+                        <div class="flex flex-row mt-5">
+                            <div class="ml-3"><input wire:model="state.instrumental.general.allergie.result" name="general_allergie"  type="radio" value="positive" /> Positive</div>
+                            <div class="ml-3"><input wire:model="state.instrumental.general.allergie.result" name="general_allergie" type="radio" value="negative" /> Negative</div>
+                        </div>
+                        @if(data_get($state,'instrumental.general.allergie.result','')=='positive')
+                            <div class="flex flex-col mt-5">
+                                <div><input wire:model="state.instrumental.general.allergie.positive_at"  type="checkbox" value="pollini" /> Pollini</div>
+                                <div><input wire:model="state.instrumental.general.allergie.positive_at"  type="checkbox" value="polveri" /> Polveri (acari, forfore di animali ecc)</div>
+                                <div>
+                                    <input wire:model="state.instrumental.general.allergie.positive_at"  type="checkbox" value="alimenti" /> Alimenti
+                                    @if(in_array('alimenti',data_get($state,'instrumental.general.allergie.positive_at',[])))
+                                        <x-form.text-input class="my-3" wire:model="state.instrumental.general.allergie.alimenti"/>
+                                    @endif
+                                </div>
+                                <div>
+                                    <input wire:model="state.instrumental.general.allergie.positive_at"  type="checkbox" value="altro" /> Altro
+                                    @if(in_array('altro',data_get($state,'instrumental.general.allergie.positive_at',[])))
+                                        <x-form.text-input class="my-3" wire:model="state.instrumental.general.allergie.altro"/>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
+                    @endif
+                </div>
+            </div>
+        </div>
+
     </x-card>
 
 </x-medical-record.common-edit>
