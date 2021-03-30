@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/StaticData/Otolaryngology.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/form/label.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/form/label.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +231,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/it" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/2AMBULATORIO ORL DEDICATO ALLE PROBLEMATICHE SUBACQUEE_1.docx" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -344,14 +344,7 @@
       <workItem from="1615464643272" duration="3342000" />
       <workItem from="1615537791855" duration="5847000" />
       <workItem from="1615802062719" duration="692000" />
-      <workItem from="1615906317656" duration="9836000" />
-    </task>
-    <task id="LOCAL-00063" summary="SAmple API Debug">
-      <created>1614414951885</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1614414951885</updated>
+      <workItem from="1615906317656" duration="18581000" />
     </task>
     <task id="LOCAL-00064" summary="SAmple API Debug">
       <created>1614415162978</created>
@@ -689,7 +682,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615542013602</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="ORL edit Anamnesis">
+      <created>1615931025198</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1615931025198</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -726,7 +726,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Reset password + doctor in medical record" />
     <MESSAGE value="sentry integration" />
     <MESSAGE value="fix max_execution time sample api" />
     <MESSAGE value="samplke seeder on user_id 2" />
@@ -751,7 +750,8 @@
     <MESSAGE value="Dentist edit" />
     <MESSAGE value="Dentist view" />
     <MESSAGE value="Fix Dentist view/edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Dentist view/edit" />
+    <MESSAGE value="ORL edit Anamnesis" />
+    <option name="LAST_COMMIT_MESSAGE" value="ORL edit Anamnesis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

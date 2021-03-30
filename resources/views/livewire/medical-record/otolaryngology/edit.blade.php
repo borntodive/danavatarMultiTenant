@@ -454,6 +454,239 @@
     </x-card>
 
     <x-card title="{{ __('Esami Obiettivi') }}" class="mt-5">
+        <div class="grid grid-cols-12 gap-8 mt-5 w-full">
+            <div class="col-span-12 sm:col-span-6 ">
+                <x-form.label>Orecchio esterno DX</x-form.label>
+                <div class="flex flex-col mt-3">
+                    @foreach($externalEarObjective as $value=>$label)
+                    <div><input wire:model="state.objectives.general.externalEar.dx"  type="checkbox" value="{{$value}}" /> {{$label}}</div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-span-12 sm:col-span-6 ">
+                <x-form.label>Orecchio esterno SX</x-form.label>
+                <div class="flex flex-col mt-3">
+                    @foreach($externalEarObjective as $value=>$label)
+                    <div><input wire:model="state.objectives.general.externalEar.sx"  type="checkbox" value="{{$value}}" /> {{$label}}</div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-span-12">
+                <x-form.label>Membrana timpanica DX</x-form.label>
+            </div>
+            <div class="col-span-12 sm:col-span-6 ">
+                <x-form.label>Aspetto</x-form.label>
+                <x-form.select id="objectives_tympanicMembran_aspect_dx"
+                               wire:model="state.objectives.general.tympanicMembran.aspect.dx"
+                               :options="$tympanicMembraneObjective"
+                />
+            </div>
+
+            @if(session()->get('tenant')->hasMedicalSpecilities('diving'))
+
+                <div class="col-span-12 sm:col-span-6 ">
+                    <x-form.label>Mobilità sotto stimolo compensatorio</x-form.label>
+                    <x-form.select id="objectives_tympanicMembran_mobility_dx"
+                                   wire:model="state.objectives.diving.tympanicMembran.mobility.dx"
+                                   :options="$tympanicMembraneMobilityObjective"
+                    />
+                </div>
+                <div class="col-span-12 sm:col-span-6 ">
+                    <x-form.label>Manovra di Toynbee</x-form.label>
+                    <x-form.select id="objectives_tympanicMembran_toynbee_dx"
+                                   wire:model="state.objectives.diving.tympanicMembran.toynbee.dx"
+                                   :options="[1=>'Positiva',2=>'Negativa']"
+                    />
+                </div>
+            @endif
+
+            <div class="col-span-12">
+                <x-form.label>Membrana timpanica SX</x-form.label>
+            </div>
+            <div class="col-span-12 sm:col-span-6 ">
+                <x-form.label>Aspetto</x-form.label>
+                <x-form.select id="objectives_tympanicMembran_aspect_sx"
+                               wire:model="state.objectives.general.tympanicMembran.aspect.sx"
+                               :options="$tympanicMembraneObjective"
+                />
+            </div>
+
+            @if(session()->get('tenant')->hasMedicalSpecilities('diving'))
+
+                <div class="col-span-12 sm:col-span-6 ">
+                    <x-form.label>Mobilità sotto stimolo compensatorio</x-form.label>
+                    <x-form.select id="objectives_tympanicMembran_mobility_sx"
+                                   wire:model="state.objectives.diving.tympanicMembran.mobility.sx"
+                                   :options="$tympanicMembraneMobilityObjective"
+                    />
+                </div>
+                <div class="col-span-12 sm:col-span-6 ">
+                    <x-form.label>Manovra di Toynbee</x-form.label>
+                    <x-form.select id="objectives_tympanicMembran_toynbee_sx"
+                                   wire:model="state.objectives.diving.tympanicMembran.toynbee.sx"
+                                   :options="[1=>'Positiva',2=>'Negativa']"
+                    />
+                </div>
+            @endif
+            <div class="col-span-12">
+                <x-form.label>Naso e seni paranasali</x-form.label>
+            </div>
+            <div class="col-span-12 sm:col-span-6 ">
+                <x-form.label>Tecnica</x-form.label>
+                <x-form.select id="objectives_nose_tecnique"
+                               wire:model="state.objectives.general.node.tecnique"
+                               :options="[1=>'Tradizionale',2=>'Endoscopica']"
+                />
+            </div>
+            <div class="col-span-12">
+                <x-form.label>Anomalie</x-form.label>
+                <div class="flex flex-col mt-3">
+                    <div><input wire:model="state.objectives.general.nose.anomalies"  type="checkbox" value="deviazione" /> Deviazione del setto nasale</div>
+                    <div><input wire:model="state.objectives.general.nose.anomalies"  type="checkbox" value="ipertrofia" /> Ipertrofia dei turbinati</div>
+                    <div class="flex flex-col">
+                        <div>
+                            <input wire:model="state.objectives.general.nose.anomalies"  type="checkbox" value="rinite" /> Rinite
+                        </div>
+                        @if(in_array('rinite',data_get($state,'objectives.general.nose.anomalies',[])))
+                            <div class="flex flex-row ml-10">
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.rinite" name="riniti"  type="radio" value="acuta" /> Acuta</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.rinite" name="riniti" type="radio" value="allergica" /> Allergica</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.rinite" name="riniti" type="radio" value="crostosa" /> Crostosa</div>
+
+                            </div>
+                        @endif
+                    </div>
+                    <div class="flex flex-col">
+                        <div>
+                            <input wire:model="state.objectives.general.nose.anomalies"  type="checkbox" value="varianti" /> Varianti anatomiche
+                        </div>
+                        @if(in_array('varianti',data_get($state,'objectives.general.nose.anomalies',[])))
+                            <div class="flex flex-row ml-10">
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.varianti" name="varianti"  type="radio" value="concha" /> Concha bullosa</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.varianti" name="varianti" type="radio" value="curvatura" /> Curvatura paradossa del turbinato medio</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.varianti" name="varianti" type="radio" value="duplicatura" /> Duplicatura del processo uncinato</div>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="flex flex-col">
+                        <div>
+                            <input wire:model="state.objectives.general.nose.anomalies"  type="checkbox" value="poliposi" /> Poliposi nasale
+                        </div>
+                        @if(in_array('poliposi',data_get($state,'objectives.general.nose.anomalies',[])))
+                            <div class="flex flex-row ml-10">
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.poliposi" name="poliposi"  type="radio" value="lieve" /> Lieve</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.poliposi" name="poliposi" type="radio" value="moderata" /> Moderata</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.poliposi" name="poliposi" type="radio" value="massiva" /> Massiva</div>
+
+                            </div>
+                        @endif
+                    </div>
+                    <div class="flex flex-col">
+                        <div>
+                            <input wire:model="state.objectives.general.nose.anomalies"  type="checkbox" value="valutazione" /> Valutazione cavo rinofaringeo
+                        </div>
+                        @if(in_array('valutazione',data_get($state,'objectives.general.nose.anomalies',[])))
+                            <div class="flex flex-row ml-10">
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.valutazione" name="valutazione"  type="radio" value="residui" /> Residui adenoidei</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.valutazione" name="valutazione" type="radio" value="cicatrici" /> Cicatrici</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.valutazione" name="valutazione" type="radio" value="muco" /> Muco</div>
+                                <div class="ml-3"><input wire:model="state.objectives.general.nose.valutazione" name="valutazione" type="radio" value="altro" /> Altro</div>
+                                @if(data_get($state,'objectives.general.nose.valutazione',null)=="altro")
+                                    <x-form.text-input class="ml-3" wire:model="state.objectives.general.nose.valutazione.altro"/>
+                                @endif
+                            </div>
+
+                        @endif
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-span-12">
+                <x-form.label>Aspetto dell’ostio tubarico</x-form.label>
+                <div class="grid grid-cols-2 mt-5 gap-8">
+                    <div class="col-span-2 md:col-span-1 text-center">
+                        <x-form.label>SX</x-form.label>
+                        <div class="grid grid-cols-2 gap-5 mt-5">
+                            <div class="col-span-2 md:col-span-1 text-center">
+                                <x-form.label>Ampiezza</x-form.label>
+                                <x-form.select id="objectives_ostio_aspect_sx"
+                                               wire:model="state.objectives.general.ostio.sx.aspect"
+                                               :options="[
+                                                   1=>'Ristretto',
+                                                   2=>'Normale',
+                                                   3=>'Ampio',
+                                                   4=>'Molto Ampio',
+                                               ]"
+                                />
+                            </div>
+                            <div class="col-span-2 md:col-span-1 text-center">
+                                <x-form.label>Motilità sotto stimolo compensatorio</x-form.label>
+                                <x-form.select id="objectives_ostio_mobility_sx"
+                                               wire:model="state.objectives.general.ostio.sx.mobility"
+                                               :options="[
+                                                   1=>'Nulla',
+                                                   2=>'Scarsa',
+                                                   3=>'Buona',
+                                                   4=>'Eccellente',
+                                               ]"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-2 md:col-span-1 text-center">
+                        <x-form.label>DX</x-form.label>
+                        <div class="grid grid-cols-2 gap-5 mt-5">
+                            <div class="col-span-2 md:col-span-1 text-center">
+                                <x-form.label>Ampiezza</x-form.label>
+                                <x-form.select id="objectives_ostio_aspect_dx"
+                                               wire:model="state.objectives.general.ostio.dx.aspect"
+                                               :options="[
+                                                   1=>'Ristretto',
+                                                   2=>'Normale',
+                                                   3=>'Ampio',
+                                                   4=>'Molto Ampio',
+                                               ]"
+                                />
+                            </div>
+                            <div class="col-span-2 md:col-span-1 text-center">
+                                <x-form.label>Motilità sotto stimolo compensatorio</x-form.label>
+                                <x-form.select id="objectives_ostio_mobility_dx"
+                                               wire:model="state.objectives.general.ostio.dx.mobility"
+                                               :options="[
+                                                   1=>'Nulla',
+                                                   2=>'Scarsa',
+                                                   3=>'Buona',
+                                                   4=>'Eccellente',
+                                               ]"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12">
+                <x-form.label>Cavo orale e dell'orofaringe</x-form.label>
+                <div class="grid grid-cols-2 mt-5 gap-8">
+                    <div class="col-span-2 md:col-span-1 text-center">
+                        <x-form.label>Motilità velare</x-form.label>
+                        <x-form.select id="objectives_orofaringe_velare"
+                                       wire:model="state.objectives.general.orofaringe.velare"
+                                       :options="[
+                                                   1=>'Buona',
+                                                   2=>'Scarsa',
+                                                   3=>'Nulla',
+                                               ]"
+                        />
+                    </div>
+                    <div class="col-span-2 md:col-span-1 text-center">
+                        <x-form.label>Altro</x-form.label>
+                        <x-form.text-area wire:model="tate.objectives.general.orofaringe.altro">
+
+                        </x-form.text-area>
+                    </div>
+                </div>
+            </div>
+        </div>
     </x-card>
     <x-card title="{{ __('Esami Strumentali') }}" class="mt-5">
     </x-card>
