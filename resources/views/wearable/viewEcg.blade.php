@@ -124,7 +124,19 @@
             </li>
         </ul>
     </div>
+    <div class="mt-10 -mb-5 text-center">
+        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+            @foreach ($pagination as $idx=>$p)
+                <span
+                   data-date="{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $p->x)->timezone('Europe/Rome')->format('H:i')}}"
+                   class=" date-pagination relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    {{$idx+1}}
+                </span>
 
+            @endforeach
+
+        </nav>
+    </div>
 
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <x-card title="ECG" class="mb-5 h-px-600">

@@ -2,7 +2,7 @@
     <div class="flex flex-wrap justify-end">
         <div class="w-1/4 h-24 bg-white rounded-md flex flex-col flex-wrap content-around justify-center float-right mb-5">
            <x-form.label class="block text-lg font-bold text-gray-700">Scegli un mese</x-form.label>
-            <x-form.masked-date-input format="MM/YYYY" wire:model="targetDate"/>
+            <x-form.masked-date-input format="MM-YYYY" wire:model.debounce.800ms="targetDate"/>
 
         </div>
     </div>
@@ -58,6 +58,7 @@
 
     Livewire.on('gotoDate', (date) => {
         var t = moment(date);
+        console.log(t);
         // const d =new Date(date);
         calendar.gotoDate(t.format('YYYY-MM-DD'));
     });

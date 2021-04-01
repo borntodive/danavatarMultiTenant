@@ -27,14 +27,23 @@ class Calendar extends Component
     public function updatedTargetDate($value)
     {
         if ($this->targetDate) {
-            $this->emit('gotoDate', $this->targetDate);
+            try {
+                $searchDate= new Carbon("01-".$this->targetDate);
+            } catch (\Exception $e) {
+                return;
+            }
+            $this->emit('gotoDate', $searchDate);
             $this->getEvents();
         }
     }
 
 
     public function getEvents() {
-        $searchDate=new Carbon($this->targetDate);
+        try {
+            $searchDate= new Carbon("01-".$this->targetDate);
+        } catch (\Exception $e) {
+            return;
+        }
         $sensorsPerDay=SensorsPerDay::query()
             ->whereRaw("EXTRACT(MONTH FROM date) = {$searchDate->month} AND EXTRACT(YEAR FROM date) = {$searchDate->year}  AND user_id = {$this->user->id}")
             ->get();

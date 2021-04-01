@@ -94,18 +94,21 @@ class SampleController extends Controller
         $dateArray=explode('-',$request->date);
         $searchData=Carbon::create($dateArray[0],$dateArray[1],$dateArray[2],0);
         $startTimeString="'".$searchData->toDateTimeString()."'";
-        $endTimeString="'".$searchData->addDay()->toDateTimeString()."'";
+        $endTimeString="'".$searchData->endOfDay()->toDateTimeString()."'";
         $now=new Carbon();
         $diffInSecs=$now->addDay()->diffInSeconds($searchData->addDay());
+        //$availablesDate['first']=new Carbon();
+        $availablesDate['last']=new Carbon();
         $availablesDate['first']=Sample::whereRaw('time between '.$startTimeString.' and '.$endTimeString)
             ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)->orderBy('time')->first();
-        $availablesDate['last']=Sample::whereRaw('time between '.$startTimeString.' and '.$endTimeString)
-            ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)->orderBy('time','desc')->first();
-        /*$pagination=Sample::selectRaw('time_bucket(\'5 minutes\', "time") AS "x",count(value) AS y')
+
+        //$availablesDate['last']=Sample::whereRaw('time between '.$startTimeString.' and '.$endTimeString)
+        //    ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)->orderBy('time','desc')->first();
+        $pagination=Sample::selectRaw('time_bucket(\'5 minutes\', "time") AS "x",count(value) AS y')
             ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)
             ->whereRaw("EXTRACT(MONTH FROM time) = {$dateArray[1]} AND EXTRACT(YEAR FROM time) = {$dateArray[0]}  AND EXTRACT(DAY FROM time) = {$dateArray[2]}")
-            ->groupBy('x')->get();*/
-        return view('wearable.viewEcg', compact('user','date','availablesDate'));
+            ->groupBy('x')->get();
+        return view('wearable.viewEcg', compact('user','date','availablesDate','pagination'));
 
     }
 
@@ -412,8 +415,8 @@ class SampleController extends Controller
         $user=User::findOrFail($request->userId);
         $sensor=Sensor::where('name','Ecg')->first();
         $searchDate="timestamp '".Carbon::createFromTimestampMs($request->date)->toDateTimeString()."'";
-
-        $firstFound=Sample::whereRaw('time >= '.$searchDate.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id)->orderBy('time')->first();
+        $endSearchDate="timestamp '".Carbon::createFromTimestampMs($request->date)->endOfDay()->toDateTimeString()."'";
+        $firstFound=Sample::whereRaw('time >= '.$searchDate.' AND time < '.$endSearchDate.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id)->orderBy('time')->first();
         $startTimeString="timestamp '".$firstFound->time->toDateTimeString()."'";
         $endTimeString="timestamp '".$firstFound->time->addMinutes(5)->toDateTimeString()."'";
         $selectString='time AS "x", value AS y';

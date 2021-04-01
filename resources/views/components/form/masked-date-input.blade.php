@@ -15,7 +15,7 @@ $var=generateRandomString(6);
 @endphp
 <div class="{{$attributes->get('class')}}" x-data="{}" x-init="">
     @if ($label)
-        <x-form.label for="{{$attributes->whereStartsWith('wire:model')->first()}}"> {{ $label}} </x-form.label>
+        <x-form.label for="{{$id}}_masked"> {{ $label}} </x-form.label>
     @endif
     <div class="mt-1 relative rounded-md shadow-sm">
 
