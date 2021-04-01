@@ -52,6 +52,7 @@
         },
         themeSystem: "bootstrap4",
         eventLimit: true,
+
         events: {!! $events !!}
     });
     calendar.render();

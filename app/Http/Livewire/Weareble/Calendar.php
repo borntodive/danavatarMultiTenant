@@ -14,13 +14,14 @@ class Calendar extends Component
 
     public $users;
     public User $user;
-    public $events=[];
+    public $events;
 
     public $targetDate;
 
 
     public function mount() {
         $this->targetDate=now()->format('Y-m-d');
+        $this->events=json_encode([]);
         $this->getEvents();
     }
 
