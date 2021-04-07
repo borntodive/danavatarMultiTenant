@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-form-section.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-form-section.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -344,14 +343,7 @@
       <workItem from="1615537791855" duration="5847000" />
       <workItem from="1615802062719" duration="692000" />
       <workItem from="1615906317656" duration="53684000" />
-      <workItem from="1617800066792" duration="7377000" />
-    </task>
-    <task id="LOCAL-00087" summary="Fix sample api 1">
-      <created>1614880577111</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1614880577111</updated>
+      <workItem from="1617800066792" duration="7541000" />
     </task>
     <task id="LOCAL-00088" summary="Should broadcastnow ecg event">
       <created>1614930151747</created>
@@ -689,7 +681,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617810834160</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="Fix Anamnesis">
+      <created>1617811541322</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1617811541322</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
