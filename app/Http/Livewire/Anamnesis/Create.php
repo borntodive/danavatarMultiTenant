@@ -99,10 +99,7 @@ class Create extends Component
      */
     public function render()
     {
-        if(count($this->getErrorBag()->all()) > 0){
-            $this->dispatchBrowserEvent('scrollToTop');
 
-        }
         return view('livewire.anamnesis.create');
     }
 
@@ -129,7 +126,6 @@ class Create extends Component
             ]
         ]);
         $this->dispatchBrowserEvent('scrollToTop');
-        //$this->redirect('#');
         //return redirect()->route('dashboard');
 
         //dd($validatedData,$anamensis->data);
