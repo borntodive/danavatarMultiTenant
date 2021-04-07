@@ -90,7 +90,7 @@ class Accept extends Component
         $this->lastname=$this->invite->lastname;
         $this->email=$this->invite->email;
         $this->codice_fiscale=$this->invite->codice_fiscale;
-        $this->dob=Carbon::create($this->invite->dob);
+        $this->dob=$this->invite->dob;
         $this->ipAddress=$request->ip();
     }
 
