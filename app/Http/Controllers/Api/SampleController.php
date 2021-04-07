@@ -82,7 +82,7 @@ class SampleController extends Controller
 
                         $datas[]=Point::measurement($sample['measureType'])
                             ->addTag('user_id', strval($sample['userId']))
-                            ->addField('value', $val)
+                            ->addField('value', (float)$val)
                             ->time( (int)($time->getPreciseTimestamp()/1000));
 
                         /*$datas[]=['name' =>  $sample['measureType'],
@@ -105,12 +105,10 @@ class SampleController extends Controller
                     }
 
                 } else {
-                    $datas[]=['name' =>  $sample['measureType'],
-                            'tags' => ['user_id' => $sample['userId']+""],
-                            'fields' => ['value' => $sample['value']],
-                            'time' => $sample['date']
-                        ];
-
+                    $datas[]=Point::measurement($sample['measureType'])
+                        ->addTag('user_id', strval($sample['userId']))
+                        ->addField('value', (float)$sample['value'])
+                        ->time( $sample['date']);
 
                 }
                 if ($ecgEvent) {
