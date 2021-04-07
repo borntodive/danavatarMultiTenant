@@ -91,7 +91,6 @@ class Accept extends Component
         $this->email=$this->invite->email;
         $this->codice_fiscale=$this->invite->codice_fiscale;
         $this->dob=$this->invite->dob;
-
         $this->ipAddress=$request->ip();
     }
 
