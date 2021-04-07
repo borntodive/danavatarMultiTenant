@@ -45,7 +45,6 @@
                         wire:model="dob"
                         :min="1900-01-01"
                         :max="now()->format('Y-m-d')"
-                        :value="($dob) ? $dob->isoFormat('L') : null"
                     />
                 </div>
                 <div class="sm:col-span-2">
