@@ -22,8 +22,9 @@ class SampleController extends Controller
     public function store (Request $request)
     {
         # You can generate a Token from the "Tokens Tab" in the UI
-        $token = 'PI_5HrBonZO7O_Ey7-UTD0AmBRmT4Cvrb5GF5XLnc4vmBBIUTrYd-RtM6M_qd6k3Q-dxjXT0la_EulbDrq6A8Q==';
-        $org = 'daneuroperni@gmail.com';
+        $token = '2N8qnyK4qyHSfQaZYEoXOdUDkrp9fMx1FPBBnu9VgBREGnRMczw1U2xcNT-aGL4rz7esMjHr10nhTL4Gb6yhZg==';
+        $org = 'danrni';
+
         $bucket = env('INFLUX_BUCKET');
 
         $client = new Client([
