@@ -27,6 +27,7 @@ class InviteCreated extends Notification implements ShouldQueue
         return ['mail'];
     }
 
+
     /**
      * Get the mail representation of the notification.
      *
