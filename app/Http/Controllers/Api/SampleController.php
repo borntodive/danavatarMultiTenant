@@ -28,7 +28,7 @@ class SampleController extends Controller
         $bucket = env('INFLUX_BUCKET');
 
         $client = new Client([
-            "url" => env('influx_url'),
+            "url" => env('INFLUX_URL'),
             "token" => $token,
         ]);
         $writeApi = $client->createWriteApi();
