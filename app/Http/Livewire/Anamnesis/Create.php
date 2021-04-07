@@ -80,13 +80,20 @@ class Create extends Component
         $this->divingState['scuba']['tecnical']=false;
         $this->divingState['apnea']['freedive']=false;
         $this->divingState['apnea']['phishing']=false;
-        $this->divingState['anamnesis']['scuba']['barotrauma']=false;
-        $this->divingState['anamnesis']['scuba']['narcosi']=false;
-        $this->divingState['anamnesis']['scuba']['dcs']=false;
-        $this->divingState['anamnesis']['apnea']['taravana']=false;
-        $this->divingState['anamnesis']['apnea']['edema']=false;
-        $this->divingState['anamnesis']['apnea']['sincope']=false;
-        $this->divingState['anamnesis']['apnea']['samba']=false;
+        $this->divingState['anamnesis']['scuba']['recreative']['barotrauma']=false;
+        $this->divingState['anamnesis']['scuba']['recreative']['narcosi']=false;
+        $this->divingState['anamnesis']['scuba']['recreative']['dcs']=false;
+        $this->divingState['anamnesis']['scuba']['tecnical']['barotrauma']=false;
+        $this->divingState['anamnesis']['scuba']['tecnical']['narcosi']=false;
+        $this->divingState['anamnesis']['scuba']['tecnical']['dcs']=false;
+        $this->divingState['anamnesis']['apnea']['freedive']['taravana']=false;
+        $this->divingState['anamnesis']['apnea']['freedive']['edema']=false;
+        $this->divingState['anamnesis']['apnea']['freedive']['sincope']=false;
+        $this->divingState['anamnesis']['apnea']['freedive']['samba']=false;
+        $this->divingState['anamnesis']['apnea']['phishing']['taravana']=false;
+        $this->divingState['anamnesis']['apnea']['phishing']['edema']=false;
+        $this->divingState['anamnesis']['apnea']['phishing']['sincope']=false;
+        $this->divingState['anamnesis']['apnea']['phishing']['samba']=false;
 
 
         //dd($this->validationAttributes);

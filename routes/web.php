@@ -29,6 +29,8 @@ Route::get('/test/ploi', [\App\Http\Controllers\TestController::class,'ploi']);
 Route::get('/test/cloud', [\App\Http\Controllers\TestController::class,'cloud']);
 Route::get('/invite/accept',App\Http\Livewire\Invite\Accept::class)->name('invite.accept');
 Route::get('/test/send-invite', [\App\Http\Controllers\TestController::class,'sendInvite']);
+Route::get('/test/influx', [\App\Http\Controllers\TestController::class,'influx']);
+
 Route::get('/test/log', function () {
     Log::debug('test');
 });

@@ -165,7 +165,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bjeavons/zxcvbn-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/lab404/laravel-impersonate" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/predis/predis" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/horizon" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-http/promise" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-http/message-factory" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-http/message" />

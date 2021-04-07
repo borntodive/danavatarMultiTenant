@@ -160,7 +160,6 @@
       <path value="$PROJECT_DIR$/vendor/bjeavons/zxcvbn-php" />
       <path value="$PROJECT_DIR$/vendor/lab404/laravel-impersonate" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
-      <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
       <path value="$PROJECT_DIR$/vendor/php-http/promise" />
       <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
       <path value="$PROJECT_DIR$/vendor/php-http/message" />
@@ -175,6 +174,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
       <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/influxdata/influxdb-client-php" />
+      <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

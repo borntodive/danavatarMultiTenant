@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/StaticData/Otolaryngology.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +198,6 @@
       <path value="$PROJECT_DIR$/vendor/bjeavons/zxcvbn-php" />
       <path value="$PROJECT_DIR$/vendor/lab404/laravel-impersonate" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
-      <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
       <path value="$PROJECT_DIR$/vendor/php-http/promise" />
       <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
       <path value="$PROJECT_DIR$/vendor/php-http/message" />
@@ -208,6 +212,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
       <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/influxdata/influxdb-client-php" />
+      <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n71kcTdmyAxn2ngrCHd5fMD9ht" />
@@ -231,18 +237,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/2AMBULATORIO ORL DEDICATO ALLE PROBLEMATICHE SUBACQUEE_1.docx" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\app\Http\Controllers\Api" />
       <recent name="C:\apps\danavatar\resources\lang\it" />
       <recent name="C:\apps\danavatar\app\StaticData" />
       <recent name="C:\apps\danavatar\resources\views\components\medical-record" />
       <recent name="C:\apps\danavatar\app\Traits" />
-      <recent name="C:\apps\danavatar\resources\views\medicalRecord" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\apps\danavatar\app\Traits\MedicalRecord" />
@@ -344,161 +350,8 @@
       <workItem from="1615464643272" duration="3342000" />
       <workItem from="1615537791855" duration="5847000" />
       <workItem from="1615802062719" duration="692000" />
-      <workItem from="1615906317656" duration="18581000" />
-    </task>
-    <task id="LOCAL-00064" summary="SAmple API Debug">
-      <created>1614415162978</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1614415162978</updated>
-    </task>
-    <task id="LOCAL-00065" summary="SAmple API Debug">
-      <created>1614415517271</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1614415517271</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Sample Model $guarded= []">
-      <created>1614427448704</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1614427448706</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Fix SAmple InsertOrFail">
-      <created>1614460521191</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1614460521191</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Fix SAmple InsertOrFail">
-      <created>1614464045903</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1614464045905</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Fix masked-date-input.blade">
-      <created>1614595397741</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1614595397741</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Fix livewire script loading">
-      <created>1614595914162</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1614595914162</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Center in superAdmin integration">
-      <created>1614679630328</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1614679630328</updated>
-    </task>
-    <task id="LOCAL-00072" summary="New seeder + Minio storage">
-      <created>1614684319122</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1614684319122</updated>
-    </task>
-    <task id="LOCAL-00073" summary="TruestProxies">
-      <created>1614685541068</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1614685541068</updated>
-    </task>
-    <task id="LOCAL-00074" summary="URL::forceScheme('https')">
-      <created>1614685770610</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1614685770611</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Fix admin dashboard link">
-      <created>1614693158147</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1614693158148</updated>
-    </task>
-    <task id="LOCAL-00076" summary="fix imask">
-      <created>1614694517448</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1614694517448</updated>
-    </task>
-    <task id="LOCAL-00077" summary="fix imask">
-      <created>1614697140936</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1614697140936</updated>
-    </task>
-    <task id="LOCAL-00078" summary="DEV + Staging Banner">
-      <created>1614702603975</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1614702603975</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Invite mail template + steky top bar">
-      <created>1614779414235</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1614779414235</updated>
-    </task>
-    <task id="LOCAL-00080" summary="New landing page y40">
-      <created>1614782430236</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1614782430236</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Invete cast to datetime">
-      <created>1614788635752</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1614788635752</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Horizon integration">
-      <created>1614791019863</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1614791019863</updated>
-    </task>
-    <task id="LOCAL-00083" summary="Reset password + doctor in medical record">
-      <created>1614852709228</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1614852709228</updated>
-    </task>
-    <task id="LOCAL-00084" summary="sentry integration">
-      <created>1614855234855</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1614855234855</updated>
-    </task>
-    <task id="LOCAL-00085" summary="fix max_execution time sample api">
-      <created>1614863626375</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1614863626375</updated>
+      <workItem from="1615906317656" duration="53684000" />
+      <workItem from="1617800066792" duration="6648000" />
     </task>
     <task id="LOCAL-00086" summary="samplke seeder on user_id 2">
       <created>1614865366940</created>
@@ -689,7 +542,161 @@
       <option name="project" value="LOCAL" />
       <updated>1615931025198</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="ORL edit esame obiettivo">
+      <created>1617089587781</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1617089587782</updated>
+    </task>
+    <task id="LOCAL-00114" summary="OPT ecg">
+      <created>1617096053447</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1617096053448</updated>
+    </task>
+    <task id="LOCAL-00115" summary="ORL MR edit complete">
+      <created>1617101426613</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1617101426615</updated>
+    </task>
+    <task id="LOCAL-00116" summary="FIX calendar view">
+      <created>1617280615842</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1617280615842</updated>
+    </task>
+    <task id="LOCAL-00117" summary="FIX calendar view">
+      <created>1617282595422</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1617282595423</updated>
+    </task>
+    <task id="LOCAL-00118" summary="INFLUX TEST">
+      <created>1617785495202</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1617785495202</updated>
+    </task>
+    <task id="LOCAL-00119" summary="INFLUX TEST">
+      <created>1617785786222</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1617785786222</updated>
+    </task>
+    <task id="LOCAL-00120" summary="INFLUX Local">
+      <created>1617800141470</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1617800141470</updated>
+    </task>
+    <task id="LOCAL-00121" summary="INFLUX Local">
+      <created>1617800329710</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1617800329710</updated>
+    </task>
+    <task id="LOCAL-00122" summary="INFLUX Local">
+      <created>1617800532565</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1617800532566</updated>
+    </task>
+    <task id="LOCAL-00123" summary="INFLUX Local">
+      <created>1617801196451</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1617801196452</updated>
+    </task>
+    <task id="LOCAL-00124" summary="FIX Invite">
+      <created>1617802713071</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1617802713071</updated>
+    </task>
+    <task id="LOCAL-00125" summary="FIX Invite">
+      <created>1617803740080</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1617803740080</updated>
+    </task>
+    <task id="LOCAL-00126" summary="FIX Invite">
+      <created>1617803982272</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1617803982272</updated>
+    </task>
+    <task id="LOCAL-00127" summary="FIX Invite">
+      <created>1617804108225</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1617804108225</updated>
+    </task>
+    <task id="LOCAL-00128" summary="FIX Invite">
+      <created>1617808060575</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1617808060575</updated>
+    </task>
+    <task id="LOCAL-00129" summary="FIX Invite">
+      <created>1617808113452</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1617808113452</updated>
+    </task>
+    <task id="LOCAL-00130" summary="FIX Invite">
+      <created>1617808679589</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1617808679589</updated>
+    </task>
+    <task id="LOCAL-00131" summary="FIX Invite">
+      <created>1617808852407</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1617808852407</updated>
+    </task>
+    <task id="LOCAL-00132" summary="Horizon fix">
+      <created>1617809997360</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1617809997360</updated>
+    </task>
+    <task id="LOCAL-00133" summary="Horizon fix">
+      <created>1617810102620</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1617810102620</updated>
+    </task>
+    <task id="LOCAL-00134" summary="Horizon fix">
+      <created>1617810379639</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1617810379639</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -726,14 +733,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sentry integration" />
-    <MESSAGE value="fix max_execution time sample api" />
-    <MESSAGE value="samplke seeder on user_id 2" />
-    <MESSAGE value="Fix sample api 1" />
-    <MESSAGE value="Should broadcastnow ecg event" />
-    <MESSAGE value="millisecond in ecg event" />
-    <MESSAGE value="Nutritionist Medical Record Edit + initial view" />
-    <MESSAGE value="Fix Nutritionist Medical Record Edit" />
     <MESSAGE value="test barches 2" />
     <MESSAGE value="test new server" />
     <MESSAGE value="Create distribuited hypertables in staging &amp; prod" />
@@ -751,7 +750,15 @@
     <MESSAGE value="Dentist view" />
     <MESSAGE value="Fix Dentist view/edit" />
     <MESSAGE value="ORL edit Anamnesis" />
-    <option name="LAST_COMMIT_MESSAGE" value="ORL edit Anamnesis" />
+    <MESSAGE value="ORL edit esame obiettivo" />
+    <MESSAGE value="OPT ecg" />
+    <MESSAGE value="ORL MR edit complete" />
+    <MESSAGE value="FIX calendar view" />
+    <MESSAGE value="INFLUX TEST" />
+    <MESSAGE value="INFLUX Local" />
+    <MESSAGE value="FIX Invite" />
+    <MESSAGE value="Horizon fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Horizon fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
