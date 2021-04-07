@@ -12,25 +12,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-use InfluxDB2\Client;
-use InfluxDB2\Model\WritePrecision;
-use InfluxDB2\Point;
-
-
 class SampleController extends Controller
 {
     public function store (Request $request)
     {
-        # You can generate a Token from the "Tokens Tab" in the UI
-        $token = 'PI_5HrBonZO7O_Ey7-UTD0AmBRmT4Cvrb5GF5XLnc4vmBBIUTrYd-RtM6M_qd6k3Q-dxjXT0la_EulbDrq6A8Q==';
-        $org = 'daneuroperni@gmail.com';
-        $bucket = env('INFLUX_BUCKET');
-
-        $client = new Client([
-            "url" => "https://eu-central-1-1.aws.cloud2.influxdata.com",
-            "token" => $token,
-        ]);
-        $writeApi = $client->createWriteApi();
         ini_set('max_execution_time',120);
         $validator = Validator::make($this->toSnakeCase($request->all()), [
             'data' => 'required|array'
@@ -71,25 +56,19 @@ class SampleController extends Controller
             }
             else {
                 $sample['sensor_id'] = $sensor->id;
-                $sample['measureType'];
+                unset($sample['measureType']);
             }
             if (!$errors) {
                 if (is_array($sample['value'])){
                     $delta=1000/count($sample['value']);
                     $time=Carbon::createFromTimestamp($sample['date']);
                     foreach ($sample['value'] as $val) {
-
-                        $datas[]=Point::measurement($sample['measureType'])
-                            ->addTag('user_id', strval($sample['userId']))
-                            ->addField('value', $val)
-                            ->time( (int)($time->getPreciseTimestamp()/1000));
-
-                        /*$datas[]=['name' =>  $sample['measureType'],
-                            'tags' => ['user_id' => strval($sample['userId'])],
-                            'fields' => ['value' => $val],
-                            //'time' => (int)$time->getPreciseTimestamp()
-                            'time' => (int)($time->getPreciseTimestamp(6))
-                        ];*/
+                        $datas[]=[
+                            "time" => $time->format('Y-m-d H:i:s.u'),
+                            "user_id" => $sample['userId'],
+                            "sensor_id" => $sample['sensor_id'],
+                            "value" => $val
+                        ];
 
 
                         if ($sensor->name=='Ecg') {
@@ -104,11 +83,12 @@ class SampleController extends Controller
                     }
 
                 } else {
-                    $datas[]=['name' =>  $sample['measureType'],
-                            'tags' => ['user_id' => $sample['userId']+""],
-                            'fields' => ['value' => $sample['value']],
-                            'time' => $sample['date']
-                        ];
+                    $datas[]=[
+                        "time" => $sample['date'],
+                        "user_id" => $sample['userId'],
+                        "sensor_id" => $sample['sensor_id'],
+                        "value" => $sample['value']
+                    ];
 
 
                 }
@@ -130,11 +110,10 @@ class SampleController extends Controller
                 $currentSensorsPerDay->sensors=$sensorsIds;
             $currentSensorsPerDay->save();
         }
-        foreach ($datas as $data){
-            $writeApi->write($data, WritePrecision::MS, $bucket, $org);
-            //DB::table('samples')->insertOrIgnore($data->toArray());
-        }
+        foreach (collect($datas)->chunk(1000) as $data){
 
+            DB::table('samples')->insertOrIgnore($data->toArray());
+        }
         if ($status==200)
             $respose['message']='All samples created successfully';
         else
