@@ -13,11 +13,6 @@ trait BelongsToManyMedicalCenter
     {
         static::addGlobalScope(new TenantScope);
 
-        static::creating(function($model) {
-            if(session()->has('tenant')) {
-                $model->tenant_id = session()->get('tenant')->id;
-            }
-        });
     }
 
     public function centers()
