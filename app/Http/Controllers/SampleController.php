@@ -504,6 +504,19 @@ class SampleController extends Controller
     }
 
     public function getMeasureses(Request $request) {
+        $token = env("INFLUX_TOKEN");
+        $org = env("INFLUX_ORG");
+        $bucket = env("INFLUX_BUCKET");
+
+        $client = new Client([
+            "url" => env("INFLUX_URL"),
+            "token" => $token,
+            "org" => $org,
+            "debug" => false,
+            "timeout"=>0
+        ]);
+
+        $queryApi = $client->createQueryApi();
         $validator = Validator::make($request->all(), [
             "userId"=>'required|integer|exists:users,id',
             "sensorId"=>'required|integer|exists:sensors,id',
@@ -518,27 +531,37 @@ class SampleController extends Controller
         $user= User::findOrFail($request->userId);
         $sensor= Sensor::findOrFail($request->sensorId);
 
-        $startTimeString="timestamp '".Carbon::createFromTimestampMs($request->startTime)->sub(30, 'seconds')->format('Y-m-d H:i:s.u')."'";
-        $endTimeString="timestamp '".Carbon::createFromTimestampMs($request->endTime)->add(30, 'seconds')->format('Y-m-d H:i:s.u')."'";
-
+        $startTimeString=Carbon::createFromTimestampMs($request->startTime)->sub(30, 'seconds')->toIso8601ZuluString();
+        $endTimeString=Carbon::createFromTimestampMs($request->endTime)->add(30, 'seconds')->toIso8601ZuluString();
+        $q='from(bucket: "AvatarStaging")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+             |> max()
+             |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
+        $maxRecords=$queryApi->query($q);
+        $q='from(bucket: "AvatarStaging")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+             |> min()
+             |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
+        $minRecords=$queryApi->query($q);
+        $q='from(bucket: "AvatarStaging")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+             |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
+        $records=$queryApi->query($q);
         $query=Sample::whereRaw('time >= '.$startTimeString.' AND time <= '.$endTimeString.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id);
-        $ecgDatas=$query->orderBy('time')->get();
-        $maxEcg=$query->max('value');
-        $minEcg=$query->min('value');
+        $ecgDatas=$records[0]->records;
+        $maxEcg=$maxRecords[0]->records[0]->getValue();
+        $minEcg=$minRecords[0]->records[0]->getValue();
         $ecgCount=count($ecgDatas);
-        $firstTime=$ecgDatas[0]->time;
+        $firstTime=new Carbon($ecgDatas[0]->getTime());
 
-        $lastTime=$ecgDatas[$ecgCount -1]->time;
+        $lastTime=new Carbon($ecgDatas[$ecgCount -1]->getTime());
 
         $ecgDuration=$lastTime->diffInSeconds($firstTime);
         $sampleRate=(int)round($ecgCount/$ecgDuration);
-        $plucked = $ecgDatas->pluck('value');
+        $plucked = collect($ecgDatas)->pluck('_value');
         $out=null;
-        foreach ($plucked->all() as $data) {
+        foreach ($ecgDatas as $data) {
             if (abs($maxEcg)>abs($minEcg))
-                $out[]=[$data];
+                $out[]=[$data->getValue()];
             else
-                $out[]=[$data*-1];
+                $out[]=[$data->getValue()*-1];
         }
         //dd($ecgDuration,$ecgCount, $sampleRate);
         //dd($plucked->all());
@@ -558,11 +581,12 @@ class SampleController extends Controller
         $count=-1;
         $ecgClean=null;
         foreach ($rawEcgPoints as $idx=>$rawEcgPoint) {
-            if ($ecgDatas[$idx]->time < $startTime)
+            if (new Carbon($ecgDatas[$idx]->getTime()) < $startTime)
                 continue;
-            else if ($ecgDatas[$idx]->time > $endTime)
+            else if (new Carbon($ecgDatas[$idx]->getTime())  > $endTime)
                 break;
-            $np['x']=$ecgDatas[$idx+1]->time->getPreciseTimestamp(3);
+            $t=new Carbon($ecgDatas[$idx+1]->getTime());
+            $np['x']=$t->getPreciseTimestamp(3);
             $np['y']=round($rawEcgPoint->ECG_Clean * 1000);
             $ecgClean[]=$np;
             $types=['Q','P','R','S','T'];
@@ -570,8 +594,8 @@ class SampleController extends Controller
                 $key="ECG_".$type."_Peaks";
                 if ($rawEcgPoint->$key) {
                     $count++;
-                    $app['time']=$ecgDatas[$idx+1]->time;
-                    $app['value']=round($ecgDatas[$idx+1]->value * 1000);
+                    $app['time']=$t;
+                    $app['value']=round($ecgDatas[$idx+1]->getValue() * 1000);
                     $k=strtolower($type)."s";
                     $out[$k][]=$app;
                 }
