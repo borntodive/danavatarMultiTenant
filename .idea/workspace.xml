@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-form-section.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-form-section.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleControllerSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,18 +232,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\app\Http\Controllers" />
       <recent name="C:\apps\danavatar\app\Http\Controllers\Api" />
       <recent name="C:\apps\danavatar\resources\lang\it" />
       <recent name="C:\apps\danavatar\app\StaticData" />
       <recent name="C:\apps\danavatar\resources\views\components\medical-record" />
-      <recent name="C:\apps\danavatar\app\Traits" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\apps\danavatar\app\Traits\MedicalRecord" />
@@ -343,28 +346,8 @@
       <workItem from="1615537791855" duration="5847000" />
       <workItem from="1615802062719" duration="692000" />
       <workItem from="1615906317656" duration="53684000" />
-      <workItem from="1617800066792" duration="7541000" />
-    </task>
-    <task id="LOCAL-00088" summary="Should broadcastnow ecg event">
-      <created>1614930151747</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1614930151747</updated>
-    </task>
-    <task id="LOCAL-00089" summary="millisecond in ecg event">
-      <created>1614930809974</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1614930809974</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Nutritionist Medical Record Edit + initial view">
-      <created>1615043024537</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1615043024541</updated>
+      <workItem from="1617800066792" duration="7818000" />
+      <workItem from="1617812259161" duration="7151000" />
     </task>
     <task id="LOCAL-00091" summary="Fix Nutritionist Medical Record Edit">
       <created>1615046044110</created>
@@ -688,7 +671,28 @@
       <option name="project" value="LOCAL" />
       <updated>1617811541322</updated>
     </task>
-    <option name="localTasksCounter" value="137" />
+    <task id="LOCAL-00137" summary="Fix Anamnesis">
+      <created>1617811705957</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1617811705957</updated>
+    </task>
+    <task id="LOCAL-00138" summary="Fix Ananmesis view">
+      <created>1617885393066</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1617885393066</updated>
+    </task>
+    <task id="LOCAL-00139" summary="Test Influx read">
+      <created>1617885675053</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1617885675053</updated>
+    </task>
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -725,8 +729,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="test new server" />
-    <MESSAGE value="Create distribuited hypertables in staging &amp; prod" />
     <MESSAGE value="Fix Anamnesis with sports and eliminate swimming" />
     <MESSAGE value="Fix ECG view 1" />
     <MESSAGE value="ECG Live zoom 3 sec" />
@@ -750,7 +752,9 @@
     <MESSAGE value="FIX Invite" />
     <MESSAGE value="Horizon fix" />
     <MESSAGE value="Fix Anamnesis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Anamnesis" />
+    <MESSAGE value="Fix Ananmesis view" />
+    <MESSAGE value="Test Influx read" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test Influx read" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

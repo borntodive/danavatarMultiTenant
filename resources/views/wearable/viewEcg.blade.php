@@ -80,7 +80,7 @@
                     class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
                     <div class="flex-1 px-4 py-2 text-sm truncate">
                         <a href="#" class="text-gray-900 font-medium hover:text-gray-600">Primo Dato</a>
-                        <p class="text-gray-500">{{isset($availablesDate['first']->time) ? $availablesDate['first']->time->timezone('Europe/Rome')->toDateTimeString() : ""}}</p>
+                        <p class="text-gray-500">{{isset($availablesDate['first']) ? $availablesDate['first']->timezone('Europe/Rome')->toDateTimeString() : ""}}</p>
                     </div>
                     <div class="flex-shrink-0 pr-2">
                         <button
@@ -106,7 +106,7 @@
                     class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
                     <div class="flex-1 px-4 py-2 text-sm truncate">
                         <a href="#" class="text-gray-900 font-medium hover:text-gray-600">Ultimo Dato</a>
-                        <p class="text-gray-500">{{isset($availablesDate['last']->time) ? $availablesDate['last']->time->timezone('Europe/Rome')->toDateTimeString() : ""}}</p>
+                        <p class="text-gray-500">{{isset($availablesDate['last']) ? $availablesDate['last']->timezone('Europe/Rome')->toDateTimeString() : ""}}</p>
                     </div>
                     <div class="flex-shrink-0 pr-2">
                         <button

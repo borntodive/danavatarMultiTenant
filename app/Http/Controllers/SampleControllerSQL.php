@@ -12,7 +12,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use InfluxDB2\Client;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SampleController extends Controller
@@ -82,19 +81,6 @@ class SampleController extends Controller
     }
 
     public function viewEcg (Request $request, User $user) {
-        $token = env("INFLUX_TOKEN");
-        $org = env("INFLUX_ORG");
-        $bucket = env("INFLUX_BUCKET");
-
-        $client = new Client([
-            "url" => env("INFLUX_URL"),
-            "token" => $token,
-            "org" => $org,
-            "debug" => false,
-            "timeout"=>0
-        ]);
-
-        $queryApi = $client->createQueryApi();
         $validator = Validator::make($request->all(), [
             'date'=>'required|date',
 
@@ -107,28 +93,21 @@ class SampleController extends Controller
         $date=$request->date;
         $dateArray=explode('-',$request->date);
         $searchData=Carbon::create($dateArray[0],$dateArray[1],$dateArray[2],0);
-        $endDate=$searchData->clone()->endOfDay();
-        //$startTimeString="'".$searchData->toDateTimeString()."'";
-        //$endTimeString="'".$searchData->endOfDay()->toDateTimeString()."'";
+        $startTimeString="'".$searchData->toDateTimeString()."'";
+        $endTimeString="'".$searchData->endOfDay()->toDateTimeString()."'";
         $now=new Carbon();
-        //$diffInSecs=$now->addDay()->diffInSeconds($searchData->addDay());
+        $diffInSecs=$now->addDay()->diffInSeconds($searchData->addDay());
         //$availablesDate['first']=new Carbon();
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$searchData->toIso8601ZuluString().', stop: '.$endDate->toIso8601ZuluString().')
-             |> last()
-             |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
-        $lastRecords = $queryApi->query($q);
-        $availablesDate['last']=new Carbon($lastRecords[0]->records[0]->getTime(),"Europe/Rome");
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$searchData->toIso8601ZuluString().', stop: '.$endDate->toIso8601ZuluString().')
-         |> first()
-         |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
-        $firstRecords = $queryApi->query($q);
-        $availablesDate['first']=new Carbon($firstRecords[0]->records[0]->getTime());
-        /*$pagination=Sample::selectRaw('time_bucket(\'5 minutes\', "time") AS "x",count(value) AS y')
+        $availablesDate['last']=new Carbon();
+        $availablesDate['first']=Sample::whereRaw('time between '.$startTimeString.' and '.$endTimeString)
+            ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)->orderBy('time')->first();
+
+        //$availablesDate['last']=Sample::whereRaw('time between '.$startTimeString.' and '.$endTimeString)
+        //    ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)->orderBy('time','desc')->first();
+        $pagination=Sample::selectRaw('time_bucket(\'5 minutes\', "time") AS "x",count(value) AS y')
             ->whereRaw('sensor_id = 6 AND user_id = '.$user->id)
             ->whereRaw("EXTRACT(MONTH FROM time) = {$dateArray[1]} AND EXTRACT(YEAR FROM time) = {$dateArray[0]}  AND EXTRACT(DAY FROM time) = {$dateArray[2]}")
-            ->groupBy('x')->get();*/
-
-        $pagination=[];
+            ->groupBy('x')->get();
         return view('wearable.viewEcg', compact('user','date','availablesDate','pagination'));
 
     }
@@ -423,19 +402,6 @@ class SampleController extends Controller
     }
 
     public function getEcgByDate(Request $request) {
-        $token = env("INFLUX_TOKEN");
-        $org = env("INFLUX_ORG");
-        $bucket = env("INFLUX_BUCKET");
-
-        $client = new Client([
-            "url" => env("INFLUX_URL"),
-            "token" => $token,
-            "org" => $org,
-            "debug" => false,
-            "timeout"=>0
-        ]);
-
-        $queryApi = $client->createQueryApi();
         ini_set('memory_limit','2048M');
         $validator = Validator::make($request->all(), [
             "userId"=>'required|integer|exists:users,id',
@@ -448,30 +414,43 @@ class SampleController extends Controller
         }
         $user=User::findOrFail($request->userId);
         $sensor=Sensor::where('name','Ecg')->first();
-        $searchDate=Carbon::createFromTimestampMs($request->date)->toIso8601ZuluString();
-        $endSearchDate=Carbon::createFromTimestampMs($request->date)->endOfDay()->toIso8601ZuluString();
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$searchDate.', stop: '.$endSearchDate.')
-             |> first()
-             |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
-        $firstRecords = $queryApi->query($q);
-        $firstFound=new Carbon($firstRecords[0]->records[0]->getTime());
-        $lastFound=$firstFound->clone()->addMinutes(5);
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$firstFound->toIso8601ZuluString().', stop: '.$lastFound->toIso8601ZuluString().')
-             |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
-        $records = $queryApi->query($q);
-        $data=[];
-        foreach ($records[0]->records as $record) {
-            $time=new Carbon($record->getTime());
-            $data[]=[
-                "x"=>$time->getPreciseTimestamp(3),
-                "y"=>round ($record->getValue() * 1000)
-            ];
+        $searchDate="timestamp '".Carbon::createFromTimestampMs($request->date)->toDateTimeString()."'";
+        $endSearchDate="timestamp '".Carbon::createFromTimestampMs($request->date)->endOfDay()->toDateTimeString()."'";
+        $firstFound=Sample::whereRaw('time >= '.$searchDate.' AND time < '.$endSearchDate.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id)->orderBy('time')->first();
+        $startTimeString="timestamp '".$firstFound->time->toDateTimeString()."'";
+        $endTimeString="timestamp '".$firstFound->time->addMinutes(5)->toDateTimeString()."'";
+        $selectString='time AS "x", value AS y';
+        $data=DB::table('samples')->select(DB::raw($selectString))
+            ->whereRaw('time >= '.$startTimeString.' AND time < '.$endTimeString.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id)
+            ->orderBy('x')->get();
+        $clean=[];
+        $movingAvgDepth=10;
+        foreach ($data as $i=>$d){
+            /* $mACount=0;
+            $mATotal=0;
+            for ($idx=$i; $idx<=$i+$movingAvgDepth; $idx++) {
+                if (isset($data[$idx])) {
+                   $mACount++;
+                   $mATotal+=$data[$idx]->y;
+                   if ($mACount==1) {
+                       $mATotal*=$movingAvgDepth;
+                       $mACount=$movingAvgDepth;
+                   }
+                }
+            } */
+            // $clean[$i]['y']=round($mATotal * 1000 / $mACount);
+            $currDate=new Carbon($d->x);
+            $data[$i]->x = $currDate->getPreciseTimestamp(3);
+            $clean[$i]['x']=$data[$i]->x;
+            $data[$i]->y = round( $d->y * 1000);
+
         }
+
 
         $out['sensor']=$sensor;
         $out['data']['ECG_Raw']=$data;
         //$out['data']['Moving_Average_Filter']=$clean;
-        $out['startDate']=$firstFound->toDateTimeString();
+        $out['startDate']=$firstFound->time->toDateTimeString();
         return response()->json($out);
 
     }
