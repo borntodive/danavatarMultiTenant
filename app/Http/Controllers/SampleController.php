@@ -19,6 +19,19 @@ class SampleController extends Controller
 {
     public function index(Request $request, User $user)
     {
+        $token = env("INFLUX_TOKEN");
+        $org = env("INFLUX_ORG");
+        $bucket = env("INFLUX_BUCKET");
+
+        $client = new Client([
+            "url" => env("INFLUX_URL"),
+            "token" => $token,
+            "org" => $org,
+            "debug" => false,
+            "timeout"=>0
+        ]);
+
+        $queryApi = $client->createQueryApi();
         $validator = Validator::make($request->all(), [
             'date'=>'required|date',
 
@@ -51,28 +64,53 @@ class SampleController extends Controller
                 'Position'
             ];
             if (in_array($sensor->name,$allowedLatestSensors)){
-                $query=Sample::where('sensor_id',$sensorId)->where('user_id',$user->id);
                 $dateArray=explode('-',$request->date);
                 $searchData=Carbon::create($dateArray[0],$dateArray[1],$dateArray[2],0);
-                $startTimeString="timestamp '".$searchData->toDateTimeString()."'";
-                $endTimeString="timestamp '".$searchData->addDay()->toDateTimeString()."'";
-                $query=$query->whereRaw('time >= '.$startTimeString.' AND time < '.$endTimeString);
-                $data=$query->orderBy('time','desc')->firstOrFail();
+                $startTimeString=$searchData->toIso8601ZuluString();
+                $endTimeString=$searchData->endOfDay()->toIso8601ZuluString();
+                $q='from(bucket: "AvatarStaging")
+                      |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+                      |> last()
+                      |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
+                      |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
+                $records=$queryApi->query($q);
+                $latestValue=$records[0]->records[0]->getValue();
                 $l['sensor']=$sensor;
                 if ($sensor->name != 'Position')
-                    $l['latest']=round($data->value,1);
+                    $l['latest']=round($latestValue,1);
                 else
-                    $l['latest']=__('samples.'.PositionEnum::fromValue((int)$data->value)->key);
+                    $l['latest']=__('samples.'.PositionEnum::fromValue((int)$latestValue)->key);
 
-                if ($sensor->name != 'Position')
-                    $l['average']=round($query->avg('value'),2);
+                $q='from(bucket: "AvatarStaging")
+                      |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+                      |> last()
+                      |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
+                      |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
+                $records=$queryApi->query($q);
+                $latestValue=$records[0]->records[0]->getValue();
+                $l['sensor']=$sensor;
+
+                if ($sensor->name != 'Position') {
+                    $q='from(bucket: "AvatarStaging")
+                      |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+                      |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
+                      |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")
+                      |> aggregateWindow(every: 24h, fn: mean, createEmpty: false)
+                      |> yield(name: "mean")';
+                    $records=$queryApi->query($q);
+                    $meanValue=$records[0]->records[0]->getValue();
+                    $l['average'] = round($meanValue, 2);
+                }
                 else {
-                    $data=DB::table('samples')->select(DB::raw('percentile_disc(0.5) WITHIN GROUP (ORDER BY value)  as median'))
-                        ->whereRaw('time >= '.$startTimeString.' AND time < '.$endTimeString.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id)->first();
-                    /* $data=Sample::select('value')
-                        ->whereRaw('time >= '.$startTimeString.' AND time < '.$endTimeString.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id)
-                        ->orderBy('value')->get(); */
-                    $l['average']=__('samples.'.PositionEnum::fromValue((int)$data->median)->key);
+                    $q='from(bucket: "AvatarStaging")
+                      |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+                      |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
+                      |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")
+                      |> aggregateWindow(every: 24h, fn: median, createEmpty: false)
+                      |> yield(name: "median")';
+                    $records=$queryApi->query($q);
+                    $meanValue=$records[0]->records[0]->getValue();
+                    $l['average']=__('samples.'.PositionEnum::fromValue((int)$meanValue)->key);
                 }
 
                 $latests[]=$l;
@@ -255,6 +293,19 @@ class SampleController extends Controller
 
     public function getSampleByDate(Request $request) {
 
+        $token = env("INFLUX_TOKEN");
+        $org = env("INFLUX_ORG");
+        $bucket = env("INFLUX_BUCKET");
+
+        $client = new Client([
+            "url" => env("INFLUX_URL"),
+            "token" => $token,
+            "org" => $org,
+            "debug" => false,
+            "timeout"=>0
+        ]);
+        $queryApi = $client->createQueryApi();
+
         ini_set('memory_limit','2048M');
         $validator = Validator::make($request->all(), [
             "userId"=>'required|integer|exists:users,id',
@@ -272,82 +323,49 @@ class SampleController extends Controller
         $sensor= Sensor::findOrFail($request->sensorId);
         $group=true;
         if (isset($request->date)) {
-            $selectString='time_bucket(\'5 minutes\', "time") AS "x", avg(value)::DOUBLE PRECISION AS y';
             $dateArray=explode('-',$request->date);
             $searchData=Carbon::create($dateArray[0],$dateArray[1],$dateArray[2],0);
-            $startTimeString="'".$searchData->toDateTimeString()."'";
-            $endTimeString="'".$searchData->addDay()->toDateTimeString()."'";
+            $startTimeString=$searchData->toIso8601ZuluString();
+            $endTimeString=$searchData->addDay()->toIso8601ZuluString();
             $now=new Carbon();
-            $diffInSecs=$now->timezone('Europe/Rome')->addDay()->diffInSeconds($searchData->addDay());
         } else if (isset($request->startTime) && isset($request->endTime)){
-            $range = $request->endTime - $request->startTime;
-            if ($range < 0.5 * 3600 * 1000) { // 1/2 hrs
-                $selectString='time AS "x", value::DOUBLE PRECISION AS y';
-                $group=false;
-            } else if ($range < 1 * 3600 * 1000) { // 1 hrs
-                $selectString='time_bucket(\'30 seconds\', "time") AS "x", avg(value)::DOUBLE PRECISION AS y';
-            } else if ($range < 3 * 3600 * 1000) { // 3 hrs
-                $selectString='time_bucket(\'1 minutes\', "time") AS "x", avg(value)::DOUBLE PRECISION AS y';
-            } else if ($range < 6 * 3600 * 1000) { // 3 hrs
-                $selectString='time_bucket(\'2 minutes\', "time") AS "x", avg(value)::DOUBLE PRECISION AS y';
-            } else if ($range < 12 * 3600 * 1000) { // 12 hrs
-                $selectString='time_bucket(\'3 minutes\', "time") AS "x",avg(value)::DOUBLE PRECISION AS y';
-            } else { // 12 hrs
 
-                $selectString='time_bucket(\'5 minutes\', "time") AS "x",avg(value)::DOUBLE PRECISION AS y';
-            }
-            $startTimeString="'".Carbon::createFromTimestampMs($request->startTime)->toDateTimeString()."'";
-            $endTimeString="'".Carbon::createFromTimestampMs($request->endTime)->addDay()->toDateTimeString()."'";
-
-
-            $now=new Carbon();
-            $diffInSecs=$now->timezone('Europe/Rome')->diffInSeconds(Carbon::createFromTimestampMs($request->endTime));
+            $startTimeString=Carbon::createFromTimestampMs($request->startTime)->toIso8601ZuluString();
+            $endTimeString=Carbon::createFromTimestampMs($request->endTime)->addDay()->toIso8601ZuluString();
         }
         else {
             return response($request->all(),200);
         }
-        if ($sensor->name=='Position')
-        {
-            $selectString='time AS "x", value::DOUBLE PRECISION AS y';
-            $group=false;
-        }
-        $selectString='time AS "x", value::DOUBLE PRECISION AS y';
-        $group=false;
-        $data=DB::table('samples')->select(DB::raw($selectString))
-            ->whereRaw('time between '.$startTimeString.' and '.$endTimeString)
-            ->whereRaw('sensor_id = '.$sensor->id.' AND user_id = '.$user->id)
-            ->orderBy('x');
 
-        if ($group){
-            $data=$data->groupBy('x')
-                ->get();
-        }
-        else
-            $data=$data->get();
-
+        $q='from(bucket: "AvatarStaging")
+                      |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+                      |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
+                      |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
+        dd($q);
+        $records=$queryApi->query($q);
         $lastPosition=0;
         $dataOut=[];
         $c=0;
 
-        foreach ($data as $i=>$d){
+        foreach ($records[0]->records as $record) {
             if ($sensor->name!='Position') {
-                $currDate = new Carbon($d->x);
+                $currDate = new Carbon($record->getTime());
                 $dataOut[$c]['x'] = $currDate->getPreciseTimestamp(3);
                 if ($sensor->id == 6)
-                    $dataOut[$c]['y'] = round((float)$d->y * 1000, 0);
+                    $dataOut[$c]['y'] = round((float)$record->getValue() * 1000, 0);
                 else
-                    $dataOut[$c]['y'] = (float)$d->y;
+                    $dataOut[$c]['y'] = (float)$record->getValue();
                 $c++;
             }
             else {
-                if ($lastPosition!=$d->y) {
+                if ($lastPosition!=$record->getValue()) {
 
-                    $lastPosition=$d->y;
-                    $currDate = new Carbon($d->x);
+                    $lastPosition=$record->getValue();
+                    $currDate = new Carbon($record->getTime());
                     $dataOut[$c]['x'] = $currDate->getPreciseTimestamp(3);
-                    $dataOut[$c]['name'] =__('samples.'.PositionEnum::fromValue((int)$d->y)->key);
-                    $dataOut[$c]['label'] = __('samples.'.PositionEnum::fromValue((int)$d->y)->key);;
-                    $dataOut[$c]['color'] = $this->getPositionColor($d->y);
+                    $dataOut[$c]['name'] =__('samples.'.PositionEnum::fromValue((int)$record->getValue())->key);
+                    $dataOut[$c]['label'] = __('samples.'.PositionEnum::fromValue((int)$record->getValue())->key);;
+                    $dataOut[$c]['color'] = $this->getPositionColor($record->getValue());
                     $c++;
                 }
             }
