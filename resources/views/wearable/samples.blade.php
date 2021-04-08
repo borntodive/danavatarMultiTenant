@@ -103,9 +103,9 @@
                 const xAxis = {
                     // gridLineWidth: 1,
                     type: 'datetime',
-                    events: {
-                        afterSetExtremes: afterSetExtremes,
-                    },
+                    //events: {
+                    //    afterSetExtremes: afterSetExtremes,
+                    //},
                 }
                 const yAxis = {
                     opposite: false,

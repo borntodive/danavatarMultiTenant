@@ -336,11 +336,21 @@ class SampleController extends Controller
         else {
             return response($request->all(),200);
         }
-
-        $q='from(bucket: "AvatarStaging")
-                      |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
-                      |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
-                      |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
+        if ($sensor->name!='Position') {
+            $q = 'from(bucket: "AvatarStaging")
+                          |> range(start: ' . $startTimeString . ', stop: ' . $endTimeString . ')
+                          |> filter(fn: (r) => r["_measurement"] == "' . $sensor->name . '")
+                          |> filter(fn: (r) => r["user_id"] == "' . $user->id . '")
+                           |> aggregateWindow(every: 1s, fn: mean, createEmpty: false)
+      |> yield(name: "mean")
+                          ';
+        }
+        else {
+            $q = 'from(bucket: "AvatarStaging")
+                          |> range(start: ' . $startTimeString . ', stop: ' . $endTimeString . ')
+                          |> filter(fn: (r) => r["_measurement"] == "' . $sensor->name . '")
+                          |> filter(fn: (r) => r["user_id"] == "' . $user->id . '")                          ';
+        }
         $records=$queryApi->query($q);
         $lastPosition=0;
         $dataOut=[];
