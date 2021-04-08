@@ -598,7 +598,7 @@ class SampleController extends Controller
                 }
             }
         }
-        if (count($out['rs']) < count($out['ts']))
+        if (isset($out['ts']) && count($out['rs']) < count($out['ts']))
             $out['ts']=array_shift($out['ts']);
         if (count($out['rs']) < count($out['ss']))
             $out['ss']=array_shift($out['ss']);
