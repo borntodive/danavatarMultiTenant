@@ -341,7 +341,6 @@ class SampleController extends Controller
                       |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
                       |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
                       |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
-        dd($q);
         $records=$queryApi->query($q);
         $lastPosition=0;
         $dataOut=[];
