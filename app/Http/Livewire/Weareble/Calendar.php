@@ -20,7 +20,7 @@ class Calendar extends Component
 
 
     public function mount() {
-        $this->targetDate=now()->format('Y-m-d');
+        $this->targetDate=now()->format('m-Y');
         $this->events=json_encode([]);
         $this->getEvents();
     }
@@ -42,6 +42,7 @@ class Calendar extends Component
     public function getEvents() {
         try {
             $searchDate= new Carbon("01-".$this->targetDate);
+
         } catch (\Exception $e) {
             return;
         }
