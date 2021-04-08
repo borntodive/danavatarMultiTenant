@@ -40,9 +40,7 @@
 
                         <div class="col-span-6 flex flex-col" x-data="{show: false}">
                             <x-show.label>{{ $medicalCondition['name'] }}</x-show.label>
-                            @if(!empty($medicalCondition['more'] ) && (!empty($state['anamnesisData'][$fieldName]['present']) || !empty($state['anamnesisData'][$fieldName]['past'])))
-                                <x-form.text-input wire:model="state.anamnesisData.{{$fieldName}}.moredata"/>
-                            @endif
+                            <x-show.label>{{ data_get($anamnesis->data,'general.anamnesisData.'.$fieldName.'.moredata',false)}}</x-show.label>
 
                         </div>
                         <div class="col-span-3 text-center flex flex-wrap justify-center">
@@ -105,14 +103,14 @@
 <x-card class="mt-3" title="{{ __('Dati Sportivi') }}">
 
     <div class="mt-3 grid grid-cols-2 gap-8 w-full">
-        @forelse(data_get($anamnesis->data,'sports',[])  as $idx=>$sport)
+        @forelse(data_get($anamnesis->data,'general.sports',[])  as $idx=>$sport)
             <div class="col-span-2 sm:col-span-1 border border-gray-500 rounded-md mb-3 p-5 mr-2">
                 <div class="grid grid-cols-4 gap-8 ">
                     <div class="col-span-4 sm:col-span-2 ">
                         <x-show.label>Sport praticato</x-show.label>
                         <x-show.value>{{data_get($sport,'name','N/A')}}</x-show.value>
                     </div>
-                    <div class="col-span-4 sm:col-span-2 flex items-center">
+                    <div class="col-span-4 sm:col-span-2">
                         <x-show.label>Livello</x-show.label>
                         <x-show.value>{{__('anamnesis.'.data_get($sport,'level','na'))}}</x-show.value>
 
