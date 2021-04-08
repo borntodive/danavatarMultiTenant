@@ -566,7 +566,7 @@ class SampleController extends Controller
         //dd($ecgDuration,$ecgCount, $sampleRate);
         //dd($plucked->all());
         Excel::store(new SamplesExport($out), 'samples.csv');
-
+dd($out);
         $pyOut = exec("python3 ../app/Python/ecgPoints.py -s $sampleRate 2>&1");
 
         //$pyOut=trim($pyOut, '"');
