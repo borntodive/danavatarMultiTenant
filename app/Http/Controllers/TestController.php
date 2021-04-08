@@ -71,16 +71,21 @@ class TestController extends Controller
             "url" => "http://172.105.76.135:8086",
             "token" => $token,
             "org" => $org,
+            "debug" => false,
+            "timeout"=>0
         ]);
 
         $queryApi = $client->createQueryApi();
 
-        $result = $queryApi->query(
-            'from(bucket: "AvatarStaging") |> range(start: -2d, stop: -1s) |> last() |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "2")');
-
-        foreach (collect($result) as $re) {
-            dd($re->records);
+        $records = $queryApi->query(
+            'from(bucket: "AvatarStaging")   |> range(start: 2021-04-07T12:00:00Z, stop: 2021-04-07T13:05:00Z)
+ |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "2")');
+        foreach ($records[0]->records as $record) {
+            $data[]=[
+                "x"=>$record->getTime(),
+                "y"=>$record->getValue()
+            ];
         }
-        print_r($result);
+        dd($data[0]);
     }
 }
