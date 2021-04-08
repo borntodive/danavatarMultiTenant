@@ -615,12 +615,12 @@ class SampleController extends Controller
                 $rrCount++;
             }
         }
-
-        foreach ($out['qs'] as $idx=>$q) {
-            if (isset($out['ts'][$idx]))
-            {
-                $averages['qt']+=$measures[$idx]['qt']=$out['ts'][$idx]['time']->diffInMilliseconds($q['time']);
-                $qtCount++;
+        if (isset($out['qs'] )) {
+            foreach ($out['qs'] as $idx => $q) {
+                if (isset($out['ts'][$idx])) {
+                    $averages['qt'] += $measures[$idx]['qt'] = $out['ts'][$idx]['time']->diffInMilliseconds($q['time']);
+                    $qtCount++;
+                }
             }
         }
 
