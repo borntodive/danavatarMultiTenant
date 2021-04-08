@@ -571,7 +571,6 @@ class SampleController extends Controller
         //$pyOut=trim($pyOut, '"');
         $rawEcgPoints=json_decode($pyOut);
         $rawEcgPoints=json_decode($rawEcgPoints);
-        dd($rawEcgPoints);
 
         $out=null;
         $startTime=Carbon::createFromTimestampMs($request->startTime);
