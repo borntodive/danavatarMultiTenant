@@ -569,10 +569,9 @@ class SampleController extends Controller
         $pyOut = exec("python3 ../app/Python/ecgPoints.py -s $sampleRate 2>&1");
 
         //$pyOut=trim($pyOut, '"');
-        dd($pyOut);
         $rawEcgPoints=json_decode($pyOut);
         $rawEcgPoints=json_decode($rawEcgPoints);
-        //dd($rawEcgPoints);
+        dd($rawEcgPoints);
 
         $out=null;
         $startTime=Carbon::createFromTimestampMs($request->startTime);
