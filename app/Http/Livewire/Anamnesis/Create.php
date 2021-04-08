@@ -127,13 +127,9 @@ class Create extends Component
         $anamensis->data = $data;
         $anamensis->save();
 
-        $this->emit('showFlashMessage', [
-            'data'=>[
-                'success'=>'Anamnesi salvata con successo',
-            ]
-        ]);
-        $this->dispatchBrowserEvent('scrollToTop');
-        //return redirect()->route('dashboard');
+        session()->flash('success', 'Anamnesi salvata con successo');
+        //$this->dispatchBrowserEvent('scrollToTop');
+        return redirect()->route('dashboard');
 
         //dd($validatedData,$anamensis->data);
         //dd($values['anamnesisData']);
