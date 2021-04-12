@@ -68,7 +68,7 @@ class SampleController extends Controller
                 $searchData=Carbon::create($dateArray[0],$dateArray[1],$dateArray[2],0);
                 $startTimeString=$searchData->toIso8601ZuluString();
                 $endTimeString=$searchData->endOfDay()->toIso8601ZuluString();
-                $q='from(bucket: "AvatarStaging")
+                $q='from(bucket: "'.$bucket.'")
                       |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
                       |> last()
                       |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
@@ -81,7 +81,7 @@ class SampleController extends Controller
                 else
                     $l['latest']=__('samples.'.PositionEnum::fromValue((int)$latestValue)->key);
 
-                $q='from(bucket: "AvatarStaging")
+                $q='from(bucket: "'.$bucket.'")
                       |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
                       |> last()
                       |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
@@ -91,7 +91,7 @@ class SampleController extends Controller
                 $l['sensor']=$sensor;
 
                 if ($sensor->name != 'Position') {
-                    $q='from(bucket: "AvatarStaging")
+                    $q='from(bucket: "'.$bucket.'")
                       |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
                       |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
                       |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")
@@ -102,7 +102,7 @@ class SampleController extends Controller
                     $l['average'] = round($meanValue, 2);
                 }
                 else {
-                    $q='from(bucket: "AvatarStaging")
+                    $q='from(bucket: "'.$bucket.'")
                       |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
                       |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
                       |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")
@@ -151,12 +151,12 @@ class SampleController extends Controller
         $now=new Carbon();
         //$diffInSecs=$now->addDay()->diffInSeconds($searchData->addDay());
         //$availablesDate['first']=new Carbon();
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$searchData->toIso8601ZuluString().', stop: '.$endDate->toIso8601ZuluString().')
+        $q='from(bucket: "'.$bucket.'")   |> range(start: '.$searchData->toIso8601ZuluString().', stop: '.$endDate->toIso8601ZuluString().')
              |> last()
              |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
         $lastRecords = $queryApi->query($q);
         $availablesDate['last']=new Carbon($lastRecords[0]->records[0]->getTime(),"Europe/Rome");
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$searchData->toIso8601ZuluString().', stop: '.$endDate->toIso8601ZuluString().')
+        $q='from(bucket: "'.$bucket.'")   |> range(start: '.$searchData->toIso8601ZuluString().', stop: '.$endDate->toIso8601ZuluString().')
          |> first()
          |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
         $firstRecords = $queryApi->query($q);
@@ -337,7 +337,7 @@ class SampleController extends Controller
             return response($request->all(),200);
         }
         if ($sensor->name!='Position') {
-            $q = 'from(bucket: "AvatarStaging")
+            $q = 'from(bucket: "'.$bucket.'")
                           |> range(start: ' . $startTimeString . ', stop: ' . $endTimeString . ')
                           |> filter(fn: (r) => r["_measurement"] == "' . $sensor->name . '")
                           |> filter(fn: (r) => r["user_id"] == "' . $user->id . '")
@@ -346,7 +346,7 @@ class SampleController extends Controller
                           ';
         }
         else {
-            $q = 'from(bucket: "AvatarStaging")
+            $q = 'from(bucket: "'.$bucket.'")
                           |> range(start: ' . $startTimeString . ', stop: ' . $endTimeString . ')
                           |> filter(fn: (r) => r["_measurement"] == "' . $sensor->name . '")
                           |> filter(fn: (r) => r["user_id"] == "' . $user->id . '")                          ';
@@ -477,13 +477,13 @@ class SampleController extends Controller
         $sensor=Sensor::where('name','Ecg')->first();
         $searchDate=Carbon::createFromTimestampMs($request->date)->toIso8601ZuluString();
         $endSearchDate=Carbon::createFromTimestampMs($request->date)->endOfDay()->toIso8601ZuluString();
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$searchDate.', stop: '.$endSearchDate.')
+        $q='from(bucket: "'.$bucket.'")   |> range(start: '.$searchDate.', stop: '.$endSearchDate.')
              |> first()
              |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
         $firstRecords = $queryApi->query($q);
         $firstFound=new Carbon($firstRecords[0]->records[0]->getTime());
         $lastFound=$firstFound->clone()->addMinutes(5);
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$firstFound->toIso8601ZuluString().', stop: '.$lastFound->toIso8601ZuluString().')
+        $q='from(bucket: "'.$bucket.'")   |> range(start: '.$firstFound->toIso8601ZuluString().', stop: '.$lastFound->toIso8601ZuluString().')
              |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
         $records = $queryApi->query($q);
         $data=[];
@@ -533,15 +533,15 @@ class SampleController extends Controller
 
         $startTimeString=Carbon::createFromTimestampMs($request->startTime)->sub(30, 'seconds')->toIso8601ZuluString();
         $endTimeString=Carbon::createFromTimestampMs($request->endTime)->add(30, 'seconds')->toIso8601ZuluString();
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+        $q='from(bucket: "'.$bucket.'")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
              |> max()
              |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
         $maxRecords=$queryApi->query($q);
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+        $q='from(bucket: "'.$bucket.'")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
              |> min()
              |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
         $minRecords=$queryApi->query($q);
-        $q='from(bucket: "AvatarStaging")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
+        $q='from(bucket: "'.$bucket.'")   |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
              |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
         $records=$queryApi->query($q);
         $query=Sample::whereRaw('time >= '.$startTimeString.' AND time <= '.$endTimeString.' AND sensor_id = '.$sensor->id.' AND user_id = '.$user->id);
