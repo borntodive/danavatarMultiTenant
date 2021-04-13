@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleControllerSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SampleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/wearable/viewEcg.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +15,14 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="master" />
+    <option name="OPTIONS">
+      <set>
+        <option value="FF_ONLY" />
+      </set>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -714,7 +722,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="production" />
                       </list>
                     </value>
                   </entry>
