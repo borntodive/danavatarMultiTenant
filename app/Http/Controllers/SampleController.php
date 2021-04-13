@@ -599,9 +599,9 @@ class SampleController extends Controller
             }
         }
         if (isset($out['ts']) && count($out['rs']) < count($out['ts']))
-            $out['ts']=array_shift($out['ts']);
+            array_shift($out['ts']);
         if (count($out['rs']) < count($out['ss']))
-            $out['ss']=array_shift($out['ss']);
+            array_shift($out['ss']);
         $measures=null;
         $averages['rr']=0;
         $averages['qt']=0;
