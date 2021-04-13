@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
@@ -19,16 +16,11 @@
   </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="master" />
-    <option name="OPTIONS">
-      <set>
-        <option value="NO_FF" />
-      </set>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="production" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -357,13 +349,6 @@
       <workItem from="1615906317656" duration="53684000" />
       <workItem from="1617800066792" duration="7818000" />
       <workItem from="1617812259161" duration="7151000" />
-    </task>
-    <task id="LOCAL-00092" summary="test barches 2">
-      <created>1615183771876</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1615183771880</updated>
     </task>
     <task id="LOCAL-00093" summary="test barches 2">
       <created>1615183784839</created>
@@ -701,7 +686,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618300433053</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="Fix center name on guest homepage">
+      <created>1618319231288</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1618319231292</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -727,7 +719,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix ECG view 1" />
     <MESSAGE value="ECG Live zoom 3 sec" />
     <MESSAGE value="New Anamnesis" />
     <MESSAGE value="Fix profile no date" />
@@ -752,7 +743,8 @@
     <MESSAGE value="Fix Ananmesis view" />
     <MESSAGE value="Test Influx read" />
     <MESSAGE value="Fix Mesureas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Mesureas" />
+    <MESSAGE value="Fix center name on guest homepage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix center name on guest homepage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

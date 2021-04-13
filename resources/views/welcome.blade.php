@@ -42,7 +42,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
                         <div class="absolute inset-0">
-                            <img class="h-full w-full object-cover" src="https://storage.danavatar.eu:9000/production/images/Y-40-Welcome-Page.jpg" alt="Y40">
+                            <img class="h-full w-full object-cover" src="https://storage.danavatar.eu:9000/production/images/Backgound-Welcome-Page.jpg" alt="Y40">
                             <div class="absolute inset-0 bg-gradient-to-r from-purple-800 to-indigo-700" style="mix-blend-mode: multiply;"></div>
                         </div>
                         <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
