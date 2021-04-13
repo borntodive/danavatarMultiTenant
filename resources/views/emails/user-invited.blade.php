@@ -14,14 +14,13 @@
     <tr>
         <td class="sm-p-0" style="padding-left: 48px; padding-right: 48px">
             <h1 class="sm-text-40px sm-leading-44" style="font-size: 48px; line-height: 56px; margin: 0; text-align: center; color: #5744cb">
-                {{$invite->center->name}} ti ha invitato
+                {{$invite->center->name}} ti sta invitando
             </h1>
         </td>
     </tr>
 </table>
 <div class="sm-leading-32" style="line-height: 48px">&zwnj;</div>
-<p style="font-size: 16px; line-height: 24px; margin: 0; text-align: center; color: #4f5a68">
-    Il centro medico {{$invite->center->name}} ti ha invitato ad una sua visita. Per completare la tua iscrizione segui il link qui sotto
+<p style="font-size: 16px; line-height: 24px; margin: 0; text-align: center; color: #4f5a68">Per completare la tua iscrizione segui il link qui sotto
 </p>
 <div class="sm-leading-32" style="line-height: 48px">&zwnj;</div>
 <div style="text-align: center">
