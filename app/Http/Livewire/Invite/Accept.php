@@ -114,6 +114,10 @@ class Accept extends Component
         if ($this->invite->is_admin) {
             $this->user->syncRoles(['admin'],Team::where('name',$this->invite->center->slug)->first());
         }
+        else {
+            $this->user->syncRoles(['user'],Team::where('name',$this->invite->center->slug)->first());
+
+        }
         $this->invite->accepted_ip=$this->ipAddress;
         $this->invite->accepted_at=now();
         $this->invite->save();

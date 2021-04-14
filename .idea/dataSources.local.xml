@@ -47,7 +47,13 @@
             <node kind="database" qname="danavatar">
               <node kind="schema" qname="public" />
             </node>
-            <node kind="database" qname="danavatar_staging" />
+            <node kind="database" qname="danavatar_staging">
+              <node kind="schema">
+                <name qname="_timescaledb_catalog" />
+                <name qname="public" />
+                <name qname="timescaledb_information" />
+              </node>
+            </node>
           </node>
         </introspection-scope>
       </schema-mapping>
