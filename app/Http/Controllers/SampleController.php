@@ -109,7 +109,6 @@ class SampleController extends Controller
                       |> median(method: "exact_selector")';
                     $records=$queryApi->query($q);
                     $meanValue=$records[0]->records[0]->getValue();
-                    dd($meanValue);
                     $l['average']=__('samples.'.PositionEnum::fromValue((int)$meanValue)->key);
                 }
 
