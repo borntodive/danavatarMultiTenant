@@ -154,7 +154,7 @@ class SampleController extends Controller
              |> last()
              |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
         $lastRecords = $queryApi->query($q);
-        $availablesDate['last']=new Carbon($lastRecords[0]->records[0]->getTime(),"Europe/Rome");
+        $availablesDate['last']=new Carbon($lastRecords[0]->records[0]->getTime(),"UTC");
         $q='from(bucket: "'.$bucket.'")   |> range(start: '.$searchData->toIso8601ZuluString().', stop: '.$endDate->toIso8601ZuluString().')
          |> first()
          |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")';
@@ -497,7 +497,7 @@ class SampleController extends Controller
         $out['sensor']=$sensor;
         $out['data']['ECG_Raw']=$data;
         //$out['data']['Moving_Average_Filter']=$clean;
-        $out['startDate']=$firstFound->toDateTimeString();
+        $out['startDate']=$firstFound->timezone("Europe/Rome")->toDateTimeString();
         return response()->json($out);
 
     }
