@@ -18,11 +18,10 @@
         </svg>
         <div class="text-center">
             <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Contact sales
+                Benvenuto
             </h2>
             <p class="mt-4 text-lg leading-6 text-gray-500">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget nisi in felis venenatis dignissim ut ut enim. Cras egestas, libero id mattis auctor, magna turpis posuere sapien, nec condimentum mauris sem at libero. Maecenas dignissim egestas euismod. Ut ullamcorper imperdiet elit, eu finibus arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec nec mi non sem euismod euismod quis ut urna. Morbi tincidunt nunc eget dui auctor, eleifend egestas lectus porttitor. Nulla eu facilisis sem. Cras eleifend magna quis ipsum elementum condimentum. Integer sed enim lacus. Quisque congue bibendum ligula, a molestie dui facilisis in. Aenean sollicitudin ultricies massa ut varius. Aenean ullamcorper ex a turpis consectetur ultrices.
-            </p>
+Grazie per aver accettato il nostro invito. Compila i campi sottostanti per accedere al servizio.</p>
             <p>
             </p>
         </div>
