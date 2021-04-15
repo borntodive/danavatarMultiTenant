@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use robertogallea\LaravelCodiceFiscale\CityCodeDecoders\InternationalCitiesStaticList;
 use robertogallea\LaravelCodiceFiscale\CodiceFiscale;
+use robertogallea\LaravelCodiceFiscale\CodiceFiscaleGenerator;
 
 class Index extends Component
 {
@@ -100,14 +101,23 @@ class Index extends Component
             'calcCF.birth_place' => 'required',
             'calcCF.dob'=>'required|date',
         ]);
-        $date=Carbon::createFromFormat('d-m-Y',$this->calcCF['dob']);
-        $cf_string = CodiceFiscale::generate($this->calcCF['firstname'],
-            $this->calcCF['lastname'],
-            $date->format('Y-m-d'),
-            $this->calcCF['birth_place'],
-            $this->calcCF['gender'],
-            new InternationalCitiesStaticList);
-        $this->searchedCF=$cf_string;
+        $birth_date=Carbon::createFromFormat('d-m-Y',$this->calcCF['dob']);
+        $cf_gen = new CodiceFiscaleGenerator(new InternationalCitiesStaticList);
+
+        $cf_gen->nome = $this->calcCF['firstname'];
+        $cf_gen->cognome = $this->calcCF['lastname'];
+
+        $cf_gen->comune = $this->calcCF['birth_place'];
+        $cf_gen->sesso = $this->calcCF['gender'];
+        $cf_gen->formatoData('Y-m-d');
+        if ($birth_date instanceof Carbon) {
+            $date = $birth_date;
+        } else {
+            $date = Carbon::createFromFormat('Y-m-d', $birth_date);
+        }
+        $cf_gen->data = $date;
+
+        $this->searchedCF=$cf_gen->calcola();
         $this->showCFCalculation=false;
 
     }
