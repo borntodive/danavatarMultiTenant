@@ -77,7 +77,8 @@ class SampleController extends Controller
             if (!$errors) {
                 if (is_array($sample['value'])){
                     $delta=1000/count($sample['value']);
-                    $time=Carbon::createFromTimestamp($sample['date']);
+                    $time=Carbon::createFromTimestamp($sample['date'])->timezone('UTC');
+
                     foreach ($sample['value'] as $val) {
 
                         $datas[]=Point::measurement($sample['measureType'])
