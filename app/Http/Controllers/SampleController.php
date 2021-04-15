@@ -106,10 +106,10 @@ class SampleController extends Controller
                       |> range(start: '.$startTimeString.', stop: '.$endTimeString.')
                       |> filter(fn: (r) => r["_measurement"] == "'.$sensor->name.'")
                       |> filter(fn: (r) => r["user_id"] == "'.$user->id.'")
-                      |> aggregateWindow(every: 24h, fn: median, createEmpty: false)
-                      |> yield(name: "median")';
+                      |> median(method: "exact_selector")';
                     $records=$queryApi->query($q);
                     $meanValue=$records[0]->records[0]->getValue();
+                    dd($meanValue);
                     $l['average']=__('samples.'.PositionEnum::fromValue((int)$meanValue)->key);
                 }
 
