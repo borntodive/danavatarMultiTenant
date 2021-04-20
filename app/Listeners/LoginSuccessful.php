@@ -21,9 +21,9 @@ class LoginSuccessful
     public function handle(Login $event)
     {
 
-        $url=$this->request->server->all()['HTTP_ORIGIN'];
-        $url=$str = preg_replace('#^https?://#', '', $url);
-        preg_match('/^([a-z0-9|-]+[a-z0-9]{1,}\.)*[a-z0-9|-]+[a-z0-9]{1,}\.[a-z]{2,}$/',$url, $matches);
+        $url=$this->request->url();
+        $url= preg_replace('#^https?://#', '', $url);
+        preg_match('/^([a-z0-9|-]+[a-z0-9]{1,}\.)*[a-z0-9|-]+[a-z0-9]{1,}\.[a-z]{2,}.*$/',$url, $matches);
         $subdomain=null;
         if (isset($matches[1]))
             $subdomain=rtrim($matches[1], " \t.");
