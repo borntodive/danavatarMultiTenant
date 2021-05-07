@@ -61,7 +61,7 @@ Grazie per aver accettato il nostro invito. Compila i campi sottostanti per acce
                     <div class="flex items-start">
                         <div class="flex-shrink-0">
                             <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
-                            <x-form.toggle entangle="acceptPrivacy"/>
+                            <x-form.toggle entangle="acceptPrivacy1"/>
                         </div>
                         <div class="ml-3">
                             <p class="text-base text-gray-500">
@@ -73,9 +73,30 @@ Grazie per aver accettato il nostro invito. Compila i campi sottostanti per acce
                         </div>
 
                     </div>
-                    @error('acceptPrivacy')
-                    <p wire:key="error_acceptPrivacy"
-                       class="mt-2 text-sm text-red-600" id="email-error">{{$message}}</p>
+                    @error('acceptPrivacy1')
+                    <p wire:key="error_acceptPrivacy1"
+                       class="mt-2 text-sm text-red-600" id="acceptPrivacy1-error">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="sm:col-span-2">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
+                            <x-form.toggle entangle="acceptPrivacy2"/>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-base text-gray-500">
+                                Selezionando accetti la
+                                <a href="#" class="font-medium text-gray-700 underline">Privacy Policy</a>
+                                e la
+                                <a href="#" class="font-medium text-gray-700 underline">Cookie Policy</a>.
+                            </p>
+                        </div>
+
+                    </div>
+                    @error('acceptPrivacy2')
+                    <p wire:key="error_acceptPrivacy2"
+                       class="mt-2 text-sm text-red-600" id="acceptPrivacy2-error">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="sm:col-span-2">

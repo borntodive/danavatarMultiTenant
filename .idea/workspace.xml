@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PrivacyAcceptanceController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/PrivacyAcceptance.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_03_111909_create_privacy_acceptances_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Invite/Accept.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Invite/Accept.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Invite.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Invite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/invite/accept.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="production" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -354,13 +360,6 @@
       <workItem from="1615906317656" duration="53684000" />
       <workItem from="1617800066792" duration="7818000" />
       <workItem from="1617812259161" duration="7151000" />
-    </task>
-    <task id="LOCAL-00094" summary="test new server">
-      <created>1615202037770</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1615202037771</updated>
     </task>
     <task id="LOCAL-00095" summary="Create distribuited hypertables in staging &amp; prod">
       <created>1615203512767</created>
@@ -698,7 +697,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618386772897</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="Fix HTTP_ORIGIN">
+      <created>1618916343381</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1618916343381</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -715,6 +721,17 @@
                   <entry key="Show.Git.Branches" value="true" />
                 </map>
               </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
             </State>
           </value>
         </entry>
@@ -724,7 +741,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="New Anamnesis" />
     <MESSAGE value="Fix profile no date" />
     <MESSAGE value="Pagination in ECG Chart" />
     <MESSAGE value="Fix anamnesis profession label" />
@@ -749,7 +765,8 @@
     <MESSAGE value="Fix Mesureas" />
     <MESSAGE value="Fix center name on guest homepage" />
     <MESSAGE value="Default User role on creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Default User role on creation" />
+    <MESSAGE value="Fix HTTP_ORIGIN" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix HTTP_ORIGIN" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
