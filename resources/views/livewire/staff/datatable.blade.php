@@ -55,21 +55,18 @@
                                 </div>
                             </div>
                         </td>
-                        @php
-                        if (!$user)
-                            dd($user);
-                        @endphp
+
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             <x-form.select id="role_{{$user->id}}"
                                            wire:change="updateRole({{$user->id}}, $event.target.value)"
                                            :options="$roles->pluck('display_name','id')"
-                                           :selected="$user->roles[0]->id"
+                                           :selected="isset($user->roles[0]) ? $user->roles[0]->id : null"
                                            />
 
 
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            @if($user->roles[0]->name=='medical_doctor')
+                            @if(isset($user->roles[0]) && $user->roles[0]->name=='medical_doctor')
                             <button wire:click="showSideEdit({{$user->id}})" class="text-indigo-600 hover:text-indigo-900">Modifica</button>
                             @endif
                         </td>
