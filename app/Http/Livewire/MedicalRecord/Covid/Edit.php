@@ -14,6 +14,10 @@ class Edit extends Component
 
     public $exams;
 
+    public $times;
+
+    public $selectedTime='pre';
+
     protected $rules = [
         'state.anamnesis' => 'nullable',
     ];
@@ -22,6 +26,7 @@ class Edit extends Component
 
         $this->parentMount();
         $this->exams=Covid::$exams;
+        $this->times=Covid::$times;
 
     }
 

@@ -11,9 +11,11 @@ class View extends Component
 
     use ViewMedicalRecord;
     public $exams;
+    public $times;
 
     public function mount() {
         $this->exams=Covid::$exams;
+        $this->times=Covid::$times;
     }
 
 }

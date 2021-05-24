@@ -192,4 +192,19 @@ class Covid
         ],
     ];
 
+    public static $times=[
+        'pre'=>[
+            "name"=>"Pre",
+            "color"=>'yellow'
+        ],
+        'post30'=>[
+            "name"=>"Post 30 min",
+            "color"=>'red'
+        ],
+        'post60'=>[
+            "name"=>"Post 60 min",
+            "color"=>'green'
+        ],
+    ];
+
 }
