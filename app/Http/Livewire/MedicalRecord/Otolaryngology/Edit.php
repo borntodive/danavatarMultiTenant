@@ -12,6 +12,10 @@ class Edit extends Component
         mount as parentMount;
     }
 
+    protected $rules = [
+        'state.anamnesis' => 'nullable',
+    ];
+
     public $externalEarObjective,$tympanicMembraneObjective,$tympanicMembraneMobilityObjective;
 
     public function mount() {

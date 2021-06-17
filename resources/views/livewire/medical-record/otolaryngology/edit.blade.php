@@ -680,7 +680,7 @@
                     </div>
                     <div class="col-span-2 md:col-span-1 text-center">
                         <x-form.label>Altro</x-form.label>
-                        <x-form.text-area wire:model="tate.objectives.general.orofaringe.altro">
+                        <x-form.text-area wire:model="state.objectives.general.orofaringe.altro">
 
                         </x-form.text-area>
                     </div>

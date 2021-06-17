@@ -11,7 +11,10 @@
       <user-name>dsg</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" qname="dsg" />
+          <node kind="schema">
+            <name qname="dsg" />
+            <name qname="dsg_training" />
+          </node>
         </introspection-scope>
       </schema-mapping>
       <ssh-properties>
