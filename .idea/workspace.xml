@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/appoggio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -374,14 +367,7 @@
       <workItem from="1624271277952" duration="2032000" />
       <workItem from="1624432138228" duration="130000" />
       <workItem from="1624433237076" duration="7226000" />
-      <workItem from="1624866212030" duration="2181000" />
-    </task>
-    <task id="LOCAL-00099" summary="Fix ECG view 1">
-      <created>1615282979788</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1615282979788</updated>
+      <workItem from="1624866212030" duration="2574000" />
     </task>
     <task id="LOCAL-00100" summary="ECG Live zoom 3 sec">
       <created>1615284043581</created>
@@ -719,7 +705,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623920079425</updated>
     </task>
-    <option name="localTasksCounter" value="148" />
+    <task id="LOCAL-00148" summary="Initial Commit">
+      <created>1624868496520</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1624868496522</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -745,7 +738,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix photo upload" />
     <MESSAGE value="Fix admin staff datatable" />
     <MESSAGE value="Dentist edit" />
     <MESSAGE value="Dentist view" />
@@ -770,7 +762,8 @@
     <MESSAGE value="Covid Exams" />
     <MESSAGE value="fix" />
     <MESSAGE value="Otorino view colplete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Otorino view colplete" />
+    <MESSAGE value="Initial Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

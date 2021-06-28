@@ -141,28 +141,115 @@
         @if(session()->get('tenant')->hasMedicalSpecilities('diving'))
             <div class="w-full md:w-1/2 mt-5">
                 <x-show.label>Problemi a carico dell’Orecchio Interno</x-show.label>
-                <div class="grid grid-cols-12 gap-4 mt-5">
-                    <div class="col-span-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="col-span-2 md:col-span-1">
+                        <div class="grid grid-cols-12 gap-4 mt-5">
+                        <div class="col-span-12">
+                            <div class="relative my-5">
+                                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                    <div class="w-full border-t border-gray-300"></div>
+                                </div>
+                                <div class="relative flex justify-start">
+                                <span class="pr-3 bg-white text-sm font-medium text-gray-900">
+                                   {{__('Sordità congenite')}}
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6">
 
-                    </div>
-                    <div class="col-span-3">
-                        {{ __('Sx') }}
-                    </div>
-                    <div class="col-span-3">
-                        {{ __('Dx') }}
-                    </div>
+                        </div>
+                        <div class="col-span-3">
+                            {{ __('Sx') }}
+                        </div>
+                        <div class="col-span-3">
+                            {{ __('Dx') }}
+                        </div>
+                        <div class="col-span-6 flex flex-col">
+                            <span class="text-sm font-medium text-gray-900">Ipoacusia da rumore</span>
 
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">Sordità congenite</span>
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.ipoacusia.sx',false)==1 ? true : false"/>
 
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.congenitalDeafness.sx',false)==1 ? true : false"/>
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.ipoacusia.dx',false)==1 ? true : false"/>
 
+                        </div>
+                        <div class="col-span-6 flex flex-col">
+                            <span class="text-sm font-medium text-gray-900">Presbiacusia</span>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.presbiacusia.sx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.presbiacusia.dx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-6 flex flex-col">
+                            <span class="text-sm font-medium text-gray-900">Barotrauma</span>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.barotrauma.sx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.barotrauma.dx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-6 flex flex-col">
+                            <span class="text-sm font-medium text-gray-900">Acufeni</span>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.acufeni.sx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.acufeni.dx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-6 flex flex-col">
+                            <span class="text-sm font-medium text-gray-900">MDD labirintica</span>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.mdd.sx',false)==1 ? true : false"/>
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.mdd.dx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-6 flex flex-col">
+                            <span class="text-sm font-medium text-gray-900">Malattia di Ménière</span>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.meniere.sx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.meniere.dx',false)==1 ? true : false"/>
+                        </div>
+                        <div class="col-span-6 flex flex-col">
+                            <span class="text-sm font-medium text-gray-900">Disturbi di equilibrio (VPPB, labirintite….)</span>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.vppb.sx',false)==1 ? true : false"/>
+
+                        </div>
+                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                            <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.congenital.vppb.dx',false)==1 ? true : false"/>
+                        </div>
                     </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.congenitalDeafness.dx',false)==1 ? true : false"/>
                     </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <div class="grid grid-cols-12 gap-4 mt-5">
                     <div class="col-span-12">
                         <div class="relative my-5">
                             <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -175,16 +262,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-span-6">
+
+                    </div>
+                    <div class="col-span-3">
+                        {{ __('Sx') }}
+                    </div>
+                    <div class="col-span-3">
+                        {{ __('Dx') }}
+                    </div>
                     <div class="col-span-6 flex flex-col">
                         <span class="text-sm font-medium text-gray-900">Ipoacusia da rumore</span>
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.ipoacusia.sx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.ipoacusia.sx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.ipoacusia.dx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.ipoacusia.dx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-6 flex flex-col">
@@ -192,11 +288,11 @@
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.presbiacusia.sx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.presbiacusia.sx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.presbiacusia.dx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.presbiacusia.dx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-6 flex flex-col">
@@ -204,11 +300,11 @@
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.barotrauma.sx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.barotrauma.sx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.barotrauma.dx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.barotrauma.dx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-6 flex flex-col">
@@ -216,11 +312,11 @@
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.acufeni.sx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.acufeni.sx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.acufeni.dx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.acufeni.dx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-6 flex flex-col">
@@ -228,10 +324,10 @@
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.mdd.sx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.mdd.sx',false)==1 ? true : false"/>
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.mdd.dx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.mdd.dx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-6 flex flex-col">
@@ -239,22 +335,24 @@
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.meniere.sx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.meniere.sx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.meniere.dx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.meniere.dx',false)==1 ? true : false"/>
                     </div>
                     <div class="col-span-6 flex flex-col">
                         <span class="text-sm font-medium text-gray-900">Disturbi di equilibrio (VPPB, labirintite….)</span>
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.vppb.sx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.vppb.sx',false)==1 ? true : false"/>
 
                     </div>
                     <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.general.innerEar.vppb.dx',false)==1 ? true : false"/>
+                        <x-check-or-cross :condition="data_get($medicalRecord->data,'anamnesis.diving.innerEar.acquired.vppb.dx',false)==1 ? true : false"/>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>
