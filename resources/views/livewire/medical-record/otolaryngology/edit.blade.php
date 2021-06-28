@@ -1,7 +1,7 @@
 <x-medical-record.common-edit>
     <x-card title="{{ __('Anamnesi') }}" class="mt-5">
         <div class="w-full">
-            <x-form.label>Problemi Orl nella vita quotidiana</x-form.label>
+            <x-form.label>Problemi ORL nella vita quotidiana</x-form.label>
             <div class="grid grid-cols-12 gap-8 mt-5">
                 <div class="col-span-4 md:col-span-2">
                 </div>
@@ -182,128 +182,234 @@
         </div>
 
         @if(session()->get('tenant')->hasMedicalSpecilities('diving'))
-            <div class="w-full md:w-1/2 mt-5">
-                <x-form.label>Problemi a carico dell’Orecchio Interno</x-form.label>
-                <div class="grid grid-cols-12 gap-4 mt-5">
-                    <div class="col-span-6">
+            <div class="w-full mt-5">
+                    <x-form.label>Problemi a carico dell’Orecchio Interno</x-form.label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2 md:col-span-1">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="col-span-2 md:col-span-2">
+                                    <div class="grid grid-cols-12 gap-4 mt-5">
 
-                    </div>
-                    <div class="col-span-3 text-center">
-                        {{ __('Sx') }}
-                    </div>
-                    <div class="col-span-3 text-center">
-                        {{ __('Dx') }}
-                    </div>
+                                        <div class="col-span-12">
+                                            <div class="relative my-5">
+                                                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                                    <div class="w-full border-t border-gray-300"></div>
+                                                </div>
+                                                <div class="relative flex justify-start">
+                                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
+                                           {{__('Sordità congenite')}}
+                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-6">
 
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">Sordità congenite</span>
+                                        </div>
+                                        <div class="col-span-3 text-center">
+                                            {{ __('Sx') }}
+                                        </div>
+                                        <div class="col-span-3 text-center">
+                                            {{ __('Dx') }}
+                                        </div>
+                                        <div class="col-span-6 flex flex-col">
+                                            <span class="text-sm font-medium text-gray-900">Ipoacusia da rumore</span>
 
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_congenitalDeafness_sx"
-                                         wire:model.lazy="state.anamnesis.general.innerEar.congenitalDeafness.sx"/>
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_congenitalDeafness_dx"
-                                         wire:model.lazy="state.anamnesis.general.innerEar.congenitalDeafness.dx"/>
-                    </div>
-                    <div class="col-span-12">
-                        <div class="relative my-5">
-                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                                <div class="w-full border-t border-gray-300"></div>
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_ipoacusia_sx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.ipoacusia.sx"/>
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_ipoacusia_dx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.ipoacusia.dx"/>
+                                        </div>
+                                        <div class="col-span-6 flex flex-col">
+                                            <span class="text-sm font-medium text-gray-900">Presbiacusia</span>
+
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_presbiacusia_sx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.presbiacusia.sx"/>
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_presbiacusia_dx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.presbiacusia.dx"/>
+                                        </div>
+                                        <div class="col-span-6 flex flex-col">
+                                            <span class="text-sm font-medium text-gray-900">Barotrauma</span>
+
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_barotrauma_sx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.barotrauma.sx"/>
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_barotrauma_dx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.barotrauma.dx"/>
+                                        </div>
+                                        <div class="col-span-6 flex flex-col">
+                                            <span class="text-sm font-medium text-gray-900">Acufeni</span>
+
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_acufeni_sx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.acufeni.sx"/>
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_acufeni_dx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.acufeni.dx"/>
+                                        </div>
+                                        <div class="col-span-6 flex flex-col">
+                                            <span class="text-sm font-medium text-gray-900">MDD labirintica</span>
+
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_mdd_sx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.mdd.sx"/>
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_mdd_dx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.mdd.dx"/>
+                                        </div>
+                                        <div class="col-span-6 flex flex-col">
+                                            <span class="text-sm font-medium text-gray-900">Malattia di Ménière</span>
+
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_meniere_sx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.meniere.sx"/>
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_meniere_dx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.meniere.dx"/>
+                                        </div>
+                                        <div class="col-span-6 flex flex-col">
+                                            <span class="text-sm font-medium text-gray-900">Disturbi di equilibrio (VPPB, labirintite….)</span>
+
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_vppb_sx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.vppb.sx"/>
+                                        </div>
+                                        <div class="col-span-3 text-center flex flex-wrap content-center">
+                                            <x-form.checkbox value="1" id="innerEar_vppb_dx"
+                                                             wire:model.lazy="state.anamnesis.diving.innerEar.congenital.vppb.dx"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="relative flex justify-start">
-                                <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                                   {{__('Sordità acquisite')}}
-                                </span>
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <div class="grid grid-cols-12 gap-4 mt-5">
+
+                                <div class="col-span-12">
+                                    <div class="relative my-5">
+                                        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                            <div class="w-full border-t border-gray-300"></div>
+                                        </div>
+                                        <div class="relative flex justify-start">
+                                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
+                                           {{__('Sordità acquisite')}}
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-6">
+
+                                </div>
+                                <div class="col-span-3 text-center">
+                                    {{ __('Sx') }}
+                                </div>
+                                <div class="col-span-3 text-center">
+                                    {{ __('Dx') }}
+                                </div>
+                                <div class="col-span-6 flex flex-col">
+                                    <span class="text-sm font-medium text-gray-900">Ipoacusia da rumore</span>
+
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_ipoacusia_sx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.ipoacusia.sx"/>
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_ipoacusia_dx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.ipoacusia.dx"/>
+                                </div>
+                                <div class="col-span-6 flex flex-col">
+                                    <span class="text-sm font-medium text-gray-900">Presbiacusia</span>
+
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_presbiacusia_sx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.presbiacusia.sx"/>
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_presbiacusia_dx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.presbiacusia.dx"/>
+                                </div>
+                                <div class="col-span-6 flex flex-col">
+                                    <span class="text-sm font-medium text-gray-900">Barotrauma</span>
+
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_barotrauma_sx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.barotrauma.sx"/>
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_barotrauma_dx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.barotrauma.dx"/>
+                                </div>
+                                <div class="col-span-6 flex flex-col">
+                                    <span class="text-sm font-medium text-gray-900">Acufeni</span>
+
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_acufeni_sx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.acufeni.sx"/>
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_acufeni_dx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.acufeni.dx"/>
+                                </div>
+                                <div class="col-span-6 flex flex-col">
+                                    <span class="text-sm font-medium text-gray-900">MDD labirintica</span>
+
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_mdd_sx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.mdd.sx"/>
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_mdd_dx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.mdd.dx"/>
+                                </div>
+                                <div class="col-span-6 flex flex-col">
+                                    <span class="text-sm font-medium text-gray-900">Malattia di Ménière</span>
+
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_meniere_sx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.meniere.sx"/>
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_meniere_dx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.meniere.dx"/>
+                                </div>
+                                <div class="col-span-6 flex flex-col">
+                                    <span class="text-sm font-medium text-gray-900">Disturbi di equilibrio (VPPB, labirintite….)</span>
+
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_vppb_sx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.vppb.sx"/>
+                                </div>
+                                <div class="col-span-3 text-center flex flex-wrap content-center">
+                                    <x-form.checkbox value="1" id="innerEar_vppb_dx"
+                                                     wire:model.lazy="state.anamnesis.diving.innerEar.acquired.vppb.dx"/>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">Ipoacusia da rumore</span>
-
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_ipoacusia_sx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.ipoacusia.sx"/>
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_ipoacusia_dx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.ipoacusia.dx"/>
-                    </div>
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">Presbiacusia</span>
-
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_presbiacusia_sx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.presbiacusia.sx"/>
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_presbiacusia_dx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.presbiacusia.dx"/>
-                    </div>
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">Barotrauma</span>
-
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_barotrauma_sx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.barotrauma.sx"/>
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_barotrauma_dx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.barotrauma.dx"/>
-                    </div>
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">Acufeni</span>
-
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_acufeni_sx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.acufeni.sx"/>
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_acufeni_dx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.acufeni.dx"/>
-                    </div>
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">MDD labirintica</span>
-
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_mdd_sx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.mdd.sx"/>
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_mdd_dx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.mdd.dx"/>
-                    </div>
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">Malattia di Ménière</span>
-
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_meniere_sx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.meniere.sx"/>
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_meniere_dx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.meniere.dx"/>
-                    </div>
-                    <div class="col-span-6 flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">Disturbi di equilibrio (VPPB, labirintite….)</span>
-
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_vppb_sx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.vppb.sx"/>
-                    </div>
-                    <div class="col-span-3 text-center flex flex-wrap content-center">
-                        <x-form.checkbox value="1" id="innerEar_vppb_dx"
-                                         wire:model.lazy="state.anamnesis.diving.innerEar.vppb.dx"/>
-                    </div>
-                </div>
             </div>
         @endif
         <div class="w-full mt-5">

@@ -33,11 +33,11 @@ class Edit extends Component
         if (!data_get($this->medicalRecord->data,'anamnesis.general.cavoOrale',false)){
             data_set($this->state,'anamnesis.general.cavoOrale',[]);
         }
-        if (!data_get($this->medicalRecord->data,'objectives.externalEar.dx',false)){
-            data_set($this->state,'objectives.externalEar.dx',[]);
+        if (!data_get($this->medicalRecord->data,'objectives.general.externalEar.dx',false)){
+            data_set($this->state,'objectives.general.externalEar.dx',[]);
         }
-        if (!data_get($this->medicalRecord->data,'objectives.externalEar.sx',false)){
-            data_set($this->state,'objectives.externalEar.sx',[]);
+        if (!data_get($this->medicalRecord->data,'objectives.general.externalEar.sx',false)){
+            data_set($this->state,'objectives.general.externalEar.sx',[]);
         }
         if (!data_get($this->medicalRecord->data,'objectives.general.nose.anomalies',false)){
             data_set($this->state,'objectives.general.nose.anomalies',[]);

@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/View.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/view.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/appoggio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/danavatar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/danavatar.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a/storage_v2/_src_/database/danavatar.KpQtrg/schema/public.abK9xQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/Edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,14 +366,15 @@
       <workItem from="1620516217717" duration="620000" />
       <workItem from="1621325704351" duration="6887000" />
       <workItem from="1621842402319" duration="3539000" />
-      <workItem from="1623748131605" duration="14786000" />
-    </task>
-    <task id="LOCAL-00098" summary="Fix Anamnesis with sports and eliminate swimming">
-      <created>1615227403289</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1615227403292</updated>
+      <workItem from="1623748131605" duration="15927000" />
+      <workItem from="1623924118979" duration="4154000" />
+      <workItem from="1624115341162" duration="1277000" />
+      <workItem from="1624118530281" duration="1878000" />
+      <workItem from="1624197748975" duration="606000" />
+      <workItem from="1624271277952" duration="2032000" />
+      <workItem from="1624432138228" duration="130000" />
+      <workItem from="1624433237076" duration="7226000" />
+      <workItem from="1624866212030" duration="2181000" />
     </task>
     <task id="LOCAL-00099" summary="Fix ECG view 1">
       <created>1615282979788</created>
@@ -708,7 +712,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622200661377</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="Otorino view colplete">
+      <created>1623920079424</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1623920079425</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -734,7 +745,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix anamnesis profession label in view" />
     <MESSAGE value="fix photo upload" />
     <MESSAGE value="Fix admin staff datatable" />
     <MESSAGE value="Dentist edit" />
@@ -759,7 +769,8 @@
     <MESSAGE value="New Privacy" />
     <MESSAGE value="Covid Exams" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="Otorino view colplete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Otorino view colplete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -773,6 +784,11 @@
           <url>file://$PROJECT_DIR$/resources/views/livewire/medical-record/nutritionist/view.blade.php</url>
           <line>150</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Models/User.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

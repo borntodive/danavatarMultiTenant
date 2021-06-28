@@ -1,7 +1,7 @@
 <x-medical-record.common-view :medicalRecord="$medicalRecord">
     <x-card title="{{ __('Anamnesi') }}" class="mt-5">
         <div class="w-full">
-            <x-show.label>Problemi Orl nella vita quotidiana</x-show.label>
+            <x-show.label>Problemi ORL nella vita quotidiana</x-show.label>
             <div class="grid grid-cols-12 gap-12 mt-5">
                 <div class="col-span-4 md:col-span-2">
                     <span class="text-sm font-medium text-gray-900">Orecchio</span>
