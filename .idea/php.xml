@@ -175,6 +175,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
       <path value="$PROJECT_DIR$/vendor/influxdata/influxdb-client-php" />
+      <path value="$PROJECT_DIR$/vendor/hnhdigital-os/laravel-number-converter" />
+      <path value="$PROJECT_DIR$/vendor/hnhdigital-os/php-number-converter" />
       <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
     </include_path>
   </component>

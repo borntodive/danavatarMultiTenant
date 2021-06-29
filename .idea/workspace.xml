@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/app.php" afterDir="false" />
+    <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Fix ORL">
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/Edit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/View.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/StaticData/Neuro.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-edit-disorders.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/neuro/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/neuro/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/otolaryngology/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology/app.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +224,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
       <path value="$PROJECT_DIR$/vendor/influxdata/influxdb-client-php" />
+      <path value="$PROJECT_DIR$/vendor/hnhdigital-os/laravel-number-converter" />
+      <path value="$PROJECT_DIR$/vendor/hnhdigital-os/php-number-converter" />
       <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
     </include_path>
   </component>
@@ -239,18 +250,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Otolaryngology" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/StaticData" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\apps\danavatar\app\StaticData" />
+      <recent name="C:\apps\danavatar\resources\views\livewire\medical-record" />
+      <recent name="C:\apps\danavatar\app\Http\Livewire\MedicalRecord" />
       <recent name="C:\apps\danavatar\app\Http\Livewire\MedicalRecord\Otolaryngology" />
       <recent name="C:\apps\danavatar\resources\views\livewire\medical-record\otolaryngology" />
-      <recent name="C:\apps\danavatar\app\StaticData" />
-      <recent name="C:\apps\danavatar\app\Http\Livewire\MedicalRecord" />
-      <recent name="C:\apps\danavatar\resources\views\livewire\medical-record" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\apps\danavatar\app\Traits\MedicalRecord" />
@@ -367,14 +378,7 @@
       <workItem from="1624271277952" duration="2032000" />
       <workItem from="1624432138228" duration="130000" />
       <workItem from="1624433237076" duration="7226000" />
-      <workItem from="1624866212030" duration="2574000" />
-    </task>
-    <task id="LOCAL-00100" summary="ECG Live zoom 3 sec">
-      <created>1615284043581</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1615284043581</updated>
+      <workItem from="1624866212030" duration="16134000" />
     </task>
     <task id="LOCAL-00101" summary="New Anamnesis">
       <created>1615289826236</created>
@@ -712,7 +716,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624868496522</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="Fix ORL">
+      <created>1624868846890</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1624868846890</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -738,7 +749,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix admin staff datatable" />
     <MESSAGE value="Dentist edit" />
     <MESSAGE value="Dentist view" />
     <MESSAGE value="Fix Dentist view/edit" />
@@ -763,7 +773,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="Otorino view colplete" />
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Fix ORL" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix ORL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

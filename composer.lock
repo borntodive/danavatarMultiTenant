@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7cc4acdc1642fde4a8f70c75a70cf1a",
+    "content-hash": "65467a5d125a3a4a15d5da1f90b39259",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1386,6 +1386,123 @@
             "time": "2020-03-05T20:41:28+00:00"
         },
         {
+            "name": "hnhdigital-os/laravel-number-converter",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hnhdigital-os/laravel-number-converter.git",
+                "reference": "4581407ccacea372d6bc61c1ff8dc32c24289c36"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hnhdigital-os/laravel-number-converter/zipball/4581407ccacea372d6bc61c1ff8dc32c24289c36",
+                "reference": "4581407ccacea372d6bc61c1ff8dc32c24289c36",
+                "shasum": ""
+            },
+            "require": {
+                "hnhdigital-os/php-number-converter": "1.*",
+                "illuminate/support": "^5.8|^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "~2.0",
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "HnhDigital\\LaravelNumberConverter\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HnhDigital\\LaravelNumberConverter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rocco Howard",
+                    "email": "rocco@bluora.com.au"
+                }
+            ],
+            "description": "Number to word, roman, ordinal converter",
+            "keywords": [
+                "converter",
+                "laravel",
+                "number",
+                "ordinal",
+                "roman",
+                "word"
+            ],
+            "support": {
+                "issues": "https://github.com/hnhdigital-os/laravel-number-converter/issues",
+                "source": "https://github.com/hnhdigital-os/laravel-number-converter/tree/1.4.1"
+            },
+            "time": "2021-03-01T05:29:05+00:00"
+        },
+        {
+            "name": "hnhdigital-os/php-number-converter",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hnhdigital-os/php-number-converter.git",
+                "reference": "1e1828056da7a10775ffe26a7e818fcf0f5a3e14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hnhdigital-os/php-number-converter/zipball/1e1828056da7a10775ffe26a7e818fcf0f5a3e14",
+                "reference": "1e1828056da7a10775ffe26a7e818fcf0f5a3e14",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "~2.0",
+                "phpunit/phpunit": "^7.0",
+                "squizlabs/php_codesniffer": "~3.0",
+                "symfony/thanks": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HnhDigital\\PhpNumberConverter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Riasad Tasha",
+                    "email": "saintkabyo@gmail.com"
+                },
+                {
+                    "name": "Rocco Howard",
+                    "email": "rocco@hnh.digital"
+                }
+            ],
+            "description": "Number to word, roman, ordinal converter",
+            "keywords": [
+                "converter",
+                "number",
+                "ordinal",
+                "roman",
+                "word"
+            ],
+            "support": {
+                "source": "https://github.com/hnhdigital-os/php-number-converter/tree/1.2.0"
+            },
+            "time": "2021-02-27T03:13:12+00:00"
+        },
+        {
             "name": "http-interop/http-factory-guzzle",
             "version": "1.0.0",
             "source": {
@@ -2277,16 +2394,16 @@
         },
         {
             "name": "laravel/horizon",
-            "version": "v5.7.5",
+            "version": "v5.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "9bf0ef4873d9e52f58a9cd1de69dcdd98a5c4fe8"
+                "reference": "50dc53b105ec612cf1a87e89fffd21cc0a43003c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/9bf0ef4873d9e52f58a9cd1de69dcdd98a5c4fe8",
-                "reference": "9bf0ef4873d9e52f58a9cd1de69dcdd98a5c4fe8",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/50dc53b105ec612cf1a87e89fffd21cc0a43003c",
+                "reference": "50dc53b105ec612cf1a87e89fffd21cc0a43003c",
                 "shasum": ""
             },
             "require": {
@@ -2348,9 +2465,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/horizon/issues",
-                "source": "https://github.com/laravel/horizon/tree/v5.7.5"
+                "source": "https://github.com/laravel/horizon/tree/v5.7.9"
             },
-            "time": "2021-04-06T14:17:52+00:00"
+            "time": "2021-06-08T14:17:37+00:00"
         },
         {
             "name": "laravel/jetstream",

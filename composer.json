@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "hnhdigital-os/laravel-number-converter": "^1.4",
         "influxdata/influxdb-client-php": "^1.12",
         "lab404/laravel-impersonate": "^1.7",
         "laravel-lang/lang": "~8.0",
