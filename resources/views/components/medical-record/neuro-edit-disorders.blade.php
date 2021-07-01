@@ -2,6 +2,7 @@
     'target' => null,
     'label'=>null,
     'options'=>false,
+    'radio'=>null,
     'more'=>null
     ])
 
@@ -13,7 +14,7 @@
     <div class="col-span-3 text-center flex flex-row place-content-center">
         <div class="flex-grow text-center flex flex-wrap content-center">
             <x-form.text-area class="w-full" id="disorders_{{$target}}"
-                             wire:model.lazy="state.anamnesis.general.{{$target}}"/>
+                             wire:model.lazy="state.{{$target}}"/>
         </div>
     </div>
 @else
@@ -21,15 +22,17 @@
         @if (count($options)==1)
         <div class="flex-grow text-center flex flex-wrap content-center">
             <x-form.checkbox value="1" id="disorders_{{$target}}"
-                             wire:model.lazy="state.anamnesis.general.{{$target}}.present"/>
+                             wire:model.lazy="state.{{$target}}.present"/>
         </div>
 
         @else
             @foreach($options as $option)
                 <div class="flex-grow text-center flex flex-col content-center">
                     <x-form.label>{{$option}}</x-form.label>
-                    <x-form.checkbox value="1" id="disorders_{{$target}}_sx"
-                                     wire:model.lazy="state.anamnesis.general.{{$target}}.{{strtolower($option)}}.present"/>
+                    <x-form.checkbox value="1" id="disorders_{{$target}}_{{strtolower($option)}}"
+                                     wire:model.lazy="state.{{$target}}.{{strtolower($option)}}.present"
+                        wire:change="radioCheck('{{$target}}','{{strtolower($option)}}','{{$radio}}')"
+                    />
 
                 </div>
             @endforeach
@@ -38,7 +41,7 @@
     @if($more=='date')
         <div class="col-span-1 text-center flex flex-wrap content-center">
             <x-form.masked-date-input
-                wire:model.lazy="state.anamnesis.general.{{$target}}.date"
+                wire:model.lazy="state.{{$target}}.date"
                 :min="1900-01-01"
                 :max="now()->format('Y-m-d')"
             />
@@ -47,7 +50,7 @@
         <div class="col-span-1 text-center flex flex-wrap content-center">
             <x-form.text-input
                 label="Note"
-                wire:model="state.anamnesis.general.{{$target}}.more">
+                wire:model="state.{{$target}}.more">
             </x-form.text-input>
         </div>
     @endif

@@ -232,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Zxcvbn' => Olssonm\Zxcvbn\Facades\Zxcvbn::class,
 
-        'NumConvert' => 'HnhDigital\LaravelNumberConverter\Facade',
+        'NumConvert' => HnhDigital\LaravelNumberConverter\Facade::class,
 
     ],
 

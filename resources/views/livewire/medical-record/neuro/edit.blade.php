@@ -18,6 +18,7 @@
                     :label="$disorder['label']"
                     :target="$disorder['target']"
                     :options="$disorder['options']"
+                    :radio="isset($disorder['radio']) ? $disorder['radio'] : null"
                     more="date"
                 />
             @endforeach
@@ -68,14 +69,15 @@
             </div>
         </div>
         <div class="grid grid-cols-6 gap-4">
-            @for($i=1;$i<=12;$i++)
+            @foreach($nervi as $m)
                 <x-medical-record.neuro-edit-disorders
-                    :label="NumConvert::roman($i)"
-                    target="nervi.{{$i}}"
-                    :options="['Normale','Sx','Dx']"
-                    more="text"
+                    :label="$m['label']"
+                    :target="$m['target']"
+                    :options="$m['options']"
+                    :radio="isset($m['radio']) ? $m['radio'] : null"
+                    :more="isset($m['more']) ? $m['more'] : null"
                 />
-            @endfor
+            @endforeach
         </div>
         <div class="w-full mt-10">
             <div class="relative my-5">
@@ -99,6 +101,7 @@
                             :label="$m['label']"
                             :target="$m['target']"
                             :options="$m['options']"
+                            :radio="isset($m['radio']) ? $m['radio'] : null"
                             :more="isset($m['more']) ? $m['more'] : null"
                         />
                     @endforeach
@@ -113,6 +116,7 @@
                             :label="$m['label']"
                             :target="$m['target']"
                             :options="$m['options']"
+                            :radio="isset($m['radio']) ? $m['radio'] : null"
                             :more="isset($m['more']) ? $m['more'] : null"
                         />
                     @endforeach
@@ -138,6 +142,7 @@
                         :label="$m['label']"
                         :target="$m['target']"
                         :options="$m['options']"
+                        :radio="isset($m['radio']) ? $m['radio'] : null"
                         :more="isset($m['more']) ? $m['more'] : null"
                     />
                 @endforeach
@@ -162,6 +167,7 @@
                         :label="$m['label']"
                         :target="$m['target']"
                         :options="$m['options']"
+                        :radio="isset($m['radio']) ? $m['radio'] : null"
                         :more="isset($m['more']) ? $m['more'] : null"
                     />
                 @endforeach
@@ -186,6 +192,7 @@
                         :label="$m['label']"
                         :target="$m['target']"
                         :options="$m['options']"
+                        :radio="isset($m['radio']) ? $m['radio'] : null"
                         :more="isset($m['more']) ? $m['more'] : null"
                     />
                 @endforeach
@@ -210,6 +217,7 @@
                         :label="$m['label']"
                         :target="$m['target']"
                         :options="$m['options']"
+                        :radio="isset($m['radio']) ? $m['radio'] : null"
                         :more="isset($m['more']) ? $m['more'] : null"
                     />
                 @endforeach
@@ -234,6 +242,7 @@
                         :label="$m['label']"
                         :target="$m['target']"
                         :options="$m['options']"
+                        :radio="isset($m['radio']) ? $m['radio'] : null"
                         :more="isset($m['more']) ? $m['more'] : null"
                     />
                 @endforeach
@@ -258,6 +267,7 @@
                         :label="$m['label']"
                         :target="$m['target']"
                         :options="$m['options']"
+                        :radio="isset($m['radio']) ? $m['radio'] : null"
                         :more="isset($m['more']) ? $m['more'] : null"
                     />
                 @endforeach

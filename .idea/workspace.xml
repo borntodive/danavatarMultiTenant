@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Edit Neuro">
-      <change afterPath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" afterDir="false" />
+    <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="View Neuro">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/View.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/neuro/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/neuro/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/Edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/StaticData/Neuro.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/StaticData/Neuro.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/check-or-cross.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/check-or-cross.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-edit-disorders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-edit-disorders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/neuro/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/neuro/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,14 +374,8 @@
       <workItem from="1624271277952" duration="2032000" />
       <workItem from="1624432138228" duration="130000" />
       <workItem from="1624433237076" duration="7226000" />
-      <workItem from="1624866212030" duration="17999000" />
-    </task>
-    <task id="LOCAL-00102" summary="Fix profile no date">
-      <created>1615290039844</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1615290039844</updated>
+      <workItem from="1624866212030" duration="18358000" />
+      <workItem from="1625039600840" duration="8219000" />
     </task>
     <task id="LOCAL-00103" summary="Pagination in ECG Chart">
       <created>1615292206098</created>
@@ -715,7 +713,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624979009848</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="View Neuro">
+      <created>1624980875812</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1624980875812</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -741,7 +746,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Dentist view" />
     <MESSAGE value="Fix Dentist view/edit" />
     <MESSAGE value="ORL edit Anamnesis" />
     <MESSAGE value="ORL edit esame obiettivo" />
@@ -766,7 +770,8 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Fix ORL" />
     <MESSAGE value="Edit Neuro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit Neuro" />
+    <MESSAGE value="View Neuro" />
+    <option name="LAST_COMMIT_MESSAGE" value="View Neuro" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

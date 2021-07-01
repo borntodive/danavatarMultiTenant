@@ -42,7 +42,7 @@
             <x-show.value>{{data_get($medicalRecord->data,'anamnesis.general.'.$target.'.date','')}}</x-show.value>
         </div>
     @elseif($more=='text')
-        <div class="col-span-1 text-center flex flex-wrap content-center place-content-center">
+        <div class="col-span-1 text-center flex flex-col content-center place-content-center">
             <x-show.label>Note</x-show.label>
             <x-show.value>{{data_get($medicalRecord->data,'anamnesis.general.'.$target.'.more','')}}</x-show.value>
         </div>
