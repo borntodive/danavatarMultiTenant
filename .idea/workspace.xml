@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="View Neuro">
+    <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Anamnesis with Medicina Subacquea">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/Edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/StaticData/Anamnesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/StaticData/Anamnesis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/general.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-view-section.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-view-section.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,14 +370,7 @@
       <workItem from="1624433237076" duration="7226000" />
       <workItem from="1624866212030" duration="18358000" />
       <workItem from="1625039600840" duration="8219000" />
-      <workItem from="1625212657999" duration="11695000" />
-    </task>
-    <task id="LOCAL-00103" summary="Pagination in ECG Chart">
-      <created>1615292206098</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1615292206098</updated>
+      <workItem from="1625212657999" duration="12232000" />
     </task>
     <task id="LOCAL-00104" summary="Fix anamnesis profession label">
       <created>1615299726430</created>
@@ -722,7 +708,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624980875812</updated>
     </task>
-    <option name="localTasksCounter" value="152" />
+    <task id="LOCAL-00152" summary="Anamnesis with Medicina Subacquea">
+      <created>1625739567347</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1625739567349</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -748,7 +741,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix Dentist view/edit" />
     <MESSAGE value="ORL edit Anamnesis" />
     <MESSAGE value="ORL edit esame obiettivo" />
     <MESSAGE value="OPT ecg" />
@@ -773,7 +765,8 @@
     <MESSAGE value="Fix ORL" />
     <MESSAGE value="Edit Neuro" />
     <MESSAGE value="View Neuro" />
-    <option name="LAST_COMMIT_MESSAGE" value="View Neuro" />
+    <MESSAGE value="Anamnesis with Medicina Subacquea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Anamnesis with Medicina Subacquea" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

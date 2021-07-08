@@ -13,7 +13,7 @@
 @if (!$options)
     <div class="col-span-3 text-center flex flex-row place-content-center">
         <div class="flex-grow text-center flex flex-wrap content-center place-content-center">
-            <x-show.textarea>{{data_get($medicalRecord->data,'anamnesis.general.'.$target,'N/A')}}</x-show.textarea>
+            <x-show.textarea>{{data_get($medicalRecord->data,$target,'N/A')}}</x-show.textarea>
         </div>
     </div>
 @else
@@ -21,7 +21,7 @@
         @if (count($options)==1)
         <div class="flex-grow text-center flex flex-wrap content-center place-content-center">
             <x-check-or-cross
-                :condition="data_get($medicalRecord->data,'anamnesis.general.'.$target.'.present',false)"/>
+                :condition="data_get($medicalRecord->data,$target.'.present',false)"/>
 
         </div>
 
@@ -31,7 +31,7 @@
                     <x-show.label>{{$option}}</x-show.label>
                     <div class="flex place-content-center">
                         <x-check-or-cross
-                            :condition="data_get($medicalRecord->data,'anamnesis.general.'.$target.'.'.strtolower($option).'.present',false)"/>
+                            :condition="data_get($medicalRecord->data,$target.'.'.strtolower($option).'.present',false)"/>
                     </div>
                 </div>
             @endforeach
@@ -39,12 +39,12 @@
     </div>
     @if($more=='date')
         <div class="col-span-1 text-center flex flex-wrap content-center place-content-center">
-            <x-show.value>{{data_get($medicalRecord->data,'anamnesis.general.'.$target.'.date','')}}</x-show.value>
+            <x-show.value>{{data_get($medicalRecord->data,$target.'.date','')}}</x-show.value>
         </div>
     @elseif($more=='text')
         <div class="col-span-1 text-center flex flex-col content-center place-content-center">
             <x-show.label>Note</x-show.label>
-            <x-show.value>{{data_get($medicalRecord->data,'anamnesis.general.'.$target.'.more','')}}</x-show.value>
+            <x-show.value>{{data_get($medicalRecord->data,$target.'.more','')}}</x-show.value>
         </div>
     @endif
 @endif
