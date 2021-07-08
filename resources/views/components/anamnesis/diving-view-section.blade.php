@@ -60,7 +60,7 @@
         </div>
     @endif
     <div class="sm:col-span-1">
-        <x-show.label>{{$profession}}è la tua professione?</x-show.label>
+        <x-show.label>{{$profession}} è la tua professione?</x-show.label>
         <x-show.value> {{data_get($anamnesis->data,'diving.'.$section.'.divingProfession','')}}</x-show.value>
     </div>
 </dl>

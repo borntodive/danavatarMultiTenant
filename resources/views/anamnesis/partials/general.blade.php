@@ -1,3 +1,22 @@
+@php
+    $checkCardiacProblems=data_get($anamnesis->data,'general.anamnesisData.pulmonaryProblems.present', false) ||
+        data_get($anamnesis->data,'general.anamnesisData.pulmonaryProblems.past', false) ||
+        data_get($anamnesis->data,'general.anamnesisData.heartProblems.present', false) ||
+        data_get($anamnesis->data,'general.anamnesisData.heartProblems.past', false) ||
+        data_get($anamnesis->data,'general.anamnesisData.ematologico.present', false) ||
+        data_get($anamnesis->data,'general.anamnesisData.ematologico.past', false) ||
+        data_get($anamnesis->data,'general.anamnesisData.covid.past', false);
+
+$yes_no = [
+    'yes'=>'Si',
+    'no'=>'No'
+    ];
+$yes_no = [
+    'yes'=>'Si',
+    'no'=>'No'
+    ];
+@endphp
+
 <x-card title="{{ __('Dati biometrici') }}">
     <dl class="w-full grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
         <div class="sm:col-span-1">
@@ -61,6 +80,60 @@
         </div>
     </div>
 
+    @if(session()->get('tenant')->hasMedicalSpecilities('diving') && $checkCardiacProblems)
+        <div class="w-full  mt-5">
+            <div class="relative mb-5">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+                <div class="relative flex justify-start">
+                <span class="pr-3 bg-white text-lg font-medium text-gray-900">
+                  {{__('Ulterioni informazioni')}}
+                </span>
+                </div>
+            </div>
+            <div class="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 pt-6 gap-8">
+                <div class="md:w-full flex flex-col mb-6">
+                    <x-form.label>Un intervento di chirurgia toracica, cardiaca, alle valvole cardiache, posizionamento di stent o uno pneumotorace (polmone collassato)</x-form.label>
+                    <x-show.value>{{data_get($yes_no, data_get($anamnesis->data,'general.anamnesisData.diving.more.chirurgiacardiaca', false) ,'N/A')}}</x-show.value>
+                </div>
+                <div class="md:w-full flex flex-col mb-6">
+                    <x-form.label>Asma, dispnea, allergie gravi, febbre da fieno o vie aeree congestionate negli ultimi 12 mesi che limitano la mia attività/esercizio fisico.</x-form.label>
+                    <x-show.value>{{data_get($yes_no, data_get($anamnesis->data,'general.anamnesisData.diving.more.asma', false) ,'N/A')}}</x-show.value>
+                </div>
+                <div class="md:w-full flex flex-col mb-6">
+                    <x-form.label>Bronchite ricorrente e tuttora tosse negli ultimi 12 mesi, oppure mi è stato diagnosticato un enfisema.</x-form.label>
+                    <x-show.value>{{data_get($yes_no, data_get($anamnesis->data,'general.anamnesisData.diving.more.bronchite', false) ,'N/A')}}</x-show.value>
+                </div>
+
+                <div class="md:w-full flex flex-col mb-6 md:col-span-2">
+                    <x-form.label>Un problema o malattia riguardante il mio cuore come:</x-form.label>
+                    <div class="md:w-full flex flex-wrap mt-3">
+                        <div class="flex-grow mt-2">
+                            <x-check-or-cross :condition="data_get($anamnesis->data,'anamnesisData.diving.more.cuore.angina',false)"/> Angina
+                        </div>
+                        <div class="flex-grow mt-2">
+                            <x-check-or-cross :condition="data_get($anamnesis->data,'anamnesisData.diving.more.cuore.dolorepetto',false)"
+                            /> Dolore al petto quando sotto sforzo
+                        </div>
+                        <div class="flex-grow mt-2">
+                            <x-check-or-cross :condition="data_get($anamnesis->data,'anamnesisData.diving.more.cuore.insufficenza',false)"
+                            /> Insufficienza cardiaca
+                        </div>
+                        <div class="flex-grow mt-2">
+                            <x-check-or-cross :condition="data_get($anamnesis->data,'anamnesisData.diving.more.cuore.ictus',false)"
+                            /> Attacco di cuore o ictus
+                        </div>
+                        <div class="flex-grow mt-2">
+                            <x-check-or-cross :condition="data_get($anamnesis->data,'anamnesisData.diving.more.cuore.farmaci',false)"
+                            /> Sto assumendo farmaci per una qualsivoglia condizione cardiaca
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    @endif
     <div class="w-full mt-5">
         <div class="relative mb-5">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">

@@ -61,7 +61,74 @@
             @endforeach
         </div>
     </div>
+    @if(session()->get('tenant')->hasMedicalSpecilities('diving') && $this->checkCardiacProblems())
+        <div class="w-full  mt-5">
+            <div class="relative mb-5">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+                <div class="relative flex justify-start">
+                <span class="pr-3 bg-white text-lg font-medium text-gray-900">
+                  {{__('Ulterioni informazioni')}}
+                </span>
+                </div>
+            </div>
+            <div class="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 pt-6 gap-8">
+                <div class="md:w-full flex flex-col mb-6">
+                    <x-form.label>Un intervento di chirurgia toracica, cardiaca, alle valvole cardiache, posizionamento di stent o uno pneumotorace (polmone collassato)</x-form.label>
+                    <div class="md:w-full flex flex-row mt-3">
+                        <div class="w-3/6"><input wire:model="state.anamnesisData.diving.more.chirurgiacardiaca" type="radio" value="yes" /> Si</div>
+                        <div class="w-3/6"><input wire:model="state.anamnesisData.diving.more.chirurgiacardiaca" type="radio" value="no" /> No</div>
+                    </div>
+                </div>
+                <div class="md:w-full flex flex-col mb-6">
+                    <x-form.label>Asma, dispnea, allergie gravi, febbre da fieno o vie aeree congestionate negli ultimi 12 mesi che limitano la mia attività/esercizio fisico.</x-form.label>
+                    <div class="md:w-full flex flex-row mt-3">
+                        <div class="w-3/6"><input wire:model="state.anamnesisData.diving.more.asma" type="radio" value="yes" /> Si</div>
+                        <div class="w-3/6"><input wire:model="state.anamnesisData.diving.more.asma" type="radio" value="no" /> No</div>
+                    </div>
+                </div>
+                <div class="md:w-full flex flex-col mb-6">
+                    <x-form.label>Bronchite ricorrente e tuttora tosse negli ultimi 12 mesi, oppure mi è stato diagnosticato un enfisema.</x-form.label>
+                    <div class="md:w-full flex flex-row mt-3">
+                        <div class="w-3/6"><input wire:model="state.anamnesisData.diving.more.bronchite" type="radio" value="yes" /> Si</div>
+                        <div class="w-3/6"><input wire:model="state.anamnesisData.diving.more.bronchite" type="radio" value="no" /> No</div>
+                    </div>
+                </div>
+                <div class="md:w-full flex flex-col mb-6 md:col-span-2">
+                    <x-form.label>Un problema o malattia riguardante il mio cuore come:</x-form.label>
+                    <div class="md:w-full flex flex-wrap mt-3">
+                        <div class="flex-grow mt-2">
+                            <x-form.checkbox value="1" id="anamnesisData_diving_more_cuore_angina"
+                                              wire:model.lazy="state.anamnesisData.diving.more.cuore.angina"
+                            /> Angina
+                        </div>
+                        <div class="flex-grow mt-2">
+                            <x-form.checkbox value="1" id="anamnesisData_diving_more_cuore_dolorepetto"
+                                              wire:model.lazy="state.anamnesisData.diving.more.cuore.dolorepetto"
+                            /> Dolore al petto quando sotto sforzo
+                        </div>
+                        <div class="flex-grow mt-2">
+                            <x-form.checkbox value="1" id="anamnesisData_diving_more_cuore_insufficenza"
+                                             wire:model.lazy="state.anamnesisData.diving.more.cuore.insufficenza"
+                            /> Insufficienza cardiaca
+                        </div>
+                        <div class="flex-grow mt-2">
+                            <x-form.checkbox value="1" id="anamnesisData_diving_more_cuore_ictus"
+                                             wire:model.lazy="state.anamnesisData.diving.more.cuore.ictus"
+                            /> Attacco di cuore o ictus
+                        </div>
+                        <div class="flex-grow mt-2">
+                            <x-form.checkbox value="1" id="anamnesisData_diving_more_cuore_farmaci"
+                                             wire:model.lazy="state.anamnesisData.diving.more.cuore.farmaci"
+                            /> Sto assumendo farmaci per una qualsivoglia condizione cardiaca
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+    @endif
     <div class="w-full mt-5">
         <div class="relative mb-5">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">

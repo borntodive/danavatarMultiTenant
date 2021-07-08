@@ -59,6 +59,7 @@ class Create extends Component
         else
             $this->state['sports']=[];
     }
+
     public function addSport() {
         $this->state['sports'][]=$this->baseSport;
     }
@@ -116,7 +117,6 @@ class Create extends Component
         $this->validateOnly($propertyName);
     }
 
-
     public function createAnamnesis()
     {
         $validatedData = $this->validate();
@@ -135,5 +135,16 @@ class Create extends Component
         //dd($values['anamnesisData']);
         //$anamensis->data->anamnesisData=new UserAnamnesisData($values['anamnesisData']);
 
+    }
+
+    public function checkCardiacProblems() {
+        return true;
+        return data_get($this->state,'anamnesisData.pulmonaryProblems.present', false) ||
+            data_get($this->state,'anamnesisData.pulmonaryProblems.past', false) ||
+            data_get($this->state,'anamnesisData.heartProblems.present', false) ||
+            data_get($this->state,'anamnesisData.heartProblems.past', false) ||
+            data_get($this->state,'anamnesisData.ematologico.present', false) ||
+            data_get($this->state,'anamnesisData.ematologico.past', false) ||
+            data_get($this->state,'anamnesisData.covid.past', false);
     }
 }

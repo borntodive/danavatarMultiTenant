@@ -3,13 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="View Neuro">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Anamnesis/Create.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MedicalRecord/Neuro/Edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/StaticData/Neuro.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/StaticData/Neuro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/check-or-cross.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/check-or-cross.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-edit-disorders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-edit-disorders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/medical-record/neuro/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/medical-record/neuro/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/StaticData/Anamnesis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/StaticData/Anamnesis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/diving.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/anamnesis/partials/general.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-view-section.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/anamnesis/diving-view-section.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/diving.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/anamnesis/partials/general.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -376,6 +377,7 @@
       <workItem from="1624433237076" duration="7226000" />
       <workItem from="1624866212030" duration="18358000" />
       <workItem from="1625039600840" duration="8219000" />
+      <workItem from="1625212657999" duration="11695000" />
     </task>
     <task id="LOCAL-00103" summary="Pagination in ECG Chart">
       <created>1615292206098</created>

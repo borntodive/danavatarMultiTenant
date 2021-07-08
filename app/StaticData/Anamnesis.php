@@ -67,6 +67,11 @@ class Anamnesis
             'present'=>true,
             'past'=>true,
         ],
+        'ematologico' => [
+            'name'=>'Ematologico',
+            'present'=>true,
+            'past'=>true,
+        ],
         'joinsPains' => [
             'name'=>'Artrite/artrosi',
             'present'=>true,
