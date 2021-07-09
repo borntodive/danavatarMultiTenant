@@ -138,7 +138,6 @@ class Create extends Component
     }
 
     public function checkCardiacProblems() {
-        return true;
         return data_get($this->state,'anamnesisData.pulmonaryProblems.present', false) ||
             data_get($this->state,'anamnesisData.pulmonaryProblems.past', false) ||
             data_get($this->state,'anamnesisData.heartProblems.present', false) ||
