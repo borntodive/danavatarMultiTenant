@@ -34,6 +34,9 @@ class Edit extends Component
         $this->dcs=Diving::$dcs;
         $this->first_treatment=Diving::$first_treatment;
         $this->others_treatment=Diving::$others_treatment;
+        if (!data_get($this->state,'anamnesis.diving.dcs',false)){
+            data_set($this->state,'anamnesis.diving.dcs',[0=>['date'=>null]]);
+        }
 
     }
 

@@ -201,7 +201,7 @@
                                     <div class="flex flex-wrap mt-3 md:w-full">
                                         @foreach ($radio['options'] as $idx => $option)
                                             <div class="px-10 mt-2"><input
-                                                    wire:model="state.anamnesis.diving.dcs.{{ $loop->parent->index }}.{{ $key }}"
+                                                    wire:model="state.anamnesis.diving.dcs.{{ $loop->parent->parent->index }}.{{ $key }}"
                                                     type="radio" value="{{ $idx }}" /> {{ $option }}
                                             </div>
                                         @endforeach
@@ -210,10 +210,10 @@
                             @endforeach
                         </div>
                     </div>
-        </div>
+
         @endforeach
         @endif
-
+    </div>
 
     </x-card>
 </x-medical-record.common-edit>
