@@ -28,7 +28,7 @@ class Anamnesis
             'past'=>true,
         ],
         'smoker' => [
-            'name'=>'Fumatore',
+            'name'=>'Fumatore o inalo nicotina in altro modo',
             'present'=>true,
             'past'=>true,
         ],
