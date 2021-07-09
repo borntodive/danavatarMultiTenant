@@ -5,7 +5,6 @@ namespace App\Http\Livewire\MedicalRecord\Diving;
 use App\StaticData\Diving;
 use App\Traits\MedicalRecord\EditMedicalRecord;
 use Livewire\Component;
-use phpDocumentor\Reflection\Types\This;
 
 class Edit extends Component
 {
@@ -18,6 +17,8 @@ class Edit extends Component
     public $scuba;
     public $apnea;
     public $dcs;
+    public $first_treatment;
+    public $others_treatment;
 
     protected $rules = [
         'state.anamnesis' => 'nullable',
@@ -31,8 +32,14 @@ class Edit extends Component
         $this->scuba=Diving::$scuba;
         $this->apnea=Diving::$apnea;
         $this->dcs=Diving::$dcs;
+        $this->first_treatment=Diving::$first_treatment;
+        $this->others_treatment=Diving::$others_treatment;
 
+    }
 
+    public function addTreatment() {
+        $this->state['anamnesis']['diving']['dcs'][]=['date'=>null];
+        //dd(data_get($this->state,'anamnesis.diving.dcs',["none"]));
     }
 
 }
