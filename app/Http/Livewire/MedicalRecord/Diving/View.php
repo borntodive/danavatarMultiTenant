@@ -19,14 +19,15 @@ class View extends Component
     public $others_treatment;
 
     public function mount() {
+        $this->radios=Diving::$radios;
         $this->sintomi=Diving::$sintomi;
         $this->scuba=Diving::$scuba;
         $this->apnea=Diving::$apnea;
         $this->dcs=Diving::$dcs;
         $this->first_treatment=Diving::$first_treatment;
         $this->others_treatment=Diving::$others_treatment;
-        if (!data_get($this->state,'anamnesis.diving.dcs',false)){
-            data_set($this->state,'anamnesis.diving.dcs',[0=>['date'=>null]]);
+        if (!data_get($this->medicalRecord->data,'anamnesis.diving.dcs',false)){
+            data_set($this->medicalRecord->data,'anamnesis.diving.dcs',[0=>['date'=>null]]);
         }
     }
 
