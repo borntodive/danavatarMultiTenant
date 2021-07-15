@@ -18,18 +18,18 @@
                         {{$section['name']}}
                     </x-section-heading>
                 </div>
-                <div class="grid grid-cols-12 gap-8 w-full">
+                <div class="grid w-full grid-cols-12 gap-8">
                     @foreach($section['fields'] as $code=>$field)
                         <div class="col-span-12 sm:col-span-4 ">
                             <div>
                                 <label for="{{$time_id}}_{{$sectionCode}}_{{$code}}" class="block text-sm font-medium text-gray-700">{{ $field['name'] }}</label>
-                                <div class="mt-1 relative rounded-md shadow-sm">
+                                <div class="relative mt-1 rounded-md shadow-sm">
                                     <input type="text" name="{{$time_id}}_{{$sectionCode}}_{{$code}}" id="{{$time_id}}_{{$sectionCode}}_{{$code}}"
                                            wire:model="state.exams.instrumental.{{$time_id}}.{{$sectionCode}}.{{$code}}"
-                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-                                           placeholder="0.00" aria-describedby="price-currency">
+                                           class="block w-full pr-12 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 pl-7 sm:text-sm"
+                                           aria-describedby="price-currency">
                                     @if (isset($field['unit']))
-                                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                       <span class="text-gray-500 sm:text-sm">
                                         {{$field['unit']}}
                                       </span>
