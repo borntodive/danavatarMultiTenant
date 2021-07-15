@@ -422,7 +422,8 @@
             },
 
             cleanMesuares() {
-                console.log("cleanig")
+                this.measures = [];
+                this.average = [];
             }
 
         },
@@ -433,8 +434,7 @@
 
 </script>
 <script>
-    console.log(appMeasures);
-    appMeasures.cleanMesuares();
+
     const timezone = 'Europe/Rome';
     moment.tz.setDefault(timezone);
     const currentDate = moment("{{ $date }}");
@@ -578,6 +578,7 @@
                 if (cleanSerie)
                     cleanSerie.remove();
                 ecgChart.series[0].setData(data.data.ECG_Raw);
+                appMeasures.cleanMesuares();
                 console.log(data.data.ECG_Raw);
                 ecgChart.redraw()
                 ecgChart.hideLoading();
