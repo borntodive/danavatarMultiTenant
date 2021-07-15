@@ -17,22 +17,22 @@
     />
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="mt-5">
-        <h2 class="text-gray-500 text-xs font-medium uppercase tracking-wide">Pinned Projects</h2>
-        <ul class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <li class="col-span-1 flex shadow-sm rounded-md">
+        <h2 class="text-xs font-medium tracking-wide text-gray-500 uppercase">Pinned Projects</h2>
+        <ul class="grid grid-cols-1 gap-5 mt-3 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <li class="flex col-span-1 rounded-md shadow-sm">
                 <div
-                    class="flex-shrink-0 flex items-center justify-center w-16 bg-pink-600 text-white text-sm font-medium rounded-l-md">
+                    class="flex items-center justify-center flex-shrink-0 w-16 text-sm font-medium text-white bg-pink-600 rounded-l-md">
                     GA
                 </div>
                 <div
-                    class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                    class="flex items-center justify-between flex-1 truncate bg-white border-t border-b border-r border-gray-200 rounded-r-md">
                     <div class="flex-1 px-4 py-2 text-sm">
-                        <a href="#" class="text-gray-900 font-medium hover:text-gray-600">Scegli orario</a>
+                        <a href="#" class="font-medium text-gray-900 hover:text-gray-600">Scegli orario</a>
                         <x-form.text-input id="timepicker"/>
                     </div>
                     <div class="flex-shrink-0 pr-2">
                         <button
-                            class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            class="inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-transparent bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             <span class="sr-only">Open options</span>
                             <!-- Heroicon name: solid/dots-vertical -->
                             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -45,20 +45,20 @@
                 </div>
             </li>
 
-            <li class="col-span-1 flex shadow-sm rounded-md">
+            <li class="flex col-span-1 rounded-md shadow-sm">
                 <div
-                    class="flex-shrink-0 flex items-center justify-center w-16 bg-purple-600 text-white text-sm font-medium rounded-l-md">
+                    class="flex items-center justify-center flex-shrink-0 w-16 text-sm font-medium text-white bg-purple-600 rounded-l-md">
                     CD
                 </div>
                 <div
-                    class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                    class="flex items-center justify-between flex-1 truncate bg-white border-t border-b border-r border-gray-200 rounded-r-md">
                     <div class="flex-1 px-4 py-2 text-sm truncate">
-                        <a href="#" class="text-gray-900 font-medium hover:text-gray-600">Orario Caricato</a>
+                        <a href="#" class="font-medium text-gray-900 hover:text-gray-600">Orario Caricato</a>
                         <p class="text-gray-500" id="time_loaded"></p>
                     </div>
                     <div class="flex-shrink-0 pr-2">
                         <button
-                            class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            class="inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-transparent bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             <span class="sr-only">Open options</span>
                             <!-- Heroicon name: solid/dots-vertical -->
                             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -71,20 +71,20 @@
                 </div>
             </li>
 
-            <li class="col-span-1 flex shadow-sm rounded-md">
+            <li class="flex col-span-1 rounded-md shadow-sm">
                 <div
-                    class="flex-shrink-0 flex items-center justify-center w-16 bg-yellow-500 text-white text-sm font-medium rounded-l-md">
+                    class="flex items-center justify-center flex-shrink-0 w-16 text-sm font-medium text-white bg-yellow-500 rounded-l-md">
                     T
                 </div>
                 <div
-                    class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                    class="flex items-center justify-between flex-1 truncate bg-white border-t border-b border-r border-gray-200 rounded-r-md">
                     <div class="flex-1 px-4 py-2 text-sm truncate">
-                        <a href="#" class="text-gray-900 font-medium hover:text-gray-600">Primo Dato</a>
+                        <a href="#" class="font-medium text-gray-900 hover:text-gray-600">Primo Dato</a>
                         <p class="text-gray-500">{{isset($availablesDate['first']) ? $availablesDate['first']->timezone('Europe/Rome')->toDateTimeString() : ""}}</p>
                     </div>
                     <div class="flex-shrink-0 pr-2">
                         <button
-                            class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            class="inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-transparent bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             <span class="sr-only">Open options</span>
                             <!-- Heroicon name: solid/dots-vertical -->
                             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -97,20 +97,20 @@
                 </div>
             </li>
 
-            <li class="col-span-1 flex shadow-sm rounded-md">
+            <li class="flex col-span-1 rounded-md shadow-sm">
                 <div
-                    class="flex-shrink-0 flex items-center justify-center w-16 bg-green-500 text-white text-sm font-medium rounded-l-md">
+                    class="flex items-center justify-center flex-shrink-0 w-16 text-sm font-medium text-white bg-green-500 rounded-l-md">
                     RC
                 </div>
                 <div
-                    class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                    class="flex items-center justify-between flex-1 truncate bg-white border-t border-b border-r border-gray-200 rounded-r-md">
                     <div class="flex-1 px-4 py-2 text-sm truncate">
-                        <a href="#" class="text-gray-900 font-medium hover:text-gray-600">Ultimo Dato</a>
+                        <a href="#" class="font-medium text-gray-900 hover:text-gray-600">Ultimo Dato</a>
                         <p class="text-gray-500">{{isset($availablesDate['last']) ? $availablesDate['last']->timezone('Europe/Rome')->toDateTimeString() : ""}}</p>
                     </div>
                     <div class="flex-shrink-0 pr-2">
                         <button
-                            class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            class="inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-transparent bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             <span class="sr-only">Open options</span>
                             <!-- Heroicon name: solid/dots-vertical -->
                             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -125,11 +125,11 @@
         </ul>
     </div>
     <div class="mt-10 -mb-5 text-center">
-        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+        <nav class="relative z-0 inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
             @foreach ($pagination as $idx=>$p)
                 <span
                    data-date="{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $p->x)->timezone('Europe/Rome')->format('H:i')}}"
-                   class=" date-pagination relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                   class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300  date-pagination hover:bg-gray-50">
                     {{$idx+1}}
                 </span>
 
@@ -138,27 +138,27 @@
         </nav>
     </div>
 
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <x-card title="ECG" class="mb-5 h-px-600">
-            <div class="highCharts h-96 w-full" id="chart_ecg"></div>
+            <div class="w-full highCharts h-96" id="chart_ecg"></div>
         </x-card>
     </div>
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <x-card title="Misurazioni" class="mb-5 h-px-600">
-            <div class="w-full flex flex-row-reverse -mt-6 mb-6">
+            <div class="flex flex-row-reverse w-full mb-6 -mt-6">
                 <button wire:click="editModal" id="calculate" type="button" data-style="expand-right"
-                        class="ladda-button basic-ladda-button float-right	 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        class="inline-flex justify-center float-right px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm ladda-button basic-ladda-button hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span class="ladda-label">  Calcola</span></button>
             </div>
             <div id="measures" class="w-full">
                 <!-- This example requires Tailwind CSS v2.0+ -->
                 <div class="md:grid md:grid-cols-12 md:gap-3">
-                    <div class="md:col-span-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
+                    <div class="overflow-hidden bg-white md:col-span-8 sm:rounded-lg sm:shadow">
 
-                        <div class="bg-gray-200 px-4 py-5 border-b border-gray-200 sm:px-6">
-                            <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
-                                <div class="ml-4 mt-2">
-                                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <div class="px-4 py-5 bg-gray-200 border-b border-gray-200 sm:px-6">
+                            <div class="flex flex-wrap items-center justify-between -mt-2 -ml-4 sm:flex-nowrap">
+                                <div class="mt-2 ml-4">
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">
                                         Misure
                                     </h3>
                                 </div>
@@ -166,21 +166,21 @@
                         </div>
                         <div class="flex flex-col">
                             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                                         <table class="min-w-full divide-y divide-gray-200">
                                             <thead class="bg-gray-50">
                                             <tr>
                                                 <th scope="col"
-                                                    class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-center text-gray-500 uppercase">
                                                     #
                                                 </th>
                                                 <th scope="col"
-                                                    class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-center text-gray-500 uppercase">
                                                     RR
                                                 </th>
                                                 <th scope="col"
-                                                    class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-center text-gray-500 uppercase">
                                                     QT
                                                 </th>
                                             </tr>
@@ -189,13 +189,13 @@
                                             <!-- Odd row -->
                                             <tr class="bg-white" v-for="(measure, index) in measures"
                                                 :key="`measure-${index}`">
-                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                <td class="px-6 py-4 text-sm font-medium text-center text-gray-900 whitespace-nowrap">
                                                     @{{index + 1}}
                                                 </td>
-                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td class="px-6 py-4 text-sm text-center text-gray-500 whitespace-nowrap">
                                                     @{{measure.rr}}
                                                 </td>
-                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td class="px-6 py-4 text-sm text-center text-gray-500 whitespace-nowrap">
                                                     @{{measure.qt}}
                                                 </td>
                                             </tr>
@@ -207,12 +207,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="md:col-span-4 bg-white overflow-hidden sm:rounded-lg sm:shadow">
+                    <div class="overflow-hidden bg-white md:col-span-4 sm:rounded-lg sm:shadow">
 
-                        <div class="bg-gray-200 px-4 py-5 border-b border-gray-200 sm:px-6">
-                            <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
-                                <div class="ml-4 mt-2">
-                                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <div class="px-4 py-5 bg-gray-200 border-b border-gray-200 sm:px-6">
+                            <div class="flex flex-wrap items-center justify-between -mt-2 -ml-4 sm:flex-nowrap">
+                                <div class="mt-2 ml-4">
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">
                                         Media
                                     </h3>
                                 </div>
@@ -221,17 +221,17 @@
 
                         <div class="flex flex-col">
                             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                                         <table class="min-w-full divide-y divide-gray-200">
                                             <thead class="bg-gray-50">
                                             <tr>
                                                 <th scope="col"
-                                                    class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-center text-gray-500 uppercase">
                                                     RR
                                                 </th>
                                                 <th scope="col"
-                                                    class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-center text-gray-500 uppercase">
                                                     QT
                                                 </th>
                                             </tr>
@@ -239,10 +239,10 @@
                                             <tbody>
                                             <!-- Odd row -->
                                             <tr class="bg-white" v-if="average">
-                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td class="px-6 py-4 text-sm text-center text-gray-500 whitespace-nowrap">
                                                     @{{average.rr}}
                                                 </td>
-                                                <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td class="px-6 py-4 text-sm text-center text-gray-500 whitespace-nowrap">
                                                     @{{average.qt}}
                                                 </td>
                                             </tr>
@@ -259,7 +259,7 @@
             </div>
         </x-card>
     </div>
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <livewire:weareble.comments :date="$date" :user="$user" sensor="6"/>
     </div>
 </x-app-layout>
@@ -549,6 +549,7 @@
     function loadNewData(time) {
         searchTime = currentDate.format('YYYY-MM-DD') + ' ' + time;
         //const searchTime = utc.format('YYYY-MM-DD HH:mm');
+        ecgChart.annotations.forEach(annotation => annotation.destroy());
 
         ecgChart.showLoading("@lang('samples.loading-data-server')")
         Highcharts.getJSON('/ajax/samples/ecg/per-day?sensorId=6&userId={{ $user->id }}&date=' + moment(searchTime)
