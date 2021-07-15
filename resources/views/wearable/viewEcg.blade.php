@@ -433,7 +433,7 @@
 
 </script>
 <script>
-
+    console.log(appMeasures);
     appMeasures.$emit("cleanMesuares");
     const timezone = 'Europe/Rome';
     moment.tz.setDefault(timezone);
