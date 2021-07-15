@@ -129,7 +129,7 @@
             @foreach ($pagination as $idx=>$p)
                 <span
                    data-date="{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $p->x)->timezone('Europe/Rome')->format('H:i')}}"
-                   class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300  date-pagination hover:bg-gray-50">
+                   class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 date-pagination hover:bg-gray-50">
                     {{$idx+1}}
                 </span>
 
@@ -421,6 +421,10 @@
                     })
             },
 
+            async cleanMesuares() {
+                console.log("cleanig")
+            }
+
         },
         mounted: function () {
             //
@@ -430,6 +434,7 @@
 </script>
 <script>
 
+    appMeasures.$emit("cleanMesuares");
     const timezone = 'Europe/Rome';
     moment.tz.setDefault(timezone);
     const currentDate = moment("{{ $date }}");
@@ -483,15 +488,27 @@
                 count: 2,
                 text: "@lang('samples.2s')",
             },
-                {
-                    type: 'second',
-                    count: 3,
-                    text: "@lang('samples.3s')",
-                },
-                {
-                    type: 'all',
-                    text: "@lang('samples.all')",
-                }],
+            {
+                type: 'second',
+                count: 3,
+                text: "@lang('samples.3s')",
+            },
+            {
+                type: 'second',
+                count: 30,
+                text: "@lang('samples.30s')",
+            },
+            {
+                type: 'secopnd',
+                count: 60,
+                text: "@lang('samples.60s')",
+            },
+
+            {
+                type: 'all',
+                text: "@lang('samples.all')",
+            }
+            ],
             selected: 1
         }
         ecgChart = Highcharts.stockChart('chart_ecg', {
@@ -549,7 +566,6 @@
     function loadNewData(time) {
         searchTime = currentDate.format('YYYY-MM-DD') + ' ' + time;
         //const searchTime = utc.format('YYYY-MM-DD HH:mm');
-        ecgChart.annotations.forEach(annotation => annotation.destroy());
 
         ecgChart.showLoading("@lang('samples.loading-data-server')")
         Highcharts.getJSON('/ajax/samples/ecg/per-day?sensorId=6&userId={{ $user->id }}&date=' + moment(searchTime)
