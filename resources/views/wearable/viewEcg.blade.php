@@ -433,7 +433,6 @@
 
 </script>
 <script>
-
     console.log('change1')
     appMeasures.$emit("cleanMesuares");
     const timezone = 'Europe/Rome';
