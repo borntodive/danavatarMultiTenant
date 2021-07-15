@@ -434,7 +434,7 @@
 </script>
 <script>
     console.log(appMeasures);
-    appMeasures.$emit("cleanMesuares");
+    appMeasures.cleanMesuares());
     const timezone = 'Europe/Rome';
     moment.tz.setDefault(timezone);
     const currentDate = moment("{{ $date }}");
