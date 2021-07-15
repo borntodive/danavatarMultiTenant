@@ -86,8 +86,10 @@ class Comments extends Component
 
     public function saveComment() {
         $this->commentToBeEdited->text=$this->commentText;
+        $this->commentToBeEdited->user_id=auth()->user()->id;
         $this->commentToBeEdited->save();
         $this->showEditModal=false;
+
         $this->comments=$this->getComments();
     }
 

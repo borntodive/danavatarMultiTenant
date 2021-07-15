@@ -10,24 +10,24 @@ class View extends Component
 {
 
     use ViewMedicalRecord;
-    public $disorders;
-    public $mobilita;
-    public $tono;
-    public $sensibilita;
-    public $riflessi;
-    public $coordinazione;
-    public $antigravitarie;
-    public $deambulazione;
+    public $radios;
+    public $sintomi;
+    public $scuba;
+    public $apnea;
+    public $dcs;
+    public $first_treatment;
+    public $others_treatment;
 
     public function mount() {
-        $this->disorders=Neuro::$disorders;
-        $this->mobilita=Neuro::$mobilita;
-        $this->tono=Neuro::$tono;
-        $this->sensibilita=Neuro::$sensibilita;
-        $this->riflessi=Neuro::$riflessi;
-        $this->coordinazione=Neuro::$coordinazione;
-        $this->antigravitarie=Neuro::$antigravitarie;
-        $this->deambulazione=Neuro::$deambulazione;
+        $this->sintomi=Diving::$sintomi;
+        $this->scuba=Diving::$scuba;
+        $this->apnea=Diving::$apnea;
+        $this->dcs=Diving::$dcs;
+        $this->first_treatment=Diving::$first_treatment;
+        $this->others_treatment=Diving::$others_treatment;
+        if (!data_get($this->state,'anamnesis.diving.dcs',false)){
+            data_set($this->state,'anamnesis.diving.dcs',[0=>['date'=>null]]);
+        }
     }
 
 }
