@@ -32,7 +32,8 @@
         </div>
     </x-card>
     <x-card title="{{ __('Esami Obiettivi') }}" class="mt-5">
-        <x-form.text-area class="w-full" wire:model="state.objectives.general.data"></x-form.text-area>
+        <x-show.value>{{data_get($medicalRecord->data,"objectives.general.data",'N/A')}}</x-show.value>
+
     </x-card>
     <x-card title="{{ __('Esami Strumentali') }}" class="mt-5">
         <div class="w-full">
@@ -64,10 +65,11 @@
                     @foreach ($ecg as $key => $radio)
                         <div class="flex flex-col mb-6 md:w-full">
                             <x-show.label>{{ $radio['label'] }}</x-form.label>
-                            <x-show.value>{{data_get($radio['options'],data_get($medicalRecord->data,"anamnesis.instrumental.ecg.$key",false),'N/A')}}</x-show.value>
+                            <x-show.value>{{data_get($radio['options'],data_get($medicalRecord->data,"instrumental.ecg.".$key.".present",false),'N/A')}}</x-show.value>
                         </div>
                         <div>
-                            @if (data_get($medicalRecord->data,'instrumental.ecg.'.$key,null)=='si')
+                            <x-show.label>Note</x-form.label>
+                            @if (data_get($medicalRecord->data,'instrumental.ecg.'.$key.'.present',null)=='si')
                                 <x-show.value>{{data_get($medicalRecord->data,"instrumental.ecg.". $key .".more",'N/A')}}</x-show.value>
 
                             @endif

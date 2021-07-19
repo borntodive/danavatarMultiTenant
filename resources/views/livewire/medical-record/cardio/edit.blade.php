@@ -65,13 +65,13 @@
                             <x-form.label>{{ $radio['label'] }}</x-form.label>
                             <div class="flex flex-wrap mt-3 md:w-full">
                                 @foreach ($radio['options'] as $idx => $option)
-                                    <div class="px-10 mt-2"><input wire:model="state.instrumental.ecg.{{ $key }}"
+                                    <div class="px-10 mt-2"><input wire:model="state.instrumental.ecg.{{ $key }}.present"
                                             type="radio" value="{{ $idx }}" /> {{ $option }}</div>
                                 @endforeach
                             </div>
                         </div>
                         <div>
-                            @if (data_get($state,'instrumental.ecg.'.$key,null)=='si')
+                            @if (data_get($state,'instrumental.ecg.'.$key.'.present',null)=='si')
                                 <x-form.text-area class="w-full pt-10" wire:model="state.instrumental.ecg.{{ $key }}.more"></x-form.text-area>
                             @endif
                         </div>
