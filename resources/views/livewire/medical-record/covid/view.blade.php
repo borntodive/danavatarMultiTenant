@@ -14,11 +14,11 @@
                             {{$section['name']}}
                         </x-section-heading>
                     </div>
-                    <div class="grid grid-cols-12 gap-8 w-full">
+                    <div class="grid w-full grid-cols-12 gap-8">
                         @foreach($section['fields'] as $code=>$field)
                             <div class="col-span-12 sm:col-span-4 ">
                                 <x-show.label>{{ $field['name'] }}</x-show.label>
-                                <x-show.value>{{data_get($medicalRecord->data,'exams.instrumental.'.$time_id.'.'.$sectionCode.'.'.$code,'N/A')}}{{isset($field['unit']) ? " ".$field['unit'] : null}}</x-show.value>
+                                <x-show.value>{{data_get($medicalRecord->data,'exams.instrumental.'.$time_id.'.'.$sectionCode.'.'.$code,'N/A')}}{{isset($field['unit']) && data_get($medicalRecord->data,'exams.instrumental.'.$time_id.'.'.$sectionCode.'.'.$code,false) ? " ".$field['unit'] : null}}</x-show.value>
                             </div>
                         @endforeach
                     </div>
