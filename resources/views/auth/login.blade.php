@@ -7,7 +7,7 @@
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
+            <div class="mb-4 text-sm font-medium text-green-600">
                 {{ session('status') }}
             </div>
         @endif
@@ -19,12 +19,12 @@
             <div>
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <!-- old('email') -->
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" value="y40Admin@example.com" required autofocus />
+                <x-jet-input id="email" class="block w-full mt-1" type="email" name="email" value="" required autofocus />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" value="password" required autocomplete="current-password" />
+                <x-jet-input id="password" class="block w-full mt-1" type="password" name="password" value="" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
@@ -36,7 +36,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Password dimenticata?') }}
                     </a>
                 @endif
