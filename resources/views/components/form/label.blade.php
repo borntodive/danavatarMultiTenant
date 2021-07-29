@@ -1,5 +1,9 @@
-@props(['value'])
+@props(['value','sublabel'=>false])
 
-<label {{ $attributes->merge(['class' => 'block text-sm font-bold text-gray-800']) }}>
+@php
+    $font=$sublabel ? "font-normal" : 'font-bold';
+@endphp
+
+<label {{ $attributes->merge(['class' => 'block text-sm text-gray-800 '.$font]) }}>
     {{ $value ?? $slot }}
 </label>
