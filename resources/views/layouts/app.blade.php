@@ -26,15 +26,15 @@
 
 </head>
 
-<body class="antialiased font-sans bg-gray-200">
+<body class="font-sans antialiased bg-gray-200">
 <div class="" style="">
     <div class="bg-gray-200">
 
     @livewire('layout.flash-message')
     @if(app()->environment('local', 'staging'))
         <!-- This example requires Tailwind CSS v2.0+ -->
-            <div class="relative bg-red-600 sticky top-0 z-50">
-                <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+            <div class="relative sticky top-0 z-50 bg-red-600">
+                <div class="px-3 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div class="pr-16 sm:text-center sm:px-16">
                         <p class="font-medium text-white">
                             <span>
@@ -48,26 +48,30 @@
         @endif
         <div>
             <nav x-data="{ open: false }" @keydown.window.escape="open = false" class="bg-indigo-600">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div class="flex items-center justify-between h-16">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
-                                <img class="h-8 w-8"
+                                <img class="w-8 h-8"
                                      src="{{session()->get('tenant') ? session()->get('tenant')->profile_photo_url : 'https://tailwindui.com/img/logos/workflow-mark-indigo-300.svg'}}"
                                      alt="Workflow">
                             </div>
                             <div class="hidden md:block">
-                                <div class="ml-10 flex items-baseline space-x-4">
-                                    <x-layout.menu/>
+                                <div class="flex items-baseline ml-10 space-x-4">
+                                    @if(auth()->user()->isAbleTo('medical_doctor_permission',session()->get('tenant')->slug))
+                                        <x-layout.doctor-menu/>
+                                    @else
+                                        <x-layout.menu/>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="hidden md:block">
-                            <div class="ml-4 flex items-center md:ml-6">
+                            <div class="flex items-center ml-4 md:ml-6">
                                 <button
-                                    class="bg-indigo-600 p-1 rounded-full text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white">
+                                    class="p-1 text-indigo-200 bg-indigo-600 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white">
                                     <span class="sr-only">View notifications</span>
-                                    <svg class="h-6 w-6" x-description="Heroicon name: bell"
+                                    <svg class="w-6 h-6" x-description="Heroicon name: bell"
                                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -76,14 +80,14 @@
                                 </button>
 
                                 <!-- Profile dropdown -->
-                                <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                                <div @click.away="open = false" class="relative ml-3" x-data="{ open: false }">
                                     <div>
                                         <button @click="open = !open"
-                                                class="max-w-xs bg-indigo-600 rounded-full flex items-center text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
+                                                class="flex items-center max-w-xs text-sm text-white bg-indigo-600 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
                                                 id="user-menu" aria-haspopup="true" x-bind:aria-expanded="open"
                                                 aria-expanded="true">
                                             <span class="sr-only">Open user menu</span>
-                                            <img class="h-8 w-8 rounded-full"
+                                            <img class="w-8 h-8 rounded-full"
                                                  src="{{ Auth::user()->profile_photo_url }}"
                                                  alt="{{ Auth::user()->name }}">
                                         </button>
@@ -96,28 +100,28 @@
                                          x-transition:leave="transition ease-in duration-75"
                                          x-transition:leave-start="transform opacity-100 scale-100"
                                          x-transition:leave-end="transform opacity-0 scale-95"
-                                         class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                                         class="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
                                          role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                                         <x-layout.profile-dropdown/>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="-mr-2 flex md:hidden">
+                        <div class="flex -mr-2 md:hidden">
                             <!-- Mobile menu button -->
                             <button @click="open = !open"
-                                    class="bg-indigo-600 inline-flex items-center justify-center p-2 rounded-md text-indigo-200 hover:text-white hover:bg-indigo-500 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
+                                    class="inline-flex items-center justify-center p-2 text-indigo-200 bg-indigo-600 rounded-md hover:text-white hover:bg-indigo-500 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
                                     x-bind:aria-expanded="open">
                                 <span class="sr-only">Open main menu</span>
                                 <svg x-state:on="Menu open" x-state:off="Menu closed"
-                                     :class="{ 'hidden': open, 'block': !open }" class="block h-6 w-6"
+                                     :class="{ 'hidden': open, 'block': !open }" class="block w-6 h-6"
                                      x-description="Heroicon name: menu" xmlns="http://www.w3.org/2000/svg" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
                                 <svg x-state:on="Menu open" x-state:off="Menu closed"
-                                     :class="{ 'hidden': !open, 'block': open }" class="hidden h-6 w-6"
+                                     :class="{ 'hidden': !open, 'block': open }" class="hidden w-6 h-6"
                                      x-description="Heroicon name: x" xmlns="http://www.w3.org/2000/svg" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -136,7 +140,7 @@
                     <div class="pt-4 pb-3 border-t border-indigo-700">
                         <div class="flex items-center px-5">
                             <div class="flex-shrink-0">
-                                <img class="h-10 w-10 rounded-full"
+                                <img class="w-10 h-10 rounded-full"
                                      src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                             </div>
                             <div class="ml-3">
@@ -144,9 +148,9 @@
                                 <div class="text-sm font-medium text-indigo-300">{{Auth::user()->email}}</div>
                             </div>
                             <button
-                                class="ml-auto bg-indigo-600 flex-shrink-0 p-1 border-2 border-transparent rounded-full text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white">
+                                class="flex-shrink-0 p-1 ml-auto text-indigo-200 bg-indigo-600 border-2 border-transparent rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white">
                                 <span class="sr-only">View notifications</span>
-                                <svg class="h-6 w-6" x-description="Heroicon name: bell"
+                                <svg class="w-6 h-6" x-description="Heroicon name: bell"
                                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -154,7 +158,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="mt-3 px-2 space-y-1">
+                        <div class="px-2 mt-3 space-y-1">
                             <x-layout.profile-dropdown :mobile="true"/>
                         </div>
                     </div>
@@ -165,7 +169,7 @@
 
             <header class="bg-white shadow">
 
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex ">
+                <div class="flex px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
                 {{$header}}
 
                 <!-- This example requires Tailwind CSS v2.0+ -->
@@ -176,14 +180,14 @@
             <main>
                 @impersonating
                 <div class="relative bg-indigo-600">
-                    <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+                    <div class="px-3 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
                         <div class="pr-16 sm:text-center sm:px-16">
                             <p class="font-medium text-white">
         <span>
           Stai impersonando {{auth()->user()->name}}
         </span>
                                 <span class="block sm:ml-2 sm:inline-block">
-          <a href="{{ route('impersonate.leave') }}" class="text-white font-bold underline"> Lascia <span
+          <a href="{{ route('impersonate.leave') }}" class="font-bold text-white underline"> Lascia <span
                   aria-hidden="true">&rarr;</span></a>
         </span>
                             </p>
@@ -192,7 +196,7 @@
                     </div>
                 </div>
                 @endImpersonating
-                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     {{$slot}}
                 </div>
             </main>
