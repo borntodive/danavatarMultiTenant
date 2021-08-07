@@ -15,6 +15,16 @@
             <x-show.label>Nome del AMP</x-show.label>
             <x-show.value>{{data_get($medicalRecord->data,"misurazioni.date",'N/A')}}</x-show.value>
         </div>
+        <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+            <div>
+                <x-show.label>Profondità Massima</x-show.label>
+                <x-show.value>{{data_get($medicalRecord->data,"misurazioni.profondita.max",'N/A')}}</x-show.value>
+            </div>
+            <div>
+                <x-show.label>Profondità Media</x-show.label>
+                <x-show.value>{{data_get($medicalRecord->data,"misurazioni.profondita.mean",'N/A')}}</x-show.value>
+            </div>
+        </div>
         <div class="grid w-full grid-cols-4 gap-8 mt-10">
             <div></div>
             <div class="col-span-3 text-center">

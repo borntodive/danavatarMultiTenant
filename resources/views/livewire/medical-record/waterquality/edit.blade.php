@@ -13,6 +13,10 @@
                 label="Data"
             />
         </div>
+        <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+            <x-form.text-input label="Profondità Massima" wire:model="state.misurazioni.profondita.max"/>
+            <x-form.text-input label="Profondità Media" wire:model="state.misurazioni.profondita.mean"/>
+        </div>
         <div class="grid w-full grid-cols-4 gap-8 mt-10">
             <div></div>
             <div class="col-span-3 text-center">
