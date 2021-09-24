@@ -32,7 +32,7 @@
                                 <x-form.label class="text-center" :sublabel="true">{{ $option }}</x-form.label>
                                 <x-form.checkbox class="mt-2 text-center" value="1"
                                     id="sintomi_{{ Str::snake($option, '_') }}"
-                                    wire:model="{{ $checkbox['target'] }}.{{ Str::snake($option, '_') }}" />
+                                    wire:model="state.{{ $checkbox['target'] }}.{{ Str::snake($option, '_') }}" />
 
                             </div>
                         @endforeach
@@ -116,7 +116,7 @@
                         <div class="flex flex-wrap mt-3 md:w-full">
                             @for ($i = 0; $i <= $radio['max']; $i++)
                                 <div class="px-5 mt-2"><input name="exams_objectives_general_{{ $key }}"
-                                        wire:model="exams.objectives.general.{{ $key }}" type="radio"
+                                        wire:model="state.exams.objectives.general.{{ $key }}" type="radio"
                                         value="{{ $i }}" /> {{ $i }}</div>
                             @endfor
                         </div>
@@ -134,8 +134,8 @@
                                 <x-form.label class="text-center" :sublabel="true">{{ $option }}
                                 </x-form.label>
                                 <x-form.checkbox class="mt-2 text-center" value="1"
-                                    id="sintomi_{{ Str::snake($option, '_') }}"
-                                    wire:model="{{ $checkbox['target'] }}.{{ Str::snake($option, '_') }}" />
+                                    id="exams_{{ Str::snake($option, '_') }}"
+                                    wire:model="state.{{ $checkbox['target'] }}.{{ Str::snake($option, '_') }}" />
 
                             </div>
                         @endforeach
@@ -156,7 +156,7 @@
                                 </x-form.label>
                                 <x-form.checkbox class="mt-2 text-center" value="1"
                                     id="sintomi_{{ Str::snake($option, '_') }}"
-                                    wire:model="{{ $checkbox['target'] }}.{{ Str::snake($option, '_') }}" />
+                                    wire:model="state.{{ $checkbox['target'] }}.{{ Str::snake($option, '_') }}" />
 
                             </div>
                         @endforeach

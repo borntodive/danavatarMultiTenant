@@ -1,271 +1,127 @@
 <x-medical-record.common-view :medicalRecord="$medicalRecord">
     <x-card title="{{ __('Anamnesi') }}" class="mt-5">
-        <div class="w-full">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Disturbi lamentati')}}
-                        </span>
-                </div>
-            </div>
-        </div>
-        <div class="grid grid-cols-6 gap-4">
-            @foreach($disorders as $disorder)
-                <x-medical-record.neuro-view-disorders
-                    :label="$disorder['label']"
-                    :target="$disorder['target']"
-                    :options="$disorder['options']"
-                    :medicalRecord="$medicalRecord"
-                    more="date"
-                />
-            @endforeach
-        </div>
-        <div class="grid grid-cols-12 gap-8 w-full mt-20">
-            <div class="col-span-12 sm:col-span-6 ">
-                <x-show.label>Descrizione della sintomatologia</x-show.label>
-                <x-show.textarea>{{data_get($medicalRecord->data,'anamnesis.general.sintomatologia','N/A')}}</x-show.textarea>
-            </div>
-            <div class="col-span-12 sm:col-span-6 ">
-                <x-show.label>Accertamenti già eseguiti</x-show.label>
-                <x-show.textarea>{{data_get($medicalRecord->data,'anamnesis.general.accertamenti','N/A')}}</x-show.textarea>
-            </div>
-            <div class="col-span-12 sm:col-span-6 ">
-                <x-show.label>Terapie specifiche effettuate</x-show.label>
-                <x-show.textarea>{{data_get($medicalRecord->data,'anamnesis.general.terapie','N/A')}}</x-show.textarea>
-            </div>
-        </div>
-        <div class="grid grid-cols-12 gap-8 w-full mt-5">
-            <div class="col-span-12 sm:col-span-6 ">
-                <x-show.label>Stato di coscienza e orientamento T-S</x-show.label>
-                <div class="md:w-full flex flex-row mt-3">
-                    <div class="w-1/2 flex flex-row "><x-check-or-cross
-                            :condition="data_get($medicalRecord->data,'anamnesis.general.statocoscienza',false)=='normale'"/> Normale
+        <div class="w-full mt-5">
+            <div class="grid grid-cols-2 gap-8">
+                @foreach ($radios as $key => $radio)
+                    <div class="flex flex-col mb-6 md:w-full">
+                        <x-show.label>{{ $radio['label'] }}</x-form.label>
+                        <x-show.value>{{data_get($radio['options'],data_get($medicalRecord->data,"anamnesis.general.".$key.".present",false),'N/A')}}</x-show.value>
                     </div>
-                    <div class="w-1/2 flex flex-row "><x-check-or-cross
-                            :condition="data_get($medicalRecord->data,'anamnesis.general.statocoscienza',false)=='alterato'"/> Alterato
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="w-full mt-10">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Nervi Cranici')}}
-                        </span>
-                </div>
-            </div>
-        </div>
-        <div class="grid grid-cols-6 gap-4 w-full">
-            @for($i=1;$i<=12;$i++)
-                <x-medical-record.neuro-view-disorders
-                    :label="NumConvert::roman($i)"
-                    target="nervi.{{$i}}"
-                    :options="['Normale','Sx','Dx']"
-                    :medicalRecord="$medicalRecord"
-                    more="text"
-                />
-            @endfor
-        </div>
-        <div class="w-full mt-10">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Mobilità e forza')}}
-                        </span>
-                </div>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 divide-y divide-gray-300 w-full">
-            <div class="w-full">
-                <x-form.label>Arti superiori</x-form.label>
+                    <div>
+                        <x-show.label>Note</x-form.label>
+                        @if (isset($radio['if_yes']) && data_get($medicalRecord->data, 'anamnesis.general.' . $key . '.present', null) == 'si')
+                            <x-show.value>{{data_get($medicalRecord->data,"anamnesis.general.". $key .".more",'N/A')}}</x-show.value>
 
-                <div class="grid grid-cols-6 gap-4 mt-5">
-                    @foreach($mobilita['artiSuperiori'] as $m)
-                        <x-medical-record.neuro-view-disorders
-                            :label="$m['label']"
-                            :target="$m['target']"
-                            :options="$m['options']"
-                            :medicalRecord="$medicalRecord"
-                            :more="isset($m['more']) ? $m['more'] : null"
-                        />
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        @foreach ($checkboxs as $checkbox)
+        <div class="w-full mt-10">
+            <div class="flex flex-col place-content-center">
+                <x-show.label>{{ $checkbox['label'] }}</x-form.label>
+                <div class="grid grid-cols-2 mt-5 gap- sm:grid-cols-3">
+                    @foreach ($checkbox['options'] as $option)
+                        <div class="mt-4">
+                            <x-show.label class="font-medium">{{ $option }}</x-form.label>
+                            <x-check-or-cross
+                                    :condition="data_get($medicalRecord->data,$checkbox['target'].'.'.Str::snake($option, '_'),false)"/>
+
+                        </div>
                     @endforeach
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </x-card>
+    <x-card title="{{ __('Esami Obiettivi') }}" class="mt-5">
+        <div class="grid w-full grid-cols-2 gap-8 mt-10 sm:grid-cols-3">
+        @foreach ($numbers as $checkbox)
+
+            <div class="flex flex-col place-content-center">
+                <div class="flex flex-col mb-6 md:w-full">
+                    <x-show.label>{{ $checkbox['label'] }}</x-form.label>
+                    @if (isset($checkbox['max']))
+                        <x-show.value>{{data_get($medicalRecord->data,"exams.objectives.general.".Str::snake($checkbox['label']),'N/A')}}</x-show.value>
+                    @else
+                        <x-show.value>{{data_get($checkbox['options'],data_get($medicalRecord->data,"exams.objectives.general.".Str::snake($checkbox['label']),false),'N/A')}}</x-show.value>
+                    @endif
+                </div>
+            </div>
+
+        @endforeach
+        </div>
+        <div class="w-full mt-10">
+            <x-form.label>Scala di Epworthper la sonnolenza</x-form.label>
+            <div class="text-sm">
+                <p>Che probabilità hai di appisolarti o di addormentarti nelle seguenti situazioni indipendentemente
+                    dalla sensazione di stanchezza?</p>
+                <p>La domanda si riferisce alle usuali abitudine di vita dell’ultimo periodo.</p>
+                <p>Qualora tu non ti sia trovato di recente in alcune delle situazioni elencate sotto, prova ad
+                    immaginare come ti sentiresti.</p>
+                <p>Usa la seguente scala per scegliere il punteggio più adatto ad ogni situazione:</p>
+                <p>0 = non mi addormento mai</p>
+                <p>1 = ho qualche probabilità di addormentarmi</p>
+                <p>2 = ho una discreta probabilità di addormentarmi</p>
+                <p>3 = ho un'alta probabilità di addormentarmi</p>
+            </div>
+            <div class="w-full mt-5">
+                @foreach ($sums as $field)
+                    <div class="grid grid-cols-3 gap-8 mt-2">
+                        <x-show.label class="col-span-2">{{ $field['index'] . ' ' . $field['label'] }}</x-form.label>
+                        <x-show.value>{{data_get($medicalRecord->data,"exams.objectives.general.epworthper.".$field['index'],'N/A')}}</x-show.value>
+                    </div>
+                @endforeach
+                <div class="w-full mt-2">
+                    <x-form.label :class="$sum ? 'text-green-500' : 'text-red-500'">Totale: {{ $sum }}</x-form.label>
                 </div>
             </div>
             <div class="w-full mt-5">
-                <x-form.label class="mt-5">Arti inferiori</x-form.label>
-
-                <div class="grid grid-cols-6 gap-4 mt-5">
-                    @foreach($mobilita['artiInferiori'] as $m)
-                        <x-medical-record.neuro-view-disorders
-                            :label="$m['label']"
-                            :target="$m['target']"
-                            :options="$m['options']"
-                            :medicalRecord="$medicalRecord"
-                            :more="isset($m['more']) ? $m['more'] : null"
-                        />
+                <div class="container grid grid-cols-1 gap-8 pt-6 mx-auto md:grid-cols-2">
+                    @foreach ($examsRadios as $key => $radio)
+                        <div class="flex flex-col mb-6 md:w-full">
+                            <x-show.label>{{ $radio['label'] }}</x-form.label>
+                            <x-show.value>{{data_get($medicalRecord->data,"exams.objectives.general.". $key ,'N/A')}}</x-show.value>
+                        </div>
                     @endforeach
                 </div>
             </div>
-        </div>
-        <div class="w-full mt-10">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Tono')}}
-                        </span>
-                </div>
-            </div>
-        </div>
-        <div class="w-full mt-5">
-            <div class="grid grid-cols-6 gap-4 mt-5">
-                @foreach($tono as $m)
-                    <x-medical-record.neuro-view-disorders
-                        :label="$m['label']"
-                        :target="$m['target']"
-                        :options="$m['options']"
-                        :medicalRecord="$medicalRecord"
-                        :more="isset($m['more']) ? $m['more'] : null"
-                    />
-                @endforeach
-            </div>
-        </div>
-        <div class="w-full mt-10">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Sensibilità')}}
-                        </span>
+            @foreach ($examsCheckboxs as $checkbox)
+            <div class="w-full mt-5">
+                <div class="flex flex-col place-content-center">
+                    <x-form.label>{{ $checkbox['label'] }}</x-form.label>
+                    <div class="grid grid-cols-2 gap-6 mt-5 sm:grid-cols-4">
+
+                        @foreach ($checkbox['options'] as $option)
+                            <x-show.label class="font-medium">{{ $option }}</x-form.label>
+
+                            <x-check-or-cross
+                                    :condition="data_get($medicalRecord->data,$checkbox['target'].'.'.Str::snake($option, '_'),false)"/>
+
+                        @endforeach
+                    </div>
                 </div>
             </div>
+        @endforeach
         </div>
-        <div class="w-full mt-5">
-            <div class="grid grid-cols-6 gap-4 mt-5">
-                @foreach($sensibilita as $m)
-                    <x-medical-record.neuro-view-disorders
-                        :label="$m['label']"
-                        :target="$m['target']"
-                        :options="$m['options']"
-                        :medicalRecord="$medicalRecord"
-                        :more="isset($m['more']) ? $m['more'] : null"
-                    />
-                @endforeach
-            </div>
-        </div>
-        <div class="w-full mt-10">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Riflessi')}}
-                        </span>
+    </x-card>
+    <x-card title="{{ __('Esami Strumentali') }}" class="mt-5">
+        @foreach ($instrumentCheckboxs as $checkbox)
+            <div class="w-full mt-10">
+                <div class="flex flex-col place-content-center">
+                    <x-show.label>{{ $checkbox['label'] }}</x-form.label>
+                    <div class="grid grid-cols-2 gap-6 mt-5 sm:grid-cols-4">
+                        @foreach ($checkbox['options'] as $option)
+                            <x-show.label class="font-medium">{{ $option }}</x-form.label>
+
+                            <x-check-or-cross
+                                    :condition="data_get($medicalRecord->data,$checkbox['target'].'.'.Str::snake($option, '_'),false)"/>
+
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="w-full mt-5">
-            <div class="grid grid-cols-6 gap-4 mt-5">
-                @foreach($riflessi as $m)
-                    <x-medical-record.neuro-view-disorders
-                        :label="$m['label']"
-                        :target="$m['target']"
-                        :options="$m['options']"
-                        :medicalRecord="$medicalRecord"
-                        :more="isset($m['more']) ? $m['more'] : null"
-                    />
-                @endforeach
-            </div>
-        </div>
-        <div class="w-full mt-10">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Coordinazione')}}
-                        </span>
-                </div>
-            </div>
-        </div>
-        <div class="w-full mt-5">
-            <div class="grid grid-cols-6 gap-4 mt-5">
-                @foreach($coordinazione as $m)
-                    <x-medical-record.neuro-view-disorders
-                        :label="$m['label']"
-                        :target="$m['target']"
-                        :options="$m['options']"
-                        :medicalRecord="$medicalRecord"
-                        :more="isset($m['more']) ? $m['more'] : null"
-                    />
-                @endforeach
-            </div>
-        </div>
-        <div class="w-full mt-10">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Prove antigravitarie')}}
-                        </span>
-                </div>
-            </div>
-        </div>
-        <div class="w-full mt-5">
-            <div class="grid grid-cols-6 gap-4 mt-5">
-                @foreach($antigravitarie as $m)
-                    <x-medical-record.neuro-view-disorders
-                        :label="$m['label']"
-                        :target="$m['target']"
-                        :options="$m['options']"
-                        :medicalRecord="$medicalRecord"
-                        :more="isset($m['more']) ? $m['more'] : null"
-                    />
-                @endforeach
-            </div>
-        </div>
-        <div class="w-full mt-10">
-            <div class="relative my-5">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-start">
-                        <span class="pr-3 bg-white text-sm font-medium text-gray-900">
-                           {{__('Stazione eretta e deambulazione')}}
-                        </span>
-                </div>
-            </div>
-        </div>
-        <div class="w-full mt-5">
-            <div class="grid grid-cols-6 gap-4 mt-5">
-                @foreach($deambulazione as $m)
-                    <x-medical-record.neuro-view-disorders
-                        :label="$m['label']"
-                        :target="$m['target']"
-                        :options="$m['options']"
-                        :medicalRecord="$medicalRecord"
-                        :more="isset($m['more']) ? $m['more'] : null"
-                    />
-                @endforeach
-            </div>
-        </div>
+        @endforeach
     </x-card>
 </x-medical-record.common-view>

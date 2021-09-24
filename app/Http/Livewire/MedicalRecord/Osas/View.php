@@ -10,24 +10,35 @@ class View extends Component
 {
 
     use ViewMedicalRecord;
-    public $disorders;
-    public $mobilita;
-    public $tono;
-    public $sensibilita;
-    public $riflessi;
-    public $coordinazione;
-    public $antigravitarie;
-    public $deambulazione;
+    public $radios;
+    public $checkboxs;
+    public $numbers;
+    public $sums;
+    public $examsRadios;
+    public $examsCheckboxs;
+    public $instrumentCheckboxs;
+
+    public $sum;
 
     public function mount() {
-        $this->disorders=Osas::$disorders;
-        $this->mobilita=Osas::$mobilita;
-        $this->tono=Osas::$tono;
-        $this->sensibilita=Osas::$sensibilita;
-        $this->riflessi=Osas::$riflessi;
-        $this->coordinazione=Osas::$coordinazione;
-        $this->antigravitarie=Osas::$antigravitarie;
-        $this->deambulazione=Osas::$deambulazione;
+        $this->radios=Osas::$anamnesis;
+        $this->checkboxs=Osas::$checkboxs;
+        $this->numbers=Osas::$numbers;
+        $this->sums=Osas::$sums;
+        $this->examsRadios=Osas::$radios;
+        $this->examsCheckboxs=Osas::$examsCheckboxs;
+        $this->instrumentCheckboxs=Osas::$instrumentCheckboxs;
+
+        $this->updateSum();
+    }
+    public function updateSum()
+    {
+        $all=data_get($this->medicalRecord->data,'exams.objectives.general.epworthper',[]);
+        $this->sum=0;
+        foreach ($all as $a) {
+            $this->sum+=$a;
+        }
+
     }
 
 }
