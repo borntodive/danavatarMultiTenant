@@ -36,7 +36,7 @@ class InviteCreated extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->subject('Hai ricevunto un invito')->view(
+        return (new MailMessage)->from(config('mail.from.address'), $notifiable->center->name.'|Dan Europe')->subject('Hai ricevunto un invito')->view(
             'emails.user-invited', ['invite' => $notifiable]
         );
     }

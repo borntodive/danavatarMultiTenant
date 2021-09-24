@@ -14,14 +14,15 @@
     <tr>
         <td class="sm-p-0" style="padding-left: 48px; padding-right: 48px">
             <h1 class="sm-text-40px sm-leading-44" style="font-size: 48px; line-height: 56px; margin: 0; text-align: center; color: #5744cb">
-                {{$invite->center->name}} ti sta invitando
+                {{$invite->center->name}} | Dan Europe invita a registrarti e a compilare la tua anamnesi medica.
             </h1>
+            <p>
         </td>
     </tr>
 </table>
 <div class="sm-leading-32" style="line-height: 48px">&zwnj;</div>
-<p style="font-size: 16px; line-height: 24px; margin: 0; text-align: center; color: #4f5a68">Per completare la tua iscrizione segui il link qui sotto
-</p>
+<p style="font-size: 16px; line-height: 24px; margin: 0; text-align: center; color: #4f5a68">Effettuata questa registrazione prima della visita medica.</p>
+<p style="font-size: 16px; line-height: 24px; margin: 0; text-align: center; color: #4f5a68">Clicca su ACCETTA per procedere.</p>
 <div class="sm-leading-32" style="line-height: 48px">&zwnj;</div>
 <div style="text-align: center">
     <a href="{{$invite->acceptUrl}}" class="sm-block hover-bg-accent-dark" style="background-color: #986dff; border-radius: 4px; display: inline-block; font-weight: 700; line-height: 100%; padding: 16px 48px; text-align: center; color: #ffffff; text-decoration: none">
