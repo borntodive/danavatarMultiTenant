@@ -144,7 +144,7 @@
             </div>
         @endforeach
     </x-card>
-    <x-card title="{{ __('Esami Obiettivi') }}" class="mt-5">
+    <x-card title="{{ __('Esami Strumentali') }}" class="mt-5">
         @foreach ($instrumentCheckboxs as $checkbox)
             <div class="w-full mt-10">
                 <div class="flex flex-col place-content-center">
