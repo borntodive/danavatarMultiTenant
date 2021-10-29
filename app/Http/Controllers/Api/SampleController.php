@@ -33,7 +33,8 @@ class SampleController extends Controller
             "url" => env('INFLUX_URL'),
             "token" => $token,
         ]);
-        $writeApi = $client->createWriteApi( ["writeType" => WriteType::BATCHING, 'batchSize' => 1000]);
+        //$writeApi = $client->createWriteApi( ["writeType" => WriteType::BATCHING, 'batchSize' => 1000]);
+        $writeApi = $client->createWriteApi();
         ini_set('max_execution_time',0);
         $validator = Validator::make($this->toSnakeCase($request->all()), [
             'data' => 'required|array'
@@ -83,10 +84,11 @@ class SampleController extends Controller
 
                     foreach ($sample['value'] as $val) {
 
-                        $datas[]=Point::measurement($sample['measureType'])
+                        $data=Point::measurement($sample['measureType'])
                             ->addTag('user_id', strval($sample['userId']))
                             ->addField('value', (float)$val)
                             ->time( (int)($time->getPreciseTimestamp()/1000));
+                        $writeApi->write($data, WritePrecision::MS, $bucket, $org);
 
                         /*$datas[]=['name' =>  $sample['measureType'],
                             'tags' => ['user_id' => strval($sample['userId'])],
@@ -108,10 +110,12 @@ class SampleController extends Controller
                     }
 
                 } else {
-                    $datas[]=Point::measurement($sample['measureType'])
+                    $data=Point::measurement($sample['measureType'])
                         ->addTag('user_id', strval($sample['userId']))
                         ->addField('value', (float)$sample['value'])
                         ->time( $sample['date']);
+                    $writeApi->write($data, WritePrecision::MS, $bucket, $org);
+
 
 
                 }
@@ -133,7 +137,6 @@ class SampleController extends Controller
                 $currentSensorsPerDay->sensors=$sensorsIds;
             $currentSensorsPerDay->save();
         }
-        $writeApi->write($datas, WritePrecision::MS, $bucket, $org);
 
 
 
