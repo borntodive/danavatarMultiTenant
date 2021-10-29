@@ -15,8 +15,6 @@ use Illuminate\Support\Str;
 use InfluxDB2\Client;
 use InfluxDB2\Model\WritePrecision;
 use InfluxDB2\Point;
-use InfluxDB2\WriteType as WriteType;
-
 
 
 class SampleController extends Controller
@@ -33,8 +31,8 @@ class SampleController extends Controller
             "url" => env('INFLUX_URL'),
             "token" => $token,
         ]);
-        $writeApi = $client->createWriteApi( ["writeType" => WriteType::BATCHING, 'batchSize' => 1000]);
-        ini_set('max_execution_time',0);
+        $writeApi = $client->createWriteApi();
+        ini_set('max_execution_time',120);
         $validator = Validator::make($this->toSnakeCase($request->all()), [
             'data' => 'required|array'
 
@@ -113,7 +111,6 @@ class SampleController extends Controller
                         ->addField('value', (float)$sample['value'])
                         ->time( $sample['date']);
 
-
                 }
                 if ($ecgEvent) {
                     event(new NewEcgData($userId, json_encode($ecgEvent)));
@@ -133,9 +130,10 @@ class SampleController extends Controller
                 $currentSensorsPerDay->sensors=$sensorsIds;
             $currentSensorsPerDay->save();
         }
-        $writeApi->write($datas, WritePrecision::MS, $bucket, $org);
-
-
+        foreach ($datas as $data){
+            $writeApi->write($data, WritePrecision::MS, $bucket, $org);
+            //DB::table('samples')->insertOrIgnore($data->toArray());
+        }
 
         if ($status==200)
             $respose['message']='All samples created successfully';
