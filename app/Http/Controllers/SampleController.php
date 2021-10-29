@@ -225,7 +225,7 @@ class SampleController extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
 
-        $user=User::findOrFail($request->userId);        @dd($yearEvents)
+        $user=User::findOrFail($request->userId);
 
 
         $sensorsPerDay=SensorsPerDay::query()
