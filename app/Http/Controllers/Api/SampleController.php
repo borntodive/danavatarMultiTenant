@@ -48,7 +48,7 @@ class SampleController extends Controller
         $samples = $request['data'];
         $status = 200;
         $insertedSensors = [];
-        $datas = [];
+
         $userId = null;
         foreach ($samples as $idx => $sample) {
             $validator = Validator::make($sample, [
@@ -170,6 +170,7 @@ class SampleController extends Controller
         $dives = $request['data'];
         $status = 200;
         $userId = null;
+        $gdras = [];
         foreach ($dives as $idx => $dive) {
             $validator = Validator::make($dive, [
                 "datetime" => 'required|integer|between:0,2147483648',
@@ -206,6 +207,10 @@ class SampleController extends Controller
                     ->time((int)($dvTime->getPreciseTimestamp() / 1000));
                 $writeApi->write($data, WritePrecision::MS, $bucket, $org);
             }
+            $gdras[]=[
+                'diveId'=>$diveId,
+                'gdra'=>'green'
+            ];
         };
 
 
@@ -214,6 +219,7 @@ class SampleController extends Controller
             $respose['message'] = 'All samples created successfully';
         else
             $respose['message'] = 'One or more samples were invalid';
+            $respose['gdra'] = $gdras;
         return response($respose, $status);
     }
 
