@@ -82,10 +82,10 @@ class SampleController extends Controller
 
                     foreach ($sample['value'] as $val) {
 
-                        $data=Point::measurement($sample['measureType'])
+                        $data = Point::measurement($sample['measureType'])
                             ->addTag('user_id', strval($sample['userId']))
                             ->addField('value', (float)$val)
-                            ->time( (int)($time->getPreciseTimestamp()/1000));
+                            ->time((int)($time->getPreciseTimestamp() / 1000));
                         //$data = $sample['measureType'] . ',user_id=' . strval($sample['userId']) . ' value="' . (float)$val . '" ' . (int)($time->getPreciseTimestamp() / 1000);
 
 
@@ -109,10 +109,10 @@ class SampleController extends Controller
                         $time = $time->addMicroseconds(floor($delta * 1000));
                     }
                 } else {
-                    $data=Point::measurement($sample['measureType'])
+                    $data = Point::measurement($sample['measureType'])
                         ->addTag('user_id', strval($sample['userId']))
                         ->addField('value', (float)$sample['value'])
-                        ->time( $sample['date']);
+                        ->time($sample['date']);
                     //$data = $sample['measureType'] . ',user_id=' . strval($sample['userId']) . ' value="' . (float)$sample['value'] . '" ' . (int)($time->getPreciseTimestamp() / 1000);
                     $writeApi->write($data, WritePrecision::MS, $bucket, $org);
                 }
@@ -133,6 +133,80 @@ class SampleController extends Controller
                 $currentSensorsPerDay->sensors = $sensorsIds;
             $currentSensorsPerDay->save();
         }
+
+
+
+        if ($status == 200)
+            $respose['message'] = 'All samples created successfully';
+        else
+            $respose['message'] = 'One or more samples were invalid';
+        return response($respose, $status);
+    }
+
+    public function storeDives(Request $request)
+    {
+        # You can generate a Token from the "Tokens Tab" in the UI
+        $token = '2N8qnyK4qyHSfQaZYEoXOdUDkrp9fMx1FPBBnu9VgBREGnRMczw1U2xcNT-aGL4rz7esMjHr10nhTL4Gb6yhZg==';
+        $org = 'danrni';
+
+        $bucket = env('INFLUX_BUCKET');
+
+        $client = new Client([
+            "url" => env('INFLUX_URL'),
+            "token" => $token,
+        ]);
+        //$writeApi = $client->createWriteApi( ["writeType" => WriteType::BATCHING, 'batchSize' => 1000]);
+        $writeApi = $client->createWriteApi();
+        ini_set('max_execution_time', 0);
+        $validator = Validator::make($this->toSnakeCase($request->all()), [
+            'data' => 'required|array'
+
+        ]);
+
+        if ($validator->fails()) {
+            return response(['errors' => $validator->errors()->all()], 422);
+        }
+        $respose = [];
+        $dives = $request['data'];
+        $status = 200;
+        $userId = null;
+        foreach ($dives as $idx => $dive) {
+            $validator = Validator::make($dive, [
+                "datetime" => 'required|integer|between:0,2147483648',
+                "diveId" => 'required',
+                "userId" => 'required|integer|exists:users,id',
+                "divepoints" => 'required|array',
+            ]);
+            $userId = $dive['userId'];
+            $diveId = $dive['diveId'];
+            $diveDate = Carbon::createFromTimestamp($dive['datetime'])->timezone('UTC');
+            $lastO2=null;
+            $lastHe=null;
+           // "gases": { "o2": <int>, "he": <int>}
+            foreach ($dive['divepoints'] as $divepoint) {
+                $dvTime = Carbon::createFromTimestamp($divepoint['time'])->timezone('UTC');
+                if (isset($divepoint['gases']['o2']) && isset($divepoint['gases']['he'])) {
+                    if ($divepoint['gases']['o2']!=$lastO2 || $divepoint['gases']['he']!=$lastHe) {
+                       $lastO2=(int)$divepoint['gases']['o2'];
+                       $lastHe=(int)$divepoint['gases']['he'];
+
+                    }
+                }
+                if (!$lastO2 || !$lastHe) {
+                    $lastO2=21;
+                    $lastHe=0;
+                }
+                $data = Point::measurement('dive')
+                    ->addTag('user_id', strval($userId))
+                    ->addTag('dive_id', strval($diveId))
+                    ->addTag('o2', strval($lastO2))
+                    ->addTag('he', strval($lastHe))
+                    ->addTag('temperature', (float)$divepoint['temperature'])
+                    ->addField('value', (float)$divepoint['depth'])
+                    ->time((int)($dvTime->getPreciseTimestamp() / 1000));
+                $writeApi->write($data, WritePrecision::MS, $bucket, $org);
+            }
+        };
 
 
 

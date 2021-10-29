@@ -26,6 +26,8 @@ Route::middleware('auth:sanctum')->group( function() {
     });
 
     Route::post('/samples', [SampleController::class, 'store'])->name('api.samples.store');
+    Route::post('/dives', [SampleController::class, 'storeDives'])->name('api.samples.storeDives');
+
     Route::post('/alert', [AlertController::class, 'store'])->name('api.alert.store');
 
     Route::post('/invite', [InviteController::class,'store']);
