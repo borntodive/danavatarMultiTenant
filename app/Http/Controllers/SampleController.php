@@ -214,6 +214,39 @@ class SampleController extends Controller
         return response()->json($out);
     }
 
+    public function getSampleByYear (Request $request) {
+        $validator = Validator::make($request->all(), [
+            "userId"=>'required|integer|exists:users,id',
+            'year'=>'required|integer'
+
+        ]);
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
+
+        $user=User::findOrFail($request->userId);        @dd($yearEvents)
+
+
+        $sensorsPerDay=SensorsPerDay::query()
+            ->whereRaw("EXTRACT(YEAR FROM date) = {$request->year}  AND user_id = {$user->id}")
+            ->get();
+        $sensors=Sensor::all();
+        $out=[];
+        foreach ($sensorsPerDay as $s){
+            $currDate=new Carbon($s->date);
+            foreach ($sensors as $sensor){
+
+                if (is_array($s->sensors) && in_array($sensor->id,$s->sensors)){
+                    $out[$currDate->month()][]=$sensor;
+                } else if ($sensor->id==$s->sensors) {
+                    $out[$$currDate->month()][]=$sensor;
+                }
+            }
+        }
+        return response()->json($out);
+    }
+
     public function getSampleByDateAC(Request $request) {
 
         ini_set('memory_limit','2048M');
