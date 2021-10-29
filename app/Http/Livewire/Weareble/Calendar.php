@@ -62,6 +62,9 @@ class Calendar extends Component
             }
             $this->getEvents(false);
         }
+        else {
+            $this->getYearEvents();
+        }
     }
 
     public function goToMonth($m) {
