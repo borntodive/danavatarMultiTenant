@@ -82,11 +82,11 @@ class SampleController extends Controller
 
                     foreach ($sample['value'] as $val) {
 
-                        /* $data=Point::measurement($sample['measureType'])
+                        $data=Point::measurement($sample['measureType'])
                             ->addTag('user_id', strval($sample['userId']))
                             ->addField('value', (float)$val)
-                            ->time( (int)($time->getPreciseTimestamp()/1000)); */
-                        $data = $sample['measureType'] . ',user_id=' . strval($sample['userId']) . ' value="' . (float)$val . '" ' . (int)($time->getPreciseTimestamp() / 1000);
+                            ->time( (int)($time->getPreciseTimestamp()/1000));
+                        //$data = $sample['measureType'] . ',user_id=' . strval($sample['userId']) . ' value="' . (float)$val . '" ' . (int)($time->getPreciseTimestamp() / 1000);
 
 
                         $writeApi->write($data, WritePrecision::MS, $bucket, $org);
@@ -109,11 +109,11 @@ class SampleController extends Controller
                         $time = $time->addMicroseconds(floor($delta * 1000));
                     }
                 } else {
-                    /* $data=Point::measurement($sample['measureType'])
+                    $data=Point::measurement($sample['measureType'])
                         ->addTag('user_id', strval($sample['userId']))
                         ->addField('value', (float)$sample['value'])
-                        ->time( $sample['date']); */
-                    $data = $sample['measureType'] . ',user_id=' . strval($sample['userId']) . ' value="' . (float)$sample['value'] . '" ' . (int)($time->getPreciseTimestamp() / 1000);
+                        ->time( $sample['date']);
+                    //$data = $sample['measureType'] . ',user_id=' . strval($sample['userId']) . ' value="' . (float)$sample['value'] . '" ' . (int)($time->getPreciseTimestamp() / 1000);
                     $writeApi->write($data, WritePrecision::MS, $bucket, $org);
                 }
                 if ($ecgEvent) {
