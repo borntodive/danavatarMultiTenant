@@ -44,7 +44,6 @@ class SampleController extends Controller
         {
             return response(['errors'=>$validator->errors()->all()], 422);
         }
-<<<<<<< HEAD
         $respose=[];
         $samples=$request['data'];
         $status=200;
@@ -52,15 +51,6 @@ class SampleController extends Controller
         $datas=[];
         $userId=null;
         foreach ($samples as $idx=>$sample){
-=======
-        $respose = [];
-        $samples = $request['data'];
-        $status = 200;
-        $insertedSensors = [];
-
-        $userId = null;
-        foreach ($samples as $idx => $sample) {
->>>>>>> ad39cfaf37dd8b53e9b8929662d3d12f501f3097
             $validator = Validator::make($sample, [
                 "date"=>'required|integer|between:0,2147483648',
                 "value"=>'required|array',
