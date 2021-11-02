@@ -21,7 +21,7 @@ use InfluxDB2\WriteType as WriteType;
 
 class SampleController extends Controller
 {
-    public function store(Request $request)
+    public function store (Request $request)
     {
         # You can generate a Token from the "Tokens Tab" in the UI
         $token = '2N8qnyK4qyHSfQaZYEoXOdUDkrp9fMx1FPBBnu9VgBREGnRMczw1U2xcNT-aGL4rz7esMjHr10nhTL4Gb6yhZg==';
@@ -33,63 +33,60 @@ class SampleController extends Controller
             "url" => env('INFLUX_URL'),
             "token" => $token,
         ]);
-        //$writeApi = $client->createWriteApi( ["writeType" => WriteType::BATCHING, 'batchSize' => 1000]);
         $writeApi = $client->createWriteApi();
-        ini_set('max_execution_time', 0);
+        ini_set('max_execution_time',120);
         $validator = Validator::make($this->toSnakeCase($request->all()), [
             'data' => 'required|array'
 
         ]);
 
-        if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all()], 422);
+        if ($validator->fails())
+        {
+            return response(['errors'=>$validator->errors()->all()], 422);
         }
-        $respose = [];
-        $samples = $request['data'];
-        $status = 200;
-        $insertedSensors = [];
-
-        $userId = null;
-        foreach ($samples as $idx => $sample) {
+        $respose=[];
+        $samples=$request['data'];
+        $status=200;
+        $insertedSensors=[];
+        $datas=[];
+        $userId=null;
+        foreach ($samples as $idx=>$sample){
             $validator = Validator::make($sample, [
-                "date" => 'required|integer|between:0,2147483648',
-                "value" => 'required|array',
-                "value.*" => 'numeric',
-                "userId" => 'required|integer|exists:users,id',
-                "measureType" => 'required|string|exists:sensors,name',
+                "date"=>'required|integer|between:0,2147483648',
+                "value"=>'required|array',
+                "value.*"=>'numeric',
+                "userId"=>'required|integer|exists:users,id',
+                "measureType"=>'required|string|exists:sensors,name',
             ]);
-            $ecgEvent = [];
-            if ($validator->fails()) {
-                $status = 422;
+            $ecgEvent=[];
+            if ($validator->fails())
+            {
+                $status=422;
                 continue;
             }
-            $errors = false;
-            $sensor = Sensor::firstWhere('name', $sample['measureType']);
+            $errors=false;
+            $sensor=Sensor::firstWhere('name',$sample['measureType']);
 
 
-            if (!$sensor) {
-                $errors = true;
-                $status = 422;
-            } else {
+            if (!$sensor){
+                $errors=true;
+                $status=422;
+            }
+            else {
                 $sample['sensor_id'] = $sensor->id;
                 $sample['measureType'];
             }
             if (!$errors) {
-                if (is_array($sample['value'])) {
-                    $delta = 1000 / count($sample['value']);
-                    $delta = 20;
-                    $time = Carbon::createFromTimestamp($sample['date'])->timezone('UTC');
+                if (is_array($sample['value'])){
+                    $delta=1000/count($sample['value']);
+                    $time=Carbon::createFromTimestamp($sample['date'])->timezone('UTC');
 
                     foreach ($sample['value'] as $val) {
 
-                        $data = Point::measurement($sample['measureType'])
+                        $datas[]=Point::measurement($sample['measureType'])
                             ->addTag('user_id', strval($sample['userId']))
                             ->addField('value', (float)$val)
-                            ->time((int)($time->getPreciseTimestamp() / 1000));
-                        //$data = $sample['measureType'] . ',user_id=' . strval($sample['userId']) . ' value="' . (float)$val . '" ' . (int)($time->getPreciseTimestamp() / 1000);
-
-
-                        $writeApi->write($data, WritePrecision::MS, $bucket, $org);
+                            ->time( (int)($time->getPreciseTimestamp()/1000));
 
                         /*$datas[]=['name' =>  $sample['measureType'],
                             'tags' => ['user_id' => strval($sample['userId'])],
@@ -99,47 +96,51 @@ class SampleController extends Controller
                         ];*/
 
 
-                        if ($sensor->name == 'Ecg') {
-                            $d['x'] = $time->getPreciseTimestamp() / 1000;
-                            $d['y'] = round((float)$val * 1000, 0);
+                        if ($sensor->name=='Ecg') {
+                            $d['x']=$time->getPreciseTimestamp()/1000;
+                            $d['y']=round((float)$val * 1000, 0);
 
-                            $userId = $sample['userId'];
-                            $ecgEvent[] = $d;
+                            $userId=$sample['userId'];
+                            $ecgEvent[]=$d;
+
                         }
-                        $time = $time->addMicroseconds(floor($delta * 1000));
+                        $time=$time->addMicroseconds(floor($delta*1000));
                     }
+
                 } else {
-                    $data = Point::measurement($sample['measureType'])
+                    $datas[]=Point::measurement($sample['measureType'])
                         ->addTag('user_id', strval($sample['userId']))
                         ->addField('value', (float)$sample['value'])
-                        ->time($sample['date']);
-                    //$data = $sample['measureType'] . ',user_id=' . strval($sample['userId']) . ' value="' . (float)$sample['value'] . '" ' . (int)($time->getPreciseTimestamp() / 1000);
-                    $writeApi->write($data, WritePrecision::MS, $bucket, $org);
+                        ->time( $sample['date']);
+
                 }
                 if ($ecgEvent) {
                     event(new NewEcgData($userId, json_encode($ecgEvent)));
                 }
-                $currentDate = Carbon::createFromTimestamp($sample['date'])->previous('00:00');
-                if (!isset($insertedSensors[$currentDate->format('Y-m-d H:i:s.u')]) || !in_array($sample['sensor_id'], $insertedSensors[$currentDate->format('Y-m-d H:i:s.u')])) {
-                    $insertedSensors[$currentDate->format('Y-m-d H:i:s.u')][] = $sample['sensor_id'];
+                $currentDate=Carbon::createFromTimestamp($sample['date'])->previous('00:00');
+                if (!isset($insertedSensors[$currentDate->format('Y-m-d H:i:s.u')]) || !in_array($sample['sensor_id'], $insertedSensors[$currentDate->format('Y-m-d H:i:s.u')])){
+                    $insertedSensors[$currentDate->format('Y-m-d H:i:s.u')][]=$sample['sensor_id'];
                 }
             }
+
         }
-        foreach ($insertedSensors as $date => $sensorsIds) {
-            $currentSensorsPerDay = SensorsPerDay::firstOrNew(['date' => $date, 'user_id' => $sample['userId']]);
+        foreach ($insertedSensors as $date=>$sensorsIds) {
+            $currentSensorsPerDay=SensorsPerDay::firstOrNew (['date' => $date,'user_id'=>$sample['userId']]);
             if (is_array($currentSensorsPerDay->sensors))
-                $currentSensorsPerDay->sensors = array_unique(array_merge($currentSensorsPerDay->sensors, $sensorsIds));
+                $currentSensorsPerDay->sensors=array_unique(array_merge($currentSensorsPerDay->sensors,$sensorsIds));
             else
-                $currentSensorsPerDay->sensors = $sensorsIds;
+                $currentSensorsPerDay->sensors=$sensorsIds;
             $currentSensorsPerDay->save();
         }
+        foreach ($datas as $data){
+            $writeApi->write($data, WritePrecision::MS, $bucket, $org);
+            //DB::table('samples')->insertOrIgnore($data->toArray());
+        }
 
-
-
-        if ($status == 200)
-            $respose['message'] = 'All samples created successfully';
+        if ($status==200)
+            $respose['message']='All samples created successfully';
         else
-            $respose['message'] = 'One or more samples were invalid';
+            $respose['message']='One or more samples were invalid';
         return response($respose, $status);
     }
 
