@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Events\NewEcgData;
 use App\Http\Controllers\Controller;
+use App\Models\Dive;
 use App\Models\Sensor;
 use App\Models\SensorsPerDay;
 use Carbon\Carbon;
@@ -147,17 +148,7 @@ class SampleController extends Controller
     public function storeDives(Request $request)
     {
         # You can generate a Token from the "Tokens Tab" in the UI
-        $token = '2N8qnyK4qyHSfQaZYEoXOdUDkrp9fMx1FPBBnu9VgBREGnRMczw1U2xcNT-aGL4rz7esMjHr10nhTL4Gb6yhZg==';
-        $org = 'danrni';
 
-        $bucket = env('INFLUX_BUCKET');
-
-        $client = new Client([
-            "url" => env('INFLUX_URL'),
-            "token" => $token,
-        ]);
-        //$writeApi = $client->createWriteApi( ["writeType" => WriteType::BATCHING, 'batchSize' => 1000]);
-        $writeApi = $client->createWriteApi();
         ini_set('max_execution_time', 0);
         $validator = Validator::make($this->toSnakeCase($request->all()), [
             'data' => 'required|array'
@@ -179,45 +170,20 @@ class SampleController extends Controller
                 "userId" => 'required|integer|exists:users,id',
                 "divepoints" => 'required|array',
             ]);
-            $userId = $dive['userId'];
-            $diveId = $dive['diveId'];
-            $diveDate = Carbon::createFromTimestamp($dive['datetime'])->timezone('UTC');
-            $lastO2=null;
-            $lastHe=null;
-           // "gases": { "o2": <int>, "he": <int>}
-            foreach ($dive['divepoints'] as $divepoint) {
-                $dvTime = Carbon::createFromTimestamp($divepoint['time'])->timezone('UTC');
-                if (isset($divepoint['gases']['o2']) && isset($divepoint['gases']['he'])) {
-                    if ($divepoint['gases']['o2']!=$lastO2 || $divepoint['gases']['he']!=$lastHe) {
-                       $lastO2=(int)$divepoint['gases']['o2'];
-                       $lastHe=(int)$divepoint['gases']['he'];
+            $d=new Dive();
+            $d->datetime=$dive['datetime'];
+            $d->user_id=$dive['userId'];
+            $d->diveId=$dive['diveId'];
+            $d->divepoints=$dive['divepoints'];
+            $d->save();
 
-                    }
-                }
-                if (!$lastO2 || !$lastHe) {
-                    $lastO2=21;
-                    $lastHe=0;
-                }
-                $data = Point::measurement('dive')
-                    ->addTag('user_id', strval($userId))
-                    ->addTag('dive_id', strval($diveId))
-                    ->addTag('o2', strval($lastO2))
-                    ->addTag('he', strval($lastHe))
-                    ->addTag('temperature', (float)$divepoint['temperature'])
-                    ->addField('value', (float)$divepoint['depth'])
-                    ->time((int)($dvTime->getPreciseTimestamp() / 1000));
-                $writeApi->write($data, WritePrecision::MS, $bucket, $org);
-            }
             $gdras[]=[
-                'diveId'=>$diveId,
+                'diveId'=>$dive['diveId'],
                 'gdra'=>'green'
             ];
-        };
-
-
-
+        }
         if ($status == 200)
-            $respose['message'] = 'All samples created successfully';
+            $respose['message'] = 'All dives created successfully';
         else
             $respose['message'] = 'One or more samples were invalid';
             $respose['gdra'] = $gdras;

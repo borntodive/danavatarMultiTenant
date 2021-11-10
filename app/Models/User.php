@@ -114,6 +114,11 @@ class User extends Authenticatable
         return $this->hasMany(Sample::class);
     }
 
+    public function dives()
+    {
+        return $this->hasMany(Dive::class);
+    }
+
     public function sensorsPerDay()
     {
         return $this->hasMany(SensorsPerDay::class);
