@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\NewEcgData;
+use App\Helpers\DiveParser;
 use App\Http\Controllers\Controller;
 use App\Models\Dive;
 use App\Models\Sensor;
@@ -170,12 +171,14 @@ class SampleController extends Controller
                 "userId" => 'required|integer|exists:users,id',
                 "divepoints" => 'required|array',
             ]);
-            $d=new Dive();
+            $diveParser= new DiveParser($dive,'oc',$dive['userId']);
+            $diveParser->parseConftech();
+            /* $d=new Dive();
             $d->datetime=$dive['datetime'];
             $d->user_id=$dive['userId'];
             $d->diveId=$dive['diveId'];
             $d->divepoints=$dive['divepoints'];
-            $d->save();
+            $d->save(); */
 
             $gdras[]=[
                 'diveId'=>$dive['diveId'],

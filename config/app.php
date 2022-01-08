@@ -168,12 +168,13 @@ return [
          * Package Service Providers...
          */
         Lab404\Impersonate\ImpersonateServiceProvider::class,
+        Eloquence\EloquenceServiceProvider::class,
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
