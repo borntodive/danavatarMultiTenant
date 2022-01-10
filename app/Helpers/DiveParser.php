@@ -229,6 +229,7 @@ class DiveParser
 
     public static function getMarkerUrl($gases)
     {
+        dump(Storage::url("gas_switch/"));
         if ($gases) {
             if ($gases['he'] == 0)
                 return Storage::url("gas_switch/" . $gases['o2'] . ".png");

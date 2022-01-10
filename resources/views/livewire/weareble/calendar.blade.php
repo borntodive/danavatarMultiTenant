@@ -125,6 +125,7 @@
         }
 
         function redirectToSamples(date) {
+            //console.log(date);
             window.location.replace("/wearable/" + {{ $user->id }} + "/samples?date=" + date.format('YYYY-MM-DD'));
         }
     </script>
