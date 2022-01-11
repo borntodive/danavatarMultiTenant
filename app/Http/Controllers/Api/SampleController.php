@@ -26,14 +26,16 @@ class SampleController extends Controller
     public function store (Request $request)
     {
         # You can generate a Token from the "Tokens Tab" in the UI
-        $token = '2N8qnyK4qyHSfQaZYEoXOdUDkrp9fMx1FPBBnu9VgBREGnRMczw1U2xcNT-aGL4rz7esMjHr10nhTL4Gb6yhZg==';
-        $org = 'danrni';
-
-        $bucket = env('INFLUX_BUCKET');
+        $token = env("INFLUX_TOKEN");
+        $org = env("INFLUX_ORG");
+        $bucket = env("INFLUX_BUCKET");
 
         $client = new Client([
-            "url" => env('INFLUX_URL'),
+            "url" => env("INFLUX_URL"),
             "token" => $token,
+            "org" => $org,
+            "debug" => false,
+            "timeout"=>0
         ]);
         $writeApi = $client->createWriteApi();
         ini_set('max_execution_time',120);
