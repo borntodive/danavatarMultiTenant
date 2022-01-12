@@ -40,7 +40,7 @@ return [
                 'encrypted' => false,
                 'host' => env('PUSHER_APP_URL'),
                 'port' => env('LARAVEL_WEBSOCKETS_PORT'),
-                'scheme' => 'http',
+                'scheme' => 'https',
                 'curl_options' => [
                         CURLOPT_SSL_VERIFYHOST => 0,
                         CURLOPT_SSL_VERIFYPEER => 0
