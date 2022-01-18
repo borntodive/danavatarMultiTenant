@@ -76,13 +76,14 @@ class DiveController extends \App\Http\Controllers\Controller
 
     public function store(Request $request)
     {
+
         $ext = $request->file->extension();
         $path = $request->file->store('dives');
         $type = $request->type;
         $user_id = $request->user()->id;
         $diveParser = new DiveParser(file_get_contents($request->file), $type, $user_id);
         $messages = $diveParser->parseUDDF();
-        return $messages;
+        return response()->json($messages);
     }
     public function storeTank(Request $request, Dive $dive)
     {

@@ -29,6 +29,7 @@ class DiveParser
     public function parseUDDF()
     {
         $uddf = simplexml_load_string($this->file);
+
         $gases = array();
         $gases['21']['o2'] = '21';
         $gases['21']['he'] = '0';
@@ -46,6 +47,7 @@ class DiveParser
         $dives = [];
 
         foreach ($uddf->profiledata->repetitiongroup as $dive) {
+
             $step_count = 0;
             $dives_count++;
             $allowed_format = ['Y-m-d H:i:s', 'Y-m-d H:i', 'Y-m-d\TH:i:s', 'Y-m-d\TH:i'];
@@ -59,6 +61,7 @@ class DiveParser
                     continue;
                 }
             }
+
             //dd(str_replace("T", " ", (string) $dive->dive->informationbeforedive->datetime));
             //$start_time = \DateTime::createFromFormat('Y-m-d H:i:s', str_replace("T", " ", (string) $dive->dive->informationbeforedive->datetime));
             $dives[$dives_count]['date'] = $start_time;
@@ -73,6 +76,7 @@ class DiveParser
             ProgressEvent::dispatch("PARSING_DIVE", 0, $dives_count);
             $totalLines = count($dive->dive->samples->waypoint);
             foreach ($dive->dive->samples->waypoint as $waypoint) {
+
                 $dives[$dives_count]['profile'][$line_count]['timesec'] = (int) $waypoint->divetime;
                 $dives[$dives_count]['profile'][$line_count]['depth'] = (float) $waypoint->depth;
 
@@ -88,47 +92,42 @@ class DiveParser
                         $min_temp = $dives[$dives_count]['profile'][$line_count]['temp'];
                 }
                 $dives[$dives_count]['profile'][$line_count]['tank_volume'] = null;
+                //dd($dives);
                 if (isset($waypoint->switchmix)) {
-                    $mix = null;
-                    $used_gas = $gases[(string) $waypoint->switchmix['ref']];
-                    if (!isset($gases[(string) $waypoint->switchmix['ref']]))
-                        $mix = '1.21';
-                    elseif ($used_gas['o2'] == '21' && $used_gas['he'] == '0')
-                        $mix = '1.21';
-                    elseif ($used_gas['he'] == '0')
-                        $mix = '2.' . $used_gas['o2'];
-                    else {
-                        $o2 = (int) $used_gas['o2'];
-                        $he = (int) $used_gas['he'];
-                        $n = 100 - $o2 - $he;
-                        $o2 = $o2 * 10;
-                        $N = $n * 10;
-                        $mix = '6.' . $o2 . $N;
+                    if (!isset($gases[(string) $waypoint->switchmix['ref']])) {
+                        $used_gas['o2'] = 21;
+                        $used_gas['he'] = 0;
+                    } else {
+                        dd($gases);
+                        $used_gas = $gases[(string) $waypoint->switchmix['ref']];
+                        $used_gas['o2'] = (int) $used_gas['o2'];
+                        $used_gas['he'] = (int) $used_gas['he'];
                     }
-                    if ($mix) {
-                        $used_gas = $this->getGasSwitch($mix);
+                    $used_gas['n2'] = 100 - $used_gas['o2'] - $used_gas['he'];
 
-                        $dives[$dives_count]['profile'][$line_count]['gases'] = $used_gas;
-                        $dives[$dives_count]['profile'][$line_count]['marker'] = self::getMarkerUrl(($used_gas));
-                    }
+
+                    $dives[$dives_count]['profile'][$line_count]['gases'] = $used_gas;
+                    $dives[$dives_count]['profile'][$line_count]['marker'] = self::getMarkerUrl(($used_gas));
+
                     if (isset($volumes[(string) $waypoint->switchmix['ref']]))
                         $dives[$dives_count]['profile'][$line_count]['tank_volume'] = $volumes[(string) $waypoint->switchmix['ref']];
                 } elseif (!$line_count) {
-                    $mix = '1.21';
-                    if ($mix) {
-                        $used_gas = $this->getGasSwitch($mix);
-
-                        $dives[$dives_count]['profile'][$line_count]['gases'] = $used_gas;
-                        $dives[$dives_count]['profile'][$line_count]['marker'] = self::getMarkerUrl(($used_gas));
-                    }
+                    $used_gas['o2'] = 21;
+                    $used_gas['he'] = 0;
+                    $used_gas['n2'] = 100 - $used_gas['o2'] - $used_gas['he'];
+                    $dives[$dives_count]['profile'][$line_count]['gases'] = $used_gas;
+                    $dives[$dives_count]['profile'][$line_count]['marker'] = self::getMarkerUrl(($used_gas));
                     if (isset($volumes[(string) $waypoint->switchmix['ref']]))
                         $dives[$dives_count]['profile'][$line_count]['tank_volume'] = $volumes[(string) $waypoint->switchmix['ref']];
                 }
+
                 $line_count++;
                 $perc = ceil($line_count * 100 / $totalLines);
+
                 ProgressEvent::dispatch("PARSING_DIVE", $perc, $dives_count);
             }
         }
+
         $warnings = $this->diveArrayToDb($dives);
         if (!$warnings)
             $out['success'] = true;
@@ -229,7 +228,7 @@ class DiveParser
 
     public static function getMarkerUrl($gases)
     {
-        dump(Storage::url("gas_switch/"));
+        //dd(Storage::url("gas_switch/"));
         if ($gases) {
             if ($gases['he'] == 0)
                 return Storage::url("gas_switch/" . $gases['o2'] . ".png");
@@ -239,12 +238,20 @@ class DiveParser
         return null;
     }
 
+    public static function getBestO2Fraction($ppO2, $pAmb)
+    {
+        $o2 = round(($ppO2 / $pAmb) * 100);
+        $o2 = $o2 > 100 ? 100 : $o2;
+        $o2 = $o2 < 0 ? 0 : $o2;
+        return $o2;
+    }
     private function diveArrayToDb($dives)
     {
         ini_set('memory_limit', '-1');
         $mess = null;
 
         foreach ($dives as $diveId => $dive) {
+
             $user_id = $dive['userId'];
             $surface_step = null;
             if (!$dive['date']) {
@@ -271,16 +278,16 @@ class DiveParser
             $last_idx = $p_count - 1;
             if ($dive['profile'][$last_idx]['depth'] > 0) {
 
-                $time_interval=$dive['profile'][$last_idx]['timesec'] - $dive['profile'][$last_idx -1]['timesec'];
+                $time_interval = $dive['profile'][$last_idx]['timesec'] - $dive['profile'][$last_idx - 1]['timesec'];
                 $curr_time = $dive['profile'][$last_idx]['timesec'];
                 $curr_idx = $last_idx;
                 $curr_time += $time_interval;
                 $curr_idx++;
                 $dive['profile'][$curr_idx]['depth'] = 0;
                 $dive['profile'][$curr_idx]['timesec'] = $curr_time;
-                $dive['profile'][$curr_idx]['tankPressure'] =  Arr::get($dive, 'profile.'.$last_idx.'.tankPressure', 0);
+                $dive['profile'][$curr_idx]['tankPressure'] =  Arr::get($dive, 'profile.' . $last_idx . '.tankPressure', 0);
                 $dive['profile'][$curr_idx]['temp'] = $dive['profile'][$last_idx]['temp'];
-                $dive['profile'][$curr_idx]['tankVolume'] = Arr::get($dive, 'profile.'.$last_idx.'.tankVolume', 0);
+                $dive['profile'][$curr_idx]['tankVolume'] = Arr::get($dive, 'profile.' . $last_idx . '.tankVolume', 0);
                 if (isset($dive['profile'][$last_idx]['gases']))
                     $dive['profile'][$curr_idx]['gases'] = $dive['profile'][$last_idx]['gases'];
                 $dive['profile'][$curr_idx]['calculated'] = true;
@@ -300,6 +307,15 @@ class DiveParser
                 $dive['profile'][$idx]['compartmentGfs'] = [];
                 $dive['profile'][$idx]['timestamp'] = new \DateTime($ts->toDateTimeString());
                 $dive['profile'][$idx]['time'] = $step['timesec'] / 60;
+                if ($dive['type'] == 'reb') {
+                    $gas['o2'] = self::getBestO2Fraction(1.2, ($step['depth'] / 10) + 1);
+                    $gas['he'] = 0;
+                    $gas['n2'] = 100 - $gas['o2'];
+
+                    $dive['profile'][$idx]['gases'] = $gas;
+                    if (isset($dive['profile'][$idx]['marker']))
+                        unset($dive['profile'][$idx]['marker']);
+                }
                 if (isset($step['gases'])) {
                     if ($step['gases'] == $lastGas) {
                         unset($dive['profile'][$idx]['gases']);
@@ -337,14 +353,18 @@ class DiveParser
                 $prev_depth = $step['depth'];
                 $prev_time = $dive['profile'][$idx]['time'];
                 $count++;
-                if ($count==1 || $count%30 == 0 || $count==$p_count) {
-                    dump($count);
-                    $dive['miniChart'][]=$step['depth']*-1;
+                if ($count == 1 || $count % 30 == 0 || $count == $p_count) {
+                    $dive['miniChart'][] = $step['depth'] * -1;
                 }
                 $perc = ceil($count * 100 / $p_count);
                 if ($perc > 100)
                     $perc = 100;
                 ProgressEvent::dispatch("SAVING_DIVE", $perc, $diveId);
+            }
+            if ($dive['type'] == 'reb') {
+                $dive['profile'][0]['marker'] = Storage::url("gas_switch/reb.png");
+                $dive['rebData']['diluent'] = ['o2' => 21, 'n2' => 79, "he" => 0];
+                $dive['rebData']['ppo2'] = 1.2;
             }
 
             $endtime = $dive['date']->clone()->addSeconds($dive_time);
@@ -368,9 +388,8 @@ class DiveParser
             $dive['depth'] = $max_depth;
             $dive['temp'] = $min_temp;
             $dive['runtime'] = round($dive_time / 60, 2);
-            dump($dive['miniChart']);
             $d = Dive::create($dive);
-            ProgressEvent::dispatch("SAVING_PROFILE", null, $diveId);
+
             //$d->profile()->createMany($profile);
 
             $gfCalculator = new DecoCalculator($d);

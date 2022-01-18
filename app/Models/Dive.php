@@ -27,6 +27,7 @@ class Dive extends Model
         'gf'=>'array',
         'gf_computer'=>'array',
         'mini_chart'=>'array',
+        'reb_data'=>'array',
     ];
 
     public function user()

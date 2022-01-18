@@ -28,6 +28,7 @@ class CreateNewDiveTable extends Migration
             $table->float('runtime');
             $table->json('profile');
             $table->json('mini_chart');
+            $table->json('reb_data');
             $table->dateTime('end_date');
             $table->json('gf')->nullable();
             $table->json('gf_computer')->nullable();
