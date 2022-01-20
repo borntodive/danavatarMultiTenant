@@ -36,7 +36,10 @@ Route::middleware('auth:sanctum')->group( function() {
     Route::prefix('dives')->group(function() {
         Route::get('/user/{user_id}',[DiveController::class, 'getByUser']);
         Route::post('/{dive}/tank',[DiveController::class, 'storeTank']);
+        Route::post('/{dive}/ppo2',[DiveController::class, 'storePPO2']);
+        Route::post('/{dive}/diluent',[DiveController::class, 'storeDiluent']);
         Route::delete('/{dive}/tank',[DiveController::class, 'deleteTank']);
+        Route::delete('/{dive}/ppo2',[DiveController::class, 'deletePPO2']);
         Route::get('/{dive}',[DiveController::class, 'get']);
         Route::post('/upload',[DiveController::class, 'store']);
 

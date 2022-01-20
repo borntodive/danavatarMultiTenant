@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Events\ProgressEvent;
 use App\Helpers\DecoCalculator;
+use App\Helpers\DiveFunctions;
 use App\Helpers\DiveParser;
 use App\Models\Dive;
 use App\Models\Profile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-
 
 
 class DiveController extends \App\Http\Controllers\Controller
@@ -85,6 +85,7 @@ class DiveController extends \App\Http\Controllers\Controller
         $messages = $diveParser->parseUDDF();
         return response()->json($messages);
     }
+
     public function storeTank(Request $request, Dive $dive)
     {
         $validated = $request->validate([
@@ -122,6 +123,7 @@ class DiveController extends \App\Http\Controllers\Controller
             $messages['warning'] = true;
         return $messages;
     }
+
     public function deleteTank(Request $request, Dive $dive)
     {
 
@@ -153,6 +155,87 @@ class DiveController extends \App\Http\Controllers\Controller
         }
         if (!isset($messages['success']))
             $messages['warning'] = true;
+        return $messages;
+    }
+
+    public function storePPO2(Request $request, Dive $dive)
+    {
+        $validated = $request->validate([
+            'time' => 'required|max:255',
+            'ppo2' => 'required|numeric',
+        ]);
+        list($minuntes, $seconds) = explode(':', $validated['time']);
+        $time = ($minuntes * 60) + $seconds;
+        unset($validated['time']);
+        ProgressEvent::dispatch("SAVING_DATA", 0);
+        $rebData = $dive->rebData;
+        $found = false;
+        foreach ($rebData['ppo2s'] as $idx => $rData) {
+            if ($rData['time'] == $time) {
+                $found = true;
+                $rebData['ppo2s'][$idx]['ppo2'] = $validated['ppo2'];
+            }
+        }
+        if (!$found) {
+            $rebData['ppo2s'][] = ['time' => (int)$time, 'ppo2' => $validated['ppo2']];
+        }
+        $rebDataCollection = collect($rebData['ppo2s']);
+        $rebDataCollection = $rebDataCollection->sortBy('time');
+
+        $newRebData=$rebDataCollection->toArray();
+        $rebData['ppo2s']=array_values($newRebData);
+        $dive->rebData =$rebData ;
+        $dive->save();
+        DiveFunctions::calculateBestMixProfile($dive);
+        $messages['success'] = true;
+        return $messages;
+    }
+
+    public function deletePPO2(Request $request, Dive $dive)
+    {
+        $validated = $request->validate([
+            'time' => 'required|max:255',
+        ]);
+        list($minuntes, $seconds) = explode(':', $validated['time']);
+        $time = ($minuntes * 60) + $seconds;
+        unset($validated['time']);
+        ProgressEvent::dispatch("SAVING_DATA", 0);
+        $rebData = $dive->rebData;
+
+        $found = false;
+        foreach ($rebData['ppo2s'] as $idx => $rData) {
+            if ($rData['time'] == $time) {
+                $found = true;
+                unset($rebData['ppo2s'][$idx]);
+                break;
+            }
+        }
+        if ($found) {
+            $rebDataCollection = collect($rebData['ppo2s']);
+            $rebDataCollection = $rebDataCollection->sortBy('time');
+            $newRebData=$rebDataCollection->toArray();
+            $rebData['ppo2s']=array_values($newRebData);
+            $dive->rebData =$rebData ;
+            $dive->save();
+            DiveFunctions::calculateBestMixProfile($dive);
+            $messages['success'] = true;
+        } else
+            $messages['warning'] = true;
+        return $messages;
+    }
+    public function storeDiluent(Request $request, Dive $dive)
+    {
+        $validated = $request->validate([
+            'o2' => 'required|integer',
+            'n2' => 'required|integer',
+            'he' => 'required|integer',
+        ]);
+        $rebData=$dive->rebData;
+        $rebData['diluent']=$validated;
+        $dive->rebData=$rebData;
+        $dive->save();
+        DiveFunctions::calculateBestMixProfile($dive);
+        $messages['success'] = true;
         return $messages;
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="PS-211.7442.50">
+  <component name="dataSourceStorageLocal" created-in="PS-213.6461.83">
     <data-source name="DSG" uuid="3ad2801b-a162-4a14-9881-71c1d495b6c5">
       <database-info product="MySQL" version="5.7.32" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.21 (Revision: 33f65445a1bcc544eb0120491926484da168f199)" dbms="MYSQL" exact-version="5.7.32" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
@@ -60,10 +60,6 @@
           </node>
         </introspection-scope>
       </schema-mapping>
-      <ssh-properties>
-        <enabled>true</enabled>
-        <ssh-config-id>f80d4a7f-f2db-446e-bcde-bfda99dd83ae</ssh-config-id>
-      </ssh-properties>
     </data-source>
     <data-source name="DANR&amp;I" uuid="da32db38-e0d9-438b-ae52-ffdf5c0b46b4">
       <database-info product="PostgreSQL" version="12.6 (Ubuntu 12.6-0ubuntu0.20.04.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="12.6" exact-driver-version="42.2">
@@ -71,6 +67,7 @@
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
+      <auth-provider>pgpass</auth-provider>
       <user-name>ploi</user-name>
       <schema-mapping>
         <introspection-scope>
@@ -84,10 +81,21 @@
           </node>
         </introspection-scope>
       </schema-mapping>
-      <ssh-properties>
-        <enabled>true</enabled>
-        <ssh-config-id>f80d4a7f-f2db-446e-bcde-bfda99dd83ae</ssh-config-id>
-      </ssh-properties>
+    </data-source>
+    <data-source name="danAvatarStaging" uuid="8d875414-ce1c-4e96-946c-5e9b4ab9aa75">
+      <database-info product="PostgreSQL" version="12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.22" dbms="POSTGRES" exact-version="12.9" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>ploi</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
     </data-source>
   </component>
 </project>

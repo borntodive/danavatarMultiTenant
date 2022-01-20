@@ -32,6 +32,7 @@ Route::get('/invite/accept',App\Http\Livewire\Invite\Accept::class)->name('invit
 Route::get('/test/send-invite', [\App\Http\Controllers\TestController::class,'sendInvite']);
 Route::get('/test/influx', [\App\Http\Controllers\TestController::class,'influx']);
 Route::get('/test/gf',[TestController::class, 'testGF']);
+Route::get('/test/sort',[TestController::class, 'sort']);
 Route::get('/test/log', function () {
     Log::debug('test');
 });

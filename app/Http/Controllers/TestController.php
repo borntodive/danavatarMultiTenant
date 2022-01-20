@@ -110,4 +110,16 @@ class TestController extends Controller
         $gfCalculator=new DecoCalculator($dive);
         $gfCalculator->calculateGF();
     }
+
+    public function sort() {
+
+        $dive=Dive::first();
+        $reb=$dive->rebData['ppo2s'];
+
+
+        $collection = collect($reb);
+
+        $sorted = $collection->sortBy('time');
+        dump($sorted);
+    }
 }

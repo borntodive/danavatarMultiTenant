@@ -238,13 +238,7 @@ class DiveParser
         return null;
     }
 
-    public static function getBestO2Fraction($ppO2, $pAmb)
-    {
-        $o2 = round(($ppO2 / $pAmb) * 100);
-        $o2 = $o2 > 100 ? 100 : $o2;
-        $o2 = $o2 < 0 ? 0 : $o2;
-        return $o2;
-    }
+
     private function diveArrayToDb($dives)
     {
         ini_set('memory_limit', '-1');
@@ -308,7 +302,7 @@ class DiveParser
                 $dive['profile'][$idx]['timestamp'] = new \DateTime($ts->toDateTimeString());
                 $dive['profile'][$idx]['time'] = $step['timesec'] / 60;
                 if ($dive['type'] == 'reb') {
-                    $gas['o2'] = self::getBestO2Fraction(1.2, ($step['depth'] / 10) + 1);
+                    $gas['o2'] = DiveFunctions::getBestO2Fraction(1.2, ($step['depth'] / 10) + 1);
                     $gas['he'] = 0;
                     $gas['n2'] = 100 - $gas['o2'];
 
@@ -364,7 +358,7 @@ class DiveParser
             if ($dive['type'] == 'reb') {
                 $dive['profile'][0]['marker'] = Storage::url("gas_switch/reb.png");
                 $dive['rebData']['diluent'] = ['o2' => 21, 'n2' => 79, "he" => 0];
-                $dive['rebData']['ppo2'] = 1.2;
+                $dive['rebData']['ppo2s'][] = ['time'=>0, 'ppo2'=>1.2];
             }
 
             $endtime = $dive['date']->clone()->addSeconds($dive_time);
