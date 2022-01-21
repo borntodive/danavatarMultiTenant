@@ -87,7 +87,7 @@ class Tenant extends Authenticatable
 
     protected function profilePhotoDisk()
     {
-        return 'minio';
+        return 's3';
     }
 
     /**

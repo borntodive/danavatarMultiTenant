@@ -162,7 +162,7 @@ class User extends Authenticatable
 
     protected function profilePhotoDisk()
     {
-        return 'minio';
+        return 's3';
     }
 
     public function getPasswordResetUrl() {
