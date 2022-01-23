@@ -77,12 +77,17 @@ class DiveController extends \App\Http\Controllers\Controller
     public function store(Request $request)
     {
 
-        $ext = $request->file->extension();
-        $path = $request->file->store('dives');
+        $ext = $request->file->getClientOriginalExtension();
+        //$path = $request->file->store('dives');
         $type = $request->type;
         $user_id = $request->user()->id;
         $diveParser = new DiveParser(file_get_contents($request->file), $type, $user_id);
-        $messages = $diveParser->parseUDDF();
+        if (strtolower($ext)=='uudf')
+            $messages = $diveParser->parseUDDF();
+        elseif (strtolower($ext)=='zxu' || strtolower($ext)=='zxu')
+            $messages = $diveParser->parseZXL();
+        else
+            $messages['warning']="FILE_NOT_SUPPORTED";
         return response()->json($messages);
     }
 

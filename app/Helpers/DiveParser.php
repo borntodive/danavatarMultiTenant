@@ -136,6 +136,129 @@ class DiveParser
         return $out;
     }
 
+    public function parseZXL()
+    {
+        //$zxl = file_get_contents($this->file);
+        $rows = preg_split('/\r\n|\r|\n|' . PHP_EOL . '/', $this->file);
+        $profile_check = false;
+        $dives_count = 0;
+        $step_count = 0;
+        $line_count=0;
+        $dives = [];
+        $rows_count=count($rows);
+        ProgressEvent::dispatch("PARSING_DIVE", 0, $rows_count);
+        foreach ($rows as $idx => $row) {
+            if (empty($row))
+                continue;
+            $row = str_replace(",", ".", $row);
+            if (!$profile_check) {
+                if (strstr($row, '|')) {
+                    $fields = explode('|', $row);
+                    if (!is_array($fields) || empty($fields) || empty($row))
+                        continue;
+                    elseif ($fields[0] == 'ZRH') {
+                        $depth_unit = $fields[4];
+                        $altitude_unit = $fields[5];
+                        $temp_unit = $fields[6];
+                        $tank_press_unit = $fields[7];
+                        $tank_vol_unit = $fields[8];
+                    } elseif ($fields[0] == 'ZDH') {
+                        $step_count = 0;
+                        $dives_count++;
+                        if (strlen($fields[5]) > 14)
+                            $fields[5] = substr($fields[5], 0, 14);
+                        $allowed_format=['YmdHi','YmdHis','YmdHisP','Y-m-d H:i:s','Y-m-d H:i','Y-m-d\TH:i:s','Y-m-d\TH:i'];
+                        $start_time=false;
+                        foreach ($allowed_format as $format) {
+                            try {
+                                $start_time = Carbon::createFromFormat($format, $fields[5]);
+                                if ($start_time)
+                                    break;
+                            } catch (Exception $e) {
+                                continue;
+                            }
+                        }
+                        $dives[$dives_count]['date'] = $start_time;
+                        $dives[$dives_count]['uploadTime'] = Carbon::now();
+                        $dives[$dives_count]['uploaderId'] = auth()->id();;
+                        $dives[$dives_count]['type'] = $this->type;
+                        $dives[$dives_count]['userId'] = $this->user_id;
+                    }
+                }
+                elseif (substr($row, 0, 4) == 'ZDP{') {
+                    $line_count = 0;
+                    $last_press = null;
+                    $profile_arr = array();
+                    $surface_step = null;
+                    $max_depth = 0;
+                    $min_temp = 9999;
+                    $profile_check = true;
+                }
+            } else {
+                if (substr($row, 0, 4) == 'ZDP}') {
+                    $profile_check = false;
+                } else {
+                    $row = str_replace(' ', '', $row);
+                    $row = str_replace(',', '.', $row);
+                    $f = array();
+                    $f = explode('|', $row);
+                    if (isset($f[1])) {
+                        if (substr_count($f[1], '.') > 1)
+                            $f[1] = floatval($f[1]);
+                        if ((float) $f[1] == 0 && $line_count > 0)
+                            continue;
+                        $dives[$dives_count]['profile'][$line_count]['timesec'] = round($f[1] * 60);
+                        if ($line_count == 0 && (!$f[3] || $f[3] == ''))
+                            $f[3] = '1.21';
+                        if ($f[3]) {
+                            $used_gas = $this->getGasSwitch($f[3]);
+                            $dives[$dives_count]['profile'][$line_count]['gases'] = $used_gas;
+                            $dives[$dives_count]['profile'][$line_count]['marker'] = self::getMarkerUrl(($used_gas));
+                        }
+                        if ($depth_unit == "FSWG" || $depth_unit == "FFWG") {
+                            $f[2] = (float) $f[2] / 3.2808;
+                        } elseif ($depth_unit == "MFWG") {
+                            $f[2] = $f[2];
+                        }
+                        $dives[$dives_count]['profile'][$line_count]['depth'] = $f[2];
+                        $dives[$dives_count]['profile'][$line_count]['tank_pressure'] = null;
+                        if (isset($f[10]) && $f[10]) {
+                            $f[10] = round((int) $f[10]);
+                            if ($tank_press_unit == "PSIA") {
+                                $f[10] = round((int) $f[10] * 0.0689475729);
+                            }
+                            $dives[$dives_count]['profile'][$line_count]['tank_pressure'] = $f[10];
+                        }
+                        $dives[$dives_count]['profile'][$line_count]['temp'] = null;
+                        if (isset($f[8]) && $f[8]) {
+                            if ($temp_unit == "F")
+                                $f[8] = round(((float) $f[8] - 32) / 1.8);
+                            elseif ($temp_unit == "K")
+                                $f[8] = round((float) $f[8] - 272.15);
+                            $dives[$dives_count]['profile'][$line_count]['temp'] = $f[8];
+                        }
+                        $dives[$dives_count]['profile'][$line_count]['tank_volume'] = null;
+                        if (isset($f[15]) && $f[15]) {
+                            if ($tank_vol_unit == "CF") {
+                                $f[15] = round((float) $f[15] / 0.035315);
+                            }
+                            $dives[$dives_count]['profile'][$line_count]['tank_volume'] = $f[15];
+                        }
+                        $line_count++;
+                        $perc = ceil(($idx+1) * 100 / $rows_count);
+                    }
+                }
+            }
+        }
+
+        $warnings = $this->diveArrayToDb($dives);
+        if (!$warnings)
+            $out['success'] = true;
+        else
+            $out['warning'] = $warnings;
+        return $out;
+    }
+
     public function parseConftech()
     {
 
@@ -337,7 +460,7 @@ class DiveParser
                     $temp = (float)$dive['profile'][$idx]['temp'];
                     if ($temp < $min_temp)
                         $min_temp = $temp;
-                } else
+                } else  $temp=null;
                 if ((float) $step['depth'] <= 0.05 && !$surface_step)
                     $surface_step = $count;
                 elseif ((float) $step['depth'] > 0.50)
@@ -353,7 +476,7 @@ class DiveParser
                 $perc = ceil($count * 100 / $p_count);
                 if ($perc > 100)
                     $perc = 100;
-                ProgressEvent::dispatch("SAVING_DIVE", $perc, $diveId);
+                //ProgressEvent::dispatch("SAVING_DIVE", $perc, $diveId);
             }
             if ($dive['type'] == 'reb') {
                 $dive['profile'][0]['marker'] = Storage::url("gas_switch/reb.png");
