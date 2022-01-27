@@ -3831,14 +3831,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   broadcaster: 'pusher',
-  key: '0dea1e5b3bd661b90498',
+  key: '180716',
   //wsHost:            window.location.hostname,ù
-  wsHost: 'websocket.danavatar.eu',
+  wsHost: 'soketi.danavatar.eu',
   wsPort: 6002,
   wssPort: 6002,
+  forceTLS: false,
+  encrypted: true,
   disableStats: true,
-  //encrypted:         !window.APP_DEBUG,
-  encrypted: false,
   enabledTransports: ['ws', 'wss']
 });
 

@@ -16,7 +16,7 @@ class RoleController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return Role::orderBy('level', 'ASC')->get();
+        return Role::dsg()->get();
     }
 
 
@@ -49,14 +49,8 @@ class RoleController extends \App\Http\Controllers\Controller
     public function updateUserRoles(Request $request, User $user)
     {
         try {
-            $roles = Role::whereIn('slug', $request->all())->get();
-            foreach ($user->roles as $r)
-                $user->roles()->destroy($r);
-
-            foreach ($roles as $r) {
-                $user->roles()->associate($r);
-            }
-            $user->save();
+            $roles = Role::whereIn('name', $request->all())->get();
+            $user->syncRoles($roles,4);
             $response['success'] = true;
         } catch (Exception $e) {
             $response['waring'] = $e->getMessage();

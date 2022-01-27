@@ -15,7 +15,6 @@ class UserController extends \App\Http\Controllers\Controller
         $sort = $request->get('sort', 'date');
         $sortDirection = $request->get('sortDirection', 'DESC');
         $filters = json_decode($request->get('filters', '{}'));
-        dump($filters);
         $search = $request->get('search', '');
         $q = User::orderBy($sort, $sortDirection);
         if ($filters) {
@@ -29,12 +28,12 @@ class UserController extends \App\Http\Controllers\Controller
             });
         }
         if ($search) {
-            $q = $q->where('firstName','LIKE', '%'.$search.'%')->orWhere('lastName','LIKE', '%'.$search.'%')->orWhere('email','LIKE', '%'.$search.'%');
+            $q = $q->where('firstname','LIKE', '%'.$search.'%')->orWhere('lastname','LIKE', '%'.$search.'%')->orWhere('email','LIKE', '%'.$search.'%');
         }
-        ProgressEvent::dispatch("LOADING_USERS");
+        //ProgressEvent::dispatch("LOADING_USERS");
         $totalFound = $q->count();
 
-        $users = $q->offset(($page - 1) * $perPage)->limit($perPage)->get();
+        $users = $q->with('dsgroles')->offset(($page - 1) * $perPage)->limit($perPage)->get();
         $out = [];
         $out['users']=$users;
         $usersCount = User::count();
@@ -42,7 +41,6 @@ class UserController extends \App\Http\Controllers\Controller
         $out['pagination']['total'] = ceil($totalFound / $perPage);
         $out['pagination']['totalUsers'] = $usersCount;
         $out['pagination']['perPage'] = $perPage;
-
         return $out;
     }
     public function get(Request $request, User $user)

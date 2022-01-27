@@ -220,7 +220,7 @@ class DiveParser
                         } elseif ($depth_unit == "MFWG") {
                             $f[2] = $f[2];
                         }
-                        $dives[$dives_count]['profile'][$line_count]['depth'] = $f[2];
+                        $dives[$dives_count]['profile'][$line_count]['depth'] = (float) $f[2];
                         $dives[$dives_count]['profile'][$line_count]['tank_pressure'] = null;
                         if (isset($f[10]) && $f[10]) {
                             $f[10] = round((int) $f[10]);
@@ -354,9 +354,9 @@ class DiveParser
         //dd(Storage::url("gas_switch/"));
         if ($gases) {
             if ($gases['he'] == 0)
-                return Storage::url("gas_switch/" . $gases['o2'] . ".png");
+                return Storage::disk('local')->url("gas_switch/" . $gases['o2'] . ".png");
             else
-                return Storage::url("gas_switch/trmx.png");
+                return Storage::disk('local')->url("gas_switch/trmx.png");
         }
         return null;
     }
@@ -479,7 +479,7 @@ class DiveParser
                 //ProgressEvent::dispatch("SAVING_DIVE", $perc, $diveId);
             }
             if ($dive['type'] == 'reb') {
-                $dive['profile'][0]['marker'] = Storage::url("gas_switch/reb.png");
+                $dive['profile'][0]['marker'] = Storage::disk('local')->url("gas_switch/reb.png");
                 $dive['rebData']['diluent'] = ['o2' => 21, 'n2' => 79, "he" => 0];
                 $dive['rebData']['ppo2s'][] = ['time'=>0, 'ppo2'=>1.2];
             }

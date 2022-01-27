@@ -6,6 +6,8 @@ use App\Helpers\DecoCalculator;
 use App\Mail\UserInvited;
 use App\Models\Dive;
 use App\Models\Invite;
+use App\Models\Role;
+use App\Models\Team;
 use App\Models\User;
 use App\Notifications\InviteCreated;
 use App\Notifications\ResetPasswordNotification;
@@ -110,7 +112,19 @@ class TestController extends Controller
         $gfCalculator=new DecoCalculator($dive);
         $gfCalculator->calculateGF();
     }
-
+    public function resetDsgRoles () {
+        $users=User::get();
+        $userRole=Role::where('name','user')->first();
+        $adminRole=Role::where('name','admin')->first();
+        $team = Team::where('name', 'dsg')->first();
+        foreach ($users as $user) {
+            if ($user->email=='andrea.covelli@gmail.com')
+                $user->syncRoles([$adminRole], $team);
+            else
+                $user->syncRoles([$userRole], $team);
+        }
+        dd('fatto');
+    }
     public function sort() {
 
         $dive=Dive::first();

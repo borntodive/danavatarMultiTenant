@@ -33,6 +33,7 @@ Route::get('/test/send-invite', [\App\Http\Controllers\TestController::class,'se
 Route::get('/test/influx', [\App\Http\Controllers\TestController::class,'influx']);
 Route::get('/test/gf',[TestController::class, 'testGF']);
 Route::get('/test/sort',[TestController::class, 'sort']);
+Route::get('/reset/dsg-roles',[TestController::class, 'resetDsgRoles']);
 Route::get('/test/log', function () {
     Log::debug('test');
 });

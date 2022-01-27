@@ -67,6 +67,7 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
         'name',
+        'avatarUrl'
     ];
 
     /**
@@ -77,6 +78,11 @@ class User extends Authenticatable
     public function getNameAttribute()
     {
         return "{$this->firstname} {$this->lastname}";
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        return $this->profile_photo_url;
     }
 
 
@@ -117,6 +123,11 @@ class User extends Authenticatable
     public function dives()
     {
         return $this->hasMany(Dive::class);
+    }
+
+    public function dsgroles()
+    {
+        return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id',4);
     }
 
     public function sensorsPerDay()
