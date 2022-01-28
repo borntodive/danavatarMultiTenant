@@ -37,7 +37,7 @@ class Datatable extends Component
 
     public function mount() {
         $this->sortField = 'firstname';
-        $this->roles=Role::withoutSuperAdmin()->get();
+        $this->roles=Role::withoutSuperAdmin()->avatar()->get();
         if (!$this->tenant)
             $this->availableSpeciaties=\App\Models\MedicalSpecialty::get();
         else {

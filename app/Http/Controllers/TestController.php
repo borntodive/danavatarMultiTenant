@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DecoCalculator;
 use App\Mail\UserInvited;
+use App\Models\Dive;
 use App\Models\Invite;
+use App\Models\Role;
+use App\Models\Team;
 use App\Models\User;
 use App\Notifications\InviteCreated;
 use App\Notifications\ResetPasswordNotification;
@@ -87,5 +91,49 @@ class TestController extends Controller
             ];
         }
         dd($data[0]);
+    }
+    public function testGF()
+    {
+        ini_set('output_buffering', 'off');
+        // Turn off PHP output compression
+        ini_set('zlib.output_compression', false);
+
+        //Flush (send) the output buffer and turn off output buffering
+        while (@ob_end_flush()) ;
+
+        // Implicitly flush the buffer(s)
+        ini_set('implicit_flush', true);
+        ob_implicit_flush(true);
+
+        // Needed to force browsers to actually display data
+        echo str_pad("", 1024, " ");
+        echo "<br />";
+        $dive=Dive::first();
+        $gfCalculator=new DecoCalculator($dive);
+        $gfCalculator->calculateGF();
+    }
+    public function resetDsgRoles () {
+        $users=User::get();
+        $userRole=Role::where('name','user')->first();
+        $adminRole=Role::where('name','admin')->first();
+        $team = Team::where('name', 'dsg')->first();
+        foreach ($users as $user) {
+            if ($user->email=='andrea.covelli@gmail.com')
+                $user->syncRoles([$adminRole], $team);
+            else
+                $user->syncRoles([$userRole], $team);
+        }
+        dd('fatto');
+    }
+    public function sort() {
+
+        $dive=Dive::first();
+        $reb=$dive->rebData['ppo2s'];
+
+
+        $collection = collect($reb);
+
+        $sorted = $collection->sortBy('time');
+        dump($sorted);
     }
 }

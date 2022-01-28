@@ -29,5 +29,12 @@
       <jdbc-url>jdbc:postgresql://72.105.76.135:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="danAvatarStaging" uuid="8d875414-ce1c-4e96-946c-5e9b4ab9aa75">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://172.105.76.135:5432/danavatar_staging</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\NewEcgData;
+use App\Helpers\DiveParser;
 use App\Http\Controllers\Controller;
+use App\Models\Dive;
 use App\Models\Sensor;
 use App\Models\SensorsPerDay;
 use Carbon\Carbon;
@@ -15,6 +17,8 @@ use Illuminate\Support\Str;
 use InfluxDB2\Client;
 use InfluxDB2\Model\WritePrecision;
 use InfluxDB2\Point;
+use InfluxDB2\WriteType as WriteType;
+
 
 
 class SampleController extends Controller
@@ -22,14 +26,16 @@ class SampleController extends Controller
     public function store (Request $request)
     {
         # You can generate a Token from the "Tokens Tab" in the UI
-        $token = '2N8qnyK4qyHSfQaZYEoXOdUDkrp9fMx1FPBBnu9VgBREGnRMczw1U2xcNT-aGL4rz7esMjHr10nhTL4Gb6yhZg==';
-        $org = 'danrni';
-
-        $bucket = env('INFLUX_BUCKET');
+        $token = env("INFLUX_TOKEN");
+        $org = env("INFLUX_ORG");
+        $bucket = env("INFLUX_BUCKET");
 
         $client = new Client([
-            "url" => env('INFLUX_URL'),
+            "url" => env("INFLUX_URL"),
             "token" => $token,
+            "org" => $org,
+            "debug" => false,
+            "timeout"=>0
         ]);
         $writeApi = $client->createWriteApi();
         ini_set('max_execution_time',120);
@@ -142,12 +148,59 @@ class SampleController extends Controller
         return response($respose, $status);
     }
 
-    private function toSnakeCase($array){
+    public function storeDives(Request $request)
+    {
+        # You can generate a Token from the "Tokens Tab" in the UI
+
+        ini_set('max_execution_time', 0);
+        $validator = Validator::make($this->toSnakeCase($request->all()), [
+            'data' => 'required|array'
+
+        ]);
+
+        if ($validator->fails()) {
+            return response(['errors' => $validator->errors()->all()], 422);
+        }
+        $respose = [];
+        $dives = $request['data'];
+        $status = 200;
+        $userId = null;
+        $gdras = [];
+        foreach ($dives as $idx => $dive) {
+            $validator = Validator::make($dive, [
+                "datetime" => 'required|integer|between:0,2147483648',
+                "diveId" => 'required',
+                "userId" => 'required|integer|exists:users,id',
+                "divepoints" => 'required|array',
+            ]);
+            $diveParser= new DiveParser($dive,'oc',$dive['userId']);
+            $diveParser->parseConftech();
+            /* $d=new Dive();
+            $d->datetime=$dive['datetime'];
+            $d->user_id=$dive['userId'];
+            $d->diveId=$dive['diveId'];
+            $d->divepoints=$dive['divepoints'];
+            $d->save(); */
+
+            $gdras[]=[
+                'diveId'=>$dive['diveId'],
+                'gdra'=>'green'
+            ];
+        }
+        if ($status == 200)
+            $respose['message'] = 'All dives created successfully';
+        else
+            $respose['message'] = 'One or more samples were invalid';
+            $respose['gdra'] = $gdras;
+        return response($respose, $status);
+    }
+
+    private function toSnakeCase($array)
+    {
         $snakeCase = array();
-        foreach($array as $name => $value){
+        foreach ($array as $name => $value) {
             $snakeCase[Str::snake($name)] = $value;
         }
         return $snakeCase;
     }
-
 }

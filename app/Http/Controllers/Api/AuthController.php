@@ -34,4 +34,8 @@ class AuthController extends Controller
             return response($response, 401);
         }
     }
+    public function logout (Request $request) {
+        $request->user()->currentAccessToken()->delete();
+        return response(['state'=>'success'], 200);
+    }
 }

@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="Anamnesis with Medicina Subacquea">
+    <list default="true" id="bf15c669-7fad-4a4c-a894-3b4766efb072" name="Default Changelist" comment="edit Reb">
+      <change afterPath="$PROJECT_DIR$/app/Helpers/DiveFunctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3ad2801b-a162-4a14-9881-71c1d495b6c5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4af7a612-d637-47e8-b6da-09e4270b8808.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ebcad798-7551-45e4-a37f-c77848f8968a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/medical-record/neuro-view-disorders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/DiveParser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/DiveParser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/DiveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/DiveController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/public/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +57,15 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="i18n Ally: Laravel/PHP source" pattern="file[danavatar]:app//*&amp;&amp;!file[danavatar]:app/Broadcasting//*&amp;&amp;!file[danavatar]:app/Console//*&amp;&amp;!file[danavatar]:app/Events//*&amp;&amp;!file[danavatar]:app/Exceptions//*&amp;&amp;!file[danavatar]:app/Models//*&amp;&amp;!file[danavatar]:app/Providers//*" />
+    <scope name="i18n Ally: Laravel/Blade templates" pattern="file[danavatar]:resources/views//*" />
+    <scope name="i18n Ally: Symfony/PHP source" pattern="file[danavatar]:src//*&amp;&amp;!file[danavatar]:src/DataFixtures//*" />
+    <scope name="i18n Ally: Symfony/Twig templates" pattern="file[danavatar]:templates//*" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -217,6 +245,33 @@
       <path value="$PROJECT_DIR$/vendor/hnhdigital-os/laravel-number-converter" />
       <path value="$PROJECT_DIR$/vendor/hnhdigital-os/php-number-converter" />
       <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
+      <path value="$PROJECT_DIR$/vendor/aws/aws-crt-php" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/react/stream" />
+      <path value="$PROJECT_DIR$/vendor/react/socket" />
+      <path value="$PROJECT_DIR$/vendor/react/dns" />
+      <path value="$PROJECT_DIR$/vendor/react/http" />
+      <path value="$PROJECT_DIR$/vendor/react/promise-timer" />
+      <path value="$PROJECT_DIR$/vendor/react/promise-stream" />
+      <path value="$PROJECT_DIR$/vendor/react/cache" />
+      <path value="$PROJECT_DIR$/vendor/react/event-loop" />
+      <path value="$PROJECT_DIR$/vendor/cboden/ratchet" />
+      <path value="$PROJECT_DIR$/vendor/league/config" />
+      <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/vendor/hashids/hashids" />
+      <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/vendor/ratchet/rfc6455" />
+      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server" />
+      <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-websockets" />
+      <path value="$PROJECT_DIR$/vendor/kirkbushell/eloquence" />
+      <path value="$PROJECT_DIR$/vendor/ringcentral/psr7" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n71kcTdmyAxn2ngrCHd5fMD9ht" />
@@ -240,9 +295,9 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/components/medical-record" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dsg" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -371,6 +426,11 @@
       <workItem from="1624866212030" duration="18358000" />
       <workItem from="1625039600840" duration="8219000" />
       <workItem from="1625212657999" duration="12232000" />
+      <workItem from="1642608980461" duration="221000" />
+      <workItem from="1642609212918" duration="234000" />
+      <workItem from="1642627115664" duration="3988000" />
+      <workItem from="1642671438087" duration="707000" />
+      <workItem from="1642672665513" duration="8003000" />
     </task>
     <task id="LOCAL-00104" summary="Fix anamnesis profession label">
       <created>1615299726430</created>
@@ -737,11 +797,9 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ORL edit Anamnesis" />
     <MESSAGE value="ORL edit esame obiettivo" />
     <MESSAGE value="OPT ecg" />
     <MESSAGE value="ORL MR edit complete" />
@@ -766,7 +824,8 @@
     <MESSAGE value="Edit Neuro" />
     <MESSAGE value="View Neuro" />
     <MESSAGE value="Anamnesis with Medicina Subacquea" />
-    <option name="LAST_COMMIT_MESSAGE" value="Anamnesis with Medicina Subacquea" />
+    <MESSAGE value="edit Reb" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit Reb" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
