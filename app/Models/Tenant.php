@@ -98,7 +98,7 @@ class Tenant extends Authenticatable
      */
     public function updateProfilePhoto(UploadedFile $photo)
     {
-        $path = Storage::store('tenant-photos',$photo,$this->profilePhotoDisk());
+        $path = $photo::store('tenant-photos',$this->profilePhotoDisk());
         tap($this->profile_photo_path, function ($previous) use ($path) {
 
             $this->forceFill([
