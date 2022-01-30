@@ -37,10 +37,10 @@ class Update extends Component
         $this->resetErrorBag();
         $validatedData = $this->validate();
         $this->center->save();
+        dd($this->photo);
         if ($this->photo) {
             $this->center->updateProfilePhoto($this->photo);
         }
-        //dd($this->center->profile_photo_path);
 
 
 
