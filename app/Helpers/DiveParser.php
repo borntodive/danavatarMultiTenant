@@ -291,7 +291,7 @@ class DiveParser
                 $dives[$dives_count]['profile'][$line_count]['tankPressure'] = round((float) $divePoint['tankPressure'] / 100000);
             $dives[$dives_count]['profile'][$line_count]['temp'] = null;
             if (isset($divePoint['temperature'])) {
-                $dives[$dives_count]['profile'][$line_count]['temp'] = (float) $divePoint['temperature'] - 272.15;
+                $dives[$dives_count]['profile'][$line_count]['temp'] = (float) $divePoint['temperature'];
                 if ($dives[$dives_count]['profile'][$line_count]['temp'] < $min_temp)
                     $min_temp = $dives[$dives_count]['profile'][$line_count]['temp'];
             }

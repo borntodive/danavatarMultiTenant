@@ -57,6 +57,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'gender'=> UserGender::Class,
         'dob'=>'date',
+        'permissions'=>'array'
     ];
 
     /**
@@ -67,7 +68,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
         'name',
-        'avatarUrl'
+        'avatarUrl',
+        'permissions'
     ];
 
     /**
@@ -79,6 +81,19 @@ class User extends Authenticatable
     {
         return "{$this->firstname} {$this->lastname}";
     }
+    /**
+     * Get the user's name.
+     *
+     * @return string
+     */
+    /* public function getPermissionsAttribute()
+    {
+        $permissions=[];
+        foreach (Permission::get() as $permission) {
+            if ($this->isAbleTo($permission->name, 'dsg'));
+        }
+        return $permissions;
+    } */
 
     public function getAvatarUrlAttribute()
     {
