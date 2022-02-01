@@ -55,9 +55,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'gender'=> UserGender::Class,
-        'dob'=>'date',
-        'permissions'=>'array'
+        'gender' => UserGender::Class,
+        'dob' => 'date',
+        'permissions' => 'array'
     ];
 
     /**
@@ -88,10 +88,12 @@ class User extends Authenticatable
      */
     public function getPermissionsAttribute()
     {
-        $permissions=[];
-        foreach (Permission::all() as $permission) {
-            if ($this->isAbleTo($permission->name, 'dsg'))
-             $permissions[]=$permission->name;
+        $permissions = [];
+        if (session()->get('tenant')) {
+            foreach (Permission::all() as $permission) {
+                if ($this->isAbleTo($permission->name, session()->get('tenant')->slug))
+                    $permissions[] = $permission->name;
+            }
         }
         return $permissions;
     }
@@ -128,7 +130,7 @@ class User extends Authenticatable
 
     public function medicalRecordsAsDoctor()
     {
-        return $this->hasMany(MedicalRecord::class,'doctor_id');
+        return $this->hasMany(MedicalRecord::class, 'doctor_id');
     }
 
     public function samples()
@@ -143,7 +145,7 @@ class User extends Authenticatable
 
     public function dsgroles()
     {
-        return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id',4);
+        return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id', 4);
     }
 
     public function sensorsPerDay()
@@ -179,7 +181,8 @@ class User extends Authenticatable
         }
     }
 
-    public function isInCurrentCenter(){
+    public function isInCurrentCenter()
+    {
         if (session()->has('tenant')) {
 
             return $this->centers->contains(session()->get('tenant')->id);
@@ -192,8 +195,9 @@ class User extends Authenticatable
         return 's3';
     }
 
-    public function getPasswordResetUrl() {
-        return route('invite.accept',['token'=>$this->token]);
+    public function getPasswordResetUrl()
+    {
+        return route('invite.accept', ['token' => $this->token]);
     }
 
     public function sendPasswordResetNotification($token)

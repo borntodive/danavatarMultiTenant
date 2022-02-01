@@ -34,8 +34,8 @@ Route::get('/test/influx', [\App\Http\Controllers\TestController::class,'influx'
 Route::get('/test/gf',[TestController::class, 'testGF']);
 Route::get('/test/sort',[TestController::class, 'sort']);
 Route::get('/reset/dsg-roles',[TestController::class, 'resetDsgRoles']);
-Route::get('/test/log', function () {
-    Log::debug('test');
+Route::get('/test/error', function () {
+    echo $pippo['pluto'];
 });
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified','role:super_admin'])->group(function () {

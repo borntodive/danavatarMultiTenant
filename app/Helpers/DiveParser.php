@@ -281,7 +281,7 @@ class DiveParser
         //ProgressEvent::dispatch("PARSING_DIVE", 0, $dives_count);
         //$totalLines = count($dive->dive->samples->waypoint);
         foreach ($dive['divepoints'] as $divePoint) {
-            $dives[$dives_count]['profile'][$line_count]['timesec'] = (int) $divePoint['time'] - $dive['datetime'];
+            $dives[$dives_count]['profile'][$line_count]['timesec'] = (int) $divePoint['time'] - (int) $dive['datetime'];
             $dives[$dives_count]['profile'][$line_count]['depth'] = (float) $divePoint['depth'] * -1;
 
             if ($dives[$dives_count]['profile'][$line_count]['depth'] > $max_depth)
@@ -303,6 +303,7 @@ class DiveParser
                 if (isset($divePoint["tankVolume"]))
                     $dives[$dives_count]['profile'][$line_count]['tankVolume'] = $divePoint["tankVolume"];
             }
+            $line_count++;
         }
 
         $warnings = $this->diveArrayToDb($dives);
@@ -388,7 +389,7 @@ class DiveParser
                 $first_point['depth'] = 0;
                 $first_point['timesec'] = 0;
                 if ($dive['profile'][0]['timesec']  == 0)
-                    $time_shift = (int)$dive['profile'][0]['timesec'];
+                    $time_shift = (int)$dive['profile'][1]['timesec'];
                 array_unshift($dive['profile'], $first_point);
             }
             $p_count = count($dive['profile']);
@@ -409,6 +410,7 @@ class DiveParser
                     $dive['profile'][$curr_idx]['gases'] = $dive['profile'][$last_idx]['gases'];
                 $dive['profile'][$curr_idx]['calculated'] = true;
             }
+
             $prev_temp = null;
             $prev_depth = null;
             $prev_time = null;
@@ -423,7 +425,7 @@ class DiveParser
                 $dive['profile'][$idx]['compartmentLoad'] = [];
                 $dive['profile'][$idx]['compartmentGfs'] = [];
                 $dive['profile'][$idx]['timestamp'] = new \DateTime($ts->toDateTimeString());
-                $dive['profile'][$idx]['time'] = $step['timesec'] / 60;
+                $dive['profile'][$idx]['time'] = $dive['profile'][$idx]['timesec'] / 60;
                 if ($dive['type'] == 'reb') {
                     $gas['o2'] = DiveFunctions::getBestO2Fraction(1.2, ($step['depth'] / 10) + 1);
                     $gas['he'] = 0;
@@ -442,6 +444,7 @@ class DiveParser
                 }
                 $vs = 0;
                 if ($idx > 0) {
+
                     $d_depth = $step['depth'] - $prev_depth;
                     $d_time = $dive['profile'][$idx]['time'] - $prev_time;
                     $vs = round($d_depth / $d_time);
