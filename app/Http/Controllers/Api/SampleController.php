@@ -153,7 +153,7 @@ class SampleController extends Controller
         # You can generate a Token from the "Tokens Tab" in the UI
 
         ini_set('max_execution_time', 0);
-        \Sentry\captureMessage(json_encode($request['data']));
+        \Sentry\captureMessage(json_encode($request));
         $validator = Validator::make($this->toSnakeCase($request->all()), [
             'data' => 'required|array'
 
