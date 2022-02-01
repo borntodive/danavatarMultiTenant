@@ -86,14 +86,14 @@ class User extends Authenticatable
      *
      * @return string
      */
-    /* public function getPermissionsAttribute()
+    public function getPermissionsAttribute()
     {
         $permissions=[];
         foreach (Permission::get() as $permission) {
             if ($this->isAbleTo($permission->name, 'dsg'));
         }
         return $permissions;
-    } */
+    }
 
     public function getAvatarUrlAttribute()
     {
