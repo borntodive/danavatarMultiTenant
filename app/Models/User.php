@@ -89,8 +89,9 @@ class User extends Authenticatable
     public function getPermissionsAttribute()
     {
         $permissions=[];
-        foreach (Permission::get() as $permission) {
-            if ($this->isAbleTo($permission->name, 'dsg'));
+        foreach (Permission::all() as $permission) {
+            if ($this->isAbleTo($permission->name, 'dsg'))
+             $permissions[]=$permission->name;
         }
         return $permissions;
     }
