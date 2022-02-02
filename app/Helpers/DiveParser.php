@@ -388,8 +388,15 @@ class DiveParser
                 $first_point = $dive['profile'][0];
                 $first_point['depth'] = 0;
                 $first_point['timesec'] = 0;
-                if ($dive['profile'][0]['timesec']  == 0)
-                    $time_shift = (int)$dive['profile'][1]['timesec'];
+                $c=1;
+                while ($time_shift==0) {
+                    $time_shift = (int)$dive['profile'][$c]['timesec'];
+                    $c++;
+                    if (!isset($dive['profile'][$c]['timesec']))
+                        break;
+
+                }
+
                 array_unshift($dive['profile'], $first_point);
             }
             $p_count = count($dive['profile']);
@@ -416,29 +423,34 @@ class DiveParser
             $prev_time = null;
             ProgressEvent::dispatch("SAVING_DIVE", 0, $diveId);
             $lastGas = null;
+            $pointsToBeRemoved=[];
+            $lineCount=0;
             foreach ($dive['profile'] as $idx => $step) {
-                if ($time_shift > 0 && $idx > 0) {
-                    $dive['profile'][$idx]['timesec'] += $time_shift;
+                if ($time_shift > 0 && $lineCount > 0) {
+                    $dive['profile'][$lineCount]['timesec'] += $time_shift;
                 }
-
-                $ts = $start_time_carbon->clone()->addSeconds((int) $dive['profile'][$idx]['timesec']);
-                $dive['profile'][$idx]['compartmentLoad'] = [];
-                $dive['profile'][$idx]['compartmentGfs'] = [];
-                $dive['profile'][$idx]['timestamp'] = new \DateTime($ts->toDateTimeString());
-                $dive['profile'][$idx]['time'] = $dive['profile'][$idx]['timesec'] / 60;
+                if ($dive['profile'][$lineCount]['timesec'] === $prev_time) {
+                    array_slice($dive['profile'],$idx,1);
+                    continue;
+                }
+                $ts = $start_time_carbon->clone()->addSeconds((int) $dive['profile'][$lineCount]['timesec']);
+                $dive['profile'][$lineCount]['compartmentLoad'] = [];
+                $dive['profile'][$lineCount]['compartmentGfs'] = [];
+                $dive['profile'][$lineCount]['timestamp'] = new \DateTime($ts->toDateTimeString());
+                $dive['profile'][$lineCount]['time'] = $dive['profile'][$lineCount]['timesec'] / 60;
                 if ($dive['type'] == 'reb') {
-                    $gas['o2'] = DiveFunctions::getBestO2Fraction(1.2, ($step['depth'] / 10) + 1);
+                    $gas['o2'] = DiveFunctions::getBestO2Fraction(1.2, ($dive['profile'][$lineCount]['depth'] / 10) + 1);
                     $gas['he'] = 0;
                     $gas['n2'] = 100 - $gas['o2'];
 
-                    $dive['profile'][$idx]['gases'] = $gas;
-                    if (isset($dive['profile'][$idx]['marker']))
-                        unset($dive['profile'][$idx]['marker']);
+                    $dive['profile'][$lineCount]['gases'] = $gas;
+                    if (isset($dive['profile'][$lineCount]['marker']))
+                        unset($dive['profile'][$lineCount]['marker']);
                 }
                 if (isset($step['gases'])) {
                     if ($step['gases'] == $lastGas) {
-                        unset($dive['profile'][$idx]['gases']);
-                        unset($dive['profile'][$idx]['marker']);
+                        unset($dive['profile'][$lineCount]['gases']);
+                        unset($dive['profile'][$lineCount]['marker']);
                     }
                     $lastGas = $step['gases'];
                 }
@@ -446,21 +458,24 @@ class DiveParser
                 if ($idx > 0) {
 
                     $d_depth = $step['depth'] - $prev_depth;
-                    $d_time = $dive['profile'][$idx]['time'] - $prev_time;
-                    $vs = round($d_depth / $d_time);
+                    $d_time = $dive['profile'][$lineCount]['time'] - $prev_time;
+                    if ($d_time>0) {
+                        $vs = round($d_depth / $d_time);
+                    }
+
                 }
-                $dive['profile'][$idx]['vs'] = $vs * -1;
-                if (!$dive['profile'][$idx]['temp'])
-                    $dive['profile'][$idx]['temp'] = $prev_temp;
+                $dive['profile'][$lineCount]['vs'] = $vs * -1;
+                if (!$dive['profile'][$lineCount]['temp'])
+                    $dive['profile'][$lineCount]['temp'] = $prev_temp;
                 if (!isset($step['calculated']))
                     $step['calculated'] = false;
                 if ($step['depth'] > $max_depth)
                     $max_depth = $step['depth'];
-                if ($dive['profile'][$idx]['temp'] === null && $prev_temp) {
-                    $dive['profile'][$idx]['temp'] = $prev_temp;
+                if ($dive['profile'][$lineCount]['temp'] === null && $prev_temp) {
+                    $dive['profile'][$lineCount]['temp'] = $prev_temp;
                 }
-                if ($dive['profile'][$idx]['temp'] !== null) {
-                    $temp = (float)$dive['profile'][$idx]['temp'];
+                if ($dive['profile'][$lineCount]['temp'] !== null) {
+                    $temp = (float)$dive['profile'][$lineCount]['temp'];
                     if ($temp < $min_temp)
                         $min_temp = $temp;
                 } else  $temp=null;
@@ -468,10 +483,10 @@ class DiveParser
                     $surface_step = $count;
                 elseif ((float) $step['depth'] > 0.50)
                     $surface_step = null;
-                $dive_time = $dive['profile'][$idx]['timesec'];
+                $dive_time = $dive['profile'][$lineCount]['timesec'];
                 $prev_temp = $temp;
                 $prev_depth = $step['depth'];
-                $prev_time = $dive['profile'][$idx]['time'];
+                $prev_time = $dive['profile'][$lineCount]['timesec'];
                 $count++;
                 if ($count == 1 || $count % 30 == 0 || $count == $p_count) {
                     $dive['miniChart'][] = $step['depth'] * -1;
@@ -479,8 +494,10 @@ class DiveParser
                 $perc = ceil($count * 100 / $p_count);
                 if ($perc > 100)
                     $perc = 100;
+                $lineCount++;
                 //ProgressEvent::dispatch("SAVING_DIVE", $perc, $diveId);
             }
+
             if ($dive['type'] == 'reb') {
                 $dive['profile'][0]['marker'] = Storage::disk('local')->url("gas_switch/reb.png");
                 $dive['rebData']['diluent'] = ['o2' => 21, 'n2' => 79, "he" => 0];
