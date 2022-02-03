@@ -15,7 +15,7 @@ class TrustProxies extends Middleware
     protected $proxies = [
         'danavatar.eu',
         'danavatar.dev',
-        '172.105.87.58',
+        '172.104.150.33',
         '*'
     ];
 
