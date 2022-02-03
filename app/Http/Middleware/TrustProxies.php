@@ -13,8 +13,8 @@ class TrustProxies extends Middleware
      * @var array|string|null
      */
     protected $proxies = [
-        'danavatar.eu',
-        'danavatar.dev',
+        '*.danavatar.eu',
+        '*.danavatar.dev',
         '172.104.150.33',
         '*'
     ];
