@@ -40,7 +40,7 @@ class DecoCalculator
         } else
             $this->resetCompartmentLoading();
 
-        $this->calculateLoadings($this->dive);
+        $gf=$this->calculateLoadings($this->dive);
 
         do {
             $nextDive = $this->dive->nextDive();
@@ -51,6 +51,7 @@ class DecoCalculator
                 $this->calculateLoadings($nextDive);
             }
         } while ($nextDive);
+        return $gf;
         //echo 'done';
     }
 
@@ -84,6 +85,8 @@ class DecoCalculator
                 $lastSample = $sample;
                 continue;
             }
+            if (!isset($sample['time']))
+             dd($sample['timesec']);
             $timeInterval = $sample['time'] - $lastSample['time'];
             $deltaDepth = (float) $sample['depth'] - (float) $lastSample['depth'];
 
@@ -147,7 +150,9 @@ class DecoCalculator
         ];
         $actualDive->profile=$newProfile;
         $actualDive->save();
+        return  $maxGfCombComputer;
     }
+
 
     public function calculateCeiling($gfHi, $gfLow)
     {

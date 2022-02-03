@@ -23,6 +23,8 @@ class DiveController extends \App\Http\Controllers\Controller
         //$out['profile'] = $dive->profile;
         $decoCalc = new DecoCalculator($dive);
         $out['ceil'] = $decoCalc->calculateCeiling($gfHi / 100, $gfLow / 100);
+        $out['settings']['gf']['hi']=settings()->group('gf')->get('gf_hi');
+        $out['settings']['gf']['low']=settings()->group('gf')->get('gf_low');
         return $out;
     }
 
