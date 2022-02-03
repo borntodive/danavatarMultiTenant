@@ -60,4 +60,15 @@ class Dive extends Model
 
     }
 
+    public function faceColor()
+    {
+        $yellowLimit=settings()->group('gf')->get('yellow_limit');
+        $redLimit=settings()->group('gf')->get('red_limit');
+        if ($this->gf >= $redLimit)
+            return 'red';
+        else if ($this->gf >= $yellowLimit)
+            return 'yellow';
+        return 'green';
+    }
+
 }

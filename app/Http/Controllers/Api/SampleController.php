@@ -174,24 +174,22 @@ class SampleController extends Controller
                 "divepoints" => 'required|array',
             ]);
             $diveParser= new DiveParser($dive,'oc',$dive['userId']);
-            $diveParser->parseConftech();
-            /* $d=new Dive();
-            $d->datetime=$dive['datetime'];
-            $d->user_id=$dive['userId'];
-            $d->diveId=$dive['diveId'];
-            $d->divepoints=$dive['divepoints'];
-            $d->save(); */
-
+            $result=$diveParser->parseConftech();
+            if (isset($result['warning']) && $result['warning'])
+                $status=202;
+            $d=data_get($result,'createdDives.0',null);
             $gdras[]=[
                 'diveId'=>$dive['diveId'],
-                'gdra'=>'green'
+                'gdra'=> $d ? $d->faceColor() : null,
+                'error'=> data_get($result,'warning',null)
             ];
+
         }
         if ($status == 200)
             $respose['message'] = 'All dives created successfully';
         else
-            $respose['message'] = 'One or more samples were invalid';
-            $respose['gdra'] = $gdras;
+            $respose['message'] = 'One or more dives were invalid';
+        $respose['result'] = $gdras;
         return response($respose, $status);
     }
 

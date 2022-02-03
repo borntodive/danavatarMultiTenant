@@ -128,11 +128,11 @@ class DiveParser
             }
         }
 
-        $warnings = $this->diveArrayToDb($dives);
-        if (!$warnings)
+        $message = $this->diveArrayToDb($dives);
+        if (!$message['warnings'])
             $out['success'] = true;
         else
-            $out['warning'] = $warnings;
+            $out['warning'] = $message['warnings'];
         return $out;
     }
 
@@ -143,9 +143,9 @@ class DiveParser
         $profile_check = false;
         $dives_count = 0;
         $step_count = 0;
-        $line_count=0;
+        $line_count = 0;
         $dives = [];
-        $rows_count=count($rows);
+        $rows_count = count($rows);
         ProgressEvent::dispatch("PARSING_DIVE", 0, $rows_count);
         foreach ($rows as $idx => $row) {
             if (empty($row))
@@ -167,8 +167,8 @@ class DiveParser
                         $dives_count++;
                         if (strlen($fields[5]) > 14)
                             $fields[5] = substr($fields[5], 0, 14);
-                        $allowed_format=['YmdHi','YmdHis','YmdHisP','Y-m-d H:i:s','Y-m-d H:i','Y-m-d\TH:i:s','Y-m-d\TH:i'];
-                        $start_time=false;
+                        $allowed_format = ['YmdHi', 'YmdHis', 'YmdHisP', 'Y-m-d H:i:s', 'Y-m-d H:i', 'Y-m-d\TH:i:s', 'Y-m-d\TH:i'];
+                        $start_time = false;
                         foreach ($allowed_format as $format) {
                             try {
                                 $start_time = Carbon::createFromFormat($format, $fields[5]);
@@ -184,8 +184,7 @@ class DiveParser
                         $dives[$dives_count]['type'] = $this->type;
                         $dives[$dives_count]['userId'] = $this->user_id;
                     }
-                }
-                elseif (substr($row, 0, 4) == 'ZDP{') {
+                } elseif (substr($row, 0, 4) == 'ZDP{') {
                     $line_count = 0;
                     $last_press = null;
                     $profile_arr = array();
@@ -245,17 +244,17 @@ class DiveParser
                             $dives[$dives_count]['profile'][$line_count]['tank_volume'] = $f[15];
                         }
                         $line_count++;
-                        $perc = ceil(($idx+1) * 100 / $rows_count);
+                        $perc = ceil(($idx + 1) * 100 / $rows_count);
                     }
                 }
             }
         }
 
-        $warnings = $this->diveArrayToDb($dives);
-        if (!$warnings)
+        $message = $this->diveArrayToDb($dives);
+        if (!$message['warnings'])
             $out['success'] = true;
         else
-            $out['warning'] = $warnings;
+            $out['warning'] = $message['warnings'];
         return $out;
     }
 
@@ -282,6 +281,7 @@ class DiveParser
         //$totalLines = count($dive->dive->samples->waypoint);
         foreach ($dive['divepoints'] as $divePoint) {
             $dives[$dives_count]['profile'][$line_count]['timesec'] = (int) $divePoint['time'] - (int) $dive['datetime'];
+            $dives[$dives_count]['profile'][$line_count]['time'] = (int) $divePoint['time'];
             $dives[$dives_count]['profile'][$line_count]['depth'] = (float) $divePoint['depth'] * -1;
 
             if ($dives[$dives_count]['profile'][$line_count]['depth'] > $max_depth)
@@ -306,11 +306,12 @@ class DiveParser
             $line_count++;
         }
 
-        $warnings = $this->diveArrayToDb($dives);
-        if (!$warnings)
+        $message = $this->diveArrayToDb($dives);
+        if (!$message['warnings'])
             $out['success'] = true;
         else
-            $out['warning'] = $warnings;
+            $out['warning'] = $message['warnings'];
+        $out['createdDives'] = $message['createdDives'];
         return $out;
     }
 
@@ -367,7 +368,7 @@ class DiveParser
     {
         ini_set('memory_limit', '-1');
         $mess = null;
-
+        $gfs = null;
         foreach ($dives as $diveId => $dive) {
 
             $user_id = $dive['userId'];
@@ -388,13 +389,12 @@ class DiveParser
                 $first_point = $dive['profile'][0];
                 $first_point['depth'] = 0;
                 $first_point['timesec'] = 0;
-                $c=1;
-                while ($time_shift==0) {
+                $c = 1;
+                while ($time_shift == 0) {
                     $time_shift = (int)$dive['profile'][$c]['timesec'];
                     $c++;
                     if (!isset($dive['profile'][$c]['timesec']))
                         break;
-
                 }
 
                 array_unshift($dive['profile'], $first_point);
@@ -420,19 +420,26 @@ class DiveParser
 
             $prev_temp = null;
             $prev_depth = null;
-            $prev_time = null;
+            $prev_time = -999999;
             ProgressEvent::dispatch("SAVING_DIVE", 0, $diveId);
             $lastGas = null;
-            $pointsToBeRemoved=[];
-            $lineCount=0;
-            foreach ($dive['profile'] as $idx => $step) {
+            $pointsToBeRemoved = [];
+            $lineCount = 0;
+            $divePointCount = count($dive['profile']);
+            $diveError = false;
+            for ($i = 0; $i < $divePointCount; $i++) {
                 if ($time_shift > 0 && $lineCount > 0) {
                     $dive['profile'][$lineCount]['timesec'] += $time_shift;
                 }
-                if ($dive['profile'][$lineCount]['timesec'] === $prev_time) {
-                    array_slice($dive['profile'],$idx,1);
-                    continue;
+                if ($dive['profile'][$lineCount]['timesec'] <= $prev_time) {
+                    dd([$dive['profile'][$lineCount]['timesec'],$prev_time]);
+                    array_splice($dive['profile'], $lineCount, 1);
+                    $divePointCount = count($dive['profile']);
+                    $diveError = true;
+                    break;
                 }
+                $prev_time = $dive['profile'][$lineCount]['timesec'];
+
                 $ts = $start_time_carbon->clone()->addSeconds((int) $dive['profile'][$lineCount]['timesec']);
                 $dive['profile'][$lineCount]['compartmentLoad'] = [];
                 $dive['profile'][$lineCount]['compartmentGfs'] = [];
@@ -447,30 +454,29 @@ class DiveParser
                     if (isset($dive['profile'][$lineCount]['marker']))
                         unset($dive['profile'][$lineCount]['marker']);
                 }
-                if (isset($step['gases'])) {
-                    if ($step['gases'] == $lastGas) {
+                if (isset($dive['profile'][$lineCount]['gases'])) {
+                    if ($dive['profile'][$lineCount]['gases'] == $lastGas) {
                         unset($dive['profile'][$lineCount]['gases']);
                         unset($dive['profile'][$lineCount]['marker']);
-                    }
-                    $lastGas = $step['gases'];
+                    } else
+                        $lastGas = $dive['profile'][$lineCount]['gases'];
                 }
                 $vs = 0;
-                if ($idx > 0) {
+                if ($lineCount > 0) {
 
-                    $d_depth = $step['depth'] - $prev_depth;
-                    $d_time = $dive['profile'][$lineCount]['time'] - $prev_time;
-                    if ($d_time>0) {
-                        $vs = round($d_depth / $d_time);
+                    $d_depth = $dive['profile'][$lineCount]['depth'] - $prev_depth;
+                    $d_time = $dive['profile'][$lineCount]['timesec'] - $prev_time;
+                    if ($d_time > 0) {
+                        $vs = round($d_depth / ($d_time / 60));
                     }
-
                 }
                 $dive['profile'][$lineCount]['vs'] = $vs * -1;
                 if (!$dive['profile'][$lineCount]['temp'])
                     $dive['profile'][$lineCount]['temp'] = $prev_temp;
-                if (!isset($step['calculated']))
-                    $step['calculated'] = false;
-                if ($step['depth'] > $max_depth)
-                    $max_depth = $step['depth'];
+                if (!isset($dive['profile'][$lineCount]['calculated']))
+                    $dive['profile'][$lineCount]['calculated'] = false;
+                if ($dive['profile'][$lineCount]['depth'] > $max_depth)
+                    $max_depth = $dive['profile'][$lineCount]['depth'];
                 if ($dive['profile'][$lineCount]['temp'] === null && $prev_temp) {
                     $dive['profile'][$lineCount]['temp'] = $prev_temp;
                 }
@@ -478,18 +484,17 @@ class DiveParser
                     $temp = (float)$dive['profile'][$lineCount]['temp'];
                     if ($temp < $min_temp)
                         $min_temp = $temp;
-                } else  $temp=null;
-                if ((float) $step['depth'] <= 0.05 && !$surface_step)
+                } else  $temp = null;
+                if ((float) $dive['profile'][$lineCount]['depth'] <= 0.05 && !$surface_step)
                     $surface_step = $count;
-                elseif ((float) $step['depth'] > 0.50)
+                elseif ((float) $dive['profile'][$lineCount]['depth'] > 0.50)
                     $surface_step = null;
                 $dive_time = $dive['profile'][$lineCount]['timesec'];
                 $prev_temp = $temp;
-                $prev_depth = $step['depth'];
-                $prev_time = $dive['profile'][$lineCount]['timesec'];
+                $prev_depth = $dive['profile'][$lineCount]['depth'];
                 $count++;
                 if ($count == 1 || $count % 30 == 0 || $count == $p_count) {
-                    $dive['miniChart'][] = $step['depth'] * -1;
+                    $dive['miniChart'][] = $dive['profile'][$lineCount]['depth'] * -1;
                 }
                 $perc = ceil($count * 100 / $p_count);
                 if ($perc > 100)
@@ -497,46 +502,48 @@ class DiveParser
                 $lineCount++;
                 //ProgressEvent::dispatch("SAVING_DIVE", $perc, $diveId);
             }
+            if (!$diveError) {
+                if ($dive['type'] == 'reb') {
+                    $dive['profile'][0]['marker'] = Storage::disk('local')->url("gas_switch/reb.png");
+                    $dive['rebData']['diluent'] = ['o2' => 21, 'n2' => 79, "he" => 0];
+                    $dive['rebData']['ppo2s'][] = ['time' => 0, 'ppo2' => 1.2];
+                }
 
-            if ($dive['type'] == 'reb') {
-                $dive['profile'][0]['marker'] = Storage::disk('local')->url("gas_switch/reb.png");
-                $dive['rebData']['diluent'] = ['o2' => 21, 'n2' => 79, "he" => 0];
-                $dive['rebData']['ppo2s'][] = ['time'=>0, 'ppo2'=>1.2];
+                $endtime = $dive['date']->clone()->addSeconds($dive_time);
+                $dive['endDate'] = $endtime;
+
+                //CHECK ALREADY UPLOADED
+                $old_dives = Dive::where('date', $dive['date'])->where('end_date', $dive['endDate'])->where('depth', $max_depth)->get();
+                if ($old_dives && count($old_dives) > 0) {
+                    $mess['duplicated'][] = $dive['date'];
+                    continue;
+                }
+                //CHECK ALREADY INWATER
+                $in_water = Dive::where('user_id', $user_id)->whereBetween('date', [$dive['date'], $dive['endDate']])->get();
+                if ($in_water && count($in_water) > 0) {
+                    $mess['in_water'][] = $dive['date'];
+                    continue;
+                }
+
+
+                //echo $dive['event_id'];
+                $dive['depth'] = $max_depth;
+                $dive['temp'] = $min_temp;
+                $dive['runtime'] = round($dive_time / 60, 2);
+                $d = Dive::create($dive);
+
+                //$d->profile()->createMany($profile);
+
+                $gfCalculator = new DecoCalculator($d);
+                ProgressEvent::dispatch("ANALYZING_DIVE", 0, $diveId);
+                $gfCalculator->calculateGF();
+                $createdDives[] =  $d;
             }
-
-            $endtime = $dive['date']->clone()->addSeconds($dive_time);
-            $dive['endDate'] = $endtime;
-
-            //CHECK ALREADY UPLOADED
-            $old_dives = Dive::where('date', $dive['date'])->where('end_date', $dive['endDate'])->where('depth', $max_depth)->get();
-            if ($old_dives && count($old_dives) > 0) {
-                $mess['duplicated'][] = $dive['date'];
-                continue;
-            }
-            //CHECK ALREADY INWATER
-            $in_water = Dive::where('user_id', $user_id)->whereBetween('date', [$dive['date'], $dive['endDate']])->get();
-            if ($in_water && count($in_water) > 0) {
-                $mess['in_water'][] = $dive['date'];
-                continue;
-            }
-
-
-            //echo $dive['event_id'];
-            $dive['depth'] = $max_depth;
-            $dive['temp'] = $min_temp;
-            $dive['runtime'] = round($dive_time / 60, 2);
-            $d = Dive::create($dive);
-
-            //$d->profile()->createMany($profile);
-
-            $gfCalculator = new DecoCalculator($d);
-            ProgressEvent::dispatch("ANALYZING_DIVE", 0, $diveId);
-            $gfCalculator->calculateGF();
-
-
+            else
+                $mess['invalid_data'][] = $dive['date'];
             //GradientFactor::calculate(null, $event->divesInfos, false);
             //CalcDeepStop($dive);
         }
-        return $mess;
+        return ['warnings' => $mess, 'createdDives' => $createdDives];
     }
 }
