@@ -368,7 +368,7 @@ class DiveParser
     {
         ini_set('memory_limit', '-1');
         $mess = null;
-        $gfs = null;
+        $createdDives = null;
         foreach ($dives as $diveId => $dive) {
 
             $user_id = $dive['userId'];

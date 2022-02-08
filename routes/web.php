@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\InvitesController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\TestController;
