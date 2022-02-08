@@ -80,12 +80,11 @@ class DiveController extends \App\Http\Controllers\Controller
     {
 
         $ext = $request->file->getClientOriginalExtension();
-        dump($ext);
         //$path = $request->file->store('dives');
         $type = $request->type;
         $user_id = $request->user()->id;
         $diveParser = new DiveParser(file_get_contents($request->file), $type, $user_id);
-        if (strtolower($ext)=='uudf')
+        if (strtolower($ext)=='uddf')
             $messages = $diveParser->parseUDDF();
         elseif (strtolower($ext)=='zxu' || strtolower($ext)=='zxu')
             $messages = $diveParser->parseZXL();
