@@ -33,10 +33,7 @@ class RoleController extends \App\Http\Controllers\Controller
         $validated = $request->validate([
             '_id' => 'sometimes',
             'name' => 'required|max:255',
-            'slug' => 'required|max:255',
-            'level' => 'required|integer',
         ]);
-        dump($validated['_id']);
         $id = $validated['_id'];
         unset($validated['_id']);
         $role = Role::updateOrCreate(['_id' => $id], $validated);
@@ -49,9 +46,9 @@ class RoleController extends \App\Http\Controllers\Controller
     }
     public function updateUserRoles(Request $request, User $user)
     {
-            $dsgTeam=Team::where('name','dsg')->first();
+        $dsgTeam=Team::where('name','dsg')->first();
         try {
-            $roles = Role::whereIn('name', $request->all())->get();
+            $roles = Role::whereIn('name', json_decode(request()->getContent()))->get();
             $user->syncRoles($roles,$dsgTeam->id);
             $response['success'] = true;
         } catch (Exception $e) {

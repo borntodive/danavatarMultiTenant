@@ -80,6 +80,7 @@ class DiveController extends \App\Http\Controllers\Controller
     {
 
         $ext = $request->file->getClientOriginalExtension();
+        dump($ext);
         //$path = $request->file->store('dives');
         $type = $request->type;
         $user_id = $request->user()->id;
