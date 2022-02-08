@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Role;
+use App\Models\Team;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class RoleController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return Role::dsg()->get();
+        return response(Role::dsg()->get(),200);
     }
 
 
@@ -48,9 +49,10 @@ class RoleController extends \App\Http\Controllers\Controller
     }
     public function updateUserRoles(Request $request, User $user)
     {
+            $dsgTeam=Team::where('name','dsg')->first();
         try {
             $roles = Role::whereIn('name', $request->all())->get();
-            $user->syncRoles($roles,4);
+            $user->syncRoles($roles,$dsgTeam->id);
             $response['success'] = true;
         } catch (Exception $e) {
             $response['waring'] = $e->getMessage();

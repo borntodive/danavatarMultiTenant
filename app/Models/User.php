@@ -57,7 +57,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'gender' => UserGender::Class,
         'dob' => 'date',
-        'permissions' => 'array'
+        'session_permissions' => 'array'
     ];
 
     /**
@@ -69,7 +69,7 @@ class User extends Authenticatable
         'profile_photo_url',
         'name',
         'avatarUrl',
-        'permissions'
+        'session_permissions'
     ];
 
     /**
@@ -86,7 +86,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getPermissionsAttribute()
+    public function getSessionPermissionsAttribute()
     {
         $permissions = [];
         if (session()->get('tenant')) {
@@ -145,7 +145,8 @@ class User extends Authenticatable
 
     public function dsgroles()
     {
-        return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id', 4);
+        $dsgTeam=Team::where('name','dsg')->first();
+        return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id', $dsgTeam->id);
     }
 
     public function sensorsPerDay()
