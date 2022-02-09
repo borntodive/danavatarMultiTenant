@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MedicalRecordFactory extends Factory
 {
-    protected $model = MedicalRecord::class;
-
     /**
      * Define the model's default state.
      *
