@@ -32,7 +32,7 @@ class SensorSeeder extends Seeder
             Sensor::create(
                 [
                     'name' => $sensor,
-                    'color' => $faker->hexColor,
+                    'color' => $faker->hexColor(),
                 ]
             );
         }
