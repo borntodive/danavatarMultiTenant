@@ -11,15 +11,13 @@ class CreateDiveTable extends Migration
      *
      * @return void
      */
-
-
     public function up()
     {
         Schema::create('dives', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->bigInteger('diveId');
-            $table->timestamp('datetime',13)->index();
+            $table->timestamp('datetime', 13)->index();
             $table->json('divepoints')->nullable();
             $table->timestamps();
         });

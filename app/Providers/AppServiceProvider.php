@@ -27,8 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::component('components.layout.breadcrumb');
-        if (App::environment('production', 'staging'))
-        {
+        if (App::environment('production', 'staging')) {
             URL::forceScheme('https');
         }
     }

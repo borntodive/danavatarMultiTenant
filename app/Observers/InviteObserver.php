@@ -18,21 +18,20 @@ class InviteObserver
      */
     public function created(Invite $invite)
     {
-        $user=User::withoutGlobalScope(TenantScope::class)->whereCodiceFiscale($invite->codice_fiscale)->first();
+        $user = User::withoutGlobalScope(TenantScope::class)->whereCodiceFiscale($invite->codice_fiscale)->first();
         $invite->notify(new InviteCreated());
         if ($user) {
-           $user->notify(new UserInviteCreated($invite));
-       }
-
+            $user->notify(new UserInviteCreated($invite));
+        }
     }
 
     public function creating(Invite $invite)
     {
-        $token=Str::random();
-        while (Invite::where('token',$token)->first()) {
+        $token = Str::random();
+        while (Invite::where('token', $token)->first()) {
             $token = Str::random();
         }
-        $invite->token=$token;
+        $invite->token = $token;
         $invite->expires_at = now()->addHours(config('invites.duration'));
     }
 

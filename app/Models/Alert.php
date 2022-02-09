@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Alert extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'time','user_id'
+        'time', 'user_id',
     ];
 
     protected $casts = [

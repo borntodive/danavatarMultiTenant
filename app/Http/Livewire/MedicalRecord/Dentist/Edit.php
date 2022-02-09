@@ -15,22 +15,23 @@ class Edit extends Component
     }
 
     public $equalizationLevel;
+
     public $equalizationTecnique;
 
     protected $rules = [
         'state.anamnesis' => 'nullable',
     ];
 
-    public function mount() {
-
+    public function mount()
+    {
         $this->parentMount();
-        $this->equalizationLevel=Dentist::$equalizationLevel;
-        $this->equalizationTecnique=Dentist::$equalizationTecnique;
-        if (! Arr::has($this->state, 'exams.instrumental.orthopantomography'))
+        $this->equalizationLevel = Dentist::$equalizationLevel;
+        $this->equalizationTecnique = Dentist::$equalizationTecnique;
+        if (! Arr::has($this->state, 'exams.instrumental.orthopantomography')) {
             data_set($this->state, 'exams.instrumental.orthopantomography', false);
-        if (! Arr::has($this->state, 'exams.instrumental.rx'))
+        }
+        if (! Arr::has($this->state, 'exams.instrumental.rx')) {
             data_set($this->state, 'exams.instrumental.rx', false);
-
+        }
     }
-
 }

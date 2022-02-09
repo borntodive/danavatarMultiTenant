@@ -42,9 +42,9 @@ return [
                 'port' => env('LARAVEL_WEBSOCKETS_PORT'),
                 'scheme' => 'http',
                 'curl_options' => [
-                        CURLOPT_SSL_VERIFYHOST => 0,
-                        CURLOPT_SSL_VERIFYPEER => 0
-                ]
+                    CURLOPT_SSL_VERIFYHOST => 0,
+                    CURLOPT_SSL_VERIFYPEER => 0,
+                ],
             ],
         ],
 

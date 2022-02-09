@@ -8,22 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Sample extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     protected $casts = [
         'time' => 'datetime',
     ];
 
-    protected $appends = ['date','timeOnly'];
+    protected $appends = ['date', 'timeOnly'];
 
     public function getDateAttribute()
     {
         return $this->time->toDateString();
     }
+
     public function getTimeOnlyAttribute()
     {
         return $this->time->toTimeString();
     }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -33,5 +36,4 @@ class Sample extends Model
     {
         return $this->belongsTo(Sensor::class);
     }
-
 }

@@ -10,7 +10,7 @@ class Sensor extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     protected $appends = ['displayName'];
@@ -18,7 +18,8 @@ class Sensor extends Model
     public function getDisplayNameAttribute()
     {
         return __('sensors.'.$this->name);
-        return trim(preg_replace("([A-Z])", " $0", $this->name));
+
+        return trim(preg_replace('([A-Z])', ' $0', $this->name));
     }
 
     public function samples()

@@ -15,18 +15,20 @@ class Tenant
      */
     public function handle($request, Closure $next)
     {
-        if (!session()->get('tentant')) {
+        if (! session()->get('tentant')) {
             $url = $request->server->all()['HTTP_HOST'];
             $url = $str = preg_replace('#^https?://#', '', $url);
             preg_match('/^([a-z0-9|-]+[a-z0-9]{1,}\.)*[a-z0-9|-]+[a-z0-9]{1,}\.[a-z]{2,}$/', $url, $matches);
             $subdomain = null;
-            if (isset($matches[1]))
+            if (isset($matches[1])) {
                 $subdomain = rtrim($matches[1], " \t.");
+            }
             if ($subdomain && $subdomain != 'www') {
                 $center = \App\Models\Tenant::where(['url' => $subdomain])->firstOrFail();
                 session(['tenant' => $center]);
             }
         }
+
         return $next($request);
     }
 }

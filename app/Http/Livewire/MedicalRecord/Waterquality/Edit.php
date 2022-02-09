@@ -14,17 +14,13 @@ class Edit extends Component
 
     public $fields;
 
-
-
     protected $rules = [
         'state.anamnesis' => 'nullable',
     ];
 
-    public function mount() {
-
+    public function mount()
+    {
         $this->parentMount();
-        $this->fields=WaterQuality::$fields;
-
+        $this->fields = WaterQuality::$fields;
     }
-
 }

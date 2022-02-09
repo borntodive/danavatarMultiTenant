@@ -13,10 +13,11 @@ trait PasswordValidationRules
      */
     protected function passwordRules()
     {
-        $rules=['required', 'string', new Password, 'confirmed'];
+        $rules = ['required', 'string', new Password, 'confirmed'];
         if (app()->environment('production')) {
-            $rules[]='zxcvbn_min:3';
+            $rules[] = 'zxcvbn_min:3';
         }
+
         return $rules;
     }
 }

@@ -10,5 +10,5 @@ class ApiToken extends Model
 {
     use HasFactory, BelongsToMedicalCenter;
 
-    protected $guarded=[];
+    protected $guarded = [];
 }

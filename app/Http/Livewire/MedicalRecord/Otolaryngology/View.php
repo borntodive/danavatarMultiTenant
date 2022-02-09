@@ -8,16 +8,18 @@ use Livewire\Component;
 
 class View extends Component
 {
-
     use ViewMedicalRecord;
 
-    public $externalEarObjective,$tympanicMembraneObjective,$tympanicMembraneMobilityObjective;
+    public $externalEarObjective;
 
-    public function mount() {
-        $this->externalEarObjective=Otolaryngology::$externalEarObjective;
-        $this->tympanicMembraneObjective=Otolaryngology::$tympanicMembraneObjective;
-        $this->tympanicMembraneMobilityObjective=Otolaryngology::$tympanicMembraneMobilityObjective;
+    public $tympanicMembraneObjective;
 
+    public $tympanicMembraneMobilityObjective;
+
+    public function mount()
+    {
+        $this->externalEarObjective = Otolaryngology::$externalEarObjective;
+        $this->tympanicMembraneObjective = Otolaryngology::$tympanicMembraneObjective;
+        $this->tympanicMembraneMobilityObjective = Otolaryngology::$tympanicMembraneMobilityObjective;
     }
-
 }

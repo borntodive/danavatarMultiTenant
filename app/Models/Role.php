@@ -8,9 +8,9 @@ class Role extends LaratrustRole
 {
     public $guarded = [];
 
-    private $dsgOnlyRoles=['technician','operator'];
+    private $dsgOnlyRoles = ['technician', 'operator'];
 
-    private $commonRoles=['user','admin','super_admin'];
+    private $commonRoles = ['user', 'admin', 'super_admin'];
 
     public function scopeWithoutSuperAdmin($query)
     {
@@ -19,7 +19,7 @@ class Role extends LaratrustRole
 
     public function scopeDsg($query)
     {
-        return $query->whereIn('name', array_merge($this->dsgOnlyRoles,$this->commonRoles));
+        return $query->whereIn('name', array_merge($this->dsgOnlyRoles, $this->commonRoles));
     }
 
     public function scopeAvatar($query)

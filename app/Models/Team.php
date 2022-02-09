@@ -10,8 +10,10 @@ class Team extends LaratrustTeam
 
     public function scopeCurrentTeam($query)
     {
-        if (session()->has('tenant'))
+        if (session()->has('tenant')) {
             return $query->where('name', session()->get('tenant')->slug);
+        }
+
         return $query;
     }
 }

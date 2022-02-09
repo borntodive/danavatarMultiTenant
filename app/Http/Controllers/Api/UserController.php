@@ -22,38 +22,41 @@ class UserController extends \App\Http\Controllers\Controller
             $q = $q->where(function ($q) use ($filters, &$roleFilter) {
                 foreach ($filters as $idx => $filter) {
                     if ($filter->field == 'role') {
-
                         $roleFilter[] = $filter->value;
                     } else {
-                        if ($idx === 0)
+                        if ($idx === 0) {
                             $q = $q->where($filter->field, $filter->value);
-                        else
+                        } else {
                             $q = $q->orWhere($filter->field, $filter->value);
+                        }
                     }
                 }
             });
         }
         if ($search) {
-            $q = $q->where('firstname', 'ILIKE', '%'.$search.'%')->orWhere('lastname', 'ILIKE', '%'.$search.'%')->orWhere('email', 'ILIKE', '%'.$search.'%');
+            $q = $q->where('firstname', 'LIKE', '%'.$search.'%')->orWhere('lastname', 'LIKE', '%'.$search.'%')->orWhere('email', 'LIKE', '%'.$search.'%');
         }
         //ProgressEvent::dispatch("LOADING_USERS");
         $totalFound = $q->count();
         if ($roleFilter) {
-
             $q = $q->whereHas('dsgroles', function ($query) use ($roleFilter) {
                 $query->whereIn('name', $roleFilter);
             });
+        } else {
+            $q = $q->has('dsgroles');
         }
         $users = $q->with('dsgroles')->offset(($page - 1) * $perPage)->limit($perPage)->get();
         $out = [];
         $out['users'] = $users;
-        $usersCount =  User::count();
-        $out['pagination']['current'] = (int)$page;
+        $usersCount = User::count();
+        $out['pagination']['current'] = (int) $page;
         $out['pagination']['total'] = ceil($totalFound / $perPage);
         $out['pagination']['totalUsers'] = $usersCount;
         $out['pagination']['perPage'] = $perPage;
+
         return $out;
     }
+
     public function get(Request $request, User $user)
     {
         return $user;

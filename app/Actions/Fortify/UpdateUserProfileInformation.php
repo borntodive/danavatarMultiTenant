@@ -14,6 +14,7 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
     use ValidationRules;
+
     /**
      * Validate and update the given user's profile information.
      *

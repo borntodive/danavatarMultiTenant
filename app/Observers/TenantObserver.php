@@ -3,8 +3,8 @@
 namespace App\Observers;
 
 use App\Models\Club;
-use App\Models\Tenant;
 use App\Models\Team;
+use App\Models\Tenant;
 
 class TenantObserver
 {
@@ -15,7 +15,6 @@ class TenantObserver
      */
     public function created(Tenant $tenant)
     {
-
         Team::firstOrCreate([
             'name' => $tenant->slug,
             'display_name' => $tenant->name,
@@ -34,11 +33,12 @@ class TenantObserver
         $slug = \Str::slug($tenant->name);
 
         // check to see if any other slugs exist that are the same & count them
-        $count = Team::where('name',$slug)->count();
+        $count = Team::where('name', $slug)->count();
 
         // if other slugs exist that are the same, append the count to the slug
         $tenant->slug = $count ? "{$slug}-{$count}" : $slug;
     }
+
     /**
      * Handle the club "updated" event.
      *
@@ -56,7 +56,7 @@ class TenantObserver
      */
     public function deleted(Tenant $tenant)
     {
-        $team=Team::where(['name'=>$tenant->slug])->first();
+        $team = Team::where(['name'=>$tenant->slug])->first();
         $team->delete();
     }
 

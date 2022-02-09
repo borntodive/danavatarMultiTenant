@@ -4,14 +4,12 @@ namespace App\Http\Livewire\Anamnesis;
 
 use App\Models\Anamnesis;
 use App\Models\Tenant;
+use App\StaticData\Anamnesis as AnamnesisData;
 use Illuminate\View\View;
 use Livewire\Component;
 
-use \App\StaticData\Anamnesis as AnamnesisData;
-
 class Create extends Component
 {
-
     public $state = [];
 
     public $divingState = [];
@@ -22,7 +20,7 @@ class Create extends Component
 
     public $doSports;
 
-    private $baseSport=[
+    private $baseSport = [
         'name'=>null,
         'level'=>null,
     ];
@@ -38,64 +36,67 @@ class Create extends Component
 
     //protected $validationAttributes = [];
 
-
     public function getValidationAttributes()
     {
-        $rules=[
+        $rules = [
             'state.height' => 'Altezza',
             'state.weight' => 'Peso',
             'state.anamnesisData.other.moredata'=>'Altro',
         ];
         foreach ($this->medications as $field=>$name) {
-            $rules['state.medications.'.$field]=$name;
+            $rules['state.medications.'.$field] = $name;
         }
+
         return $rules;
     }
 
-    public function updatedDoSports($value){
+    public function updatedDoSports($value)
+    {
         if ($this->doSports) {
-            $this->state['sports'][]=$this->baseSport;
+            $this->state['sports'][] = $this->baseSport;
+        } else {
+            $this->state['sports'] = [];
         }
-        else
-            $this->state['sports']=[];
     }
 
-    public function addSport() {
-        $this->state['sports'][]=$this->baseSport;
+    public function addSport()
+    {
+        $this->state['sports'][] = $this->baseSport;
     }
-    public function deleteSport($idx) {
+
+    public function deleteSport($idx)
+    {
         unset($this->state['sports'][$idx]);
-        $this->state['sports']=array_values($this->state['sports']);
+        $this->state['sports'] = array_values($this->state['sports']);
     }
 
     public function mount()
     {
-        $this->medicalConditions=AnamnesisData::medicalConditions();
-        $this->medications=AnamnesisData::medications();
-        $this->doSports=false;
+        $this->medicalConditions = AnamnesisData::medicalConditions();
+        $this->medications = AnamnesisData::medications();
+        $this->doSports = false;
         //$anamnesis = auth()->user()->anamnesis()->orderBy('created_at', 'desc')->first();
         //$anamnesis=null;
 
-        $this->state['prev_cardio']=false;
-        $this->divingState['scuba']['recreative']=false;
-        $this->divingState['scuba']['tecnical']=false;
-        $this->divingState['apnea']['freedive']=false;
-        $this->divingState['apnea']['phishing']=false;
-        $this->divingState['anamnesis']['scuba']['recreative']['barotrauma']=false;
-        $this->divingState['anamnesis']['scuba']['recreative']['narcosi']=false;
-        $this->divingState['anamnesis']['scuba']['recreative']['dcs']=false;
-        $this->divingState['anamnesis']['scuba']['tecnical']['barotrauma']=false;
-        $this->divingState['anamnesis']['scuba']['tecnical']['narcosi']=false;
-        $this->divingState['anamnesis']['scuba']['tecnical']['dcs']=false;
-        $this->divingState['anamnesis']['apnea']['freedive']['taravana']=false;
-        $this->divingState['anamnesis']['apnea']['freedive']['edema']=false;
-        $this->divingState['anamnesis']['apnea']['freedive']['sincope']=false;
-        $this->divingState['anamnesis']['apnea']['freedive']['samba']=false;
-        $this->divingState['anamnesis']['apnea']['phishing']['taravana']=false;
-        $this->divingState['anamnesis']['apnea']['phishing']['edema']=false;
-        $this->divingState['anamnesis']['apnea']['phishing']['sincope']=false;
-        $this->divingState['anamnesis']['apnea']['phishing']['samba']=false;
-
+        $this->state['prev_cardio'] = false;
+        $this->divingState['scuba']['recreative'] = false;
+        $this->divingState['scuba']['tecnical'] = false;
+        $this->divingState['apnea']['freedive'] = false;
+        $this->divingState['apnea']['phishing'] = false;
+        $this->divingState['anamnesis']['scuba']['recreative']['barotrauma'] = false;
+        $this->divingState['anamnesis']['scuba']['recreative']['narcosi'] = false;
+        $this->divingState['anamnesis']['scuba']['recreative']['dcs'] = false;
+        $this->divingState['anamnesis']['scuba']['tecnical']['barotrauma'] = false;
+        $this->divingState['anamnesis']['scuba']['tecnical']['narcosi'] = false;
+        $this->divingState['anamnesis']['scuba']['tecnical']['dcs'] = false;
+        $this->divingState['anamnesis']['apnea']['freedive']['taravana'] = false;
+        $this->divingState['anamnesis']['apnea']['freedive']['edema'] = false;
+        $this->divingState['anamnesis']['apnea']['freedive']['sincope'] = false;
+        $this->divingState['anamnesis']['apnea']['freedive']['samba'] = false;
+        $this->divingState['anamnesis']['apnea']['phishing']['taravana'] = false;
+        $this->divingState['anamnesis']['apnea']['phishing']['edema'] = false;
+        $this->divingState['anamnesis']['apnea']['phishing']['sincope'] = false;
+        $this->divingState['anamnesis']['apnea']['phishing']['samba'] = false;
 
         //dd($this->validationAttributes);
     }
@@ -107,7 +108,6 @@ class Create extends Component
      */
     public function render()
     {
-
         return view('livewire.anamnesis.create');
     }
 
@@ -122,8 +122,8 @@ class Create extends Component
         $validatedData = $this->validate();
         $anamensis = new Anamnesis();
         $anamensis->user_id = auth()->user()->id;
-        $data['general']=$this->state;
-        $data['diving']=$this->divingState;
+        $data['general'] = $this->state;
+        $data['diving'] = $this->divingState;
         $anamensis->data = $data;
         $anamensis->save();
 
@@ -134,16 +134,16 @@ class Create extends Component
         //dd($validatedData,$anamensis->data);
         //dd($values['anamnesisData']);
         //$anamensis->data->anamnesisData=new UserAnamnesisData($values['anamnesisData']);
-
     }
 
-    public function checkCardiacProblems() {
-        return data_get($this->state,'anamnesisData.pulmonaryProblems.present', false) ||
-            data_get($this->state,'anamnesisData.pulmonaryProblems.past', false) ||
-            data_get($this->state,'anamnesisData.heartProblems.present', false) ||
-            data_get($this->state,'anamnesisData.heartProblems.past', false) ||
-            data_get($this->state,'anamnesisData.ematologico.present', false) ||
-            data_get($this->state,'anamnesisData.ematologico.past', false) ||
-            data_get($this->state,'anamnesisData.covid.past', false);
+    public function checkCardiacProblems()
+    {
+        return data_get($this->state, 'anamnesisData.pulmonaryProblems.present', false) ||
+            data_get($this->state, 'anamnesisData.pulmonaryProblems.past', false) ||
+            data_get($this->state, 'anamnesisData.heartProblems.present', false) ||
+            data_get($this->state, 'anamnesisData.heartProblems.past', false) ||
+            data_get($this->state, 'anamnesisData.ematologico.present', false) ||
+            data_get($this->state, 'anamnesisData.ematologico.past', false) ||
+            data_get($this->state, 'anamnesisData.covid.past', false);
     }
 }

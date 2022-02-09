@@ -17,9 +17,8 @@ class RoleController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return response(Role::dsg()->get(),200);
+        return response(Role::dsg()->get(), 200);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -29,7 +28,6 @@ class RoleController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-
         $validated = $request->validate([
             '_id' => 'sometimes',
             'name' => 'required|max:255',
@@ -38,22 +36,26 @@ class RoleController extends \App\Http\Controllers\Controller
         unset($validated['_id']);
         $role = Role::updateOrCreate(['_id' => $id], $validated);
         $response = [];
-        if ($role)
+        if ($role) {
             $response['success'] = true;
-        else
+        } else {
             $response['waring'] = true;
+        }
+
         return $response;
     }
+
     public function updateUserRoles(Request $request, User $user)
     {
-        $dsgTeam=Team::where('name','dsg')->first();
+        $dsgTeam = Team::where('name', 'dsg')->first();
         try {
             $roles = Role::whereIn('name', json_decode(request()->getContent()))->get();
-            $user->syncRoles($roles,$dsgTeam->id);
+            $user->syncRoles($roles, $dsgTeam->id);
             $response['success'] = true;
         } catch (Exception $e) {
             $response['waring'] = $e->getMessage();
         }
+
         return $response;
     }
 
@@ -97,14 +99,15 @@ class RoleController extends \App\Http\Controllers\Controller
      * @param  Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Role $role)
+    public function destroy(Role $role)
     {
-        if (!$role) {
+        if (! $role) {
             $response['waring'] = true;
         } else {
             $role->delete();
             $response['success'] = true;
         }
+
         return $response;
     }
 }

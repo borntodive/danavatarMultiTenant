@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Permission;
 use App\Models\Role;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class LaratrustSeeder extends Seeder
 {
@@ -19,30 +19,29 @@ class LaratrustSeeder extends Seeder
     public function run()
     {
         //$this->truncateLaratrustTables();
-        $roles=[
+        $roles = [
             'user',
             'medical_doctor',
             'admin',
             'super_admin',
         ];
-        $createdPermissions=[];
+        $createdPermissions = [];
         foreach ($roles as $role) {
-            $createdRole=Role::firstOrCreate([
+            $createdRole = Role::firstOrCreate([
                 'name' => $role,
                 'display_name' => ucwords(str_replace('_', ' ', $role)),
-                'description' => ucwords(str_replace('_', ' ', $role))
+                'description' => ucwords(str_replace('_', ' ', $role)),
             ]);
-            $permission=$role.'_permission';
-            $createdPermissions[]=Permission::create([
+            $permission = $role.'_permission';
+            $createdPermissions[] = Permission::create([
                 'name' => $permission,
                 'display_name' => ucwords(str_replace('_', ' ', $permission)),
-                'description' => ucwords(str_replace('_', ' ', $permission))
+                'description' => ucwords(str_replace('_', ' ', $permission)),
             ]);
-            if(end($roles) !== $role) {
+            if (end($roles) !== $role) {
                 $createdRole->attachPermissions($createdPermissions);
             }
         }
-
     }
 
     /**

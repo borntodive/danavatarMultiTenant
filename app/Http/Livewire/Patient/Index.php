@@ -16,24 +16,31 @@ use robertogallea\LaravelCodiceFiscale\CodiceFiscaleGenerator;
 
 class Index extends Component
 {
+    public $searchedCF = '';
 
-    public $searchedCF='';
     public $foundUser = null;
+
     public $newUserData;
+
     public $calcCF;
-    public $searched=false;
-    public $showCFCalculation=false;
+
+    public $searched = false;
+
+    public $showCFCalculation = false;
 
     public $cities;
-    public $foundCities=[];
-    public $selectedCity=[];
+
+    public $foundCities = [];
+
+    public $selectedCity = [];
+
     public $searchedCity;
 
     public ?Tenant $tenant = null;
 
     protected $rules = [
         'searchedCF'=>'required',
-        ];
+    ];
 
     protected $validationAttributes = [
         'searchedCF'=>'Codice Fiscale',
@@ -49,51 +56,56 @@ class Index extends Component
         'calcCF.dob'=>'Data di Nascita',
     ];
 
-    public function mount() {
-        $this->cities=InternationalCitiesStaticList::getList();
-
+    public function mount()
+    {
+        $this->cities = InternationalCitiesStaticList::getList();
     }
+
     public function updated($propertyName)
     {
         $this->resetErrorBag($propertyName);
         $this->validateOnly($propertyName);
     }
+
     /**
      * Get the view / contents that represent the component.
      *
      * @return \Illuminate\View\View|string
      */
-
-    public function searchCF() {
+    public function searchCF()
+    {
         $validatedData = $this->validate();
-        $this->foundUser=User::withoutGlobalScope(TenantScope::class)->where('codice_fiscale',$this->searchedCF)->first();
-        if (!$this->foundUser)
-            $this->newUserData['codice_fiscale']=$this->searchedCF;
-        $this->searched=true;
+        $this->foundUser = User::withoutGlobalScope(TenantScope::class)->where('codice_fiscale', $this->searchedCF)->first();
+        if (! $this->foundUser) {
+            $this->newUserData['codice_fiscale'] = $this->searchedCF;
+        }
+        $this->searched = true;
     }
 
     public function updatedSearchedCity($newValue)
     {
-        $this->calcCF['birth_place']=null;
-        $searchedCity=$this->searchedCity;
+        $this->calcCF['birth_place'] = null;
+        $searchedCity = $this->searchedCity;
         if (strlen($searchedCity) < 2) {
             $this->foundCities = [];
 
             return;
         }
 
-        $this->foundCities= Arr::where($this->cities, function ($value, $key) use ($searchedCity) {
+        $this->foundCities = Arr::where($this->cities, function ($value, $key) use ($searchedCity) {
             return Str::startsWith($value, Str::upper($searchedCity));
         });
     }
 
-    public function selectCity($code) {
-        $this->calcCF['birth_place']=$code;
-        $this->searchedCity=Str::title($this->cities[$code]);
-        $this->foundCities=[];
+    public function selectCity($code)
+    {
+        $this->calcCF['birth_place'] = $code;
+        $this->searchedCity = Str::title($this->cities[$code]);
+        $this->foundCities = [];
     }
 
-    public function createCF() {
+    public function createCF()
+    {
         $this->validate([
             'calcCF.firstname' => 'required|string|max:255',
             'calcCF.lastname' => 'required|string|max:255',
@@ -101,7 +113,7 @@ class Index extends Component
             'calcCF.birth_place' => 'required',
             'calcCF.dob'=>'required|date',
         ]);
-        $birth_date=Carbon::createFromFormat('d-m-Y',$this->calcCF['dob']);
+        $birth_date = Carbon::createFromFormat('d-m-Y', $this->calcCF['dob']);
         if ($birth_date instanceof Carbon) {
             $date = $birth_date;
         } else {
@@ -109,20 +121,21 @@ class Index extends Component
         }
         $this->searchedCF = CodiceFiscale::generate($this->calcCF['firstname'], $this->calcCF['lastname'], $date, $this->calcCF['birth_place'], $this->calcCF['gender']);
 
-        $this->showCFCalculation=false;
-
+        $this->showCFCalculation = false;
     }
 
     public function updatedSearchedCF($newValue)
     {
-        $this->newUserData['codice_fiscale']=$this->searchedCF;
+        $this->newUserData['codice_fiscale'] = $this->searchedCF;
     }
 
-    public function inviteUser() {
+    public function inviteUser()
+    {
         $this->sendInvite($this->foundUser);
     }
 
-    public function createUser() {
+    public function createUser()
+    {
         $validatedData = $this->validate([
             'newUserData.firstname' => 'required|string|max:255',
             'newUserData.lastname' => 'required|string|max:255',
@@ -133,30 +146,32 @@ class Index extends Component
         $this->sendInvite(collect($this->newUserData));
     }
 
-    public function openCFCalculation(){
-        $this->showCFCalculation=true;
-
+    public function openCFCalculation()
+    {
+        $this->showCFCalculation = true;
     }
-    private function sendInvite($user) {
+
+    private function sendInvite($user)
+    {
         $invite = Invite::create(
             [
-                "firstname"=>$user['firstname'],
-                "lastname"=>$user['lastname'],
-                "dob"=>$user['dob'],
-                "email"=>$user['email'],
-                "codice_fiscale"=>$user['codice_fiscale'],
-                "tenant_id" => $this->tenant ? $this->tenant->id : null,
-                "is_admin"=>$this->tenant ? true : false,
+                'firstname'=>$user['firstname'],
+                'lastname'=>$user['lastname'],
+                'dob'=>$user['dob'],
+                'email'=>$user['email'],
+                'codice_fiscale'=>$user['codice_fiscale'],
+                'tenant_id' => $this->tenant ? $this->tenant->id : null,
+                'is_admin'=>$this->tenant ? true : false,
             ]
         );
 
-        $this->foundUser=null;
-        $this->searched=false;
-        $this->searchedCF=null;
+        $this->foundUser = null;
+        $this->searched = false;
+        $this->searchedCF = null;
         $this->emit('showFlashMessage', [
             'data'=>[
                 'success'=>'Invito inviato con successo',
-            ]
+            ],
         ]);
         $this->dispatchBrowserEvent('scrollToTop');
     }

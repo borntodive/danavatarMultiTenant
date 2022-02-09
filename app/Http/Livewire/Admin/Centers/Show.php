@@ -9,28 +9,32 @@ use Livewire\WithFileUploads;
 
 class Show extends Component
 {
-
     public Tenant $center;
-    public $selectedSpeciality=[];
-    public $showCreateUserModal=false;
 
-    public function mount() {
+    public $selectedSpeciality = [];
+
+    public $showCreateUserModal = false;
+
+    public function mount()
+    {
         $this->selectedSpeciality = $this->center->allMedicalSpecilities()->get()->pluck('id');
     }
-    public function toggleCenterSpecialty($id) {
-        $idx=$this->selectedSpeciality->search($id);
+
+    public function toggleCenterSpecialty($id)
+    {
+        $idx = $this->selectedSpeciality->search($id);
         if ($idx === false) {
             $this->selectedSpeciality->push($id);
-        }
-        else {
+        } else {
             $this->selectedSpeciality->pull($idx);
         }
         $this->center->allMedicalSpecilities()->sync($this->selectedSpeciality);
     }
 
-    public function viewCreateUserModal() {
+    public function viewCreateUserModal()
+    {
         dd($this->showCreateUserModal);
-        $this->showCreateUserModal=true;
+        $this->showCreateUserModal = true;
     }
 
     /**

@@ -16,18 +16,16 @@ class Edit extends Component
 
     public $times;
 
-    public $selectedTime='pre';
+    public $selectedTime = 'pre';
 
     protected $rules = [
         'state.anamnesis' => 'nullable',
     ];
 
-    public function mount() {
-
+    public function mount()
+    {
         $this->parentMount();
-        $this->exams=Covid::$exams;
-        $this->times=Covid::$times;
-
+        $this->exams = Covid::$exams;
+        $this->times = Covid::$times;
     }
-
 }

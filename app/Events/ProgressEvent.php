@@ -20,16 +20,17 @@ class ProgressEvent implements ShouldBroadcastNow
      *
      * @return void
      */
-
     public $text;
+
     public $perc;
+
     public $dive_n;
 
-    public function __construct($text, $perc = null,$dive_n=null)
+    public function __construct($text, $perc = null, $dive_n = null)
     {
         $this->text = $text;
         $this->perc = $perc;
-        $this->dive_n=$dive_n;
+        $this->dive_n = $dive_n;
     }
 
     /**
@@ -44,6 +45,6 @@ class ProgressEvent implements ShouldBroadcastNow
 
     public function broadcastWith()
     {
-        return ['text' => $this->text, 'perc' => $this->perc,'dive_n'=>$this->dive_n];
+        return ['text' => $this->text, 'perc' => $this->perc, 'dive_n'=>$this->dive_n];
     }
 }

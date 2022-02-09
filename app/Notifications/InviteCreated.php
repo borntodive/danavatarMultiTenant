@@ -2,16 +2,16 @@
 
 namespace App\Notifications;
 
-use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class InviteCreated extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct($user=null)
+    public function __construct($user = null)
     {
         //
     }
@@ -26,7 +26,6 @@ class InviteCreated extends Notification implements ShouldQueue
     {
         return ['mail'];
     }
-
 
     /**
      * Get the mail representation of the notification.

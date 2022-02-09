@@ -1,6 +1,6 @@
 <?php
 
-return array (
+return [
     '12h' => '12h',
     '1h' => '1h',
     '1m' => '1m',
@@ -35,4 +35,4 @@ return array (
     'SUPINE' => 'Supine',
     'time_loaded' => 'Loaded time',
     'UPSIDEDOWN' => 'Upside Down',
-);
+];

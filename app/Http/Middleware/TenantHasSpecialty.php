@@ -13,10 +13,11 @@ class TenantHasSpecialty
      * @param \Closure $next
      * @return mixed
      */
-    public function handle($request, Closure $next,$specialty)
+    public function handle($request, Closure $next, $specialty)
     {
-        if(session()->get('tenant')->hasMedicalSpecilities($specialty))
+        if (session()->get('tenant')->hasMedicalSpecilities($specialty)) {
             return $next($request);
+        }
         abort(403);
     }
 }

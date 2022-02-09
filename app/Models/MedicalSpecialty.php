@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class MedicalSpecialty extends Model
 {
     use hasFactory, belongsToManyMedicalCenter;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,7 +20,8 @@ class MedicalSpecialty extends Model
      */
     protected $guarded = [];
 
-    public function avatar() {
+    public function avatar()
+    {
         return "https://ui-avatars.com/api/?name=$this->name&color=7F9CF5&background=EBF4FF";
     }
 
@@ -44,5 +46,4 @@ class MedicalSpecialty extends Model
             $builder->orderBy('name');
         });
     }
-
 }
