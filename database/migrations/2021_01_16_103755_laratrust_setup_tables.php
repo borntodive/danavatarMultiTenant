@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class LaratrustSetupTables extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -98,4 +98,4 @@ class LaratrustSetupTables extends Migration
         Schema::dropIfExists('roles');
         Schema::dropIfExists('teams');
     }
-}
+};
