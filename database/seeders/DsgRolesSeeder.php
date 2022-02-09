@@ -6,10 +6,10 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Models\Team;
 use App\Models\User;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class DsgRolesSeeder extends Seeder
 {
@@ -21,30 +21,28 @@ class DsgRolesSeeder extends Seeder
     public function run()
     {
         //$this->truncateLaratrustTables();
-        $roles=[
+        $roles = [
             'operator',
             'technician',
             'central_office',
         ];
-        $createdPermissions=[];
+        $createdPermissions = [];
         foreach ($roles as $role) {
-            $createdRole=Role::firstOrCreate([
+            $createdRole = Role::firstOrCreate([
                 'name' => $role,
                 'display_name' => ucwords(str_replace('_', ' ', $role)),
-                'description' => ucwords(str_replace('_', ' ', $role))
+                'description' => ucwords(str_replace('_', ' ', $role)),
             ]);
-            $permission=$role.'_permission';
-            $createdPermissions[]=Permission::create([
+            $permission = $role.'_permission';
+            $createdPermissions[] = Permission::create([
                 'name' => $permission,
                 'display_name' => ucwords(str_replace('_', ' ', $permission)),
-                'description' => ucwords(str_replace('_', ' ', $permission))
+                'description' => ucwords(str_replace('_', ' ', $permission)),
             ]);
-            if(end($roles) !== $role) {
+            if (end($roles) !== $role) {
                 $createdRole->attachPermissions($createdPermissions);
             }
         }
-
-
     }
 
     /**

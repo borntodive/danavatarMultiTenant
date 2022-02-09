@@ -28,20 +28,18 @@ class Tenant extends Authenticatable
     protected $guarded = [];
 
     /**
-     *
      * The accessors to append to the model's array form.
      *
      * @var array
      */
     protected $appends = [
         'profile_photo_url',
-        'full_url'
+        'full_url',
     ];
 
     public function hasMedicalSpecilities($spec)
     {
-
-        return ($this->medicalSpecilities()->withoutGlobalScope(OnlyForDoctorScope::class)->get()->pluck('slug')->search($spec) !== false);
+        return $this->medicalSpecilities()->withoutGlobalScope(OnlyForDoctorScope::class)->get()->pluck('slug')->search($spec) !== false;
         //return $this->belongsToMany(MedicalSpecialty::class)->withTimestamps();
     }
 
@@ -98,9 +96,8 @@ class Tenant extends Authenticatable
      */
     public function updateProfilePhoto(UploadedFile $photo)
     {
-        $path = $photo->store('tenant-photos',$this->profilePhotoDisk());
+        $path = $photo->store('tenant-photos', $this->profilePhotoDisk());
         tap($this->profile_photo_path, function ($previous) use ($path) {
-
             $this->forceFill([
                 'profile_photo_path' => $path,
             ])->save();
@@ -113,7 +110,7 @@ class Tenant extends Authenticatable
     public static function search($query)
     {
         return empty($query) ? static::query()
-            : static::whereRaw("LOWER(name) LIKE ? ", ['%'.trim(strtolower($query)).'%']);
+            : static::whereRaw('LOWER(name) LIKE ? ', ['%'.trim(strtolower($query)).'%']);
     }
 
     /**
@@ -123,15 +120,13 @@ class Tenant extends Authenticatable
      */
     public function getFullUrlAttribute()
     {
-        $protocol='';
-        if (request()->secure())
-        {
-            $protocol='https://';
+        $protocol = '';
+        if (request()->secure()) {
+            $protocol = 'https://';
+        } else {
+            $protocol = 'http://';
         }
-        else
-            $protocol='http://';
+
         return $protocol.$this->url.'.'.config('app.base_url');
-
     }
-
 }

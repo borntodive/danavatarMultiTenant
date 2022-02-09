@@ -15,15 +15,17 @@ class SampleObserver
      */
     public function created(Sample $sample)
     {
-        $currentDate=Carbon::createFromTimestamp($sample['date'])->previous('00:00');
-        $currentSensorsPerDay=SensorsPerDay::firstOrNew (['date' => $currentDate->format('Y-m-d H:i:s.u'),'user_id'=>$sample->user_id]);
-        $prevSensors=$currentSensorsPerDay->sensors;
-        if (is_array($currentSensorsPerDay->sensors))
-            $currentSensorsPerDay->sensors=array_unique(array_merge($currentSensorsPerDay->sensors,[$sample->sensor_id]));
-        else
-            $currentSensorsPerDay->sensors=[$sample->sensor_id];
-        if ($prevSensors!=$currentSensorsPerDay->sensors)
+        $currentDate = Carbon::createFromTimestamp($sample['date'])->previous('00:00');
+        $currentSensorsPerDay = SensorsPerDay::firstOrNew(['date' => $currentDate->format('Y-m-d H:i:s.u'), 'user_id'=>$sample->user_id]);
+        $prevSensors = $currentSensorsPerDay->sensors;
+        if (is_array($currentSensorsPerDay->sensors)) {
+            $currentSensorsPerDay->sensors = array_unique(array_merge($currentSensorsPerDay->sensors, [$sample->sensor_id]));
+        } else {
+            $currentSensorsPerDay->sensors = [$sample->sensor_id];
+        }
+        if ($prevSensors != $currentSensorsPerDay->sensors) {
             $currentSensorsPerDay->save();
+        }
     }
 
     /**

@@ -12,7 +12,7 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('sensor_id')->constrained()->onDelete('cascade');
-            $table->timestamp('time',13);
+            $table->timestamp('time', 13);
             $table->text('text');
             $table->timestamps();
         });

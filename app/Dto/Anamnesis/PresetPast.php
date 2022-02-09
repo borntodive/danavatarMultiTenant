@@ -8,10 +8,7 @@ use function strtolower;
 
 final class PresetPast extends DataTransferObject
 {
-
-
     public ?integer $present;
 
     public ?integer $past;
-
 }

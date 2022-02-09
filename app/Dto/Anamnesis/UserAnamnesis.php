@@ -7,7 +7,6 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 final class UserAnamnesis extends DataTransferObject
 {
-
     public ?string $height;
 
     public ?string $weight;
@@ -21,5 +20,4 @@ final class UserAnamnesis extends DataTransferObject
     public ?string $sport;
 
     public ?string $sportName;
-
 }

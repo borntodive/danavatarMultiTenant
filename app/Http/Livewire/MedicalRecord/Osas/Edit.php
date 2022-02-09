@@ -14,44 +14,44 @@ class Edit extends Component
     }
 
     public $radios;
+
     public $checkboxs;
+
     public $numbers;
+
     public $sums;
+
     public $examsRadios;
+
     public $examsCheckboxs;
+
     public $instrumentCheckboxs;
 
     public $sum;
-
 
     protected $rules = [
         'state.anamnesis' => 'nullable',
     ];
 
-    public function mount() {
-
+    public function mount()
+    {
         $this->parentMount();
-        $this->radios=Osas::$anamnesis;
-        $this->checkboxs=Osas::$checkboxs;
-        $this->numbers=Osas::$numbers;
-        $this->sums=Osas::$sums;
-        $this->examsRadios=Osas::$radios;
-        $this->examsCheckboxs=Osas::$examsCheckboxs;
-        $this->instrumentCheckboxs=Osas::$instrumentCheckboxs;
-        $this->sum=0;
-
+        $this->radios = Osas::$anamnesis;
+        $this->checkboxs = Osas::$checkboxs;
+        $this->numbers = Osas::$numbers;
+        $this->sums = Osas::$sums;
+        $this->examsRadios = Osas::$radios;
+        $this->examsCheckboxs = Osas::$examsCheckboxs;
+        $this->instrumentCheckboxs = Osas::$instrumentCheckboxs;
+        $this->sum = 0;
     }
 
     public function updateSum()
     {
-        $all=data_get($this->state,'exams.objectives.general.epworthper',[]);
-        $this->sum=0;
+        $all = data_get($this->state, 'exams.objectives.general.epworthper', []);
+        $this->sum = 0;
         foreach ($all as $a) {
-            $this->sum+=$a;
+            $this->sum += $a;
         }
-
     }
-
 }
-
-

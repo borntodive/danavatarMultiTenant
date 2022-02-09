@@ -15,7 +15,7 @@ class MedicalRecordSeeder extends Seeder
      */
     public function run()
     {
-        $specialties=MedicalSpecialty::get();
+        $specialties = MedicalSpecialty::get();
         MedicalRecord::factory()->count(100)->create([
             'user_id'=>4,
             'tenant_id'=>1,

@@ -21,15 +21,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        $y40=Tenant::where('url','y40')->first();
-        $test=Tenant::where('url','test')->first();
+        $y40 = Tenant::where('url', 'y40')->first();
+        $test = Tenant::where('url', 'test')->first();
         $y40Team = Team::where('name', $y40->slug)->first();
         $testTeam = Team::where('name', $test->slug)->first();
 
-        $superAdminRole=Role::where("name",'super_admin')->first();
-        $adminRole=Role::where("name",'admin')->first();
-        $doctorRole=Role::where("name",'medical_doctor')->first();
-        $userRole=Role::where("name",'user')->first();
+        $superAdminRole = Role::where('name', 'super_admin')->first();
+        $adminRole = Role::where('name', 'admin')->first();
+        $doctorRole = Role::where('name', 'medical_doctor')->first();
+        $userRole = Role::where('name', 'user')->first();
         $superAdmin = User::create(
             [
                 'firstname' => $faker->firstName,
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             ]
         );
         $superAdmin->attachRole($superAdminRole);
-        $y40Admin= User::create(
+        $y40Admin = User::create(
             [
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
         );
         $y40Admin->centers()->attach($y40);
         $y40Admin->attachRole($adminRole, $y40Team);
-        $y40Cardiologo= User::create(
+        $y40Cardiologo = User::create(
             [
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,
@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
         $y40Cardiologo->centers()->attach($y40);
         $y40Cardiologo->attachRole($doctorRole, $y40Team);
 
-        $y40Utente= User::create(
+        $y40Utente = User::create(
             [
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,
@@ -83,17 +83,16 @@ class UserSeeder extends Seeder
         $y40Utente->centers()->attach($y40);
         $y40Utente->attachRole($userRole, $y40Team);
 
-        $y40Users=User::factory()->count(100)->create();
+        $y40Users = User::factory()->count(100)->create();
         foreach ($y40Users as $u) {
             $u->centers()->attach($y40);
             $u->attachRole($userRole, $y40Team);
         }
 
-        $testUsers=User::factory()->count(100)->create();
+        $testUsers = User::factory()->count(100)->create();
         foreach ($testUsers as $u) {
             $u->centers()->attach($test);
             $u->attachRole($userRole, $testTeam);
         }
-
     }
 }

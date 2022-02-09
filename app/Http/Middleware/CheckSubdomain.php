@@ -15,8 +15,10 @@ class CheckSubdomain
      */
     public function handle($request, Closure $next)
     {
-        if (request('account')=='www')
+        if (request('account') == 'www') {
             abort(404);
+        }
+
         return $next($request);
     }
 }

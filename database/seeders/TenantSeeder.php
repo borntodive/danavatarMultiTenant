@@ -21,7 +21,7 @@ class TenantSeeder extends Seeder
         $name = 'Y40';
         $slug = Str::slug($name, '-');
 
-        $y40=Tenant::create([
+        $y40 = Tenant::create([
             'name' => $name,
             'email' => $faker->unique()->safeEmail(),
             'slug' => $slug,
@@ -31,7 +31,7 @@ class TenantSeeder extends Seeder
         $name = 'test';
         $slug = Str::slug($name, '-');
 
-        $test=Tenant::create([
+        $test = Tenant::create([
             'name' => $name,
             'email' => $faker->unique()->safeEmail(),
             'slug' => $slug,

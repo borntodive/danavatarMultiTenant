@@ -1,5 +1,6 @@
 <?php
-return array (
-    "amateur"=>"Amatoriale",
-    "agonistic"=>"Agonistico",
-);
+
+return [
+    'amateur'=>'Amatoriale',
+    'agonistic'=>'Agonistico',
+];

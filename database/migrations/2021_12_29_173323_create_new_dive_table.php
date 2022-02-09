@@ -36,8 +36,6 @@ class CreateNewDiveTable extends Migration
         });
     }
 
-
-
     /**
      * Reverse the migrations.
      *

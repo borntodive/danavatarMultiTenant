@@ -8,15 +8,15 @@ use Livewire\Component;
 
 class View extends Component
 {
-
     use ViewMedicalRecord;
 
     public $medications;
+
     public $medicalConditions;
 
-    public function mount() {
-        $this->medicalConditions=Nutritionist::$medicalConditions;
-        $this->medications=Nutritionist::$medications;
+    public function mount()
+    {
+        $this->medicalConditions = Nutritionist::$medicalConditions;
+        $this->medications = Nutritionist::$medications;
     }
-
 }

@@ -25,9 +25,9 @@ class TestController extends Controller
         //   ->post("https://ploi.io/api/servers/13994/sites/40378/aliases",['aliases'=>['test.daneurope.eu']]);
 
         Http::withToken($token)
-            ->delete("https://ploi.io/api/servers/13994/sites/40378/aliases/test.daneurope.eu");
+            ->delete('https://ploi.io/api/servers/13994/sites/40378/aliases/test.daneurope.eu');
         dd(Http::withToken($token)
-            ->get("https://ploi.io/api/servers/13994/sites/40378/aliases")->json());
+            ->get('https://ploi.io/api/servers/13994/sites/40378/aliases')->json());
     }
 
     public function cloud()
@@ -36,47 +36,47 @@ class TestController extends Controller
         $url = 'https://api.cloudflare.com/client/v4/zones/f7c3a622b8a0f158e18bf286b7fd807a/dns_records';
         $email = 'andrea.covelli@gmailcom';
         Http::withToken($token)->withHeaders([
-            "X-Auth-Email" => $email,
-            "Content-Type" => "application/json"
+            'X-Auth-Email' => $email,
+            'Content-Type' => 'application/json',
         ])->post($url, [
-            "type" => 'A',
-            "name" => 'test',
-            "content" => "172.104.226.114",
-            "proxied" => true
+            'type' => 'A',
+            'name' => 'test',
+            'content' => '172.104.226.114',
+            'proxied' => true,
         ])->body();
 
-        $url2 = "https://api.cloudflare.com/client/v4/zones/f7c3a622b8a0f158e18bf286b7fd807a/dns_records?name=test.danavatar.eu";
+        $url2 = 'https://api.cloudflare.com/client/v4/zones/f7c3a622b8a0f158e18bf286b7fd807a/dns_records?name=test.danavatar.eu';
         dd(Http::withToken($token)->withHeaders([
-            "X-Auth-Email" => $email,
-            "Content-Type" => "application/json"
+            'X-Auth-Email' => $email,
+            'Content-Type' => 'application/json',
         ])->get($url2)->body());
     }
 
     public function sendInvite()
     {
         $invite = Invite::find(1);
-        if ($invite)
+        if ($invite) {
             $invite->notify(new InviteCreated());
+        }
         $user = User::find(2);
         $token = '123';
         $user->sendPasswordResetNotification($token);
     }
 
-
     public function influx()
     {
 
-        # You can generate a Token from the "Tokens Tab" in the UI
+        // You can generate a Token from the "Tokens Tab" in the UI
         $token = '2N8qnyK4qyHSfQaZYEoXOdUDkrp9fMx1FPBBnu9VgBREGnRMczw1U2xcNT-aGL4rz7esMjHr10nhTL4Gb6yhZg==';
         $org = 'danrni';
         $bucket = 'AvatarStaging';
 
         $client = new Client([
-            "url" => "http://172.105.76.135:8086",
-            "token" => $token,
-            "org" => $org,
-            "debug" => false,
-            "timeout"=>0
+            'url' => 'http://172.105.76.135:8086',
+            'token' => $token,
+            'org' => $org,
+            'debug' => false,
+            'timeout'=>0,
         ]);
 
         $queryApi = $client->createQueryApi();
@@ -85,13 +85,14 @@ class TestController extends Controller
             'from(bucket: "AvatarStaging")   |> range(start: 2021-04-07T12:00:00Z, stop: 2021-04-07T13:05:00Z)
  |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "2")');
         foreach ($records[0]->records as $record) {
-            $data[]=[
-                "x"=>$record->getTime(),
-                "y"=>$record->getValue()
+            $data[] = [
+                'x'=>$record->getTime(),
+                'y'=>$record->getValue(),
             ];
         }
         dd($data[0]);
     }
+
     public function testGF()
     {
         ini_set('output_buffering', 'off');
@@ -99,37 +100,40 @@ class TestController extends Controller
         ini_set('zlib.output_compression', false);
 
         //Flush (send) the output buffer and turn off output buffering
-        while (@ob_end_flush()) ;
+        while (@ob_end_flush());
 
         // Implicitly flush the buffer(s)
         ini_set('implicit_flush', true);
         ob_implicit_flush(true);
 
         // Needed to force browsers to actually display data
-        echo str_pad("", 1024, " ");
-        echo "<br />";
-        $dive=Dive::first();
-        $gfCalculator=new DecoCalculator($dive);
+        echo str_pad('', 1024, ' ');
+        echo '<br />';
+        $dive = Dive::first();
+        $gfCalculator = new DecoCalculator($dive);
         $gfCalculator->calculateGF();
     }
-    public function resetDsgRoles () {
-        $users=User::get();
-        $userRole=Role::where('name','user')->first();
-        $adminRole=Role::where('name','admin')->first();
+
+    public function resetDsgRoles()
+    {
+        $users = User::get();
+        $userRole = Role::where('name', 'user')->first();
+        $adminRole = Role::where('name', 'admin')->first();
         $team = Team::where('name', 'dsg')->first();
         foreach ($users as $user) {
-            if ($user->email=='andrea.covelli@gmail.com')
+            if ($user->email == 'andrea.covelli@gmail.com') {
                 $user->syncRoles([$adminRole], $team);
-            else
+            } else {
                 $user->syncRoles([$userRole], $team);
+            }
         }
         dd('fatto');
     }
-    public function sort() {
 
-        $dive=Dive::first();
-        $reb=$dive->rebData['ppo2s'];
-
+    public function sort()
+    {
+        $dive = Dive::first();
+        $reb = $dive->rebData['ppo2s'];
 
         $collection = collect($reb);
 

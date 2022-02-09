@@ -7,8 +7,8 @@ use Livewire\Component;
 
 class Samples extends Component
 {
-
     public User $user;
+
     /**
      * Get the view / contents that represent the component.
      *

@@ -10,11 +10,12 @@ class MedicalRecord extends Model
 {
     use HasFactory, BelongsToMedicalCenter;
 
-    protected $guarded =[];
+    protected $guarded = [];
 
     protected $casts = [
         'data' => 'array',
     ];
+
     /**
      * The user that belong to the anamnesis.
      */
@@ -23,10 +24,9 @@ class MedicalRecord extends Model
         return $this->belongsTo(User::class);
     }
 
-
     public function doctor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class,'doctor_id');
+        return $this->belongsTo(User::class, 'doctor_id');
     }
 
     /**
@@ -34,7 +34,6 @@ class MedicalRecord extends Model
      */
     public function specialty(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(MedicalSpecialty::class,'medical_specialty_id');
+        return $this->belongsTo(MedicalSpecialty::class, 'medical_specialty_id');
     }
-
 }

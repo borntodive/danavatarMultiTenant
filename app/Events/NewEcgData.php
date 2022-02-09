@@ -24,10 +24,10 @@ class NewEcgData implements ShouldBroadcastNow
      *
      * @return void
      */
-    public function __construct($user_id,$data)
+    public function __construct($user_id, $data)
     {
-        $this->user_id=$user_id;
-        $this->data=$data;
+        $this->user_id = $user_id;
+        $this->data = $data;
     }
 
     /**

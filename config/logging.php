@@ -43,7 +43,7 @@ return [
         ],
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['sentry','single'],
+            'channels' => ['sentry', 'single'],
             'ignore_exceptions' => false,
         ],
 

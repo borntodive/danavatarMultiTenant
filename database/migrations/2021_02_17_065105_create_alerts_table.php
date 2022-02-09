@@ -10,7 +10,7 @@ class CreateAlertsTable extends Migration
     {
         Schema::create('alerts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');;
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->dateTime('time');
             $table->timestamps();
         });

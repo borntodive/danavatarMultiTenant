@@ -15,21 +15,19 @@ class Datatable extends Component
 
     public $perPage = 12;
 
-
-    public function mount() {
+    public function mount()
+    {
         $this->sortField = 'firstname';
     }
-
 
     /**
      * Get the view / contents that represent the component.
      *
      * @return \Illuminate\View\View|string
      */
-
     public function render()
     {
-        return view('livewire.medical-record.datatable',[
+        return view('livewire.medical-record.datatable', [
             'users' => User::search($this->search)
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage),

@@ -17,7 +17,7 @@ class GFSettingsSeeder extends Seeder
             'yellow_limit' => 74,
             'red_limit' => 87,
             'gf_hi' => 80,
-            'gf_low'=> 40
-         ]);
+            'gf_low'=> 40,
+        ]);
     }
 }

@@ -18,7 +18,7 @@ class ApiTokenFactory extends Factory
     {
         return [
             'token'=>$this->faker->asciify('******************************'),
-            'tenant_id'=>1
+            'tenant_id'=>1,
         ];
     }
 }

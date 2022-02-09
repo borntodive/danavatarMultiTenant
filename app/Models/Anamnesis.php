@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Anamnesis extends Model
 {
     use BelongsToMedicalCenter;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,14 +17,13 @@ class Anamnesis extends Model
     protected $guarded = [];
 
     /**
-    * The attributes that should be cast to native types.
-    *
-    * @var array
+     * The attributes that should be cast to native types.
+     *
+     * @var array
      */
     protected $casts = [
         'data' => 'array',
     ];
-
 
     /**
      * The user that belong to the anamnesis.
@@ -32,6 +32,4 @@ class Anamnesis extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-
 }

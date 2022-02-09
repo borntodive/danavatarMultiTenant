@@ -24,6 +24,7 @@ class TenantFactory extends Factory
     {
         $name = $this->faker->unique()->sentence(3);
         $slug = Str::slug($name, '-');
+
         return [
             'name' => $name,
             'email' => $this->faker->unique()->safeEmail(),
