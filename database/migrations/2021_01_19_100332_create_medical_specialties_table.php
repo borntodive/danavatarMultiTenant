@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMedicalSpecialtiesTable extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('medical_specialties', function (Blueprint $table) {
@@ -21,4 +20,4 @@ class CreateMedicalSpecialtiesTable extends Migration
     {
         Schema::dropIfExists('medical_specialties');
     }
-}
+};

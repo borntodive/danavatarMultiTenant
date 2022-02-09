@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\StaticData;
-
 
 class Nutritionist
 {
@@ -87,6 +85,4 @@ class Nutritionist
         'painKillers'=>'Anti Dolorifici',
         'other' => 'Altro',
     ];
-
-
 }

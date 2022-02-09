@@ -13,23 +13,20 @@ class Edit extends Component
     }
 
     public $terapie;
+
     public $patologie;
+
     public $ecg;
 
     protected $rules = [
         'state.anamnesis' => 'nullable',
     ];
 
-    public function mount() {
-
+    public function mount()
+    {
         $this->parentMount();
-        $this->terapie=Cardio::$terapie;
-        $this->patologie=Cardio::$patologie;
-        $this->ecg=Cardio::$ecg;
-
-
+        $this->terapie = Cardio::$terapie;
+        $this->patologie = Cardio::$patologie;
+        $this->ecg = Cardio::$ecg;
     }
-
 }
-
-

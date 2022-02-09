@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\StaticData;
-
 
 class Anamnesis
 {
@@ -129,13 +127,17 @@ class Anamnesis
         'other' => 'Altro',
     ];
 
-    public static function medicalConditions() {
-        $class=new Anamnesis();
+    public static function medicalConditions()
+    {
+        $class = new self();
+
         return $class->medicalConditions;
     }
 
-    public static function medications() {
-        $class=new Anamnesis();
+    public static function medications()
+    {
+        $class = new self();
+
         return $class->medications;
     }
 }

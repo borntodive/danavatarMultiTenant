@@ -8,19 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     protected $casts = [
         'time' => 'datetime',
     ];
+
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     public function sensor()
     {
-        return $this->belongsTo('App\Models\Sensor');
+        return $this->belongsTo(\App\Models\Sensor::class);
     }
 
     public function project()

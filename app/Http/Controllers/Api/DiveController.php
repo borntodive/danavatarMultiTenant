@@ -12,7 +12,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
-
 class DiveController extends \App\Http\Controllers\Controller
 {
     public function get(Request $request, Dive $dive)
@@ -23,14 +22,15 @@ class DiveController extends \App\Http\Controllers\Controller
         //$out['profile'] = $dive->profile;
         $decoCalc = new DecoCalculator($dive);
         $out['ceil'] = $decoCalc->calculateCeiling($gfHi / 100, $gfLow / 100);
-        $out['settings']['gf']['hi']=settings()->group('gf')->get('gf_hi');
-        $out['settings']['gf']['low']=settings()->group('gf')->get('gf_low');
+        $out['settings']['gf']['hi'] = settings()->group('gf')->get('gf_hi');
+        $out['settings']['gf']['low'] = settings()->group('gf')->get('gf_low');
+
         return $out;
     }
 
     public function getByUser(Request $request, $user_id)
     {
-        ProgressEvent::dispatch("LOADING_DIVES", null);
+        ProgressEvent::dispatch('LOADING_DIVES', null);
 
         $perPage = 9;
         $page = $request->get('page', 1);
@@ -43,15 +43,17 @@ class DiveController extends \App\Http\Controllers\Controller
             $q = $q->where(function ($q) use ($filters) {
                 foreach ($filters as $idx => $filter) {
                     if ($filter->field == 'dcs') {
-                        if ($idx === 0)
+                        if ($idx === 0) {
                             $q = $q->where($filter->field, 'exists', filter_var($filter->value, FILTER_VALIDATE_BOOLEAN));
-                        else
+                        } else {
                             $q = $q->orWhere($filter->field, 'exists', filter_var($filter->value, FILTER_VALIDATE_BOOLEAN));
+                        }
                     } else {
-                        if ($idx === 0)
+                        if ($idx === 0) {
                             $q = $q->where($filter->field, $filter->value);
-                        else
+                        } else {
                             $q = $q->orWhere($filter->field, $filter->value);
+                        }
                     }
                 }
             });
@@ -61,14 +63,14 @@ class DiveController extends \App\Http\Controllers\Controller
             $eD = new Carbon($dates->endDate);
             $q = $q->whereBetween('date', [$sD, $eD]);
         }
-        ProgressEvent::dispatch("LOADING_DIVES", 0);
+        ProgressEvent::dispatch('LOADING_DIVES', 0);
         $totalFound = $q->count();
 
         $dives = $q->offset(($page - 1) * $perPage)->limit($perPage)->get();
         $out = [];
         $out['dives'] = $dives;
         $divesCount = Dive::where('user_id', $user_id)->count();
-        $out['pagination']['current'] = (int)$page;
+        $out['pagination']['current'] = (int) $page;
         $out['pagination']['total'] = ceil($totalFound / $perPage);
         $out['pagination']['totalDives'] = $divesCount;
         $out['pagination']['perPage'] = $perPage;
@@ -78,18 +80,19 @@ class DiveController extends \App\Http\Controllers\Controller
 
     public function store(Request $request)
     {
-
         $ext = $request->file->getClientOriginalExtension();
         //$path = $request->file->store('dives');
         $type = $request->type;
         $user_id = $request->user()->id;
         $diveParser = new DiveParser(file_get_contents($request->file), $type, $user_id);
-        if (strtolower($ext)=='uddf')
+        if (strtolower($ext) == 'uddf') {
             $messages = $diveParser->parseUDDF();
-        elseif (strtolower($ext)=='zxu' || strtolower($ext)=='zxu')
+        } elseif (strtolower($ext) == 'zxu' || strtolower($ext) == 'zxu') {
             $messages = $diveParser->parseZXL();
-        else
-            $messages['warning']="FILE_NOT_SUPPORTED";
+        } else {
+            $messages['warning'] = 'FILE_NOT_SUPPORTED';
+        }
+
         return response()->json($messages);
     }
 
@@ -107,14 +110,15 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-        ProgressEvent::dispatch("SAVING_TANK", 0);
+        ProgressEvent::dispatch('SAVING_TANK', 0);
         $profile = $dive->profile;
         $p_count = count($profile);
         foreach ($profile as $idx => $sample) {
             $perc = ceil(($idx + 1) * 100 / $p_count);
-            if ($perc > 100)
+            if ($perc > 100) {
                 $perc = 100;
-            ProgressEvent::dispatch("SAVING_TANK", $perc);
+            }
+            ProgressEvent::dispatch('SAVING_TANK', $perc);
             if ($sample['timesec'] == $time) {
                 $profile[$idx]['gases'] = $validated;
                 $profile[$idx]['marker'] = DiveParser::getMarkerUrl($validated);
@@ -126,14 +130,15 @@ class DiveController extends \App\Http\Controllers\Controller
                 break;
             }
         }
-        if (!isset($messages['success']))
+        if (! isset($messages['success'])) {
             $messages['warning'] = true;
+        }
+
         return $messages;
     }
 
     public function deleteTank(Request $request, Dive $dive)
     {
-
         $validated = $request->validate([
             'time' => 'required|max:255',
 
@@ -141,14 +146,15 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-        ProgressEvent::dispatch("DELETING_TANK", 0);
+        ProgressEvent::dispatch('DELETING_TANK', 0);
         $profile = $dive->profile;
         $p_count = count($profile);
         foreach ($profile as $idx => $sample) {
             $perc = ceil(($idx + 1) * 100 / $p_count);
-            if ($perc > 100)
+            if ($perc > 100) {
                 $perc = 100;
-            ProgressEvent::dispatch("DELETING_TANK", $perc);
+            }
+            ProgressEvent::dispatch('DELETING_TANK', $perc);
             if ($sample['timesec'] == $time) {
                 unset($profile[$idx]['gases']);
                 unset($profile[$idx]['marker']);
@@ -160,8 +166,10 @@ class DiveController extends \App\Http\Controllers\Controller
                 break;
             }
         }
-        if (!isset($messages['success']))
+        if (! isset($messages['success'])) {
             $messages['warning'] = true;
+        }
+
         return $messages;
     }
 
@@ -174,7 +182,7 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-        ProgressEvent::dispatch("SAVING_DATA", 0);
+        ProgressEvent::dispatch('SAVING_DATA', 0);
         $rebData = $dive->rebData;
         $found = false;
         foreach ($rebData['ppo2s'] as $idx => $rData) {
@@ -183,18 +191,19 @@ class DiveController extends \App\Http\Controllers\Controller
                 $rebData['ppo2s'][$idx]['ppo2'] = $validated['ppo2'];
             }
         }
-        if (!$found) {
-            $rebData['ppo2s'][] = ['time' => (int)$time, 'ppo2' => $validated['ppo2']];
+        if (! $found) {
+            $rebData['ppo2s'][] = ['time' => (int) $time, 'ppo2' => $validated['ppo2']];
         }
         $rebDataCollection = collect($rebData['ppo2s']);
         $rebDataCollection = $rebDataCollection->sortBy('time');
 
-        $newRebData=$rebDataCollection->toArray();
-        $rebData['ppo2s']=array_values($newRebData);
-        $dive->rebData =$rebData ;
+        $newRebData = $rebDataCollection->toArray();
+        $rebData['ppo2s'] = array_values($newRebData);
+        $dive->rebData = $rebData;
         $dive->save();
         DiveFunctions::calculateBestMixProfile($dive);
         $messages['success'] = true;
+
         return $messages;
     }
 
@@ -206,7 +215,7 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-        ProgressEvent::dispatch("SAVING_DATA", 0);
+        ProgressEvent::dispatch('SAVING_DATA', 0);
         $rebData = $dive->rebData;
 
         $found = false;
@@ -220,16 +229,19 @@ class DiveController extends \App\Http\Controllers\Controller
         if ($found) {
             $rebDataCollection = collect($rebData['ppo2s']);
             $rebDataCollection = $rebDataCollection->sortBy('time');
-            $newRebData=$rebDataCollection->toArray();
-            $rebData['ppo2s']=array_values($newRebData);
-            $dive->rebData =$rebData ;
+            $newRebData = $rebDataCollection->toArray();
+            $rebData['ppo2s'] = array_values($newRebData);
+            $dive->rebData = $rebData;
             $dive->save();
             DiveFunctions::calculateBestMixProfile($dive);
             $messages['success'] = true;
-        } else
+        } else {
             $messages['warning'] = true;
+        }
+
         return $messages;
     }
+
     public function storeDiluent(Request $request, Dive $dive)
     {
         $validated = $request->validate([
@@ -237,12 +249,13 @@ class DiveController extends \App\Http\Controllers\Controller
             'n2' => 'required|integer',
             'he' => 'required|integer',
         ]);
-        $rebData=$dive->rebData;
-        $rebData['diluent']=$validated;
-        $dive->rebData=$rebData;
+        $rebData = $dive->rebData;
+        $rebData['diluent'] = $validated;
+        $dive->rebData = $rebData;
         $dive->save();
         DiveFunctions::calculateBestMixProfile($dive);
         $messages['success'] = true;
+
         return $messages;
     }
 }

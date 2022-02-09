@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Admin\Centers;
 
+use App\Models\Tenant;
 use App\Traits\ValidationRules;
 use Livewire\Component;
-use App\Models\Tenant;
 use Livewire\WithFileUploads;
 
 class Update extends Component
@@ -13,11 +13,11 @@ class Update extends Component
     use ValidationRules;
 
     public $photo;
+
     public Tenant $center;
 
-
-
-    protected function rules() {
+    protected function rules()
+    {
         return $this->getTenantRules($this->center);
     }
 
@@ -41,12 +41,11 @@ class Update extends Component
             $this->center->updateProfilePhoto($this->photo);
         }
 
-
-
         session()->flash('success', 'Profilo salvato con successo');
 
         return redirect()->route('admin.centers');
     }
+
     /**
      * Get the view / contents that represent the component.
      *
@@ -54,7 +53,6 @@ class Update extends Component
      */
     public function render()
     {
-
         return view('livewire.admin.centers.update');
     }
 }

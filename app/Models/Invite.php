@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Invite extends Model
 {
     use BelongsToMedicalCenter, Notifiable, HasFactory;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -31,7 +32,8 @@ class Invite extends Model
         'accept_url',
     ];
 
-    public function getAcceptUrlAttribute() {
-        return route('invite.accept',['token'=>$this->token]);
+    public function getAcceptUrlAttribute()
+    {
+        return route('invite.accept', ['token'=>$this->token]);
     }
 }

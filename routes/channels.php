@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Broadcast;
 */
 
 Broadcast::channel('progress.{userId}', function ($user, $userId) {
-    return $user->id==$userId;
+    return $user->id == $userId;
 });

@@ -15,10 +15,11 @@ class Index extends Component
 
     public $perPage = 12;
 
-
-    public function mount() {
+    public function mount()
+    {
         $this->sortField = 'name';
     }
+
     /**
      * Get the view / contents that represent the component.
      *
@@ -26,10 +27,10 @@ class Index extends Component
      */
     public function render()
     {
-        return view('livewire.admin.centers.index',[
-        'centers' => Tenant::search($this->search)
-        ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-        ->paginate($this->perPage)
+        return view('livewire.admin.centers.index', [
+            'centers' => Tenant::search($this->search)
+            ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+            ->paginate($this->perPage),
         ]);
     }
 }

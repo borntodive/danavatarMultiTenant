@@ -3,15 +3,16 @@
 namespace App\Http\Livewire\MedicalRecord;
 
 use App\Models\MedicalSpecialty;
+use App\Models\User;
 use App\Traits\WithSpecialtiesChoice;
 use Livewire\Component;
-use App\Models\User;
 
 class Show extends Component
 {
     use WithSpecialtiesChoice;
 
     public User $user;
+
     /**
      * Get the view / contents that represent the component.
      *

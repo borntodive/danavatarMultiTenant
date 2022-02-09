@@ -16,17 +16,17 @@ class NewSensorsSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         $sensors = [
-            "Respiration",
-            "Respiration2",
-            "AccelerationX",
-            "AccelerationY",
-            "AccelerationZ"
+            'Respiration',
+            'Respiration2',
+            'AccelerationX',
+            'AccelerationY',
+            'AccelerationZ',
         ];
         foreach ($sensors as $sensor) {
             Sensor::create(
                 [
                     'name' => $sensor,
-                    'color' => $faker->hexColor,
+                    'color' => $faker->hexColor(),
                 ]
             );
         }

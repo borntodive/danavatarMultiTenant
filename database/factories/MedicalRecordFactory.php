@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MedicalRecordFactory extends Factory
 {
-    protected $model = MedicalRecord::class;
-
     /**
      * Define the model's default state.
      *
@@ -17,7 +15,8 @@ class MedicalRecordFactory extends Factory
      */
     public function definition()
     {
-        $specialties=MedicalSpecialty::get();
+        $specialties = MedicalSpecialty::get();
+
         return [
             'user_id' => UserFactory::class,
             'tenant_id' => TenantFactory::class,
@@ -26,13 +25,13 @@ class MedicalRecordFactory extends Factory
             'data'=>json_encode([
                 $this->faker->randomElement(
                     [
-                        "house",
-                        "flat",
-                        "apartment",
-                        "room", "shop",
-                        "lot", "garage"
+                        'house',
+                        'flat',
+                        'apartment',
+                        'room', 'shop',
+                        'lot', 'garage',
                     ]
-                )
+                ),
             ]),
 
         ];

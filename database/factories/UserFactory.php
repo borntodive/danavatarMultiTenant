@@ -10,13 +10,6 @@ use Illuminate\Support\Str;
 class UserFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = User::class;
-
-    /**
      * Define the model's default state.
      *
      * @return array
@@ -24,10 +17,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'firstname' => $this->faker->firstName,
-            'lastname' => $this->faker->lastName,
+            'firstname' => $this->faker->firstName(),
+            'lastname' => $this->faker->lastName(),
             'gender'=>UserGender::getRandomValue(),
-            'email' => $this->faker->unique()->safeEmail,
+            'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'dob'=>$this->faker->date(),
             'password' => bcrypt('password'), // password

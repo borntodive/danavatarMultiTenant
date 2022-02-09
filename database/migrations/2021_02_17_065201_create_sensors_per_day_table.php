@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSensorsPerDayTable extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('sensors_per_day', function (Blueprint $table) {
@@ -23,4 +22,4 @@ class CreateSensorsPerDayTable extends Migration
     {
         Schema::dropIfExists('sensors_per_days');
     }
-}
+};

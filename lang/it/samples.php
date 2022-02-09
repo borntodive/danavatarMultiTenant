@@ -1,6 +1,6 @@
 <?php
 
-return array (
+return [
     '12h' => '12h',
     '1h' => '1h',
     '1m' => '1m',
@@ -22,17 +22,17 @@ return array (
     'edit_comment' => 'Edit comment',
     'firstSample' => 'First Sample',
     'lastSample' => 'Last Sample',
-    'LEFTSIDE' => 'Left Side',
+    'LEFTSIDE' => 'Lato Sinistro',
     'loading-data-server' => 'Loading data from the server...',
     'measures' => 'Measures',
     'pick_a_time' => 'Pick a time',
-    'PRONE' => 'Prone',
+    'PRONE' => 'Prono',
     'qt' => 'QT',
-    'RIGHTSIDE' => 'Right Side',
+    'RIGHTSIDE' => 'Lato Destro',
     'rr' => 'RR',
     'samples' => 'Samples',
-    'STANDING' => 'Standing',
-    'SUPINE' => 'Supine',
+    'STANDING' => 'In Piedi',
+    'SUPINE' => 'Supino',
     'time_loaded' => 'Loaded time',
-    'UPSIDEDOWN' => 'Upside Down',
-);
+    'UPSIDEDOWN' => 'Sotto Sopra',
+];

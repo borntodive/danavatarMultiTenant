@@ -3,6 +3,7 @@
 namespace App\Enums;
 
 use BenSampo\Enum\Enum;
+
 /**
  * @method static static LEFTSIDE()
  * @method static static RIGHTSIDE()
@@ -13,12 +14,15 @@ use BenSampo\Enum\Enum;
  */
 final class PositionEnum extends Enum
 {
+    const LEFTSIDE = 1;
 
-    const LEFTSIDE =   1;
-    const RIGHTSIDE =   2;
+    const RIGHTSIDE = 2;
+
     const UPSIDEDOWN = 4;
-    const STANDING =   8;
-    const PRONE =   16;
-    const SUPINE = 32;
 
+    const STANDING = 8;
+
+    const PRONE = 16;
+
+    const SUPINE = 32;
 }

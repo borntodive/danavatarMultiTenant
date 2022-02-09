@@ -11,43 +11,42 @@
         "php": "^8.0",
         "bensampo/laravel-enum": "^4.1",
         "beyondcode/laravel-websockets": "^1.12",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "guzzlehttp/psr7": "^1.5",
+        "fruitcake/laravel-cors": "^2.0.5",
+        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/psr7": "^2.1",
         "hnhdigital-os/laravel-number-converter": "^1.4",
         "influxdata/influxdb-client-php": "^1.12",
         "kirkbushell/eloquence": "^8.0",
         "lab404/laravel-impersonate": "^1.7",
-        "laravel-lang/lang": "~8.0",
-        "laravel/framework": "^8.12",
+        "laravel-lang/lang": "^10.3",
+        "laravel/framework": "^9.0",
         "laravel/horizon": "^5.8",
-        "laravel/jetstream": "^2.1",
-        "laravel/sanctum": "^2.6",
+        "laravel/jetstream": "^2.6",
+        "laravel/sanctum": "^2.14",
         "laravel/telescope": "^4.7",
-        "laravel/tinker": "^2.5",
-        "league/flysystem-aws-s3-v3": "~1.0",
+        "laravel/tinker": "^2.7",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.0",
         "maatwebsite/excel": "^3.1",
         "olssonm/l5-zxcvbn": "^4.4",
         "predis/predis": "^1.1",
-        "pusher/pusher-php-server": "~5.0",
+        "pusher/pusher-php-server": "^7.0",
         "qcod/laravel-settings": "^1.1",
         "robertogallea/laravel-codicefiscale": "^1.4",
         "santigarcor/laratrust": "^6.3",
-        "sentry/sentry-laravel": "^2.3",
-        "spatie/data-transfer-object": "^2.6"
+        "sentry/sentry-laravel": "^2.11",
+        "spatie/data-transfer-object": "^3.7"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.5",
-        "barryvdh/laravel-ide-helper": "^2.9",
+        "barryvdh/laravel-debugbar": "^3.6",
+        "barryvdh/laravel-ide-helper": "^2.12",
         "beyondcode/laravel-dump-server": "^1.7",
-        "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "laravel/sail": "^1.13",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -68,7 +67,9 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "files": ["app/Helpers/functions.php"]
+        "files": [
+            "app/Helpers/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -87,6 +88,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ]
     }
 }

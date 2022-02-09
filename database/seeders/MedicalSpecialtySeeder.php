@@ -15,9 +15,9 @@ class MedicalSpecialtySeeder extends Seeder
      */
     public function run()
     {
-        $y40=Tenant::where('url','y40')->first();
+        $y40 = Tenant::where('url', 'y40')->first();
 
-        $specialties=[
+        $specialties = [
             [
                 'name'=>'Medicina Subacquea',
                 'slug'=>'diving',
@@ -37,11 +37,11 @@ class MedicalSpecialtySeeder extends Seeder
             ],
             [
                 'name'=>'Odontoiatra',
-                'slug'=>'dentist'
+                'slug'=>'dentist',
             ],
             [
                 'name'=>'Neurologia',
-                'slug'=>'neuro'
+                'slug'=>'neuro',
             ],
             [
                 'name'=>'Forame Ovale Pervio',
@@ -58,9 +58,8 @@ class MedicalSpecialtySeeder extends Seeder
 
         ];
         foreach ($specialties as $specialty) {
-            $ms=MedicalSpecialty::firstOrCreate($specialty);
+            $ms = MedicalSpecialty::firstOrCreate($specialty);
             $ms->centers()->attach($y40);
         }
-
     }
 }

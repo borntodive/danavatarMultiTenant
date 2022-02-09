@@ -9,13 +9,6 @@ use Illuminate\Support\Str;
 class TenantFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Tenant::class;
-
-    /**
      * Define the model's default state.
      *
      * @return array
@@ -24,6 +17,7 @@ class TenantFactory extends Factory
     {
         $name = $this->faker->unique()->sentence(3);
         $slug = Str::slug($name, '-');
+
         return [
             'name' => $name,
             'email' => $this->faker->unique()->safeEmail(),

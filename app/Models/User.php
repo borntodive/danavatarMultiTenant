@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\UserGender;
 use App\Notifications\ResetPasswordNotification;
 use App\Scopes\TenantScope;
-use App\Enums\UserGender;
 use App\Traits\BelongsToManyMedicalCenter;
 use BenSampo\Enum\Traits\CastsEnums;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
+use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
@@ -55,9 +55,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'gender' => UserGender::Class,
+        'gender' => UserGender::class,
         'dob' => 'date',
-        'session_permissions' => 'array'
+        'session_permissions' => 'array',
     ];
 
     /**
@@ -69,7 +69,7 @@ class User extends Authenticatable
         'profile_photo_url',
         'name',
         'avatarUrl',
-        'session_permissions'
+        'session_permissions',
     ];
 
     /**
@@ -81,6 +81,7 @@ class User extends Authenticatable
     {
         return "{$this->firstname} {$this->lastname}";
     }
+
     /**
      * Get the user's name.
      *
@@ -91,10 +92,12 @@ class User extends Authenticatable
         $permissions = [];
         if (session()->get('tenant')) {
             foreach (Permission::all() as $permission) {
-                if ($this->isAbleTo($permission->name, session()->get('tenant')->slug))
+                if ($this->isAbleTo($permission->name, session()->get('tenant')->slug)) {
                     $permissions[] = $permission->name;
+                }
             }
         }
+
         return $permissions;
     }
 
@@ -102,7 +105,6 @@ class User extends Authenticatable
     {
         return $this->profile_photo_url;
     }
-
 
     /**
      * The specialties that belong to the user.
@@ -145,7 +147,8 @@ class User extends Authenticatable
 
     public function dsgroles()
     {
-        $dsgTeam=Team::where('name','dsg')->first();
+        $dsgTeam = Team::where('name', 'dsg')->first();
+
         return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id', $dsgTeam->id);
     }
 
@@ -153,14 +156,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(SensorsPerDay::class);
     }
+
     public static function search($query)
     {
         return empty($query) ? static::query()
             : static::where(function ($q) use ($query) {
-                $q->whereRaw("LOWER(firstname) LIKE ? ", ['%' . trim(strtolower($query)) . '%'])
-                    ->orWhereRaw("LOWER(lastname) LIKE ? ", ['%' . trim(strtolower($query)) . '%'])
-                    ->orWhereRaw("LOWER(email) LIKE ? ", ['%' . trim(strtolower($query)) . '%'])
-                    ->orWhereRaw("LOWER(codice_fiscale) LIKE ? ", ['%' . trim(strtolower($query)) . '%']);
+                $q->whereRaw('LOWER(firstname) LIKE ? ', ['%'.trim(strtolower($query)).'%'])
+                    ->orWhereRaw('LOWER(lastname) LIKE ? ', ['%'.trim(strtolower($query)).'%'])
+                    ->orWhereRaw('LOWER(email) LIKE ? ', ['%'.trim(strtolower($query)).'%'])
+                    ->orWhereRaw('LOWER(codice_fiscale) LIKE ? ', ['%'.trim(strtolower($query)).'%']);
             });
     }
 
@@ -170,6 +174,7 @@ class User extends Authenticatable
     public function canImpersonate()
     {
         return false;
+
         return $this->hasRole('super_admin');
     }
 
@@ -185,9 +190,9 @@ class User extends Authenticatable
     public function isInCurrentCenter()
     {
         if (session()->has('tenant')) {
-
             return $this->centers->contains(session()->get('tenant')->id);
         }
+
         return false;
     }
 

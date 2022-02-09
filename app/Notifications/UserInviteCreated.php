@@ -2,18 +2,19 @@
 
 namespace App\Notifications;
 
-use Illuminate\Notifications\Notification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Notification;
 
 class UserInviteCreated extends Notification implements ShouldQueue
 {
     use Queueable;
+
     protected $invite;
 
     public function __construct($invite)
     {
-        $this->invite=$invite;
+        $this->invite = $invite;
     }
 
     /**

@@ -8,12 +8,12 @@ use Livewire\Component;
 
 class View extends Component
 {
-
     use ViewMedicalRecord;
+
     public $fields;
 
-    public function mount() {
-        $this->fields=WaterQuality::$fields;
+    public function mount()
+    {
+        $this->fields = WaterQuality::$fields;
     }
-
 }

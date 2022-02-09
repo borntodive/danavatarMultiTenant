@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ApiTokenFactory extends Factory
 {
-    protected $model = ApiToken::class;
-
     /**
      * Define the model's default state.
      *
@@ -18,7 +16,7 @@ class ApiTokenFactory extends Factory
     {
         return [
             'token'=>$this->faker->asciify('******************************'),
-            'tenant_id'=>1
+            'tenant_id'=>1,
         ];
     }
 }

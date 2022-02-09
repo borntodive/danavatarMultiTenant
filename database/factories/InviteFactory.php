@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InviteFactory extends Factory
 {
-    protected $model = Invite::class;
-
     /**
      * Define the model's default state.
      *
@@ -16,15 +14,13 @@ class InviteFactory extends Factory
      */
     public function definition()
     {
-
-
         return [
-            'firstname'=>$this->faker->firstName,
-            'lastname'=>$this->faker->lastName,
-            'email'=>$this->faker->safeEmail,
+            'firstname'=>$this->faker->firstName(),
+            'lastname'=>$this->faker->lastName(),
+            'email'=>$this->faker->safeEmail(),
             'codice_fiscale'=>$this->faker->taxId(),
             'dob'=>$this->faker->date(),
-            'tenant_id'=>1
+            'tenant_id'=>1,
         ];
     }
 }

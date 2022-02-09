@@ -6,10 +6,9 @@ use Livewire\Component;
 
 class FlashMessage extends Component
 {
-
     protected $listeners = ['showFlashMessage' => 'updateMesssages'];
 
-    public $messages=[];
+    public $messages = [];
 
     /**
      * Get the view / contents that represent the component.
@@ -21,8 +20,8 @@ class FlashMessage extends Component
         return view('livewire.layout.flash-message');
     }
 
-    public function updateMesssages($data) {
-        $this->messages=$data['data'];
+    public function updateMesssages($data)
+    {
+        $this->messages = $data['data'];
     }
-
 }

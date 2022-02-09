@@ -13,20 +13,22 @@ class Edit extends Component
     use WithFileUploads;
 
     public $photo;
+
     public $state;
+
     public $user;
+
     /**
      * Get the view / contents that represent the component.
      *
      * @return \Illuminate\View\View|string
      */
-
-    public function mount() {
-        $this->state=Auth::user()->withoutRelations()->toArray();
-        $this->user=Auth::user();
-        $this->state['dob']=($this->state['dob']) ? $this->user['dob']->format('d-m-Y') : null;
+    public function mount()
+    {
+        $this->state = Auth::user()->withoutRelations()->toArray();
+        $this->user = Auth::user();
+        $this->state['dob'] = ($this->state['dob']) ? $this->user['dob']->format('d-m-Y') : null;
     }
-
 
     public function updateProfileInformation(UpdatesUserProfileInformation $updater)
     {
@@ -50,10 +52,10 @@ class Edit extends Component
 
     public function render()
     {
-        if(count($this->getErrorBag()->all()) > 0){
+        if (count($this->getErrorBag()->all()) > 0) {
             $this->dispatchBrowserEvent('scrollToTop');
-
         }
+
         return view('livewire.profile.edit');
     }
 }

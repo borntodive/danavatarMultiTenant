@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTenantUserTable extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('tenant_user', function (Blueprint $table) {
@@ -22,4 +21,4 @@ class CreateTenantUserTable extends Migration
     {
         Schema::dropIfExists('tenant_user');
     }
-}
+};
