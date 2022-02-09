@@ -108,9 +108,11 @@ class TestController extends Controller
         // Needed to force browsers to actually display data
         echo str_pad("", 1024, " ");
         echo "<br />";
-        $dive=Dive::first();
-        $gfCalculator=new DecoCalculator($dive);
-        $gfCalculator->calculateGF();
+        $dives=Dive::get();
+        foreach ($dives as $dive) {
+            $gfCalculator=new DecoCalculator($dive);
+            $gfCalculator->calculateGF();
+        }
     }
     public function resetDsgRoles () {
         $users=User::get();
