@@ -32,8 +32,8 @@ class UserSeeder extends Seeder
         $userRole = Role::where('name', 'user')->first();
         $superAdmin = User::create(
             [
-                'firstname' => $faker->firstName,
-                'lastname' => $faker->lastName,
+                'firstname' => $faker->firstName(),
+                'lastname' => $faker->lastName(),
                 'gender'=>UserGender::getRandomValue(),
                 'email' => 'superAdmin@example.com',
                 'email_verified_at' => now(),
@@ -44,8 +44,8 @@ class UserSeeder extends Seeder
         $superAdmin->attachRole($superAdminRole);
         $y40Admin = User::create(
             [
-                'firstname' => $faker->firstName,
-                'lastname' => $faker->lastName,
+                'firstname' => $faker->firstName(),
+                'lastname' => $faker->lastName(),
                 'gender'=>UserGender::getRandomValue(),
                 'email' => 'y40Admin@example.com',
                 'email_verified_at' => now(),
@@ -57,8 +57,8 @@ class UserSeeder extends Seeder
         $y40Admin->attachRole($adminRole, $y40Team);
         $y40Cardiologo = User::create(
             [
-                'firstname' => $faker->firstName,
-                'lastname' => $faker->lastName,
+                'firstname' => $faker->firstName(),
+                'lastname' => $faker->lastName(),
                 'gender'=>UserGender::getRandomValue(),
                 'email' => 'y40Cardio@example.com',
                 'email_verified_at' => now(),
@@ -71,8 +71,8 @@ class UserSeeder extends Seeder
 
         $y40Utente = User::create(
             [
-                'firstname' => $faker->firstName,
-                'lastname' => $faker->lastName,
+                'firstname' => $faker->firstName(),
+                'lastname' => $faker->lastName(),
                 'gender'=>UserGender::getRandomValue(),
                 'email' => 'y40Utente@example.com',
                 'email_verified_at' => now(),
