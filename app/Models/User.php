@@ -91,7 +91,7 @@ class User extends Authenticatable
         $permissions = [];
         if (session()->get('tenant')) {
             foreach (Permission::all() as $permission) {
-                if ($this->isAbleTo($permission->name, session()->get('tenant')->slug))
+                if ($this->isAbleTo($permission->name, session()->get('tenant')->slug) || $this->hasRole('super_admin')) {
                     $permissions[] = $permission->name;
             }
         }
@@ -157,10 +157,10 @@ class User extends Authenticatable
     {
         return empty($query) ? static::query()
             : static::where(function ($q) use ($query) {
-                $q->whereRaw("LOWER(firstname) LIKE ? ", ['%' . trim(strtolower($query)) . '%'])
-                    ->orWhereRaw("LOWER(lastname) LIKE ? ", ['%' . trim(strtolower($query)) . '%'])
-                    ->orWhereRaw("LOWER(email) LIKE ? ", ['%' . trim(strtolower($query)) . '%'])
-                    ->orWhereRaw("LOWER(codice_fiscale) LIKE ? ", ['%' . trim(strtolower($query)) . '%']);
+                $q->whereRaw('LOWER(firstname) LIKE ? ', ['%' . trim(strtolower($query)) . '%'])
+                    ->orWhereRaw('LOWER(lastname) LIKE ? ', ['%' . trim(strtolower($query)) . '%'])
+                    ->orWhereRaw('LOWER(email) LIKE ? ', ['%' . trim(strtolower($query)) . '%'])
+                    ->orWhereRaw('LOWER(codice_fiscale) LIKE ? ', ['%' . trim(strtolower($query)) . '%']);
             });
     }
 
@@ -206,5 +206,16 @@ class User extends Authenticatable
         //$url = 'https://example.com/reset-password?token='.$token;
 
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function divers()
+    {
+        return $this->belongsToMany(User::class, 'operator_user','operator_id','user_id')->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
+    }
+
+    // Same table, self referencing, but change the key order
+    public function operators()
+    {
+        return $this->belongsToMany(User::class, 'operator_user','user_id','operator_id' )->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
     }
 }
