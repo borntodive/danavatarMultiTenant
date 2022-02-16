@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AlertController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DiveController;
 use App\Http\Controllers\Api\InviteController;
+use App\Http\Controllers\Api\OperatorController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\SampleController;
 use App\Http\Controllers\Api\UserController;
@@ -21,9 +22,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 
 Route::middleware('auth:sanctum')->group(function () {
+
+
+    $team=session()->get('tenant');
+    if ($team)
+        $team=$team->slug;
+    else
+        $team='dsg';
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
     Route::get('/user', function (Request $request) {
@@ -31,7 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::get('/users/{user:uuid}', [UserController::class, 'get']);
-    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users', [UserController::class, 'index'])->middleware('permission:edit_users_roles,'.$team);
 
     Route::prefix('dives')->group(function () {
         Route::get('/user/{user_id}', [DiveController::class, 'getByUser']);
@@ -45,11 +56,17 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::get('/{dive_id}/saturation', [DiveController::class, 'getDivePointSaturation']);
     });
-    Route::prefix('roles')->group(function () {
+    Route::prefix('operator')->group(function  () use ($team) {
+        Route::post('/assign', [OperatorController::class, 'assignUserToOperator']);
+        Route::get('/get_operator_users', [OperatorController::class, 'getOperatorUsers']);
+        Route::delete('/{role}', [RoleController::class, 'destroy']);
+        Route::post('/user/{user}', [RoleController::class, 'updateUserRoles'])->middleware('permission:edit_users_roles,'.$team);
+    });
+    Route::prefix('roles')->group(function  () use ($team) {
         Route::get('/', [RoleController::class, 'index']);
         Route::post('/', [RoleController::class, 'store']);
         Route::delete('/{role}', [RoleController::class, 'destroy']);
-        Route::post('/user/{user}', [RoleController::class, 'updateUserRoles']);
+        Route::post('/user/{user}', [RoleController::class, 'updateUserRoles'])->middleware('permission:edit_users_roles,'.$team);
     });
 
     Route::post('/samples', [SampleController::class, 'store'])->name('api.samples.store');
