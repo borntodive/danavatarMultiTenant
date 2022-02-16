@@ -92,7 +92,7 @@ class User extends Authenticatable
         $permissions = [];
         if (session()->get('tenant')) {
             foreach (Permission::all() as $permission) {
-                if ($this->isAbleTo($permission->name, session()->get('tenant')->slug)) {
+                if ($this->isAbleTo($permission->name, session()->get('tenant')->slug) || $this->hasRole('super_admin')) {
                     $permissions[] = $permission->name;
                 }
             }
@@ -161,10 +161,10 @@ class User extends Authenticatable
     {
         return empty($query) ? static::query()
             : static::where(function ($q) use ($query) {
-                $q->whereRaw('LOWER(firstname) LIKE ? ', ['%'.trim(strtolower($query)).'%'])
-                    ->orWhereRaw('LOWER(lastname) LIKE ? ', ['%'.trim(strtolower($query)).'%'])
-                    ->orWhereRaw('LOWER(email) LIKE ? ', ['%'.trim(strtolower($query)).'%'])
-                    ->orWhereRaw('LOWER(codice_fiscale) LIKE ? ', ['%'.trim(strtolower($query)).'%']);
+                $q->whereRaw('LOWER(firstname) LIKE ? ', ['%' . trim(strtolower($query)) . '%'])
+                    ->orWhereRaw('LOWER(lastname) LIKE ? ', ['%' . trim(strtolower($query)) . '%'])
+                    ->orWhereRaw('LOWER(email) LIKE ? ', ['%' . trim(strtolower($query)) . '%'])
+                    ->orWhereRaw('LOWER(codice_fiscale) LIKE ? ', ['%' . trim(strtolower($query)) . '%']);
             });
     }
 

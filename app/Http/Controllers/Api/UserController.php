@@ -34,7 +34,7 @@ class UserController extends \App\Http\Controllers\Controller
             });
         }
         if ($search) {
-            $q = $q->where('firstname', 'LIKE', '%'.$search.'%')->orWhere('lastname', 'LIKE', '%'.$search.'%')->orWhere('email', 'LIKE', '%'.$search.'%');
+            $q = $q->where('firstname', 'ILIKE', '%'.$search.'%')->orWhere('lastname', 'ILIKE', '%'.$search.'%')->orWhere('email', 'ILIKE', '%'.$search.'%');
         }
         //ProgressEvent::dispatch("LOADING_USERS");
         $totalFound = $q->count();
@@ -42,8 +42,6 @@ class UserController extends \App\Http\Controllers\Controller
             $q = $q->whereHas('dsgroles', function ($query) use ($roleFilter) {
                 $query->whereIn('name', $roleFilter);
             });
-        } else {
-            $q = $q->has('dsgroles');
         }
         $users = $q->with('dsgroles')->offset(($page - 1) * $perPage)->limit($perPage)->get();
         $out = [];
