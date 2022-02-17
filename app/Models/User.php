@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Notifications\ResetPasswordNotification;
 use App\Scopes\TenantScope;
 use App\Enums\UserGender;
@@ -69,7 +70,8 @@ class User extends Authenticatable
         'profile_photo_url',
         'name',
         'avatarUrl',
-        'session_permissions'
+        'session_permissions',
+        'subscription_type'
     ];
 
     /**
@@ -93,6 +95,7 @@ class User extends Authenticatable
             foreach (Permission::all() as $permission) {
                 if ($this->isAbleTo($permission->name, session()->get('tenant')->slug) || $this->hasRole('super_admin')) {
                     $permissions[] = $permission->name;
+                }
             }
         }
         return $permissions;
@@ -103,7 +106,13 @@ class User extends Authenticatable
         return $this->profile_photo_url;
     }
 
-
+    public function getSubscriptionTypeAttribute($value) {
+        $subscriptionType = null;
+        if ($this->activeSubscription) {
+            $subscriptionType = $this->activeSubscription->subscription_slug;
+        }
+        return $subscriptionType;
+    }
     /**
      * The specialties that belong to the user.
      */
@@ -145,7 +154,7 @@ class User extends Authenticatable
 
     public function dsgroles()
     {
-        $dsgTeam=Team::where('name','dsg')->first();
+        $dsgTeam = Team::where('name', 'dsg')->first();
         return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id', $dsgTeam->id);
     }
 
@@ -210,17 +219,24 @@ class User extends Authenticatable
 
     public function divers()
     {
-        return $this->belongsToMany(User::class, 'operator_user','operator_id','user_id')->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
+        return $this->belongsToMany(User::class, 'operator_user', 'operator_id', 'user_id')->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
     }
 
     // Same table, self referencing, but change the key order
     public function operators()
     {
-        return $this->belongsToMany(User::class, 'operator_user','user_id','operator_id' )->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
+        return $this->belongsToMany(User::class, 'operator_user', 'user_id', 'operator_id')->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
     }
 
     public function subscriptions()
     {
-        return $this->hasManyThrough(Subscription::class, UserSubscription::class);
+        return $this->hasMany(UserSubscription::class)->orderBy('expiring_date','DESC');
     }
+    public function activeSubscription()
+    {
+        return $this->hasOne(UserSubscription::class)->orderBy('expiring_date','DESC')->where('expiring_date','>=',now());
+    }
+
+
+
 }
