@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use App\Enums\UserGender;
 use App\Notifications\ResetPasswordNotification;
 use App\Scopes\TenantScope;
@@ -16,6 +17,8 @@ use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Cashier\Billable;
+
 
 class User extends Authenticatable
 {
@@ -28,6 +31,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use BelongsToManyMedicalCenter;
     use Impersonate;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
