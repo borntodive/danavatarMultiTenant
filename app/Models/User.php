@@ -223,4 +223,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'operator_user','user_id','operator_id' )->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
     }
+
+    public function subscriptions()
+    {
+        return $this->hasManyThrough(Subscription::class, UserSubscription::class);
+    }
 }
