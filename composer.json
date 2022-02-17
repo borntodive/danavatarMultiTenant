@@ -10,11 +10,9 @@
     "require": {
         "php": "^8.0",
         "bensampo/laravel-enum": "^4.1",
-        "beyondcode/laravel-websockets": "^1.12",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "guzzlehttp/psr7": "^1.5",
+        "fruitcake/laravel-cors": "^2.0.5",
+        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/psr7": "^2.1",
         "hnhdigital-os/laravel-number-converter": "^1.4",
         "influxdata/influxdb-client-php": "^1.12",
         "kirkbushell/eloquence": "^8.0",
@@ -34,9 +32,9 @@
         "pusher/pusher-php-server": "~5.0",
         "qcod/laravel-settings": "^1.1",
         "robertogallea/laravel-codicefiscale": "^1.4",
-        "santigarcor/laratrust": "^6.3",
-        "sentry/sentry-laravel": "^2.3",
-        "spatie/data-transfer-object": "^2.6"
+        "santigarcor/laratrust": "^6.4",
+        "sentry/sentry-laravel": "^2.11",
+        "spatie/data-transfer-object": "^3.7"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
