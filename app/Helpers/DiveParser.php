@@ -77,7 +77,7 @@ class DiveParser
             $max_depth = 0;
             $min_temp = 9999;
             $line_count = 0;
-            ProgressEvent::dispatch('PARSING_DIVE', 0, $dives_count);
+            //ProgressEvent::dispatch("PARSING_DIVE", 0, $dives_count);
             $totalLines = count($dive->dive->samples->waypoint);
             foreach ($dive->dive->samples->waypoint as $waypoint) {
                 $dives[$dives_count]['profile'][$line_count]['timesec'] = (int) $waypoint->divetime;
@@ -131,7 +131,7 @@ class DiveParser
                 $line_count++;
                 $perc = ceil($line_count * 100 / $totalLines);
 
-                ProgressEvent::dispatch('PARSING_DIVE', $perc, $dives_count);
+                //ProgressEvent::dispatch("PARSING_DIVE", $perc, $dives_count);
             }
         }
 
@@ -156,6 +156,7 @@ class DiveParser
         $dives = [];
         $rows_count = count($rows);
         ProgressEvent::dispatch('PARSING_DIVE', 0, $rows_count);
+
         foreach ($rows as $idx => $row) {
             if (empty($row)) {
                 continue;

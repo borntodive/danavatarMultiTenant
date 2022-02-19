@@ -10,6 +10,8 @@
     "require": {
         "php": "^8.0",
         "bensampo/laravel-enum": "^4.1",
+        "beyondcode/laravel-vouchers": "^2.0",
+        "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
         "guzzlehttp/psr7": "^2.1",
@@ -19,6 +21,7 @@
         "lab404/laravel-impersonate": "^1.7",
         "laravel-lang/lang": "^10.3",
         "laravel/framework": "^9.0",
+
         "laravel/horizon": "^5.8",
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.14",
@@ -77,6 +80,12 @@
             "Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/santigarcor/laratrust.git"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {

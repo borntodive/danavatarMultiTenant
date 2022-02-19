@@ -6,6 +6,7 @@ use App;
 use Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         if (App::environment('production', 'staging')) {
             URL::forceScheme('https');
         }
+        Cashier::calculateTaxes();
     }
 }

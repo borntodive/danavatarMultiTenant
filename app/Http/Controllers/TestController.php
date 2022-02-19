@@ -14,6 +14,7 @@ use App\Notifications\ResetPasswordNotification;
 use Illuminate\Support\Facades\Http;
 use InfluxDB2\Client;
 use InfluxDB2\Model\WritePrecision;
+use Laravel\Cashier\Http\RedirectToCheckoutResponse;
 
 class TestController extends Controller
 {
@@ -63,72 +64,7 @@ class TestController extends Controller
         $user->sendPasswordResetNotification($token);
     }
 
-    public function influx()
-    {
 
-        // You can generate a Token from the "Tokens Tab" in the UI
-        $token = '2N8qnyK4qyHSfQaZYEoXOdUDkrp9fMx1FPBBnu9VgBREGnRMczw1U2xcNT-aGL4rz7esMjHr10nhTL4Gb6yhZg==';
-        $org = 'danrni';
-        $bucket = 'AvatarStaging';
-
-        $client = new Client([
-            'url' => 'http://172.105.76.135:8086',
-            'token' => $token,
-            'org' => $org,
-            'debug' => false,
-            'timeout'=>0,
-        ]);
-
-        $queryApi = $client->createQueryApi();
-
-        $records = $queryApi->query(
-            'from(bucket: "AvatarStaging")   |> range(start: 2021-04-07T12:00:00Z, stop: 2021-04-07T13:05:00Z)
- |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "2")');
-        foreach ($records[0]->records as $record) {
-            $data[] = [
-                'x'=>$record->getTime(),
-                'y'=>$record->getValue(),
-            ];
-        }
-        dd($data[0]);
-    }
-
-    public function testGF()
-    {
-        ini_set('output_buffering', 'off');
-        // Turn off PHP output compression
-        ini_set('zlib.output_compression', false);
-
-        //Flush (send) the output buffer and turn off output buffering
-        while (@ob_end_flush());
-
-        // Implicitly flush the buffer(s)
-        ini_set('implicit_flush', true);
-        ob_implicit_flush(true);
-
-        // Needed to force browsers to actually display data
-        echo str_pad('', 1024, ' ');
-        echo '<br />';
-        $dive = Dive::first();
-        $gfCalculator = new DecoCalculator($dive);
-        $gfCalculator->calculateGF();
-    }
-
-    public function resetDsgRoles()
-    {
-        $users = User::get();
-        $userRole = Role::where('name', 'user')->first();
-        $adminRole = Role::where('name', 'admin')->first();
-        $team = Team::where('name', 'dsg')->first();
-        foreach ($users as $user) {
-            if ($user->email == 'andrea.covelli@gmail.com') {
-                $user->syncRoles([$adminRole], $team);
-            } else {
-                $user->syncRoles([$userRole], $team);
-            }
-        }
-        dd('fatto');
-    }
 
     public function sort()
     {
@@ -140,4 +76,6 @@ class TestController extends Controller
         $sorted = $collection->sortBy('time');
         dump($sorted);
     }
+
+
 }

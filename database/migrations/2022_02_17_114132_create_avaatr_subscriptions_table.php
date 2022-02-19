@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subscription', function (Blueprint $table) {
+        Schema::create('avatar_subscriptions', function (Blueprint $table) {
             $table->id();
             $table->char('name',255);
-            $table->char('stripe_id',255);
-            $table->tinyInteger('level');
+            $table->char('slug',255);
+            $table->integer('level');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscription');
+        Schema::dropIfExists('avatar_subscriptions');
     }
 };

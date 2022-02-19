@@ -7,9 +7,11 @@ use App\Http\Controllers\Api\InviteController;
 use App\Http\Controllers\Api\OperatorController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\SampleController;
+use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Cashier\Subscription;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +32,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     $team=session()->get('tenant');
     if ($team)
-        $team=$team->slug;
+        $team = $team->slug;
     else
-        $team='dsg';
+        $team = 'dsg';
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
@@ -40,8 +42,16 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    Route::get('/users/{user:uuid}', [UserController::class, 'get']);
+    Route::get('/users/{user:id}', [UserController::class, 'get']);
     Route::get('/users', [UserController::class, 'index'])->middleware('permission:edit_users_roles,'.$team);
+    Route::prefix('subscriptions')->group(function() {
+        Route::get('/load', [SubscriptionController::class, 'index']);
+        Route::get('/invoices', [SubscriptionController::class, 'getInvoices']);
+        Route::get('/setup-intent', [SubscriptionController::class, 'getSetupIntent']);
+        Route::post('/payment-method', [SubscriptionController::class, 'storePaymentMethod']);
+        Route::get('/payment-method', [SubscriptionController::class, 'getPaymentMethod']);
+
+    });
 
     Route::prefix('dives')->group(function () {
         Route::get('/user/{user_id}', [DiveController::class, 'getByUser']);
@@ -55,17 +65,17 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::get('/{dive_id}/saturation', [DiveController::class, 'getDivePointSaturation']);
     });
-    Route::prefix('operator')->group(function  () use ($team) {
+    Route::prefix('operator')->group(function () use ($team) {
         Route::post('/assign', [OperatorController::class, 'assignUserToOperator']);
         Route::get('/get_operator_users', [OperatorController::class, 'getOperatorUsers']);
         Route::delete('/{role}', [RoleController::class, 'destroy']);
-        Route::post('/user/{user}', [RoleController::class, 'updateUserRoles'])->middleware('permission:edit_users_roles,'.$team);
+        Route::post('/user/{user}', [RoleController::class, 'updateUserRoles'])->middleware('permission:edit_users_roles,' . $team);
     });
-    Route::prefix('roles')->group(function  () use ($team) {
+    Route::prefix('roles')->group(function () use ($team) {
         Route::get('/', [RoleController::class, 'index']);
         Route::post('/', [RoleController::class, 'store']);
         Route::delete('/{role}', [RoleController::class, 'destroy']);
-        Route::post('/user/{user}', [RoleController::class, 'updateUserRoles'])->middleware('permission:edit_users_roles,'.$team);
+        Route::post('/user/{user}', [RoleController::class, 'updateUserRoles'])->middleware('permission:edit_users_roles,' . $team);
     });
 
     Route::post('/samples', [SampleController::class, 'store'])->name('api.samples.store');
