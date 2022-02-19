@@ -146,23 +146,14 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-<<<<<<< HEAD
-        ProgressEvent::dispatch('DELETING_TANK', 0);
-=======
        // ProgressEvent::dispatch("DELETING_TANK", 0);
->>>>>>> laravel-upgrade
         $profile = $dive->profile;
         $p_count = count($profile);
         foreach ($profile as $idx => $sample) {
             $perc = ceil(($idx + 1) * 100 / $p_count);
             if ($perc > 100) {
                 $perc = 100;
-<<<<<<< HEAD
-            }
-            ProgressEvent::dispatch('DELETING_TANK', $perc);
-=======
             //ProgressEvent::dispatch("DELETING_TANK", $perc);
->>>>>>> laravel-upgrade
             if ($sample['timesec'] == $time) {
                 unset($profile[$idx]['gases']);
                 unset($profile[$idx]['marker']);
@@ -190,11 +181,7 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-<<<<<<< HEAD
-        ProgressEvent::dispatch('SAVING_DATA', 0);
-=======
         //ProgressEvent::dispatch("SAVING_DATA", 0);
->>>>>>> laravel-upgrade
         $rebData = $dive->rebData;
         $found = false;
         foreach ($rebData['ppo2s'] as $idx => $rData) {
@@ -227,11 +214,7 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-<<<<<<< HEAD
-        ProgressEvent::dispatch('SAVING_DATA', 0);
-=======
         //ProgressEvent::dispatch("SAVING_DATA", 0);
->>>>>>> laravel-upgrade
         $rebData = $dive->rebData;
 
         $found = false;

@@ -2,12 +2,7 @@
 
 namespace App\Models;
 
-<<<<<<< HEAD
-
-use App\Enums\UserGender;
-=======
 use Illuminate\Database\Eloquent\Casts\Attribute;
->>>>>>> laravel-upgrade
 use App\Notifications\ResetPasswordNotification;
 use App\Scopes\TenantScope;
 use App\Traits\BelongsToManyMedicalCenter;
@@ -21,7 +16,6 @@ use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Laravel\Cashier\Billable;
 
 
 use BeyondCode\Vouchers\Traits\CanRedeemVouchers;
@@ -38,10 +32,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use BelongsToManyMedicalCenter;
     use Impersonate;
-<<<<<<< HEAD
-=======
     use CanRedeemVouchers;
->>>>>>> laravel-upgrade
     use Billable;
 
     /**
@@ -85,10 +76,7 @@ class User extends Authenticatable
         'name',
         'avatarUrl',
         'session_permissions',
-<<<<<<< HEAD
-=======
         'subscription_type'
->>>>>>> laravel-upgrade
     ];
 
     /**
@@ -139,8 +127,6 @@ class User extends Authenticatable
         return $this->profile_photo_url;
     }
 
-<<<<<<< HEAD
-=======
     public function getSubscriptionTypeAttribute($value)
     {
         $subscriptionType = null;
@@ -149,7 +135,6 @@ class User extends Authenticatable
         }
         return $subscriptionType;
     }
->>>>>>> laravel-upgrade
     /**
      * The specialties that belong to the user.
      */
@@ -192,10 +177,6 @@ class User extends Authenticatable
     public function dsgroles()
     {
         $dsgTeam = Team::where('name', 'dsg')->first();
-<<<<<<< HEAD
-
-=======
->>>>>>> laravel-upgrade
         return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id', $dsgTeam->id);
     }
 
