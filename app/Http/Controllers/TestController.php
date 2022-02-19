@@ -14,6 +14,7 @@ use App\Notifications\ResetPasswordNotification;
 use Illuminate\Support\Facades\Http;
 use InfluxDB2\Client;
 use InfluxDB2\Model\WritePrecision;
+use Laravel\Cashier\Http\RedirectToCheckoutResponse;
 
 class TestController extends Controller
 {
@@ -76,18 +77,19 @@ class TestController extends Controller
             "token" => $token,
             "org" => $org,
             "debug" => false,
-            "timeout"=>0
+            "timeout" => 0
         ]);
 
         $queryApi = $client->createQueryApi();
 
         $records = $queryApi->query(
             'from(bucket: "AvatarStaging")   |> range(start: 2021-04-07T12:00:00Z, stop: 2021-04-07T13:05:00Z)
- |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "2")');
+ |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "2")'
+        );
         foreach ($records[0]->records as $record) {
-            $data[]=[
-                "x"=>$record->getTime(),
-                "y"=>$record->getValue()
+            $data[] = [
+                "x" => $record->getTime(),
+                "y" => $record->getValue()
             ];
         }
         dd($data[0]);
@@ -99,7 +101,7 @@ class TestController extends Controller
         ini_set('zlib.output_compression', false);
 
         //Flush (send) the output buffer and turn off output buffering
-        while (@ob_end_flush()) ;
+        while (@ob_end_flush());
 
         // Implicitly flush the buffer(s)
         ini_set('implicit_flush', true);
@@ -108,34 +110,60 @@ class TestController extends Controller
         // Needed to force browsers to actually display data
         echo str_pad("", 1024, " ");
         echo "<br />";
-        $dives=Dive::get();
+        $dives = Dive::get();
         foreach ($dives as $dive) {
-            $gfCalculator=new DecoCalculator($dive);
+            $gfCalculator = new DecoCalculator($dive);
             $gfCalculator->calculateGF();
         }
     }
-    public function resetDsgRoles () {
-        $users=User::get();
-        $userRole=Role::where('name','user')->first();
-        $adminRole=Role::where('name','admin')->first();
+    public function resetDsgRoles()
+    {
+        $users = User::get();
+        $userRole = Role::where('name', 'user')->first();
+        $adminRole = Role::where('name', 'admin')->first();
         $team = Team::where('name', 'dsg')->first();
         foreach ($users as $user) {
-            if ($user->email=='andrea.covelli@gmail.com')
+            if ($user->email == 'andrea.covelli@gmail.com')
                 $user->syncRoles([$adminRole], $team);
             else
                 $user->syncRoles([$userRole], $team);
         }
         dd('fatto');
     }
-    public function sort() {
+    public function sort()
+    {
 
-        $dive=Dive::first();
-        $reb=$dive->rebData['ppo2s'];
+        $dive = Dive::first();
+        $reb = $dive->rebData['ppo2s'];
 
 
         $collection = collect($reb);
 
         $sorted = $collection->sortBy('time');
         dump($sorted);
+    }
+
+    public function mollie()
+    {
+        $user = User::find(221);
+        $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
+        $item->unitPrice(money(100, 'EUR')); //1 EUR
+        $item->description('Test Item 1');
+        $chargeItem = $item->make();
+
+        $item2 = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
+        $item2->unitPrice(money(200, 'EUR'));
+        $item2->description('Test Item 2');
+        $chargeItem2 = $item2->make();
+
+        $result = $user->newCharge()
+            ->addItem($chargeItem)
+            ->addItem($chargeItem2)
+            ->create();
+        if (is_a($result, RedirectToCheckoutResponse::class)) {
+            return $result;
+        }
+
+        return ('Thank you.');
     }
 }

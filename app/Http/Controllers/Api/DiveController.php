@@ -30,7 +30,7 @@ class DiveController extends \App\Http\Controllers\Controller
 
     public function getByUser(Request $request, $user_id)
     {
-        ProgressEvent::dispatch("LOADING_DIVES", null);
+       // ProgressEvent::dispatch("LOADING_DIVES", null);
 
         $perPage = 9;
         $page = $request->get('page', 1);
@@ -61,7 +61,7 @@ class DiveController extends \App\Http\Controllers\Controller
             $eD = new Carbon($dates->endDate);
             $q = $q->whereBetween('date', [$sD, $eD]);
         }
-        ProgressEvent::dispatch("LOADING_DIVES", 0);
+        //ProgressEvent::dispatch("LOADING_DIVES", 0);
         $totalFound = $q->count();
 
         $dives = $q->offset(($page - 1) * $perPage)->limit($perPage)->get();
@@ -107,7 +107,7 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-        ProgressEvent::dispatch("SAVING_TANK", 0);
+       // ProgressEvent::dispatch("SAVING_TANK", 0);
         $profile = $dive->profile;
         $p_count = count($profile);
         foreach ($profile as $idx => $sample) {
@@ -141,14 +141,14 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-        ProgressEvent::dispatch("DELETING_TANK", 0);
+       // ProgressEvent::dispatch("DELETING_TANK", 0);
         $profile = $dive->profile;
         $p_count = count($profile);
         foreach ($profile as $idx => $sample) {
             $perc = ceil(($idx + 1) * 100 / $p_count);
             if ($perc > 100)
                 $perc = 100;
-            ProgressEvent::dispatch("DELETING_TANK", $perc);
+            //ProgressEvent::dispatch("DELETING_TANK", $perc);
             if ($sample['timesec'] == $time) {
                 unset($profile[$idx]['gases']);
                 unset($profile[$idx]['marker']);
@@ -174,7 +174,7 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-        ProgressEvent::dispatch("SAVING_DATA", 0);
+        //ProgressEvent::dispatch("SAVING_DATA", 0);
         $rebData = $dive->rebData;
         $found = false;
         foreach ($rebData['ppo2s'] as $idx => $rData) {
@@ -206,7 +206,7 @@ class DiveController extends \App\Http\Controllers\Controller
         list($minuntes, $seconds) = explode(':', $validated['time']);
         $time = ($minuntes * 60) + $seconds;
         unset($validated['time']);
-        ProgressEvent::dispatch("SAVING_DATA", 0);
+        //ProgressEvent::dispatch("SAVING_DATA", 0);
         $rebData = $dive->rebData;
 
         $found = false;

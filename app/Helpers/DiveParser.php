@@ -73,7 +73,7 @@ class DiveParser
             $max_depth = 0;
             $min_temp = 9999;
             $line_count = 0;
-            ProgressEvent::dispatch("PARSING_DIVE", 0, $dives_count);
+            //ProgressEvent::dispatch("PARSING_DIVE", 0, $dives_count);
             $totalLines = count($dive->dive->samples->waypoint);
             foreach ($dive->dive->samples->waypoint as $waypoint) {
 
@@ -124,7 +124,7 @@ class DiveParser
                 $line_count++;
                 $perc = ceil($line_count * 100 / $totalLines);
 
-                ProgressEvent::dispatch("PARSING_DIVE", $perc, $dives_count);
+                //ProgressEvent::dispatch("PARSING_DIVE", $perc, $dives_count);
             }
         }
 
@@ -146,7 +146,7 @@ class DiveParser
         $line_count = 0;
         $dives = [];
         $rows_count = count($rows);
-        ProgressEvent::dispatch("PARSING_DIVE", 0, $rows_count);
+        //ProgressEvent::dispatch("PARSING_DIVE", 0, $rows_count);
         foreach ($rows as $idx => $row) {
             if (empty($row))
                 continue;
@@ -421,7 +421,7 @@ class DiveParser
             $prev_temp = null;
             $prev_depth = null;
             $prev_time = -999999;
-            ProgressEvent::dispatch("SAVING_DIVE", 0, $diveId);
+            //ProgressEvent::dispatch("SAVING_DIVE", 0, $diveId);
             $lastGas = null;
             $pointsToBeRemoved = [];
             $lineCount = 0;
@@ -535,7 +535,7 @@ class DiveParser
                 //$d->profile()->createMany($profile);
 
                 $gfCalculator = new DecoCalculator($d);
-                ProgressEvent::dispatch("ANALYZING_DIVE", 0, $diveId);
+                //ProgressEvent::dispatch("ANALYZING_DIVE", 0, $diveId);
                 $gfCalculator->calculateGF();
                 $createdDives[] =  $d;
             }

@@ -18,6 +18,9 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 
+use BeyondCode\Vouchers\Traits\CanRedeemVouchers;
+use Laravel\Cashier\Billable;
+use function Illuminate\Events\queueable;
 class User extends Authenticatable
 {
     use CastsEnums;
@@ -29,6 +32,8 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use BelongsToManyMedicalCenter;
     use Impersonate;
+    use CanRedeemVouchers;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -75,6 +80,20 @@ class User extends Authenticatable
     ];
 
     /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::updated(queueable(function ($customer) {
+            if ($customer->hasStripeId()) {
+                $customer->syncStripeCustomerDetails();
+            }
+        }));
+    }
+
+    /**
      * Get the user's name.
      *
      * @return string
@@ -106,7 +125,8 @@ class User extends Authenticatable
         return $this->profile_photo_url;
     }
 
-    public function getSubscriptionTypeAttribute($value) {
+    public function getSubscriptionTypeAttribute($value)
+    {
         $subscriptionType = null;
         if ($this->activeSubscription) {
             $subscriptionType = $this->activeSubscription->subscription_slug;
@@ -230,13 +250,10 @@ class User extends Authenticatable
 
     public function subscriptions()
     {
-        return $this->hasMany(UserSubscription::class)->orderBy('expiring_date','DESC');
+        return $this->hasMany(UserSubscription::class)->orderBy('expiring_date', 'DESC');
     }
     public function activeSubscription()
     {
-        return $this->hasOne(UserSubscription::class)->orderBy('expiring_date','DESC')->where('expiring_date','>=',now());
+        return $this->hasOne(UserSubscription::class)->orderBy('expiring_date', 'DESC')->where('expiring_date', '>=', now());
     }
-
-
-
 }

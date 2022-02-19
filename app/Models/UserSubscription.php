@@ -14,7 +14,7 @@ class UserSubscription extends Model
 
     protected $casts = [
         'expiring_date' => 'datetime',
-        'payment_method' => PaymentMethodEnum::class
+        //'payment_method' => PaymentMethodEnum::class
     ];
 
     /**

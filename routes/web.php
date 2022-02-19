@@ -35,6 +35,7 @@ Route::get('/test/influx', [\App\Http\Controllers\TestController::class,'influx'
 Route::get('/test/gf',[TestController::class, 'testGF']);
 Route::get('/test/sort',[TestController::class, 'sort']);
 Route::get('/reset/dsg-roles',[TestController::class, 'resetDsgRoles']);
+Route::get('/test/cc',[TestController::class, 'mollie']);
 Route::get('/test/error', function () {
     echo $pippo['pluto'];
 });
