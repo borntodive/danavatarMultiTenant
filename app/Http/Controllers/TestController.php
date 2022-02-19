@@ -14,6 +14,7 @@ use App\Notifications\ResetPasswordNotification;
 use Illuminate\Support\Facades\Http;
 use InfluxDB2\Client;
 use InfluxDB2\Model\WritePrecision;
+use Laravel\Cashier\Http\RedirectToCheckoutResponse;
 
 class TestController extends Controller
 {
@@ -72,22 +73,36 @@ class TestController extends Controller
         $bucket = 'AvatarStaging';
 
         $client = new Client([
+<<<<<<< HEAD
             'url' => 'http://172.105.76.135:8086',
             'token' => $token,
             'org' => $org,
             'debug' => false,
             'timeout'=>0,
+=======
+            "url" => "http://172.105.76.135:8086",
+            "token" => $token,
+            "org" => $org,
+            "debug" => false,
+            "timeout" => 0
+>>>>>>> laravel-upgrade
         ]);
 
         $queryApi = $client->createQueryApi();
 
         $records = $queryApi->query(
             'from(bucket: "AvatarStaging")   |> range(start: 2021-04-07T12:00:00Z, stop: 2021-04-07T13:05:00Z)
- |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "2")');
+ |> filter(fn: (r) => r["_measurement"] == "Ecg") |> filter(fn: (r) => r["user_id"] == "2")'
+        );
         foreach ($records[0]->records as $record) {
             $data[] = [
+<<<<<<< HEAD
                 'x'=>$record->getTime(),
                 'y'=>$record->getValue(),
+=======
+                "x" => $record->getTime(),
+                "y" => $record->getValue()
+>>>>>>> laravel-upgrade
             ];
         }
         dd($data[0]);
@@ -109,13 +124,16 @@ class TestController extends Controller
         // Needed to force browsers to actually display data
         echo str_pad("", 1024, " ");
         echo "<br />";
-        $dives=Dive::get();
+        $dives = Dive::get();
         foreach ($dives as $dive) {
-            $gfCalculator=new DecoCalculator($dive);
+            $gfCalculator = new DecoCalculator($dive);
             $gfCalculator->calculateGF();
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> laravel-upgrade
     public function resetDsgRoles()
     {
         $users = User::get();
@@ -123,7 +141,11 @@ class TestController extends Controller
         $adminRole = Role::where('name', 'admin')->first();
         $team = Team::where('name', 'dsg')->first();
         foreach ($users as $user) {
+<<<<<<< HEAD
             if ($user->email == 'andrea.covelli@gmail.com') {
+=======
+            if ($user->email == 'andrea.covelli@gmail.com')
+>>>>>>> laravel-upgrade
                 $user->syncRoles([$adminRole], $team);
             } else {
                 $user->syncRoles([$userRole], $team);
@@ -131,6 +153,14 @@ class TestController extends Controller
         }
         dd('fatto');
     }
+<<<<<<< HEAD
+=======
+    public function sort()
+    {
+
+        $dive = Dive::first();
+        $reb = $dive->rebData['ppo2s'];
+>>>>>>> laravel-upgrade
 
     public function sort()
     {
@@ -141,5 +171,29 @@ class TestController extends Controller
 
         $sorted = $collection->sortBy('time');
         dump($sorted);
+    }
+
+    public function mollie()
+    {
+        $user = User::find(221);
+        $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
+        $item->unitPrice(money(100, 'EUR')); //1 EUR
+        $item->description('Test Item 1');
+        $chargeItem = $item->make();
+
+        $item2 = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
+        $item2->unitPrice(money(200, 'EUR'));
+        $item2->description('Test Item 2');
+        $chargeItem2 = $item2->make();
+
+        $result = $user->newCharge()
+            ->addItem($chargeItem)
+            ->addItem($chargeItem2)
+            ->create();
+        if (is_a($result, RedirectToCheckoutResponse::class)) {
+            return $result;
+        }
+
+        return ('Thank you.');
     }
 }

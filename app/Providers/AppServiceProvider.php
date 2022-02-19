@@ -7,7 +7,10 @@ use Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Cashier\Cashier;
+<<<<<<< HEAD
 
+=======
+>>>>>>> laravel-upgrade
 
 class AppServiceProvider extends ServiceProvider
 {

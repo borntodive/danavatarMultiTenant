@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 
 use App\Enums\UserGender;
+=======
+use Illuminate\Database\Eloquent\Casts\Attribute;
+>>>>>>> laravel-upgrade
 use App\Notifications\ResetPasswordNotification;
 use App\Scopes\TenantScope;
 use App\Traits\BelongsToManyMedicalCenter;
@@ -20,6 +24,9 @@ use Laravel\Sanctum\HasApiTokens;
 use Laravel\Cashier\Billable;
 
 
+use BeyondCode\Vouchers\Traits\CanRedeemVouchers;
+use Laravel\Cashier\Billable;
+use function Illuminate\Events\queueable;
 class User extends Authenticatable
 {
     use CastsEnums;
@@ -31,6 +38,10 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use BelongsToManyMedicalCenter;
     use Impersonate;
+<<<<<<< HEAD
+=======
+    use CanRedeemVouchers;
+>>>>>>> laravel-upgrade
     use Billable;
 
     /**
@@ -74,7 +85,25 @@ class User extends Authenticatable
         'name',
         'avatarUrl',
         'session_permissions',
+<<<<<<< HEAD
+=======
+        'subscription_type'
+>>>>>>> laravel-upgrade
     ];
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::updated(queueable(function ($customer) {
+            if ($customer->hasStripeId()) {
+                $customer->syncStripeCustomerDetails();
+            }
+        }));
+    }
 
     /**
      * Get the user's name.
@@ -110,6 +139,17 @@ class User extends Authenticatable
         return $this->profile_photo_url;
     }
 
+<<<<<<< HEAD
+=======
+    public function getSubscriptionTypeAttribute($value)
+    {
+        $subscriptionType = null;
+        if ($this->activeSubscription) {
+            $subscriptionType = $this->activeSubscription->subscription_slug;
+        }
+        return $subscriptionType;
+    }
+>>>>>>> laravel-upgrade
     /**
      * The specialties that belong to the user.
      */
@@ -152,7 +192,10 @@ class User extends Authenticatable
     public function dsgroles()
     {
         $dsgTeam = Team::where('name', 'dsg')->first();
+<<<<<<< HEAD
 
+=======
+>>>>>>> laravel-upgrade
         return $this->belongsToMany(Role::class)->as('roles')->wherePivot('team_id', $dsgTeam->id);
     }
 
@@ -219,17 +262,21 @@ class User extends Authenticatable
 
     public function divers()
     {
-        return $this->belongsToMany(User::class, 'operator_user','operator_id','user_id')->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
+        return $this->belongsToMany(User::class, 'operator_user', 'operator_id', 'user_id')->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
     }
 
     // Same table, self referencing, but change the key order
     public function operators()
     {
-        return $this->belongsToMany(User::class, 'operator_user','user_id','operator_id' )->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
+        return $this->belongsToMany(User::class, 'operator_user', 'user_id', 'operator_id')->withPivot('tenant_id')->withTimestamps()->where('tenant_id', session()->get('tenant')->id);
     }
 
     public function subscriptions()
     {
-        return $this->hasManyThrough(Subscription::class, UserSubscription::class);
+        return $this->hasMany(UserSubscription::class)->orderBy('expiring_date', 'DESC');
+    }
+    public function activeSubscription()
+    {
+        return $this->hasOne(UserSubscription::class)->orderBy('expiring_date', 'DESC')->where('expiring_date', '>=', now());
     }
 }

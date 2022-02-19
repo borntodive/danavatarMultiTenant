@@ -59,4 +59,6 @@ class UserController extends \App\Http\Controllers\Controller
     {
         return $user;
     }
+
+
 }

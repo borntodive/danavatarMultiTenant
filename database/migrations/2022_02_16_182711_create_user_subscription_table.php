@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_subscription', function (Blueprint $table) {
+        Schema::create('user_subscriptions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tenant_id')->index();
             $table->foreignId('user_id')->index();
-            $table->foreignId('subscription_id')->index();
+            $table->foreignId('avatar_subscription_id')->index();
             $table->char('payment_method', 100);
             $table->char('dan_id', 100)->nullable();
             $table->dateTime('expiring_date');
