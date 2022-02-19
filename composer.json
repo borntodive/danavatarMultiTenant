@@ -10,19 +10,11 @@
     "require": {
         "php": "^8.0",
         "bensampo/laravel-enum": "^4.1",
-<<<<<<< HEAD
-        "beyondcode/laravel-websockets": "^1.12",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "guzzlehttp/psr7": "^1.5",
-=======
         "beyondcode/laravel-vouchers": "^2.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
         "guzzlehttp/psr7": "^2.1",
->>>>>>> laravel-upgrade
         "hnhdigital-os/laravel-number-converter": "^1.4",
         "influxdata/influxdb-client-php": "^1.12",
         "kirkbushell/eloquence": "^8.0",
